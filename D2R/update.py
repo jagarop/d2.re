@@ -72,7 +72,7 @@ def BuildEnum(items):
         set_name(address, item['name'])
         idc.SetType(address, item['ctype'])
         
-print('//D2R Version - %s' % ( get_strlit_contents(idc.get_operand_value(ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN), 1)) ))
+print('//D2R Version - %s' % ( idc.get_strlit_contents(idc.get_operand_value(ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN), 1)) ))
 
 print('enum class Functions : uint64_t {')
 BuildEnum(functions)
