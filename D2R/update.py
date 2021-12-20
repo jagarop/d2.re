@@ -58,14 +58,10 @@ def BuildEnum(items):
         if item['type'] == 'absolute':
             None
         offset = address - base
-<<<<<<< HEAD
         if 'note' in item:
             print("\t%-32s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['note'] ))
         else:
             print("\t%-32s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
-=======
-        print("\t%-32s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
->>>>>>> ea0214feedcf84d0429c6bf56c52f4c308bea903
         set_name(address, item['name'])
         idc.SetType(address, item['ctype'])
         
