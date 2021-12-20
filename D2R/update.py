@@ -42,8 +42,8 @@ def BuildEnum(items):
             None
         offset = address - base
         print("\t%-32s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
-        #set_name(address, item['name'])
-        #idc.SetType(address, item['ctype'])
+        set_name(address, item['name'])
+        idc.SetType(address, item['ctype'])
         
 
 
