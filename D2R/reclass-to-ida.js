@@ -1,3 +1,9 @@
+/*
+usage: node reclass-to-ida.js
+
+takes reclass classes and renames them to struts. removes any inheritance done in reclass.
+*/
+
 const fs = require('fs');
 const path = require('path');
 

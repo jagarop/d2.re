@@ -1,8 +1,8 @@
 
-import os
+#import os
 
-print("Loading Header File: IDA.h")
-idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
+#print("Loading Header File: IDA.h")
+#idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
 
 base = idaapi.get_imagebase()
 

@@ -1,19 +1,20 @@
+#import os
 
-import os
-
-print("Loading Header File: IDA.h")
-idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
+#print("Loading Header File: IDA.h")
+#idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
 
 base = idaapi.get_imagebase()
 end_ea = idc.get_segm_end(0)
 
 
 functions = [
-{ 'ctype': 'int64_t __fastcall STATES_CheckState(D2UnitStrc* pUnit, uint32_t nState)',  'name': 'STATES_CheckState', 'pattern': '4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ', 'type': 'absoulte' }
+{ 'ctype': 'int64_t __fastcall STATES_CheckState(D2UnitStrc* pUnit, uint32_t nState)',  'name': 'STATES_CheckState', 'pattern': '4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ', 'type': 'absoulte' },
+{ 'ctype': 'int __fastcall UNITS_GetBlockRate(D2UnitStrc *pUnit, BOOL bExpansion)',  'name': 'UNITS_GetBlockRate', 'pattern': 'E8 ? ? ? ? 8B F8 85 C0 7E 63 ', 'operand': 0, 'type': 'operand' },
 ]
 
 variables = [
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpClientSideUnitHashTable', 'pattern': '4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8', 'operand': 1, 'type': 'operand' },
+{ 'ctype': 'D2UnitHashTableStrc', 'name': 'gpServerSideUnitHashTable', 'pattern': '48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?', 'operand': 1, 'type': 'operand' },
 ]
 
 def BuildEnum(items):
