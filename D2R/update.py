@@ -8,26 +8,42 @@ end_ea = idc.get_segm_end(0)
 
 
 functions = [
+{ 'ctype': 'void __fastcall DATATBLS_LoadAllTxts()', 'name': 'DATATBLS_LoadAllTxts', 'pattern': '48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? ', 'type': 'absoulte' },
+{ 'ctype': '__int64 *__fastcall GAME_Loop(int *a1)', 'name': 'GAME_Loop', 'pattern': 'E8 ? ? ? ? E8 ? ? ? ? 48 8B D8 48 8B 88 ? ? ? ? ', 'operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall INVENTORY_GetFreeBeltSlot(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int* pFreeSlotId)','name': 'INVENTORY_GetFreeBeltSlot', 'pattern': 'E8 ? ? ? ? 85 C0 74 A4 ','operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall INVENTORY_GetFreePosition(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int nInventoryRecordId, int* pFreeX, int* pFreeY, uint8_t nPage)', 'name': 'INVENTORY_GetFreePosition', 'pattern': '48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 50 49 8B E9 48 8B F1 48 85 C9 0F 84 ? ? ? ? 81 39 ? ? ? ? 0F 85 ? ? ? ? ', 'type': 'absoulte' },
+{ 'ctype': 'int64_t __fastcall ITEMS_CalculateTransactionCost(D2UnitStrc* pPlayer, D2UnitStrc* pItem, int nDifficulty, int64_t pQuestFlags, int nVendorId, int nTransactionType)', 'name': 'ITEMS_CalculateTransactionCost', 'pattern': '4C 8B DC 55 57 41 54 49 8D AB ? ? ? ? 48 81 EC ? ? ? ?  ', 'type': 'absoulte' },
+{ 'ctype': 'void __fastcall ITEMS_GetName(D2UnitStrc* pItem, D2wchar_tStrc* pBuffer, uint32_t nLen)', 'name': 'ITEMS_GetName',  'pattern': 'E8 ? ? ? ? 41 8B 16 48 8D 4C 24 ?', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'wchar_t* __fastcall LANG_GetWideStringFromTblIndex(uint16_t nIndex)', 'name': 'LANG_GetWideStringFromTblIndex',  'pattern': '80 3D ? ? ? ? ? 48 8D 05 ? ? ? ? 4C 8D 0D ? ? ? ? 44 0F B7 C1 4C 0F 45 C8 4C 8B DA 4D 8B 51 08', 'type': 'absoulte' },
 { 'ctype': 'int64_t __fastcall STATES_CheckState(D2UnitStrc* pUnit, uint32_t nState)',  'name': 'STATES_CheckState', 'pattern': '4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ', 'type': 'absoulte' },
+{ 'ctype': 'int64_t __fastcall STATLIST_GetTotalStat(D2StatListStrc* pStatList, int32_t nPackedLayer_StatId, void* pItemStatCostTxtRecord)', 'name': 'STATLIST_GetTotalStat', 'pattern': 'E8 ? ? ? ? 01 43 34', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'int64_t __fastcall STATLIST_GetUnitStatSigned(D2UnitStrc* pUnit, uint32_t nStatId, uint16_t nLayer)', 'name': 'STATLIST_GetUnitStatSigned', 'pattern': '48 83 EC 28 45 0F B7 C8 48 85 C9 74 42 48 8B 89 ? ? ? ? 48 85 C9 74 2F', 'type': 'absoulte' },
 { 'ctype': 'int __fastcall UNITS_GetBlockRate(D2UnitStrc *pUnit, BOOL bExpansion)',  'name': 'UNITS_GetBlockRate', 'pattern': 'E8 ? ? ? ? 8B F8 85 C0 7E 63 ', 'operand': 0, 'type': 'operand' },
 ]
 
 variables = [
+{ 'ctype': 'void', 'name': 'gpD2GS_S2C_FunctionTable', 'pattern': '4C 8D A2 ? ? ? ? 41 8B 44 CC ?', 'operand': 1, 'type': 'other'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpClientSideUnitHashTable', 'pattern': '4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8', 'operand': 1, 'type': 'operand' },
+{ 'ctype': 'POINT', 'name': 'gpMousePosition', 'pattern': '48 8B 0D ? ? ? ? F3 0F 7F 45 ?', 'operand': 1, 'type': 'operand'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpServerSideUnitHashTable', 'pattern': '48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?', 'operand': 1, 'type': 'operand' },
 ]
 
 def BuildEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, item['pattern'], 16, idc.SEARCH_DOWN)
+        #get value of an operand
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
+        #idk have to do this for function table..
+        if item['type'] == 'other':
+            address = base + idc.get_operand_value(address, item['operand'])
+        #sig points to an absolute addr usually start of func or something
         if item['type'] == 'absolute':
             None
         offset = address - base
-        print("\t%-20s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
-        set_name(address, item['name'])
-        idc.SetType(address, item['ctype'])
+        print("\t%-32s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
+        #set_name(address, item['name'])
+        #idc.SetType(address, item['ctype'])
         
 
 
