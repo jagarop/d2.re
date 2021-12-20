@@ -1,6 +1,6 @@
 // Created with fdyuhfvyfusayyukdftudfktydcjxdFTKYHJGFCV 1.2 by udifdshfudysfdls
 
-class D2DataTablesStrc
+class D2DataTablesStrc // this was good 2 patches ago or so since then a lot of stuff moved around still "mostly" good
 {
 public:
 	uint64_t *pPlayerClassTxt; //0x0000
@@ -1078,11 +1078,11 @@ static_assert(sizeof(D2StatListStrc) == 0x48);
 class D2StatListExStrc : public D2StatListStrc
 {
 public:
-	class D2StatListExStrc *pPrevLink; //0x0048 looks like a statlist might be wrong
+	class D2StatListExStrc *pPrevLink; //0x0048 might be wrong
 	char pad_0050[8]; //0x0050
 	class D2StatListExStrc *pParent; //0x0058
 	char pad_0060[8]; //0x0060
-	class D2StatListExStrc *pMyLastList; //0x0068 could be pNextLink
+	class D2StatListExStrc *pMyLastList; //0x0068
 	class D2StatListExStrc *pMyStats; //0x0070
 	class D2UnitStrc *pOwner; //0x0078
 	class D2StatsArrayStrc FullStats; //0x0080
@@ -1371,3 +1371,12 @@ public:
 	uint32_t PosY; //0x0014
 }; //Size: 0x0018
 static_assert(sizeof(D2StaticPathStrc) == 0x18);
+
+class D2GSServerToClientHandler
+{
+public:
+	void* pHandler; //0x0000 void (__fastcall* D2GSServerToClient_t)(void* pPacket);
+	uint64_t PacketSize; //0x0008
+	void* pHandlerEx; //0x0010 void (__fastcall* D2GSServerToClient_t)(D2UnitStrc* pUnit, void* pPacket);
+}; //Size: 0x0018
+static_assert(sizeof(D2GSServerToClientHandler) == 0x18);

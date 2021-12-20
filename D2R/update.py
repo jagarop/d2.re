@@ -8,6 +8,9 @@ end_ea = idc.get_segm_end(0)
 
 
 functions = [
+{ 'ctype': '__int64 __fastcall  BITMANIP_Read(void* pBuffer, uint64_t nBits)', 'name': 'BITMANIP_Read', 'pattern': 'E8 ? ? ? ? FE C8 ', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'void __fastcall BITMANIP_Write(void* pBuffer, uint32_t dwValue, uint64_t nBits)', 'name': 'BITMANIP_Write', 'pattern': '40 53 4D 8B D0 ', 'type': 'absoulte' },
+
 { 'ctype': '__int64* __fastcall DATATBLS_GetMagicAffixTxtRecord(uint16_t nIndex)', 'name': 'DATATBLS_GetMagicAffixTxtRecord', 'pattern': 'E8 ? ? ? ? 48 8B 3F 48 8B F0', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'void __fastcall DATATBLS_LoadAllTxts()', 'name': 'DATATBLS_LoadAllTxts', 'pattern': '48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? ', 'type': 'absoulte' },
 { 'ctype': 'uint64_t DATATBLS_UnloadAllBins()', 'name': 'DATATBLS_UnloadAllBins', 'pattern': 'E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 44 8B EE ', 'operand': 0, 'type': 'operand' },
@@ -39,7 +42,7 @@ functions = [
 ]
 
 variables = [
-{ 'ctype': 'void', 'name': 'gpD2GS_S2C_FunctionTable', 'pattern': '4C 8D A2 ? ? ? ? 41 8B 44 CC ?', 'operand': 1, 'type': 'other'},
+{ 'ctype': 'D2GSServerToClientHandler[0xAE]', 'name': 'gpD2GS_S2C_FunctionTable', 'pattern': '4C 8D A2 ? ? ? ? 41 8B 44 CC ?', 'operand': 1, 'type': 'other'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpClientSideUnitHashTable', 'pattern': '4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8', 'operand': 1, 'type': 'operand' },
 { 'ctype': 'POINT', 'name': 'gpMousePosition', 'pattern': '48 8B 0D ? ? ? ? F3 0F 7F 45 ?', 'operand': 1, 'type': 'operand'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpServerSideUnitHashTable', 'pattern': '48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?', 'operand': 1, 'type': 'operand' },
