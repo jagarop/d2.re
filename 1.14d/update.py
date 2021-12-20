@@ -7,11 +7,11 @@
 base = idaapi.get_imagebase()
 
 functions = [
-{ 'offset': 0x4dd60, 'name': 'D2CLIENT_QuitGame', 'ctype': 'void __fastcall D2CLIENT_QuitGame()' },
+{ 'ctype': 'void __fastcall D2CLIENT_QuitGame()', 'name': 'D2CLIENT_QuitGame', 'offset': 0x4dd60},
 ]
 
 variables = [
-{ 'offset': 0x3A5E70, 'name': 'pClientSideUnitHashTables', 'ctype': 'UnitHashTable pClientSideUnitHashTables' },
+{  'ctype': 'UnitHashTable', 'name': 'gpClientSideUnitHashTables', 'offset': 0x3A5E70 },
 ]
 
 def BuildEnum(items):
