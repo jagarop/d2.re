@@ -51,14 +51,16 @@ variables = [
 def BuildEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, item['pattern'], 16, idc.SEARCH_DOWN)
-        #get value of an operand
+        if address == idaapi.BADADDR:
+            print("\t%-32s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
+            continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
         #idk have to do this for function table..
-        if item['type'] == 'other':
+        elif item['type'] == 'other':
             address = base + idc.get_operand_value(address, item['operand'])
-        #sig points to an absolute addr usually start of func or something
-        if item['type'] == 'absolute':
+        #sig points to an absolute addr usually start of func or something unnecassary code but making it explict what is happening
+        elif item['type'] == 'absolute':
             None
         offset = address - base
         if 'note' in item:
