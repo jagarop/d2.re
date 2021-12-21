@@ -31,6 +31,7 @@ functions = [
 { 'ctype': 'uint8_t* __fastcall ITEMS_GetColor(D2UnitStrc* pPlayer, D2UnitStrc* pItem, uint8_t* pColor, int nTransType)', 'name': 'ITEMS_GetColor', 'pattern': 'E8 ? ? ? ? 83 3B 04 75 14 ', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'void __fastcall ITEMS_GetName(D2UnitStrc* pItem, D2wchar_tStrc* pBuffer, uint32_t nLen)', 'name': 'ITEMS_GetName',  'pattern': 'E8 ? ? ? ? 41 8B 16 48 8D 4C 24 ?', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'uint32_t __fastcall ITEMS_GetRequiredLevel(D2UnitStrc* pItem, D2UnitStrc* pPlayer)', 'name': 'ITEMS_GetRequiredLevel', 'pattern': 'E8 ? ? ? ? 83 F8 01 7E 1E', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'uint8_t __stdcall ITEMS_GetStorePage(D2UnitStrc* pItem)', 'name': 'ITEMS_GetStorePage', 'pattern': 'E8 ? ? ? ? 3C 01 75 52', 'operand': 0, 'type': 'operand' },
 { 'ctype': '__int64 __fastcall ITEMS_GetWeaponAttackSpeed(D2UnitStrc* pUnit, D2UnitStrc* pWeapon)', 'name': 'ITEMS_GetWeaponAttackSpeed', 'pattern': 'E8 ? ? ? ? 83 F8 0C 7D 07', 'operand': 0, 'type': 'operand' },
 { 'ctype': '__int64 __fastcall ITEMS_IsImbueable(D2UnitStrc* pItem)', 'name': 'ITEMS_IsImbueable', 'pattern': 'E8 ? ? ? ? 85 C0 74 BE ', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'uint8_t __fastcall ITEMS_IsSocketable(D2UnitStrc* pItem)', 'name': 'ITEMS_IsSocketable', 'pattern': 'E8 ? ? ? ? EB C6 48 8B CF', 'operand': 0, 'type': 'operand' },
