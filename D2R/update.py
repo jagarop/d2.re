@@ -5,10 +5,6 @@
 #print("Loading Header File: IDA.h")
 #idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
 
-base = idaapi.get_imagebase()
-end_ea = idc.get_segm_end(0)
-
-
 functions = [
 { 'ctype': '__int64 __fastcall  BITMANIP_Read(void* pBuffer, uint64_t nBits)', 'name': 'BITMANIP_Read', 'pattern': 'E8 ? ? ? ? FE C8 ', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'void __fastcall BITMANIP_Write(void* pBuffer, uint32_t dwValue, uint64_t nBits)', 'name': 'BITMANIP_Write', 'pattern': '40 53 4D 8B D0 ', 'type': 'absoulte' },
@@ -27,18 +23,29 @@ functions = [
 
 { 'ctype': '__int64 __fastcall ITEMS_AreStackablesEqual(D2UnitStrc* pItem, D2UnitStrc* pOtherItem)', 'name': 'ITEMS_AreStackablesEqual', 'pattern': '40 57 41 56 48 83 EC 38 4C 8B F2 ', 'type': 'absoulte' },
 { 'ctype': 'int64_t __fastcall ITEMS_CalculateTransactionCost(D2UnitStrc* pPlayer, D2UnitStrc* pItem, int nDifficulty, int64_t pQuestFlags, int nVendorId, int nTransactionType)', 'name': 'ITEMS_CalculateTransactionCost', 'pattern': '4C 8B DC 55 57 41 54 49 8D AB ? ? ? ? 48 81 EC ? ? ? ?  ', 'type': 'absoulte' },
+{ 'ctype': 'int64_t __stdcall ITEMS_CanItemBeUsedForThrowSkill(D2UnitStrc* pItem)', 'name': 'ITEMS_CanItemBeUsedForThrowSkill', 'pattern': 'E8 ? ? ? ? EB 09 B8 ? ? ? ? ', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'BOOL __fastcall ITEMS_CheckItemTypeId(D2UnitStrc* pItem, uint32_t nItemType)', 'name': 'ITEMS_CheckItemTypeId',  'pattern': 'E8 ? ? ? ? 41 8B 37  ', 'operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall ITEMS_DecodeItemFromBitstream(D2UnitStrc* pItem, uint8_t* pBitstream, size_t nSize, BOOL bCheckForHeader, int* pSocketedItemCount, uint32_t dwVersion, BOOL* pFail)', 'name': 'ITEMS_DecodeItemFromBitstream', 'pattern': 'E8 ? ? ? ? 39 74 24 40 ', 'operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall ITEMS_DecodeItemBitstreamCompact(D2UnitStrc* pItem, D2BitBufferStrc* pBuffer, BOOL bCheckForHeader, uint32_t dwVersion)', 'name': 'ITEMS_DecodeItemBitstreamCompact', 'pattern': 'E8 ? ? ? ? EB 0E 89 74 24 28 ', 'operand': 0, 'type': 'operand' },
 { 'ctype': '__int64 __fastcall ITEMS_DecodeItemBitstreamComplete(D2UnitStrc *pItem, void* pBuffer, BOOL bCheckForHeader, BOOL bGamble, int* pSocketedItems, uint32_t dwVersion)', 'name': 'ITEMS_DecodeItemBitstreamComplete', 'pattern': 'E8 ? ? ? ? 85 C0 7F 06', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'uint8_t* __fastcall ITEMS_GetColor(D2UnitStrc* pPlayer, D2UnitStrc* pItem, uint8_t* pColor, int nTransType)', 'name': 'ITEMS_GetColor', 'pattern': 'E8 ? ? ? ? 83 3B 04 75 14 ', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'void __fastcall ITEMS_GetName(D2UnitStrc* pItem, D2wchar_tStrc* pBuffer, uint32_t nLen)', 'name': 'ITEMS_GetName',  'pattern': 'E8 ? ? ? ? 41 8B 16 48 8D 4C 24 ?', 'operand': 0, 'type': 'operand' },
-{ 'ctype': 'uint32_t __fastcall ITEMS_GetRequiredLevel(D2UnitStrc* pItem, D2UnitStrc* pPlayer)', 'name': 'ITEMS_GetRequiredLevel', 'pattern': 'E8 ? ? ? ? 83 F8 01 7E 1E', 'operand': 0, 'type': 'operand'},
+{ 'ctype': 'uint32_t __fastcall ITEMS_GetRequiredLevel(D2UnitStrc* pItem, D2UnitStrc* pPlayer)', 'name': 'ITEMS_GetRequiredLevel', 'pattern': 'E8 ? ? ? ? 83 F8 01 7E 1E', 'operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall ITEMS_GetWeaponAttackSpeed(D2UnitStrc* pUnit, D2UnitStrc* pWeapon)', 'name': 'ITEMS_GetWeaponAttackSpeed', 'pattern': 'E8 ? ? ? ? 83 F8 0C 7D 07', 'operand': 0, 'type': 'operand' },
+{ 'ctype': '__int64 __fastcall ITEMS_IsImbueable(D2UnitStrc* pItem)', 'name': 'ITEMS_IsImbueable', 'pattern': 'E8 ? ? ? ? 85 C0 74 BE ', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'uint8_t __fastcall ITEMS_IsSocketable(D2UnitStrc* pItem)', 'name': 'ITEMS_IsSocketable', 'pattern': 'E8 ? ? ? ? EB C6 48 8B CF', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'void __fastcall ITEMS_SetItemFormat(D2UnitStrc* pItem, uint16_t nItemFormat)', 'name': 'ITEMS_SetItemFormat', 'pattern': 'E8 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 8B F8 ', 'operand': 0, 'type': 'operand' },
 
 { 'ctype': 'wchar_t* __fastcall LANG_GetWideStringFromTblIndex(uint16_t nIndex)', 'name': 'LANG_GetWideStringFromTblIndex',  'pattern': '80 3D ? ? ? ? ? 48 8D 05 ? ? ? ? 4C 8D 0D ? ? ? ? 44 0F B7 C1 4C 0F 45 C8 4C 8B DA 4D 8B 51 08', 'type': 'absoulte' },
+
+{ 'ctype': 'int32_t __fastcall QUESTRECORD_GetQuestState(void *pQuestRecord, int nQuest, int nState)', 'name': 'QUESTRECORD_GetQuestState', 'pattern': 'E8 ? ? ? ? 85 C0 75 C1', 'operand': 0, 'type': 'operand' },
 
 { 'ctype': 'int64_t __fastcall STATES_CheckState(D2UnitStrc* pUnit, uint32_t nState)',  'name': 'STATES_CheckState', 'pattern': '4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ', 'type': 'absoulte' },
 { 'ctype': 'void __fastcall STATES_ToggleState(D2UnitStrc* pUnit, int nState, BOOL bSet)',  'name': 'STATES_ToggleState', 'pattern': '48 83 EC 28 45 8B C8 4C 8B D1 ', 'type': 'absoulte' },
 
 { 'ctype': 'int64_t __fastcall STATLIST_GetTotalStat(D2StatListStrc* pStatList, int32_t nPackedLayer_StatId, void* pItemStatCostTxtRecord)', 'name': 'STATLIST_GetTotalStat', 'pattern': 'E8 ? ? ? ? 01 43 34', 'operand': 0, 'type': 'operand' },
 { 'ctype': 'int64_t __fastcall STATLIST_GetUnitStatSigned(D2UnitStrc* pUnit, uint32_t nStatId, uint16_t nLayer)', 'name': 'STATLIST_GetUnitStatSigned', 'pattern': '48 83 EC 28 45 0F B7 C8 48 85 C9 74 42 48 8B 89 ? ? ? ? 48 85 C9 74 2F', 'type': 'absoulte' },
+{ 'ctype': 'void __fastcall STATLIST_SetUnitStat(D2UnitStrc* pUnit, int nStatId, int nValue, uint16_t nLayer)', 'name': 'STATLIST_SetUnitStat', 'pattern': 'E8 ? ? ? ? 8D 04 BF ', 'operand': 0, 'type': 'operand' },
 
 { 'ctype': 'int __fastcall UNITS_GetBlockRate(D2UnitStrc *pUnit, BOOL bExpansion)',  'name': 'UNITS_GetBlockRate', 'pattern': 'E8 ? ? ? ? 8B F8 85 C0 7E 63 ', 'operand': 0, 'type': 'operand' },
 ]
@@ -49,6 +56,9 @@ variables = [
 { 'ctype': 'POINT', 'name': 'gpMousePosition', 'pattern': '48 8B 0D ? ? ? ? F3 0F 7F 45 ?', 'operand': 1, 'type': 'operand'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpServerSideUnitHashTable', 'pattern': '48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?', 'operand': 1, 'type': 'operand' },
 ]
+
+base = idaapi.get_imagebase()
+end_ea = idc.get_segm_end(0)
 
 def BuildEnum(items):
     for item in items:
@@ -71,8 +81,14 @@ def BuildEnum(items):
             print("\t%-32s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
         set_name(address, item['name'])
         idc.SetType(address, item['ctype'])
-        
-print('//D2R Version - %s' % ( idc.get_strlit_contents(idc.get_operand_value(ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN), 1)) ))
+
+
+version = ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN)
+if version == idaapi.BADADDR:
+    version = 'Unknown'
+else:
+    version = idc.get_strlit_contents(idc.get_operand_value(version, 1))
+print('//D2R Version - %s' % ( version ))
 
 print('enum class Functions : uint64_t {')
 BuildEnum(functions)
