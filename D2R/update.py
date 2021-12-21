@@ -38,6 +38,9 @@ functions = [
 
 { 'ctype': 'wchar_t* __fastcall LANG_GetWideStringFromTblIndex(uint16_t nIndex)', 'name': 'LANG_GetWideStringFromTblIndex',  'pattern': '80 3D ? ? ? ? ? 48 8D 05 ? ? ? ? 4C 8D 0D ? ? ? ? 44 0F B7 C1 4C 0F 45 C8 4C 8B DA 4D 8B 51 08', 'type': 'absoulte' },
 
+{ 'ctype': 'void __fastcall PATH_SetCollisionType(D2DynamicPathStrc* pDynamicPath, int nCollisionType)', 'name': 'PATH_SetCollisionType', 'pattern': 'E8 ? ? ? ? 41 81 65 ? ? ? ? ?', 'operand': 0, 'type': 'operand' },
+{ 'ctype': 'void __fastcall PATH_SetType(D2DynamicPathStrc* pDynamicPath, int nPathType)', 'name': 'PATH_SetType', 'pattern': '48 83 EC 28 48 8B 41 40 48 85 C0 74 0E 83 38 00 75 09 83 FA 02 0F 84 ? ? ? ?', 'type': 'absoulte' },
+
 { 'ctype': 'int32_t __fastcall QUESTRECORD_GetQuestState(void *pQuestRecord, int nQuest, int nState)', 'name': 'QUESTRECORD_GetQuestState', 'pattern': 'E8 ? ? ? ? 85 C0 75 C1', 'operand': 0, 'type': 'operand' },
 
 { 'ctype': 'int64_t __fastcall STATES_CheckState(D2UnitStrc* pUnit, uint32_t nState)',  'name': 'STATES_CheckState', 'pattern': '4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ', 'type': 'absoulte' },
