@@ -54,8 +54,8 @@ functions = [
 ]
 
 variables = [
-{ 'ctype': 'D2GSServerToClientHandler[0xAE]', 'name': 'gpD2GS_S2C_FunctionTable', 'pattern': '4C 8D A2 ? ? ? ? 41 8B 44 CC ?', 'operand': 1, 'type': 'other'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpClientSideUnitHashTable', 'pattern': '4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8', 'operand': 1, 'type': 'operand' },
+{ 'ctype': 'D2GSServerToClientHandler[0xAE]', 'name': 'gpD2GS_S2C_FunctionTable', 'pattern': '4C 8D A2 ? ? ? ? 41 8B 44 CC ?', 'operand': 1, 'type': 'other'},
 { 'ctype': 'POINT', 'name': 'gpMousePosition', 'pattern': '48 8B 0D ? ? ? ? F3 0F 7F 45 ?', 'operand': 1, 'type': 'operand'},
 { 'ctype': 'D2UnitHashTableStrc', 'name': 'gpServerSideUnitHashTable', 'pattern': '48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?', 'operand': 1, 'type': 'operand' },
 ]
@@ -85,6 +85,27 @@ def BuildEnum(items):
         set_name(address, item['name'])
         idc.SetType(address, item['ctype'])
 
+#Renames all the functions in the D2GS_S2C_FunctionTable
+# to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
+def RenameD2GSFunctions():
+    item = [x for x in variables if x['name'] == 'gpD2GS_S2C_FunctionTable'][0]
+    address = ida_search.find_binary(0, end_ea, item['pattern'], 16, idc.SEARCH_DOWN)
+    if address == idaapi.BADADDR:
+        return
+    address = base + idc.get_operand_value(address, item['operand'])
+    print("Renaming D2GS_S2C Functions: %-16s" % ( hex(address)[:-1] ))
+    for i in range(0xAE):
+        func = get_qword(address + (i * 0x18))
+        funcex = get_qword(address + (i * 0x18) + 0x10)
+        if func != 0x0:
+            set_name(func, 'D2GS_S2C_0x{:02X}_PacketHandler'.format(i))
+            idc.SetType(func, '__int64 __fastcall  D2GS_S2C_0x{:02X}_PacketHandler(void* pPacket)'.format(i))
+        set_name(address + (i * 0x18) + 0x8 , 'D2GS_S2C_0x{:02X}_PacketSize'.format(i))
+        idc.SetType(address + (i * 0x18) + 0x8 , 'int64_t')
+        if funcex != 0x0:
+            set_name(funcex, 'D2GS_S2C_0x{:02X}_PacketHandlerEx'.format(i))
+            idc.SetType(funcex, '__int64 __fastcall  D2GS_S2C_0x{:02X}_PacketHandlerEx(D2UnitStrc* pUnit, void* pPacket)'.format(i))
+
 
 version = ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN)
 if version == idaapi.BADADDR:
@@ -100,4 +121,6 @@ print('}')
 print('enum class Variables : uint64_t {')
 BuildEnum(variables)
 print('}')
+
+RenameD2GSFunctions()
 print('Done')
