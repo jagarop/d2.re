@@ -1,0 +1,53 @@
+[
+{"ret":"__int64","conv":"__fastcall","name":"BITMANIP_Read","args":"(void* pBuffer, uint64_t nBits)","pattern":"E8 ? ? ? ? FE C8 ","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"BITMANIP_Write","args":"(void* pBuffer, uint32_t dwValue, uint64_t nBits)","pattern":"40 53 4D 8B D0 ","type":"absoulte"},
+
+{"ret":"__int64*","conv":"__fastcall","name":"DATATBLS_GetMagicAffixTxtRecord","args":"(uint16_t nIndex)","pattern":"E8 ? ? ? ? 48 8B 3F 48 8B F0","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"DATATBLS_LoadAllTxts","args":"()","pattern":"48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? ","type":"absoulte"},
+{"ret":"uint64_t","conv":"__fastcall","name":"DATATBLS_UnloadAllBins","args":"()","pattern":"E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 44 8B EE ","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"DATATBLS_UnloadBin","args":"(__int64 *a1)","pattern":"E8 ? ? ? ? 48 B9 ? ? ? ? ? ? ? ? FF C5","type":"operand","operand":0},
+
+{"ret":"void","conv":"__fastcall","name":"GAME_AuraCallback","args":"(D2UnitStrc* pUnit, int64_t nUMod, bool bUnique)","pattern":"E8 ? ? ? ? 8B 13 83 FA 01","type":"operand","operand":0,"note":"https://discord.com/channels/321843290150535169/321845508266262529/923580445982093383"},
+{"ret":"uint8_t","conv":"__fastcall","name":"GAME_GetDifficulty","args":"()","pattern":"E8 ? ? ? ? 0F B6 D0 83 EA 01 ","type":"operand","operand":0},
+{"ret":"__int64*","conv":"__fastcall","name":"GAME_Loop","args":"(int *a1)","pattern":"E8 ? ? ? ? E8 ? ? ? ? 48 8B D8 48 8B 88 ? ? ? ? ","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"GAME_SaveAndExit","args":"()","pattern":"48 83 EC 28 83 3D ? ? ? ? ? 75 65 ","type":"absoulte","note":"set gpGAME_QuitEnum to 0x7 first."},
+{"ret":"void","conv":"__fastcall","name":"GAME_TreasueClassDropper","args":"(D2GameStrc* pGame, D2UnitStrc* pTarget, D2UnitStrc* pSource, void* pRecord, uint32_t nPresetQuality, uint32_t nLevel, BOOL bIgnoreNoDrop, D2UnitStrc** ppOutput, uint32_t* pCounter, uint32_t nMaxItems)","pattern":"E8 ? ? ? ? 48 8B 44 24 ? 48 8B 9C 24 ? ? ? ? 48 8B 8C 24 ? ? ? ? ","type":"operand","operand":0,"note":"https://discord.com/channels/321843290150535169/321845508266262529/915524499225591828"},
+
+{"ret":"__int64","conv":"__fastcall","name":"INVENTORY_GetFreeBeltSlot","args":"(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int* pFreeSlotId)","pattern":"E8 ? ? ? ? 85 C0 74 A4 ","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"INVENTORY_GetFreePosition","args":"(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int nInventoryRecordId, int* pFreeX, int* pFreeY, uint8_t nPage)","pattern":"48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 50 49 8B E9 48 8B F1 48 85 C9 0F 84 ? ? ? ? 81 39 ? ? ? ? 0F 85 ? ? ? ? ","type":"absoulte"},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_AreStackablesEqual","args":"(D2UnitStrc* pItem, D2UnitStrc* pOtherItem)","pattern":"40 57 41 56 48 83 EC 38 4C 8B F2 ","type":"absoulte"},
+{"ret":"int64_t","conv":"__fastcall","name":"ITEMS_CalculateTransactionCost","args":"(D2UnitStrc* pPlayer, D2UnitStrc* pItem, int nDifficulty, int64_t pQuestFlags, int nVendorId, int nTransactionType)","pattern":"4C 8B DC 55 57 41 54 49 8D AB ? ? ? ? 48 81 EC ? ? ? ?  ","type":"absoulte"},
+{"ret":"int64_t","conv":"__stdcall","name":"ITEMS_CanItemBeUsedForThrowSkill","args":"(D2UnitStrc* pItem)","pattern":"E8 ? ? ? ? EB 09 B8 ? ? ? ? ","type":"operand","operand":0},
+{"ret":"BOOL","conv":"__fastcall","name":"ITEMS_CheckItemTypeId","args":"(D2UnitStrc* pItem, uint32_t nItemType)","pattern":"E8 ? ? ? ? 41 8B 37  ","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_DecodeItemFromBitstream","args":"(D2UnitStrc* pItem, uint8_t* pBitstream, size_t nSize, BOOL bCheckForHeader, int* pSocketedItemCount, uint32_t dwVersion, BOOL* pFail)","pattern":"E8 ? ? ? ? 39 74 24 40 ","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_DecodeItemBitstreamCompact","args":"(D2UnitStrc* pItem, D2BitBufferStrc* pBuffer, BOOL bCheckForHeader, uint32_t dwVersion)","pattern":"E8 ? ? ? ? EB 0E 89 74 24 28 ","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_DecodeItemBitstreamComplete","args":"(D2UnitStrc *pItem, void* pBuffer, BOOL bCheckForHeader, BOOL bGamble, int* pSocketedItems, uint32_t dwVersion)","pattern":"E8 ? ? ? ? 85 C0 7F 06","type":"operand","operand":0},
+{"ret":"uint8_t*","conv":"__fastcall","name":"ITEMS_GetColor","args":"(D2UnitStrc* pPlayer, D2UnitStrc* pItem, uint8_t* pColor, int nTransType)","pattern":"E8 ? ? ? ? 83 3B 04 75 14 ","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"ITEMS_GetName","args":"(D2UnitStrc* pItem, wchar_t* pBuffer, uint32_t nLen)","pattern":"E8 ? ? ? ? 41 8B 16 48 8D 4C 24 ?","type":"operand","operand":0},
+{"ret":"uint32_t","conv":"__fastcall","name":"ITEMS_GetRequiredLevel","args":"(D2UnitStrc* pItem, D2UnitStrc* pPlayer)","pattern":"E8 ? ? ? ? 83 F8 01 7E 1E","type":"operand","operand":0},
+{"ret":"uint8_t","conv":"__stdcall","name":"ITEMS_GetStorePage","args":"(D2UnitStrc* pItem)","pattern":"E8 ? ? ? ? 3C 01 75 52","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_GetWeaponAttackSpeed","args":"(D2UnitStrc* pUnit, D2UnitStrc* pWeapon)","pattern":"E8 ? ? ? ? 83 F8 0C 7D 07","type":"operand","operand":0},
+{"ret":"__int64","conv":"__fastcall","name":"ITEMS_IsImbueable","args":"(D2UnitStrc* pItem)","pattern":"E8 ? ? ? ? 85 C0 74 BE ","type":"operand","operand":0},
+{"ret":"uint8_t","conv":"__fastcall","name":"ITEMS_IsSocketable","args":"(D2UnitStrc* pItem)","pattern":"E8 ? ? ? ? EB C6 48 8B CF","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"ITEMS_SetItemFormat","args":"(D2UnitStrc* pItem, uint16_t nItemFormat)","pattern":"E8 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 8B F8 ","type":"operand","operand":0},
+
+{"ret":"wchar_t*","conv":"__fastcall","name":"LANG_GetWideStringFromTblIndex","args":"(uint16_t nIndex)","pattern":"80 3D ? ? ? ? ? 48 8D 05 ? ? ? ? 4C 8D 0D ? ? ? ? 44 0F B7 C1 4C 0F 45 C8 4C 8B DA 4D 8B 51 08","type":"absoulte"},
+
+{"ret":"void","conv":"__fastcall","name":"PATH_SetCollisionType","args":"(D2DynamicPathStrc* pDynamicPath, int nCollisionType)","pattern":"E8 ? ? ? ? 41 81 65 ? ? ? ? ?","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"PATH_SetType","args":"(D2DynamicPathStrc* pDynamicPath, int nPathType)","pattern":"48 83 EC 28 48 8B 41 40 48 85 C0 74 0E 83 38 00 75 09 83 FA 02 0F 84 ? ? ? ?","type":"absoulte"},
+
+{"ret":"int32_t","conv":"__fastcall","name":"QUESTRECORD_GetQuestState","args":"(void *pQuestRecord, int nQuest, int nState)","pattern":"E8 ? ? ? ? 85 C0 75 C1","type":"operand","operand":0},
+
+{"ret":"int64_t","conv":"__fastcall","name":"STATES_CheckState","args":"(D2UnitStrc* pUnit, uint32_t nState)","pattern":"4C 63 CA 48 85 C9 74 53 44 8B 01 45 85 C0 74 0C 41 83 E8 01 74 06 41 83 F8 02 75 3F ","type":"absoulte"},
+
+{"ret":"void","conv":"__fastcall","name":"STATES_ToggleState","args":"(D2UnitStrc* pUnit, int nState, BOOL bSet)","pattern":"48 83 EC 28 45 8B C8 4C 8B D1 ","type":"absoulte"},
+
+{"ret":"void","conv":"__fastcall","name":"SKILLS_SetLevelAndUpdate","args":"(D2UnitStrc *pUnit, int a2, int a3, int a4)","pattern":"E8 ? ? ? ? F6 46 24 20","type":"operand","operand":0},
+{"ret":"void","conv":"__fastcall","name":"SKILLS_InitSkill","args":"(D2UnitStrc *pUnit, int a2, int a3, int a4)","pattern":"E8 ? ? ? ? 49 8B 06 EB 03 ","type":"operand","operand":0},
+
+{"ret":"int64_t","conv":"__fastcall","name":"STATLIST_GetTotalStat","args":"(D2StatListStrc* pStatList, int32_t nPackedLayer_StatId, void* pItemStatCostTxtRecord)","pattern":"E8 ? ? ? ? 01 43 34","type":"operand","operand":0},
+{"ret":"int64_t","conv":"__fastcall","name":"STATLIST_GetUnitStatSigned","args":"(D2UnitStrc* pUnit, uint32_t nStatId, uint16_t nLayer)","pattern":"48 83 EC 28 45 0F B7 C8 48 85 C9 74 42 48 8B 89 ? ? ? ? 48 85 C9 74 2F","type":"absoulte"},
+{"ret":"void","conv":"__fastcall","name":"STATLIST_SetUnitStat","args":"(D2UnitStrc* pUnit, int nStatId, int nValue, uint16_t nLayer)","pattern":"E8 ? ? ? ? 8D 04 BF ","type":"operand","operand":0},
+
+{"ret":"int","conv":"__fastcall","name":"UNITS_GetBlockRate","args":"(D2UnitStrc* pUnit, BOOL bExpansion)","pattern":"E8 ? ? ? ? 8B F8 85 C0 7E 63 ","type":"operand","operand":0}
+]

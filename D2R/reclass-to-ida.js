@@ -7,7 +7,7 @@ takes reclass classes and renames them to struts. removes any inheritance done i
 const fs = require('fs');
 const path = require('path');
 
-let lines = fs.readFileSync(`${__dirname}/Reclass.h`, 'utf8').split(/\r\n|\r|\n/);
+let lines = fs.readFileSync(`${__dirname}/data/Reclass.h`, 'utf8').split(/\r\n|\r|\n/);
 
 let structs = [];
 
