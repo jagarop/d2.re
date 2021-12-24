@@ -64,7 +64,7 @@ def BuildVariableEnum(items):
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
 def RenameD2GSFunctions():
     item = [x for x in variables if x['name'] == 'gpD2GS_S2C_FunctionTable'][0]
-    address = ida_search.find_binary(0, end_ea, item['pattern'], 16, idc.SEARCH_DOWN)
+    address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
     if address == idaapi.BADADDR:
         return
     address = base + idc.get_operand_value(address, item['operand'])
@@ -96,7 +96,8 @@ print('}')
 
 print('enum class Variables : uint64_t {')
 with open(os.path.join(path, 'data', 'variables.json')) as f:
-    BuildVariableEnum(json.load(f))
+    variables = json.load(f)
+    BuildVariableEnum(variables)
 print('}')
 
 RenameD2GSFunctions()

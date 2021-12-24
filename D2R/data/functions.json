@@ -52,6 +52,7 @@
 
 {"ret":"D2StatListStrc*","conv":"__fastcall","name":"STATLIST_AllocStatList","args":"(uint32_t fFilter, uint32_t dwTimeout, int nUnitType, int nUnitGUID)","pattern":"E8 ? ? ? ? 48 8B F0 85 FF ","type":"operand","operand":0},
 {"ret":"int64_t","conv":"__fastcall","name":"STATLIST_GetTotalStat","args":"(D2StatListStrc* pStatList, int32_t nPackedLayer_StatId, void* pItemStatCostTxtRecord)","pattern":"E8 ? ? ? ? 01 43 34","type":"operand","operand":0},
+{"ret":"int64_t","conv":"__fastcall","name":"STATLIST_GetBaseStat","args":"(D2StatListStrc* pStatList, int32_t nPackedLayer_StatId, void* pItemStatCostTxtRecord)","pattern":"E8 ? ? ? ? 89 43 60","type":"operand","operand":0},
 {"ret":"int64_t","conv":"__fastcall","name":"STATLIST_GetUnitStatSigned","args":"(D2UnitStrc* pUnit, uint32_t nStatId, uint16_t nLayer)","pattern":"48 83 EC 28 45 0F B7 C8 48 85 C9 74 42 48 8B 89 ? ? ? ? 48 85 C9 74 2F","type":"absoulte"},
 {"ret":"void","conv":"__fastcall","name":"STATLIST_SetUnitStat","args":"(D2UnitStrc* pUnit, int nStatId, int nValue, uint16_t nLayer)","pattern":"E8 ? ? ? ? 8D 04 BF ","type":"operand","operand":0},
 
