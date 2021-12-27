@@ -60,7 +60,7 @@ def BuildVariableEnum(items):
 #Renames all the functions in the D2GS_S2C_FunctionTable
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
 def RenameD2GSFunctions():
-    item = [x for x in variables if x['name'] == 'gpD2GS_S2C_FunctionTable'][0]
+    item = [x for x in variables if x['name'] == 'g_D2GS_S2C_FunctionTable'][0]
     address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
     if address == idaapi.BADADDR:
         return
@@ -86,15 +86,28 @@ else:
     version = idc.get_strlit_contents(idc.get_operand_value(version, 1))
 print('//D2R Version - %s' % ( version ))
 
-print('enum class Functions : uint64_t {')
+functions = []
+variables = []
 with open(os.path.join(path, 'data', 'functions.json')) as f:
-        BuildFunctionEnum(json.load(f))
+    functions = functions + json.load(f)
+
+if os.path.isfile(os.path.join(path, 'data', '_functions.json')):
+    with open(os.path.join(path, 'data', '_functions.json')) as f:
+        functions = functions + json.load(f)
+
+with open(os.path.join(path, 'data', 'variables.json')) as f:
+    variables = variables + json.load(f)
+
+if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
+    with open(os.path.join(path, 'data', '_variables.json')) as f:
+        variables = variables + json.load(f)
+
+print('enum class Functions : uint64_t {')
+BuildFunctionEnum(functions)
 print('}')
 
 print('enum class Variables : uint64_t {')
-with open(os.path.join(path, 'data', 'variables.json')) as f:
-    variables = json.load(f)
-    BuildVariableEnum(variables)
+BuildVariableEnum(variables)
 print('}')
 
 RenameD2GSFunctions()

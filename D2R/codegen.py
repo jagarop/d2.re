@@ -29,6 +29,23 @@ def offset(item):
 
 with open(os.path.join(path, 'gen', 'D2Structs.h'), "w") as outfile:
     outfile.write("#include <cstdint>\n\n")
+    outfile.write("""
+//IDA types
+typedef unsigned __int64 _QWORD;
+typedef unsigned __int32 _DWORD;
+typedef union __declspec(intrin_type) __declspec(align(16)) __m128i {
+	__int8              m128i_i8[16];
+	__int16             m128i_i16[8];
+	__int32             m128i_i32[4];
+	__int64             m128i_i64[2];
+	unsigned __int8     m128i_u8[16];
+	unsigned __int16    m128i_u16[8];
+	unsigned __int32    m128i_u32[4];
+	unsigned __int64    m128i_u64[2];
+} __m128i;
+
+//D2R types
+""")
     with open(os.path.join(path, 'IDA.h'), "r") as infile:
         outfile.write(infile.read())
 
@@ -36,6 +53,15 @@ with open(os.path.join(path, 'data', 'functions.json')) as f:
     functions = json.load(f)
 with open(os.path.join(path, 'data', 'variables.json')) as f:
     variables = json.load(f)
+if os.path.isfile(os.path.join(path, 'data', '_functions.json')):
+    with open(os.path.join(path, 'data', '_functions.json')) as f:
+        functions = functions + json.load(f)
+if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
+    with open(os.path.join(path, 'data', '_variables.json')) as f:
+        variables = variables + json.load(f)
+
+functions = sorted(functions, key=lambda x: x['name'])
+variables = sorted(variables, key=lambda x: x['name'])
 
 with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
     outfile.write("#include <cstdint>\n")
@@ -63,6 +89,8 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     for item in variables:
         outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],hex(offset(item))[:-1]))
     outfile.write("\n")
+    outfile.write("//quick copy pasta method testing:\n")
+    outfile.write("// reinterpret_cast<void(__fastcall*)(void*)>(BaseAddress + 0x0)(nullptr);\n")
     outfile.write("//Functions: \n")
     for item in functions:
         outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item))[:-1]))
