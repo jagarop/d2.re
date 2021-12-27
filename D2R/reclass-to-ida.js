@@ -12,7 +12,11 @@ let lines = fs.readFileSync(`${__dirname}/data/Reclass.h`, 'utf8').split(/\r\n|\
 let structs = [];
 
 for(let i = 0; i < lines.length; i++) {
-    let m = lines[i].match(/^class (\w+)$/i);
+    var line = lines[i];
+    if(lines[i].indexOf(' //') >= 0) {
+        line = lines[i].substring(0, lines[i].indexOf(' //'));
+    }
+    let m = line.match(/^class (\w+)$/i);
     if(m) {
         struct = { name: m[1], fields: [] };
         i+=3; //skip '{' and 'public:'
@@ -24,7 +28,7 @@ for(let i = 0; i < lines.length; i++) {
         } while(!lines[i+1].includes('static_assert'));
         structs.push(struct);
     }
-    m = lines[i].match(/^class (\w+) : public (\w+)$/i);
+    m = line.match(/^class (\w+) : public (\w+)$/i);
     if(m) {
         let parent = structs.find(e => e.name == m[2]);
         struct = { name: m[1], fields: [...parent.fields], parent: parent };

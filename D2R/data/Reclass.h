@@ -760,8 +760,8 @@ public:
 	uint8_t Rarity; //0x001E
 	uint8_t StaffMods; //0x001F
 	uint8_t CostFormula; //0x0020
-	uint8_t Class; //0x0021
-	uint8_t StorePage; //0x0022
+	uint8_t StorePage; //0x0021
+	uint8_t Class; //0x0022
 	uint8_t VarInvGfx; //0x0023
 	uint8_t szInvGfx[6][32]; //0x0024
 }; //Size: 0x00E4
@@ -848,7 +848,10 @@ public:
 	uint16_t SubType; //0x0129
 	uint16_t DropSound; //0x012B
 	uint16_t UseSound; //0x012D
-	char pad_012F[117]; //0x012F
+	char pad_012F[9]; //0x012F
+	uint8_t BeltType; //0x0138
+	uint8_t AutoBelt; //0x0139
+	char pad_013A[106]; //0x013A
 	uint32_t NightmareUpgrade; //0x01A4
 	uint32_t HellUpgrade; //0x01A8
 	char pad_01AC[4]; //0x01AC
@@ -926,12 +929,14 @@ public:
 		class D2MonsterDataStrc *MonsterData; //0x0000
 		class D2ObjectDataStrc *ObjectData; //0x0000
 		class D2ItemDataStrc *ItemData; //0x0000
-		class D2MissileDataStrc *MissileData; //0x0000
+		void *MissileData; //0x0000
 	};
 	uint8_t ActID; //0x0018
 	char pad_0019[7]; //0x0019
 	class D2DrlgActStrc *DrlgAct; //0x0020
-	char pad_0028[16]; //0x0028
+	uint32_t LowSeed; //0x0028
+	uint32_t HighSeed; //0x002C
+	char pad_0030[8]; //0x0030
 	union //0x0038
 	{
 		class D2DynamicPathStrc *pDynamicPath; //0x0000
@@ -1030,13 +1035,6 @@ public:
 	class D2ItemExtraDataStrc pExtraData; //0x0070
 }; //Size: 0x009A
 static_assert(sizeof(D2ItemDataStrc) == 0x9A);
-
-class D2MissileDataStrc
-{
-public:
-	char pad_0000[136]; //0x0000
-}; //Size: 0x0088
-static_assert(sizeof(D2MissileDataStrc) == 0x88);
 
 class D2DrlgActStrc
 {
@@ -1181,22 +1179,25 @@ public:
 	class D2SkillStrc *pFirstSkill; //0x0000
 	class D2SkillStrc *pLeftSkill; //0x0008
 	class D2SkillStrc *pRightSkill; //0x0010
-	char pad_0018[104]; //0x0018
+	class D2SkillStrc *pLastUsedSkill; //0x0018
+	char pad_0020[96]; //0x0020
 }; //Size: 0x0080
 static_assert(sizeof(D2SkillListStrc) == 0x80);
 
-class D2SkillStrc
+class D2SkillStrc // Size might have changed, as stuff did shift recently
 {
 public:
 	class D2SkillsTxt *pSkillsTxt; //0x0000
 	class D2SkillStrc *pNextSkill; //0x0008
-	char pad_0010[44]; //0x0010
-	uint32_t N000000DD; //0x003C
-	uint32_t N0000006C; //0x0040
-	uint32_t N000000DA; //0x0044
-	char pad_0048[56]; //0x0048
-}; //Size: 0x0080
-static_assert(sizeof(D2SkillStrc) == 0x80);
+	char pad_0010[36]; //0x0010
+	uint32_t Level; //0x0034
+	char pad_0038[4]; //0x0038
+	uint32_t Quantity; //0x003C
+	char pad_0040[8]; //0x0040
+	uint32_t Charges; //0x0048
+	char pad_004C[4]; //0x004C
+}; //Size: 0x0050
+static_assert(sizeof(D2SkillStrc) == 0x50);
 
 class D2GameStrc
 {
@@ -1270,7 +1271,8 @@ public:
 	char pad_0000[16]; //0x0000
 	class D2RoomExStrc **pRoomExNear; //0x0010
 	uint32_t RoomsNear; //0x0018
-	char pad_001C[52]; //0x001C
+	char pad_001C[44]; //0x001C
+	class D2RoomExStrc *pNextRoomEx; //0x0048
 	uint32_t RoomFlags; //0x0050
 	char pad_0054[4]; //0x0054
 	class D2RoomStrc *pRoom1; //0x0058
@@ -1380,3 +1382,45 @@ public:
 	void* pHandlerEx; //0x0010 void (__fastcall* D2GSServerToClient_t)(D2UnitStrc* pUnit, void* pPacket);
 }; //Size: 0x0018
 static_assert(sizeof(D2GSServerToClientHandler) == 0x18);
+
+class D2InventoryRect
+{
+public:
+	uint32_t Left; //0x0000
+	uint32_t Right; //0x0004
+	uint32_t Top; //0x0008
+	uint32_t Down; //0x000C
+}; //Size: 0x0010
+static_assert(sizeof(D2InventoryRect) == 0x10);
+
+class D2BeltText
+{
+public:
+	uint32_t Id; //0x0000
+	uint32_t Capacity; //0x0004
+	class D2InventoryRect InventoryRect[16]; //0x0008
+	char pad_0108[136]; //0x0108
+}; //Size: 0x0190
+static_assert(sizeof(D2BeltText) == 0x190);
+
+class D2MissileDataStrc
+{
+public:
+	char pad_0000[136]; //0x0000
+}; //Size: 0x0088
+static_assert(sizeof(D2MissileDataStrc) == 0x88);
+
+class D2Point
+{
+public:
+	int32_t X; //0x0000
+	int32_t Y; //0x0004
+}; //Size: 0x0008
+static_assert(sizeof(D2Point) == 0x8);
+
+class D2BitBufferStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2BitBufferStrc) == 0x80);

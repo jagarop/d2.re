@@ -3,9 +3,6 @@
 import os
 import json
 
-#print("Loading Header File: IDA.h")
-#idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
-
 
 path = os.path.abspath(os.path.dirname(__file__))
 
@@ -91,7 +88,7 @@ print('//D2R Version - %s' % ( version ))
 
 print('enum class Functions : uint64_t {')
 with open(os.path.join(path, 'data', 'functions.json')) as f:
-    BuildFunctionEnum(json.load(f))
+        BuildFunctionEnum(json.load(f))
 print('}')
 
 print('enum class Variables : uint64_t {')

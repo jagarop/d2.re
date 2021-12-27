@@ -58,6 +58,7 @@
 
 {"ret":"void","conv":"__fastcall","name":"UNITS_CharacterStartRunningOrKnockback","args":"(D2UnitStrc* pUnit, int nClassId)","pattern":"E8 ? ? ? ? 48 8B CB 83 FF 0E ","type":"operand","operand":0},
 {"ret":"int","conv":"__fastcall","name":"UNITS_GetBlockRate","args":"(D2UnitStrc* pUnit, BOOL bExpansion)","pattern":"E8 ? ? ? ? 8B F8 85 C0 7E 63 ","type":"operand","operand":0},
+{"ret":"D2UnitStrc*","conv":"__fastcall","name":"UNITS_GetPlayer","args":"(int32_t pIndex)","pattern":"E8 ? ? ? ? 48 83 FB 1F ","type":"operand","operand":0},
 {"ret":"D2RoomStrc*","conv":"__fastcall","name":"UNITS_GetRoom","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 44 8B 1F ","type":"operand","operand":0},
 {"ret":"__int64","conv":"__fastcall","name":"UNITS_GetUnitSizeX","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 49 8B CE 41 89 86 ? ? ? ? ","type":"operand","operand":0},
 {"ret":"__int64","conv":"__fastcall","name":"UNITS_GetUnitSizeY","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 44 8B 1B ","type":"operand","operand":0},
