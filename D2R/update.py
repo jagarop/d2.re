@@ -24,10 +24,10 @@ def BuildFunctionEnum(items):
         elif item['type'] == 'absolute':
             None
         offset = address - base
-        if 'note' in item:
-            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['note'] ))
-            set_cmt(address, str(item['note']), False)
-            set_func_cmt(address, str(item['note']), False)
+        if 'summary' in item:
+            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            set_cmt(address, str(item['summary']), False)
+            set_func_cmt(address, str(item['summary']), False)
         else:
             print("\t%-38s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
         set_name(address, str(item['name']))
@@ -48,10 +48,10 @@ def BuildVariableEnum(items):
         elif item['type'] == 'absolute':
             None
         offset = address - base
-        if 'note' in item:
-            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['note'] ))
-            set_cmt(address, item['note'], False)
-            set_func_cmt(address, item['note'], False)
+        if 'summary' in item:
+            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            set_cmt(address, item['summary'], False)
+            set_func_cmt(address, item['summary'], False)
         else:
             print("\t%-38s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
         set_name(address, str(item['name']))

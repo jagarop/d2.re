@@ -14,17 +14,17 @@
 
 {"ret":"D2DrlgLevelStrc*","conv":"__fastcall","name":"DRLG_GetActLevel","args":"(D2DrlgActStrc* pDrlg, int nLevelId)","pattern":"E8 ? ? ? ? 8B 50 24 ","type":"operand","operand":0},
 {"ret":"D2DrlgLevelStrc*","conv":"__fastcall","name":"DRLG_GetLevel","args":"(D2DrlgStrc* pDrlg, int nLevelId)","pattern":"E8 ? ? ? ? 8B 4F 24 ","type":"operand","operand":0},
-{"ret":"D2RoomExStrc*","conv":"__fastcall","name":"DRLG_GetRoomExFromCoordinates","args":"(int nX, int nY, D2DrlgStrc* pDrlg, D2RoomExStrc* pRoomEx, DrlgLevel *pLevel)","pattern":"E8 ? ? ? ? 48 8B D8 48 85 C0 74 4A ","type":"operand","operand":0},
+{"ret":"D2RoomExStrc*","conv":"__fastcall","name":"DRLG_GetRoomExFromCoordinates","args":"(int nX, int nY, D2DrlgStrc* pDrlg, D2RoomExStrc* pRoomEx, D2DrlgLevelStrc *pLevel)","pattern":"E8 ? ? ? ? 48 8B D8 48 85 C0 74 4A ","type":"operand","operand":0},
 {"ret":"void","conv":"__fastcall","name":"DRLG_InitLevel","args":"(D2DrlgActStrc* pAct, uint32_t nLevelNo, uint32_t nRoomx, uint32_t nRoomY, D2RoomStrc* room1)","pattern":"E8 ? ? ? ? 83 BB ? ? ? ? ? 48 8B CE ","type":"operand","operand":0},
 
 {"ret":"void","conv":"__fastcall","name":"DUNGEON_AddRoomData","args":"(D2DrlgActStrc* pAct, uint32_t nLevelNo, uint32_t nRoomx, uint32_t nRoomY, D2RoomStrc* room1)","pattern":"40 57 41 56 41 57 48 83 EC 30 45 8B F1 45 8B F8 8B FA 48 85 C9","type":"absoulte"},
 {"ret":"void","conv":"__fastcall","name":"DUNGEON_RemoveRoomData","args":"(D2DrlgActStrc* pAct, uint32_t nLevelNo, uint32_t nRoomx, uint32_t nRoomY, D2RoomStrc* room1)","pattern":"40 53 55 41 56 48 83 EC 30 41 8B E9 45 8B F0 8B DA 48 85 C9 ","type":"absoulte"},
 
-{"ret":"void","conv":"__fastcall","name":"GAME_AuraCallback","args":"(D2UnitStrc* pUnit, int64_t nUMod, bool bUnique)","pattern":"E8 ? ? ? ? 8B 13 83 FA 01","type":"operand","operand":0,"note":"https://discord.com/channels/321843290150535169/321845508266262529/923580445982093383"},
+{"ret":"void","conv":"__fastcall","name":"GAME_AuraCallback","args":"(D2UnitStrc* pUnit, int64_t nUMod, bool bUnique)","pattern":"E8 ? ? ? ? 8B 13 83 FA 01","type":"operand","operand":0,"summary":"https://discord.com/channels/321843290150535169/321845508266262529/923580445982093383"},
 {"ret":"uint8_t","conv":"__fastcall","name":"GAME_GetDifficulty","args":"()","pattern":"E8 ? ? ? ? 0F B6 D0 83 EA 01 ","type":"operand","operand":0},
 {"ret":"__int64*","conv":"__fastcall","name":"GAME_Loop","args":"(int *a1)","pattern":"E8 ? ? ? ? E8 ? ? ? ? 48 8B D8 48 8B 88 ? ? ? ? ","type":"operand","operand":0},
-{"ret":"void","conv":"__fastcall","name":"GAME_SaveAndExit","args":"()","pattern":"48 83 EC 28 83 3D ? ? ? ? ? 75 65 ","type":"absoulte","note":"set gpGAME_QuitEnum to 0x7 first."},
-{"ret":"void","conv":"__fastcall","name":"GAME_TreasueClassDropper","args":"(D2GameStrc* pGame, D2UnitStrc* pTarget, D2UnitStrc* pSource, void* pRecord, uint32_t nPresetQuality, uint32_t nLevel, BOOL bIgnoreNoDrop, D2UnitStrc** ppOutput, uint32_t* pCounter, uint32_t nMaxItems)","pattern":"E8 ? ? ? ? 48 8B 44 24 ? 48 8B 9C 24 ? ? ? ? 48 8B 8C 24 ? ? ? ? ","type":"operand","operand":0,"note":"https://discord.com/channels/321843290150535169/321845508266262529/915524499225591828"},
+{"ret":"void","conv":"__fastcall","name":"GAME_SaveAndExit","args":"()","pattern":"48 83 EC 28 83 3D ? ? ? ? ? 75 65 ","type":"absoulte","summary":"set gpGAME_QuitEnum to 0x7 first."},
+{"ret":"void","conv":"__fastcall","name":"GAME_TreasueClassDropper","args":"(D2GameStrc* pGame, D2UnitStrc* pTarget, D2UnitStrc* pSource, void* pRecord, uint32_t nPresetQuality, uint32_t nLevel, BOOL bIgnoreNoDrop, D2UnitStrc** ppOutput, uint32_t* pCounter, uint32_t nMaxItems)","pattern":"E8 ? ? ? ? 48 8B 44 24 ? 48 8B 9C 24 ? ? ? ? 48 8B 8C 24 ? ? ? ? ","type":"operand","operand":0,"summary":"https://discord.com/channels/321843290150535169/321845508266262529/915524499225591828"},
 
 {"ret":"__int64","conv":"__fastcall","name":"INVENTORY_GetFreeBeltSlot","args":"(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int* pFreeSlotId)","pattern":"E8 ? ? ? ? 85 C0 74 A4 ","type":"operand","operand":0},
 {"ret":"__int64","conv":"__fastcall","name":"INVENTORY_GetFreePosition","args":"(D2InventoryStrc* pInventory, D2UnitStrc* pItem, int nInventoryRecordId, int* pFreeX, int* pFreeY, uint8_t nPage)","pattern":"48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 50 49 8B E9 48 8B F1 48 85 C9 0F 84 ? ? ? ? 81 39 ? ? ? ? 0F 85 ? ? ? ? ","type":"absoulte"},
@@ -72,7 +72,7 @@
 {"ret":"int","conv":"__fastcall","name":"UNITS_GetBlockRate","args":"(D2UnitStrc* pUnit, BOOL bExpansion)","pattern":"E8 ? ? ? ? 8B F8 85 C0 7E 63 ","type":"operand","operand":0},
 {"ret":"D2UnitStrc*","conv":"__fastcall","name":"UNITS_GetPlayer","args":"(int32_t pIndex)","pattern":"E8 ? ? ? ? 48 83 FB 1F ","type":"operand","operand":0},
 {"ret":"uint32_t","conv":"__fastcall","name":"UNITS_GetMonsterOwnerID","args":"(uint32_t nMonsterID)","pattern":"E8 ? ? ? ? 41 3B 46 08 ","type":"operand","operand":0},
-{"ret":"wchar_t*","conv":"__fastcall","name":"UNITS_GetName","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 48 8B F8 66 89 35 ? ? ? ?","type":"operand","operand":0,"note":"Seems to mostly work... Method does some weird stuff not dealing w/ name."},
+{"ret":"wchar_t*","conv":"__fastcall","name":"UNITS_GetName","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 48 8B F8 66 89 35 ? ? ? ?","type":"operand","operand":0,"summary":"Seems to mostly work... Method does some weird stuff not dealing w/ name."},
 {"ret":"D2RoomStrc*","conv":"__fastcall","name":"UNITS_GetRoom","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 44 8B 1F ","type":"operand","operand":0},
 {"ret":"__int64","conv":"__fastcall","name":"UNITS_GetUnitSizeX","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 49 8B CE 41 89 86 ? ? ? ? ","type":"operand","operand":0},
 {"ret":"__int64","conv":"__fastcall","name":"UNITS_GetUnitSizeY","args":"(D2UnitStrc* pUnit)","pattern":"E8 ? ? ? ? 44 8B 1B ","type":"operand","operand":0},

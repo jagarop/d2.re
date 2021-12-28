@@ -28,6 +28,7 @@ def offset(item):
 
 
 with open(os.path.join(path, 'gen', 'D2Structs.h'), "w") as outfile:
+    outfile.write("#pragma once\n")
     outfile.write("#include <cstdint>\n\n")
     outfile.write("""
 //IDA types
@@ -64,25 +65,29 @@ functions = sorted(functions, key=lambda x: x['name'])
 variables = sorted(variables, key=lambda x: x['name'])
 
 with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
+    outfile.write("#pragma once\n")
+    outfile.write("#include <Windows.h>\n")
     outfile.write("#include <cstdint>\n")
-    outfile.write("#include <wtypes.h>\n")
     outfile.write("#include \"D2Structs.h\"\n\n")
     outfile.write("extern uint64_t BaseAddress;\n\n")
     outfile.write("//Variables: \n")
     for item in variables:
-        if 'note' in item:
-            outfile.write("extern {}* {}; //\n".format(item['ctype'],item['name'],item['note']))
-        else:
-            outfile.write("extern {}* {};\n".format(item['ctype'],item['name']))
+        if 'summary' in item:
+            outfile.write("/*\n{}\n*/\n".format(item['summary']))
+        outfile.write("extern {}* {};\n".format(item['ctype'],item['name']))
     outfile.write("\n")
     outfile.write("//Functions: \n")
     for item in functions:
-        if 'note' in item:
-            outfile.write("//{}\n".format(item['note']))
-        outfile.write("typedef {} {} {}_t {};\n".format(item['ret'],item['conv'],item['name'],item['args']))
+        outfile.write("typedef {} {} {}_t{};\n".format(item['ret'],item['conv'],item['name'],item['args']))
+        if 'summary' in item:
+            outfile.write("/// <summary>\n")
+            for l in item['summary'].splitlines(True):
+                outfile.write("/// {}".format(l))
+            outfile.write("\n/// </summary>\n")
         outfile.write("extern {}_t* {};\n\n".format(item['name'],item['name']))
 
 with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
+    outfile.write("#include <Windows.h>\n")
     outfile.write("#include \"D2Ptrs.h\"\n\n")
     outfile.write("uint64_t BaseAddress = (uint64_t)GetModuleHandle(NULL);\n\n")
     outfile.write("//Variables: \n")
