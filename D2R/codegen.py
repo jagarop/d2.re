@@ -64,6 +64,7 @@ if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
 functions = sorted(functions, key=lambda x: x['name'])
 variables = sorted(variables, key=lambda x: x['name'])
 
+
 with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
     outfile.write("#pragma once\n")
     outfile.write("#include <Windows.h>\n")

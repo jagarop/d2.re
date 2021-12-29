@@ -13,7 +13,7 @@ def BuildFunctionEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-32s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -25,11 +25,11 @@ def BuildFunctionEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-38s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
         set_name(address, str(item['name']))
         idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
@@ -37,7 +37,7 @@ def BuildVariableEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-32s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -49,11 +49,11 @@ def BuildVariableEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-38s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
             set_cmt(address, item['summary'], False)
             set_func_cmt(address, item['summary'], False)
         else:
-            print("\t%-38s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
         set_name(address, str(item['name']))
         idc.SetType(address, str(item['ctype']))
 
