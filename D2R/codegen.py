@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+from collections import OrderedDict
 
 
 path = os.path.abspath(os.path.dirname(__file__))
@@ -26,6 +27,16 @@ def offset(item):
     offset = address - base
     return offset
 
+def write(outfile, data):
+    data = sorted(data, key=lambda x: x['name'])
+    outfile.write("[\n")
+    if len(data) > 1:
+        for d in data[:-1]:
+            outfile.write("{},\n".format(json.dumps(d)))
+    if len(data) > 0:
+        outfile.write("{}\n".format(json.dumps(data[-1])))
+    outfile.write("]\n")
+    return
 
 with open(os.path.join(path, 'gen', 'D2Structs.h'), "w") as outfile:
     outfile.write("#pragma once\n")
@@ -63,6 +74,13 @@ if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
 
 functions = sorted(functions, key=lambda x: x['name'])
 variables = sorted(variables, key=lambda x: x['name'])
+
+#sort files
+for filename in ['_functions.json', 'functions.json', '_variables.json', 'variables.json']:
+    with open(os.path.join(path, 'data', filename)) as f:
+        data = json.load(f, object_pairs_hook=OrderedDict)
+    with open(os.path.join(path, 'data', filename), 'w') as outfile:
+        write(outfile, data)
 
 
 with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
