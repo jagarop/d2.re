@@ -62,6 +62,7 @@
 {"ret": "__int64", "conv": "__fastcall", "name": "ITEMS_IsImbueable", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? 85 C0 74 BE ", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "ITEMS_IsRepairable", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? 85 C0 74 67 48 8B CF ", "type": "operand", "operand": 0},
 {"ret": "uint8_t", "conv": "__fastcall", "name": "ITEMS_IsSocketable", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? EB C6 48 8B CF", "type": "operand", "operand": 0},
+{"ret": "bool", "conv": "__fastcall", "name": "ITEMS_IsVendorable", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? 85 C0 74 E0", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "ITEMS_ReadStatFromItemBitstream", "args": "(void* pBuffer, D2StatListStrc* pStatList, void* pItemStatCostTxtRecord, int nStatId, uint32_t dwVersion, int n109)", "pattern": "E8 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 8B E8", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "ITEMS_SetFileIndex", "args": "(D2UnitStrc* pItem, uint32_t nFileIndex)", "pattern": "E8 ? ? ? ? 33 F6 8B DE ", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "ITEMS_SetItemFormat", "args": "(D2UnitStrc* pItem, uint16_t nItemFormat)", "pattern": "E8 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 8B F8 ", "type": "operand", "operand": 0},
