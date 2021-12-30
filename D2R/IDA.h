@@ -980,7 +980,9 @@ struct D2UnitStrc {
 
 struct D2PlayerDataStrc {
  	char Name[16]; //0x0000
-	char pad_0010[128]; //0x0010 
+	uint64_t *pQuestData[3]; //0x0010 not sure on these two
+	uint64_t *pWaypointData[3]; //0x0028
+	char pad_0040[352]; //0x0040 
 };
 
 struct D2MonsterDataStrc {

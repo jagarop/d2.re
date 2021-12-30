@@ -969,9 +969,11 @@ class D2PlayerDataStrc
 {
 public:
 	char Name[16]; //0x0000
-	char pad_0010[128]; //0x0010
-}; //Size: 0x0090
-static_assert(sizeof(D2PlayerDataStrc) == 0x90);
+	uint64_t *pQuestData[3]; //0x0010 not sure on these two
+	uint64_t *pWaypointData[3]; //0x0028
+	char pad_0040[352]; //0x0040
+}; //Size: 0x01A0
+static_assert(sizeof(D2PlayerDataStrc) == 0x1A0);
 
 class D2MonsterDataStrc
 {
