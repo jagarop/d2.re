@@ -42,6 +42,8 @@ struct D2BeltText;
 struct D2MissileDataStrc;
 struct D2Point;
 struct D2BitBufferStrc;
+struct D2InventoryGridStrc;
+struct D2AnimDataRecordStrc;
 #pragma pack(push, 1)
 
 struct D2DataTablesStrc {
@@ -937,15 +939,15 @@ struct D2UnitStrc {
 	uint32_t AnimationMode; //0x000C
 	union //0x0010
 	{
-		D2PlayerDataStrc *PlayerData; //0x0000
-		D2MonsterDataStrc *MonsterData; //0x0000
-		D2ObjectDataStrc *ObjectData; //0x0000
-		D2ItemDataStrc *ItemData; //0x0000
-		void *MissileData; //0x0000
+		D2PlayerDataStrc *pPlayerData; //0x0000
+		D2MonsterDataStrc *pMonsterData; //0x0000
+		D2ObjectDataStrc *pObjectData; //0x0000
+		D2ItemDataStrc *pItemData; //0x0000
+		void *pMissileData; //0x0000
 	};
 	uint8_t ActID; //0x0018
 	char pad_0019[7]; //0x0019
-	D2DrlgActStrc *DrlgAct; //0x0020
+	D2DrlgActStrc *pDrlgAct; //0x0020
 	uint32_t LowSeed; //0x0028
 	uint32_t HighSeed; //0x002C
 	char pad_0030[8]; //0x0030
@@ -954,10 +956,15 @@ struct D2UnitStrc {
 		D2DynamicPathStrc *pDynamicPath; //0x0000
 		D2StaticPathStrc *pStaticPath; //0x0000
 	};
-	char pad_0040[72]; //0x0040
+	char pad_0040[48]; //0x0040
+	D2AnimDataRecordStrc *pAnimData; //0x0070
+	uint64_t *pUnk0x78; //0x0078
+	char pad_0080[8]; //0x0080
 	D2StatListExStrc *pStatListEx; //0x0088
 	D2InventoryStrc *pInventory; //0x0090
-	char pad_0098[80]; //0x0098
+	char pad_0098[16]; //0x0098
+	uint64_t *pUnk0xA8; //0x00A8
+	char pad_00B0[56]; //0x00B0
 	uint32_t OwnerType; //0x00E8
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
@@ -998,11 +1005,9 @@ struct D2ObjectDataStrc {
 struct D2ItemExtraDataStrc {
  	D2InventoryStrc *pParentInventory; //0x0000
 	D2UnitStrc *pPreviousItem; //0x0008
-	D2UnitStrc *pUnk0x0010; //0x0010
-	D2UnitStrc *pUnk0x0018; //0x0018
-	D2UnitStrc *pNextItem; //0x0020
-	uint8_t NodePos; //0x0028
-	uint8_t NodePosOther; //0x0029 
+	D2UnitStrc *pNextItem; //0x0010
+	uint8_t NodePos; //0x0018
+	uint8_t NodePosOther; //0x0019 
 };
 
 struct D2ItemDataStrc {
@@ -1090,8 +1095,12 @@ struct D2InventoryStrc {
 	D2UnitStrc *pOwner; //0x0008
 	D2UnitStrc *pFirstItem; //0x0010
 	D2UnitStrc *pLastItem; //0x0018
-	uint64_t *pGrids; //0x0020
-	char pad_0028[96]; //0x0028 
+	D2InventoryGridStrc *pGrids; //0x0020
+	char pad_0028[24]; //0x0028
+	D2UnitStrc *pCursorItem; //0x0040
+	uint32_t OwnerID; //0x0048
+	uint32_t ItemCount; //0x004C
+	char pad_0050[56]; //0x0050 
 };
 
 struct D2PathPointStrc {
@@ -1352,6 +1361,19 @@ struct D2Point {
 
 struct D2BitBufferStrc {
  	char pad_0000[128]; //0x0000 
+};
+
+struct D2InventoryGridStrc {
+ 	D2UnitStrc *pItem; //0x0000
+	D2UnitStrc *pLastItem; //0x0008
+	char pad_0010[110]; //0x0010 
+};
+
+struct D2AnimDataRecordStrc {
+ 	char AnimDataName[8]; //0x0000
+	uint32_t Frames; //0x0008
+	uint32_t AnimSpeed; //0x000C
+	char pad_0010[120]; //0x0010 
 };
 
 #pragma pack(pop)
