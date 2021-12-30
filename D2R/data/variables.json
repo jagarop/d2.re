@@ -1,6 +1,7 @@
 [
 {"ctype": "D2UnitHashTableStrc", "name": "g_ClientSideUnitHashTable", "pattern": "4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8", "operand": 1, "type": "operand"},
 {"ctype": "D2GSServerToClientHandler", "name": "g_D2GS_S2C_FunctionTable", "pattern": "4C 8D A2 ? ? ? ? 41 8B 44 CC ?", "operand": 1, "type": "other"},
+{"ctype": "D2DataTablesStrc", "name": "g_DataTables", "pattern": "48 03 3D ? ? ? ? 74 3B 49 8B CE E8 ? ? ? ? 4C 8B E0 48 C7 C1 ? ? ? ? 48 FF C1 40 38 34 0F 75 F7", "operand": 1, "type": "operand"},
 {"ctype": "D2Point", "name": "g_MousePosition", "pattern": "48 8B 0D ? ? ? ? F3 0F 7F 45 ?", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_PlayerUnitIndex", "pattern": "8B 0D ? ? ? ? E8 ? ? ? ? 48 85 C0 74 43 8B 08", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_QuestFlags", "pattern": "48 8B 15 ? ? ? ? 4D 8D 7D 08", "operand": 1, "type": "operand"},
