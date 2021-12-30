@@ -942,7 +942,17 @@ public:
 		class D2DynamicPathStrc *pDynamicPath; //0x0000
 		class D2StaticPathStrc *pStaticPath; //0x0000
 	};
-	char pad_0040[48]; //0x0040
+	int64_t *pAnimSeq; //0x0040
+	uint32_t SeqFrameCount; //0x0048
+	uint32_t SeqFrame; //0x004C
+	char pad_0050[4]; //0x0050
+	uint32_t AnimSpeed; //0x0054
+	char pad_0058[4]; //0x0058
+	uint32_t GFXCurrentFrame; //0x005C
+	char pad_0060[4]; //0x0060
+	uint32_t FrameCount; //0x0064
+	uint16_t AnimSpeedEx; //0x0068
+	char pad_006A[6]; //0x006A
 	class D2AnimDataRecordStrc *pAnimData; //0x0070
 	uint64_t *pUnk0x78; //0x0078
 	char pad_0080[8]; //0x0080
@@ -955,10 +965,10 @@ public:
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
 	class D2SkillListStrc *pSkills; //0x0100
-	char pad_0108[12]; //0x0108
-	uint32_t Flags; //0x0114
-	uint32_t FlagsEx; //0x0118
-	char pad_011C[44]; //0x011C
+	char pad_0108[24]; //0x0108
+	uint32_t Flags; //0x0120
+	uint32_t FlagsEx; //0x0124
+	char pad_0128[32]; //0x0128
 	class D2UnitStrc *pChangeNextUnit; //0x0148
 	class D2UnitStrc *pListNext; //0x0150
 	class D2UnitStrc *pRoomNext; //0x0158
@@ -1419,13 +1429,13 @@ public:
 }; //Size: 0x0088
 static_assert(sizeof(D2MissileDataStrc) == 0x88);
 
-class D2Point
+class D2Point32
 {
 public:
 	int32_t X; //0x0000
 	int32_t Y; //0x0004
 }; //Size: 0x0008
-static_assert(sizeof(D2Point) == 0x8);
+static_assert(sizeof(D2Point32) == 0x8);
 
 class D2BitBufferStrc
 {
@@ -1452,3 +1462,11 @@ public:
 	char pad_0010[120]; //0x0010
 }; //Size: 0x0088
 static_assert(sizeof(D2AnimDataRecordStrc) == 0x88);
+
+class D2Point16
+{
+public:
+	int16_t X; //0x0000
+	int16_t Y; //0x0002
+}; //Size: 0x0004
+static_assert(sizeof(D2Point16) == 0x4);

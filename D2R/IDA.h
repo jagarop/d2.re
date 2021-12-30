@@ -40,10 +40,11 @@ struct D2GSServerToClientHandler;
 struct D2InventoryRect;
 struct D2BeltText;
 struct D2MissileDataStrc;
-struct D2Point;
+struct D2Point32;
 struct D2BitBufferStrc;
 struct D2InventoryGridStrc;
 struct D2AnimDataRecordStrc;
+struct D2Point16;
 #pragma pack(push, 1)
 
 struct D2DataTablesStrc {
@@ -956,7 +957,17 @@ struct D2UnitStrc {
 		D2DynamicPathStrc *pDynamicPath; //0x0000
 		D2StaticPathStrc *pStaticPath; //0x0000
 	};
-	char pad_0040[48]; //0x0040
+	int64_t *pAnimSeq; //0x0040
+	uint32_t SeqFrameCount; //0x0048
+	uint32_t SeqFrame; //0x004C
+	char pad_0050[4]; //0x0050
+	uint32_t AnimSpeed; //0x0054
+	char pad_0058[4]; //0x0058
+	uint32_t GFXCurrentFrame; //0x005C
+	char pad_0060[4]; //0x0060
+	uint32_t FrameCount; //0x0064
+	uint16_t AnimSpeedEx; //0x0068
+	char pad_006A[6]; //0x006A
 	D2AnimDataRecordStrc *pAnimData; //0x0070
 	uint64_t *pUnk0x78; //0x0078
 	char pad_0080[8]; //0x0080
@@ -969,10 +980,10 @@ struct D2UnitStrc {
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
 	D2SkillListStrc *pSkills; //0x0100
-	char pad_0108[12]; //0x0108
-	uint32_t Flags; //0x0114
-	uint32_t FlagsEx; //0x0118
-	char pad_011C[44]; //0x011C
+	char pad_0108[24]; //0x0108
+	uint32_t Flags; //0x0120
+	uint32_t FlagsEx; //0x0124
+	char pad_0128[32]; //0x0128
 	D2UnitStrc *pChangeNextUnit; //0x0148
 	D2UnitStrc *pListNext; //0x0150
 	D2UnitStrc *pRoomNext; //0x0158 
@@ -1356,7 +1367,7 @@ struct D2MissileDataStrc {
  	char pad_0000[136]; //0x0000 
 };
 
-struct D2Point {
+struct D2Point32 {
  	int32_t X; //0x0000
 	int32_t Y; //0x0004 
 };
@@ -1376,6 +1387,11 @@ struct D2AnimDataRecordStrc {
 	uint32_t Frames; //0x0008
 	uint32_t AnimSpeed; //0x000C
 	char pad_0010[120]; //0x0010 
+};
+
+struct D2Point16 {
+ 	int16_t X; //0x0000
+	int16_t Y; //0x0002 
 };
 
 #pragma pack(pop)
