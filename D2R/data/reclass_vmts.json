@@ -1,0 +1,30 @@
+{
+"D2UIPanelManagerStrc":[
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func0", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func1", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func2", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func3", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_OnMessage", "args": "(D2UIPanelManagerStrc* pThis, uint64_t aMessage[])"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func5", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func6", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func7", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func8", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func9", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func10", "args": "(D2UIPanelManagerStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func11", "args": "(D2UIPanelManagerStrc* pThis)"}
+],
+"D2UIWidgetStrc":[
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func0", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func1", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func2", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func3", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_OnMessage", "args": "(D2UIWidgetStrc* pThis, uint64_t aMessage[])"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func5", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func6", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func7", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func8", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func9", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func10", "args": "(D2UIWidgetStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func11", "args": "(D2UIWidgetStrc* pThis)"}
+]
+}

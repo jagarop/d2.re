@@ -45,6 +45,10 @@ struct D2BitBufferStrc;
 struct D2InventoryGridStrc;
 struct D2AnimDataRecordStrc;
 struct D2Point16;
+struct D2UIPanelManagerStrc_VMT;
+struct D2UIPanelManagerStrc;
+struct D2UIWidgetStrc_VMT;
+struct D2UIWidgetStrc;
 #pragma pack(push, 1)
 
 struct D2DataTablesStrc {
@@ -1022,7 +1026,10 @@ struct D2ItemExtraDataStrc {
 	D2UnitStrc *pPreviousItem; //0x0008
 	D2UnitStrc *pNextItem; //0x0010
 	uint8_t NodePos; //0x0018
-	uint8_t NodePosOther; //0x0019 
+	uint8_t NodePosOther; //0x0019
+	char pad_001A[6]; //0x001A
+	D2UnitStrc *pPrevGridItem; //0x0020
+	D2UnitStrc *pNextGridItem; //0x0028 
 };
 
 struct D2ItemDataStrc {
@@ -1398,6 +1405,78 @@ struct D2AnimDataRecordStrc {
 struct D2Point16 {
  	int16_t X; //0x0000
 	int16_t Y; //0x0002 
+};
+
+struct D2UIPanelManagerStrc_VMT {
+ 	void(__fastcall* WIDGET_Func0)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func1)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func2)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func3)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_OnMessage)(D2UIPanelManagerStrc* pThis, uint64_t aMessage[]);
+	void(__fastcall* WIDGET_Func5)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func6)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func7)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func8)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func9)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func10)(D2UIPanelManagerStrc* pThis);
+	void(__fastcall* WIDGET_Func11)(D2UIPanelManagerStrc* pThis); 
+};
+
+struct D2UIPanelManagerStrc {
+ 	D2UIPanelManagerStrc_VMT *_VMT;
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[256]; //0x0070
+	 
+};
+
+struct D2UIWidgetStrc_VMT {
+ 	void(__fastcall* WIDGET_Func0)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func1)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func2)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func3)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_OnMessage)(D2UIWidgetStrc* pThis, uint64_t aMessage[]);
+	void(__fastcall* WIDGET_Func5)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func6)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func7)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func8)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func9)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func10)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func11)(D2UIWidgetStrc* pThis); 
+};
+
+struct D2UIWidgetStrc {
+ 	D2UIWidgetStrc_VMT *_VMT;
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[32]; //0x0070
+	 
 };
 
 #pragma pack(pop)

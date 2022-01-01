@@ -1020,8 +1020,11 @@ public:
 	class D2UnitStrc *pNextItem; //0x0010
 	uint8_t NodePos; //0x0018
 	uint8_t NodePosOther; //0x0019
-}; //Size: 0x001A
-static_assert(sizeof(D2ItemExtraDataStrc) == 0x1A);
+	char pad_001A[6]; //0x001A
+	class D2UnitStrc *pPrevGridItem; //0x0020
+	class D2UnitStrc *pNextGridItem; //0x0028
+}; //Size: 0x0030
+static_assert(sizeof(D2ItemExtraDataStrc) == 0x30);
 
 class D2ItemDataStrc
 {
@@ -1050,8 +1053,8 @@ public:
 	uint8_t InvGfxIdx; //0x0059
 	char pad_005A[22]; //0x005A
 	class D2ItemExtraDataStrc pExtraData; //0x0070
-}; //Size: 0x008A
-static_assert(sizeof(D2ItemDataStrc) == 0x8A);
+}; //Size: 0x00A0
+static_assert(sizeof(D2ItemDataStrc) == 0xA0);
 
 class D2DrlgActStrc
 {
@@ -1476,3 +1479,71 @@ public:
 	int16_t Y; //0x0002
 }; //Size: 0x0004
 static_assert(sizeof(D2Point16) == 0x4);
+
+class D2UIPanelManagerStrc
+{
+public:
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	class D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	class D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[256]; //0x0070
+	
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+	virtual void Function10();
+	virtual void Function11();
+}; //Size: 0x0170
+static_assert(sizeof(D2UIPanelManagerStrc) == 0x170);
+
+class D2UIWidgetStrc
+{
+public:
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	class D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	class D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[32]; //0x0070
+	
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+}; //Size: 0x0090
+static_assert(sizeof(D2UIWidgetStrc) == 0x90);
