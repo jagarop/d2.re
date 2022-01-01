@@ -892,7 +892,9 @@ struct D2MonStatsTxt {
 	char Name[16]; //0x0002
 	char pad_0012[36]; //0x0012
 	uint16_t NameStr; //0x0036
-	char pad_0038[416]; //0x0038 
+	uint32_t Unk; //0x0038
+	uint32_t MonStatsFlags; //0x003C
+	char pad_0040[408]; //0x0040 
 };
 
 struct D2ObjectsTxt {
@@ -1109,7 +1111,8 @@ struct D2InventoryStrc {
 	D2UnitStrc *pFirstItem; //0x0010
 	D2UnitStrc *pLastItem; //0x0018
 	D2InventoryGridStrc *pGrids; //0x0020
-	char pad_0028[24]; //0x0028
+	int32_t GridCount; //0x0028
+	char pad_002C[20]; //0x002C
 	D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
@@ -1379,7 +1382,10 @@ struct D2BitBufferStrc {
 struct D2InventoryGridStrc {
  	D2UnitStrc *pItem; //0x0000
 	D2UnitStrc *pLastItem; //0x0008
-	char pad_0010[110]; //0x0010 
+	int8_t Width; //0x0010
+	int8_t Height; //0x0011
+	char pad_0012[6]; //0x0012
+	D2UnitStrc **pUnk; //0x0018 
 };
 
 struct D2AnimDataRecordStrc {
