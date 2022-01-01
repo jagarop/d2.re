@@ -3,7 +3,7 @@ import idc
 import ida_nalt
 def reanameshit(functions):
 	for offset in functions:
-		if get_root_filename() != "D2Common.dll":
+		if (get_root_filename() != "D2Common.dll") and (binascii.hexlify(ida_nalt.retrieve_input_file_md5()).decode() != "ca15fb716915d284b887622f4ee02e7a"):
 			print("Sanity check. Only for D2Common.dll D2LOD 1.10")
 			return
 		main_arena = idc.get_name_ea_simple("D2Common_%s" % offset[1])
