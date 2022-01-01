@@ -7,5 +7,5 @@
 {"ctype": "int64_t", "name": "g_QuestFlags", "pattern": "48 8B 15 ? ? ? ? 4D 8D 7D 08", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc", "name": "g_ServerSideUnitHashTable", "pattern": "48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
-{"ctype": "int64_t*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
+{"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
