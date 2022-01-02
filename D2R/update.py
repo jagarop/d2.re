@@ -9,11 +9,15 @@ path = os.path.abspath(os.path.dirname(__file__))
 base = idaapi.get_imagebase()
 end_ea = idc.get_segm_end(0)
 
+def Parse():
+    header_h = ida_kernwin.ask_file(0, "*.h", "Select IDA.H file")
+    idaapi.idc_parse_types(header_h, idc.PT_FILE)
+
 def BuildFunctionEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address), hex(address) ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -25,19 +29,20 @@ def BuildFunctionEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset), hex(address), item['summary'] ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
-        set_name(address, str(item['name']))
-        idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset), hex(address) ))
+        #set_name(address, str(item['name']))
+        #idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
 def BuildVariableEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
+        address = address + item['offset'] #Patternaddress + offset for SigMaker Default should be 0
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(0x0L)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address), hex(address) ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -49,11 +54,11 @@ def BuildVariableEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset)[:-1], hex(address)[:-1], item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset), hex(address), item['summary'] ))
             set_cmt(address, item['summary'], False)
             set_func_cmt(address, item['summary'], False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset)[:-1], hex(address)[:-1] ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset), hex(address) ))
         set_name(address, str(item['name']))
         idc.SetType(address, str(item['ctype']))
 
@@ -101,6 +106,11 @@ with open(os.path.join(path, 'data', 'variables.json')) as f:
 if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
+
+
+print('Load IDA.H file for Parsing')
+Parse()
+print('IDA.H Loaded')
 
 print('enum class Functions : uint64_t {')
 BuildFunctionEnum(functions)
