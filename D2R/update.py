@@ -17,7 +17,7 @@ def BuildFunctionEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address), hex(address) ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L"), hex(address).rstrip("L") ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -29,11 +29,11 @@ def BuildFunctionEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset), hex(address), item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'] ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset), hex(address) ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
         #set_name(address, str(item['name']))
         #idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
@@ -42,7 +42,7 @@ def BuildVariableEnum(items):
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         address = address + item['offset'] #Patternaddress + offset for SigMaker Default should be 0
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address), hex(address) ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L"), hex(address).rstrip("L") ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -54,11 +54,11 @@ def BuildVariableEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset), hex(address), item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'] ))
             set_cmt(address, item['summary'], False)
             set_func_cmt(address, item['summary'], False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset), hex(address) ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
         set_name(address, str(item['name']))
         idc.SetType(address, str(item['ctype']))
 
@@ -70,7 +70,7 @@ def RenameD2GSFunctions():
     if address == idaapi.BADADDR:
         return
     address = base + idc.get_operand_value(address, item['operand'])
-    print("Renaming D2GS_S2C Functions: %-16s" % ( hex(address)[:-1] ))
+    print("Renaming D2GS_S2C Functions: %-16s" % ( hex(address).rstrip("L") ))
     for i in range(0xAE):
         func = get_qword(address + (i * 0x18))
         funcex = get_qword(address + (i * 0x18) + 0x10)

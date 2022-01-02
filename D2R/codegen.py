@@ -111,12 +111,12 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     outfile.write("uint64_t BaseAddress = (uint64_t)GetModuleHandle(NULL);\n\n")
     outfile.write("//Variables: \n")
     for item in variables:
-        outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],hex(offset(item))[:-1]))
+        outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],hex(offset(item)).rstrip("L")))
     outfile.write("\n")
     outfile.write("//quick copy pasta method testing:\n")
     outfile.write("// reinterpret_cast<void(__fastcall*)(void*)>(BaseAddress + 0x0)(nullptr);\n")
     outfile.write("//Functions: \n")
     for item in functions:
-        outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item))[:-1]))
+        outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item)).rstrip("L")))
 
 print('Done')
