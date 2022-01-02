@@ -1,6 +1,13 @@
 #D2LOD 1.10  D2Common.dll
 import idc
 import ida_nalt
+import idaapi
+def loadheader():
+    header_h = ida_kernwin.ask_file(0, "*.h", "Select header file")
+    idaapi.idc_parse_types(header_h, idc.PT_FILE)
+#def loadheader():
+#    idaapi.idc_parse_types("./parse/main.h", idc.PT_FILE)
+#    idaapi.idc_parse_types("./IDAObjcTypes/IDA.h", idc.PT_FILE)
 def renamefuncs(functions):
     if (get_root_filename() != "D2Common.dll") and (binascii.hexlify(ida_nalt.retrieve_input_file_md5()).decode() != "ca15fb716915d284b887622f4ee02e7a"):
         print("Only for D2Common.dll D2LOD 1.10")
@@ -1855,5 +1862,6 @@ Vars = [
         [0x6FDE9604, "D2BeltsTxt* gpBeltsTxtTable"],
         [0x6FDE95F8, "D2CharTemplateTxt* gpCharTemplateTxtTable"],
     ]
+loadheader()
 renamefuncs(Funcs)
 renamevars(Vars)
