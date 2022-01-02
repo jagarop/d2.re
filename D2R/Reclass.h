@@ -1446,9 +1446,13 @@ static_assert(sizeof(D2Point32) == 0x8);
 class D2BitBufferStrc
 {
 public:
-	char pad_0000[128]; //0x0000
-}; //Size: 0x0080
-static_assert(sizeof(D2BitBufferStrc) == 0x80);
+	uint8_t *pBuffer; //0x0000
+	uint64_t Bits; //0x0008
+	uint64_t Pos; //0x0010
+	uint64_t PosBits; //0x0018
+	uint32_t bFull; //0x0020
+}; //Size: 0x0024
+static_assert(sizeof(D2BitBufferStrc) == 0x24);
 
 class D2InventoryGridStrc
 {

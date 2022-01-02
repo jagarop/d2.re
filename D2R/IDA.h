@@ -1383,7 +1383,11 @@ struct D2Point32 {
 };
 
 struct D2BitBufferStrc {
- 	char pad_0000[128]; //0x0000 
+ 	uint8_t *pBuffer; //0x0000
+	uint64_t Bits; //0x0008
+	uint64_t Pos; //0x0010
+	uint64_t PosBits; //0x0018
+	uint32_t bFull; //0x0020 
 };
 
 struct D2InventoryGridStrc {
