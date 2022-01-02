@@ -34,8 +34,8 @@ def BuildFunctionEnum(items):
             set_func_cmt(address, str(item['summary']), False)
         else:
             print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
-        #set_name(address, str(item['name']))
-        #idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
+        set_name(address, str(item['name']))
+        idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
 def BuildVariableEnum(items):
     for item in items:
