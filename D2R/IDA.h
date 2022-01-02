@@ -19,6 +19,7 @@ struct D2StatsArrayStrc;
 struct D2StatListStrc;
 struct D2StatListExStrc;
 struct D2InventoryStrc;
+struct D2InventoryGridInfoStrc;
 struct D2PathPointStrc;
 struct D2DynamicPathStrc;
 struct D2RoomStrc;
@@ -1111,19 +1112,23 @@ struct D2StatListExStrc {
 	uint32_t StatFlagsEx[6]; //0x0AE0 
 };
 
+struct D2InventoryGridInfoStrc {
+
+};
+
 struct D2InventoryStrc {
  	uint32_t Signature; //0x0000
-	char pad_0004[4]; //0x0004
+	void* pMemPool; //0x0004
 	D2UnitStrc *pOwner; //0x0008
 	D2UnitStrc *pFirstItem; //0x0010
 	D2UnitStrc *pLastItem; //0x0018
 	D2InventoryGridStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
-	char pad_002C[20]; //0x002C
+	char pad_00B0[8];
+	uint32_t dwLeftItemGUID; //0x002C
 	D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
-	char pad_0050[56]; //0x0050 
 };
 
 struct D2PathPointStrc {
@@ -1396,7 +1401,7 @@ struct D2InventoryGridStrc {
 	int8_t Width; //0x0010
 	int8_t Height; //0x0011
 	char pad_0012[6]; //0x0012
-	D2UnitStrc **pUnk; //0x0018 
+	D2UnitStrc* pItems; //0x0018
 };
 
 struct D2AnimDataRecordStrc {
