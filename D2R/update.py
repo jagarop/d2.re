@@ -13,7 +13,18 @@ def Parse():
     header_h = ida_kernwin.ask_file(0, "*.h", "Select IDA.H file")
     idaapi.idc_parse_types(header_h, idc.PT_FILE)
 
-def BuildFunctionEnum(items):
+def write(outfile, data):
+    data = sorted(data, key=lambda x: x['name'])
+    outfile.write("[\n")
+    if len(data) > 1:
+        for d in data[:-1]:
+            outfile.write("{},\n".format(json.dumps(d)))
+    if len(data) > 0:
+        outfile.write("{}\n".format(json.dumps(data[-1])))
+    outfile.write("]\n")
+    return
+
+def BuildEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
@@ -35,32 +46,10 @@ def BuildFunctionEnum(items):
         else:
             print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
         set_name(address, str(item['name']))
-        idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
-
-def BuildVariableEnum(items):
-    for item in items:
-        address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
-        address = address + item['offset'] #Patternaddress + offset for SigMaker Default should be 0
-        if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L"), hex(address).rstrip("L") ))
-            continue
-        if item['type'] == 'operand':
-            address = idc.get_operand_value(address, item['operand'])
-        #idk have to do this for function table..
-        elif item['type'] == 'other':
-            address = base + idc.get_operand_value(address, item['operand'])
-        #sig points to an absolute addr usually start of func or something unnecassary code but making it explict what is happening
-        elif item['type'] == 'absolute':
-            None
-        offset = address - base
-        if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'] ))
-            set_cmt(address, item['summary'], False)
-            set_func_cmt(address, item['summary'], False)
+        if 'ctype' in item:
+            idc.SetType(address, str(item['ctype']))
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
-        set_name(address, str(item['name']))
-        idc.SetType(address, str(item['ctype']))
+            idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
 #Renames all the functions in the D2GS_S2C_FunctionTable
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
@@ -107,17 +96,28 @@ if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
 
+functions = sorted(functions, key=lambda x: x['name'])
+variables = sorted(variables, key=lambda x: x['name'])
+
+#sort files
+for filename in ['_functions.json', 'functions.json', '_variables.json', 'variables.json']:
+    with open(os.path.join(path, 'data', filename)) as f:
+        data = json.load(f, object_pairs_hook=OrderedDict)
+    with open(os.path.join(path, 'data', filename), 'w') as outfile:
+        write(outfile, data)
+
+
 #uncomment if u want ida to load IDA.H
 #print('Load IDA.H file for Parsing')
 #Parse()
 #print('IDA.H Loaded')
 
 print('enum class Functions : uint64_t {')
-BuildFunctionEnum(functions)
+BuildEnum(functions)
 print('}')
 
 print('enum class Variables : uint64_t {')
-BuildVariableEnum(variables)
+BuildEnum(variables)
 print('}')
 
 RenameD2GSFunctions()
