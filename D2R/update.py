@@ -2,7 +2,7 @@
 
 import os
 import json
-
+from collections import OrderedDict
 
 path = os.path.abspath(os.path.dirname(__file__))
 
@@ -45,6 +45,8 @@ def BuildEnum(items):
             set_func_cmt(address, str(item['summary']), False)
         else:
             print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
+        #remove old variable name if exists anywhere
+        set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']))
         if 'ctype' in item:
             idc.SetType(address, str(item['ctype']))
