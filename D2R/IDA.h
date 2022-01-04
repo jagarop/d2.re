@@ -1000,7 +1000,8 @@ struct D2PlayerDataStrc {
  	char Name[16]; //0x0000
 	uint64_t *pQuestData[3]; //0x0010 not sure on these two
 	uint64_t *pWaypointData[3]; //0x0028
-	char pad_0040[352]; //0x0040 
+	char pad_0040[324]; //0x0040
+	D2PlayerTradeStrc* pTrade; 
 };
 
 struct D2MonsterDataStrc {
@@ -1112,23 +1113,35 @@ struct D2StatListExStrc {
 	uint32_t StatFlagsEx[6]; //0x0AE0 
 };
 
-struct D2InventoryGridInfoStrc {
-
-};
-
-struct D2InventoryStrc {
- 	uint32_t Signature; //0x0000
-	void* pMemPool; //0x0004
-	D2UnitStrc *pOwner; //0x0008
-	D2UnitStrc *pFirstItem; //0x0010
-	D2UnitStrc *pLastItem; //0x0018
-	D2InventoryGridStrc *pGrids; //0x0020
+class D2InventoryStrc
+{
+public:
+	uint32_t Signature; //0x0000
+	char pad_0004[4]; //0x0004
+	class D2UnitStrc *pOwner; //0x0008
+	class D2UnitStrc *pFirstItem; //0x0010
+	class D2UnitStrc *pLastItem; //0x0018
+	class D2InventoryGridStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
-	char pad_00B0[8];
-	uint32_t dwLeftItemGUID; //0x002C
-	D2UnitStrc *pCursorItem; //0x0040
+	char pad_002C[12]; //0x002C
+	int64_t dwLeftItemGUID; //0x0038
+	class D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
+	char pad_0050[64]; //0x0050
+	class D2ItemDataStrc *HelmetPtr; //0x0090
+	class D2ItemDataStrc *AmuletPtr; //0x0098
+	class D2ItemDataStrc *ArmorPtr; //0x00A0
+	class D2ItemDataStrc *LeftWepPtr; //0x00A8
+	class D2ItemDataStrc *RightWepPtr; //0x00B0
+	class D2ItemDataStrc *LeftRingPtr; //0x00B8
+	class D2ItemDataStrc *RightRingPtr; //0x00C0
+	class D2ItemDataStrc *BeltPtr; //0x00C8
+	class D2ItemDataStrc *BootsPtr; //0x00D0
+	class D2ItemDataStrc *GlovePtr; //0x00D8
+	class D2ItemDataStrc *OnSwapNotVisibleLeftWeaponPtr; //0x00E0
+	class D2ItemDataStrc *OnSwapNotVisibleRightWeaponPtr; //0x00E8
+	char pad_00F0[216]; //0x00F0
 };
 
 struct D2PathPointStrc {
@@ -1281,6 +1294,14 @@ struct D2RoomExStrc {
 	char pad_0080[16]; //0x0080
 	D2DrlgLevelStrc *pLevel; //0x0090
 	D2PresetUnitStrc *pPreset; //0x0098 
+};
+
+struct D2BoundingBoxStrc
+{
+	int32_t nLeft;								//0x00
+	int32_t nBottom;							//0x04
+	int32_t nRight;								//0x08
+	int32_t nTop;								//0x0C
 };
 
 struct D2DrlgCoordsStrc {
