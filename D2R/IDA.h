@@ -1000,7 +1000,9 @@ struct D2PlayerDataStrc {
  	char Name[16]; //0x0000
 	uint64_t *pQuestData[3]; //0x0010 not sure on these two
 	uint64_t *pWaypointData[3]; //0x0028
-	char pad_0040[324]; //0x0040
+	char pad_00401[20];
+	uint32_t bodylocation;
+	char pad_0040[300]; //0x0040
 	D2PlayerTradeStrc* pTrade; 
 };
 
@@ -1276,7 +1278,7 @@ struct D2DrlgStrc {
 };
 
 struct D2RoomExStrc {
- 	char pad_0000[16]; //0x0000
+ 	D2RoomExStrc* pFirstRoomEx; //0x0000
 	D2RoomExStrc **pRoomExNear; //0x0010
 	uint32_t RoomsNear; //0x0018
 	char pad_001C[44]; //0x001C
@@ -1397,6 +1399,14 @@ struct D2BeltText {
 	uint32_t Capacity; //0x0004
 	D2InventoryRect InventoryRect[16]; //0x0008
 	char pad_0108[136]; //0x0108 
+};
+
+struct D2MazeLevelIdStrc
+{
+	int32_t nLevelPrestId1;					//0x00
+	int32_t nLevelPrestId2;					//0x04
+	int32_t nPickedFile;					//0x08
+	int32_t nDirection;						//0x0C
 };
 
 struct D2MissileDataStrc {
