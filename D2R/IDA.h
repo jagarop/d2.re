@@ -1002,7 +1002,11 @@ struct D2PlayerDataStrc {
 	uint64_t *pWaypointData[3]; //0x0028
 	char pad_00401[20];
 	uint32_t bodylocation;
-	char pad_0040[300]; //0x0040
+	char pad_00unk1[40];
+	D2UnitStrc* pNextItem;
+	char pad_00unk2[16];
+	uint32_t nRightSkillId;
+	char pad_0040[244]; //0x0040
 	D2PlayerTradeStrc* pTrade; 
 };
 
@@ -1217,7 +1221,8 @@ struct D2SkillListStrc {
 struct D2SkillStrc {
  	D2SkillsTxt *pSkillsTxt; //0x0000
 	D2SkillStrc *pNextSkill; //0x0008
-	char pad_0010[36]; //0x0010
+	uint32_t dwSkillMode;
+	char pad_0010[34]; //0x0010
 	uint32_t Level; //0x0034
 	char pad_0038[4]; //0x0038
 	uint32_t Quantity; //0x003C
