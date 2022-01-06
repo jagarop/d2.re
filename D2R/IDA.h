@@ -14,6 +14,7 @@ struct D2MonsterDataStrc;
 struct D2ObjectDataStrc;
 struct D2ItemExtraDataStrc;
 struct D2ItemDataStrc;
+struct D2PlayerTradeStrc;
 struct D2DrlgActStrc;
 struct D2StatsArrayStrc;
 struct D2StatListStrc;
@@ -49,9 +50,106 @@ struct D2UIPanelManagerStrc_VMT;
 struct D2UIPanelManagerStrc;
 struct D2UIWidgetStrc_VMT;
 struct D2UIWidgetStrc;
+<<<<<<< HEAD
+struct D2BinFieldStrc;
+struct D2UnkExcelStrc;
+struct D2UnkFogStrc;
+
+=======
 struct D2UIButtonStrc_VMT;
 struct D2UIButtonStrc;
+>>>>>>> 4d0082cb499745a8f7e66947d10a142fb3ef0f85
 #pragma pack(push, 1)
+
+
+struct D2TxtLinkNodeStrc
+{
+	char szText[32];				//0x00
+	int nLinkIndex;					//0x20
+	D2TxtLinkNodeStrc* pPrevious;	//0x24
+	D2TxtLinkNodeStrc* pNext;		//0x28
+};
+
+struct D2TxtLinkTblStrc
+{
+	union
+	{
+		char szCode[4];				//0x00
+		uint32_t dwCode;			//0x00
+	};
+	int nLinkIndex;					//0x04
+};
+
+struct D2TxtLinkStrc
+{
+	int32_t nRecords;				//0x00
+	int32_t nAllocatedCells;		//0x04
+	D2TxtLinkTblStrc* pTbl;			//0x08
+	D2TxtLinkNodeStrc* pFirstNode;	//0x0C
+};
+
+
+struct D2BinFileStrc
+{
+	uint8_t* pDataBuffer;			//0x00
+	uint8_t* pData;					//0x04
+	int32_t nRecordCount;			//0x08
+	int32_t nCellCount;				//0x0C
+};
+
+enum D2C_TxtFieldTypes : uint32_t
+{
+	TXTFIELD_NONE,
+	TXTFIELD_ASCII,
+	TXTFIELD_DWORD,
+	TXTFIELD_WORD,
+	TXTFIELD_BYTE,
+	TXTFIELD_UNKNOWN1,
+	TXTFIELD_UNKNOWN2,
+	TXTFIELD_BYTE2,
+	TXTFIELD_DWORD2,
+	TXTFIELD_RAW,
+	TXTFIELD_ASCIITOCODE,
+	TXTFIELD_UNKNOWN3,
+	TXTFIELD_UNKNOWN4,
+	TXTFIELD_CODETOBYTE,
+	TXTFIELD_UNKNOWN5,
+	TXTFIELD_CODETOWORD,
+	TXTFIELD_UNKNOWN6,
+	TXTFIELD_NAMETOINDEX,
+	TXTFIELD_NAMETOINDEX2,
+	TXTFIELD_NAMETODWORD,
+	TXTFIELD_NAMETOWORD,
+	TXTFIELD_NAMETOWORD2,
+	TXTFIELD_KEYTOWORD,
+	TXTFIELD_CUSTOMLINK,
+	TXTFIELD_UNKNOWN7,
+	TXTFIELD_CALCTODWORD,
+	TXTFIELD_BIT
+};
+
+struct D2BinFieldStrc
+{
+	char* szFieldName;				//0x00
+	D2C_TxtFieldTypes nFieldType;	//0x04
+	int32_t nFieldLength;			//0x08
+	int32_t nFieldOffset;			//0x0C
+	void* pLinkField;				//0x10
+};
+
+struct D2UnkExcelStrc
+{
+	D2UnkExcelStrc* pNext;			//0x00
+	uint32_t dwHash;				//0x04
+	D2BinFieldStrc* pBinField;		//0x08
+};
+
+struct D2UnkFogStrc
+{
+	void* pCallback;				//0x00
+	int32_t unk0x04;				//0x04
+};
+
 
 struct D2DataTablesStrc {
  	uint64_t *pPlayerClassTxt; //0x0000
@@ -997,11 +1095,30 @@ struct D2UnitStrc {
 	D2UnitStrc *pRoomNext; //0x0158 
 };
 
+struct D2PlayerTradeStrc
+{
+	int32_t nSaveLength;						//0x00
+	uint8_t* pSaveData;						//0x04
+	int32_t unk0x08[4];
+};
+
 struct D2PlayerDataStrc {
  	char Name[16]; //0x0000
 	uint64_t *pQuestData[3]; //0x0010 not sure on these two
 	uint64_t *pWaypointData[3]; //0x0028
+<<<<<<< HEAD
+	char pad_00401[20];
+	uint32_t bodylocation;
+	char pad_00unk1[24];
+	D2PlayerTradeStrc* pTrade;
+	char pad_00unk2[16];
+	D2UnitStrc* pNextItem;
+	char pad_00unk3[16];
+	uint32_t nRightSkillId;
+	char pad_0040[244]; //0x0040
+=======
 	char pad_0040[352]; //0x0040 
+>>>>>>> 4d0082cb499745a8f7e66947d10a142fb3ef0f85
 };
 
 struct D2MonsterDataStrc {
@@ -1200,7 +1317,8 @@ struct D2SkillListStrc {
 struct D2SkillStrc {
  	D2SkillsTxt *pSkillsTxt; //0x0000
 	D2SkillStrc *pNextSkill; //0x0008
-	char pad_0010[36]; //0x0010
+	uint32_t dwSkillMode;
+	char pad_0010[34]; //0x0010
 	uint32_t Level; //0x0034
 	char pad_0038[4]; //0x0038
 	uint32_t Quantity; //0x003C
@@ -1261,7 +1379,7 @@ struct D2DrlgStrc {
 };
 
 struct D2RoomExStrc {
- 	char pad_0000[16]; //0x0000
+	D2RoomExStrc* pFirstRoomEx; //0x0000
 	D2RoomExStrc **pRoomExNear; //0x0010
 	uint32_t RoomsNear; //0x0018
 	char pad_001C[44]; //0x001C
@@ -1279,6 +1397,14 @@ struct D2RoomExStrc {
 	char pad_0080[16]; //0x0080
 	D2DrlgLevelStrc *pLevel; //0x0090
 	D2PresetUnitStrc *pPreset; //0x0098 
+};
+
+struct D2BoundingBoxStrc
+{
+	int32_t nLeft;								//0x00
+	int32_t nBottom;							//0x04
+	int32_t nRight;								//0x08
+	int32_t nTop;								//0x0C
 };
 
 struct D2DrlgCoordsStrc {
@@ -1376,6 +1502,14 @@ struct D2BeltText {
 	char pad_0108[136]; //0x0108 
 };
 
+struct D2MazeLevelIdStrc
+{
+	int32_t nLevelPrestId1;					//0x00
+	int32_t nLevelPrestId2;					//0x04
+	int32_t nPickedFile;					//0x08
+	int32_t nDirection;						//0x0C
+};
+
 struct D2MissileDataStrc {
  	char pad_0000[136]; //0x0000 
 };
@@ -1399,7 +1533,7 @@ struct D2InventoryGridStrc {
 	int8_t Width; //0x0010
 	int8_t Height; //0x0011
 	char pad_0012[6]; //0x0012
-	D2UnitStrc **pUnk; //0x0018 
+	D2UnitStrc* pItems; //0x0018
 };
 
 struct D2AnimDataRecordStrc {
