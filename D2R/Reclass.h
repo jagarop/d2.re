@@ -1121,13 +1121,14 @@ public:
 	class D2UnitStrc *pLastItem; //0x0018
 	class D2InventoryGridStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
-	char pad_002C[20]; //0x002C
+	char pad_002C[12]; //0x002C
+	int64_t dwLeftItemGUID; //0x0038
 	class D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
-	char pad_0050[56]; //0x0050
-}; //Size: 0x0088
-static_assert(sizeof(D2InventoryStrc) == 0x88);
+	char pad_0050[120]; //0x0050
+}; //Size: 0x00C8
+static_assert(sizeof(D2InventoryStrc) == 0xC8);
 
 class D2PathPointStrc
 {
@@ -1570,7 +1571,6 @@ public:
 	class D2UIWidgetStrc **pChildren; //0x0058
 	uint64_t NumChildren; //0x0060
 	uint64_t Allocated; //0x0068
-	char pad_0070[16]; //0x0070
 	
 	virtual void Function0();
 	virtual void Function1();
@@ -1593,5 +1593,5 @@ public:
 	virtual void Function18();
 	virtual void Function19();
 	virtual void Function20();
-}; //Size: 0x0080
-static_assert(sizeof(D2UIButtonStrc) == 0x80);
+}; //Size: 0x0070
+static_assert(sizeof(D2UIButtonStrc) == 0x70);

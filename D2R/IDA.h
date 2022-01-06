@@ -1121,11 +1121,12 @@ struct D2InventoryStrc {
 	D2UnitStrc *pLastItem; //0x0018
 	D2InventoryGridStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
-	char pad_002C[20]; //0x002C
+	char pad_002C[12]; //0x002C
+	int64_t dwLeftItemGUID; //0x0038
 	D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
-	char pad_0050[56]; //0x0050 
+	char pad_0050[120]; //0x0050 
 };
 
 struct D2PathPointStrc {
@@ -1526,7 +1527,6 @@ struct D2UIButtonStrc {
 	D2UIWidgetStrc **pChildren; //0x0058
 	uint64_t NumChildren; //0x0060
 	uint64_t Allocated; //0x0068
-	char pad_0070[16]; //0x0070
 	 
 };
 
