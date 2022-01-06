@@ -61,6 +61,15 @@ typedef union __declspec(intrin_type) __declspec(align(16)) __m128i {
     with open(os.path.join(path, 'IDA.h'), "r") as infile:
         outfile.write(infile.read())
 
+
+with open(os.path.join(path, 'gen', 'D2UIMessages.h'), "w") as outfile:
+    with open(os.path.join(path, 'data', 'D2UIMessages.h'), "r") as infile:
+        outfile.write(infile.read())
+
+with open(os.path.join(path, 'gen', 'D2UIMessages.cpp'), "w") as outfile:
+    with open(os.path.join(path, 'data', 'D2UIMessages.cpp'), "r") as infile:
+        outfile.write(infile.read())
+
 with open(os.path.join(path, 'data', 'functions.json')) as f:
     functions = json.load(f)
 with open(os.path.join(path, 'data', 'variables.json')) as f:

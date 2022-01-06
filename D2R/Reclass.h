@@ -1551,3 +1551,47 @@ public:
 	virtual void Function9();
 }; //Size: 0x0090
 static_assert(sizeof(D2UIWidgetStrc) == 0x90);
+
+class D2UIButtonStrc
+{
+public:
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	class D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	class D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[16]; //0x0070
+	
+	virtual void Function0();
+	virtual void Function1();
+	virtual void Function2();
+	virtual void Function3();
+	virtual void Function4();
+	virtual void Function5();
+	virtual void Function6();
+	virtual void Function7();
+	virtual void Function8();
+	virtual void Function9();
+	virtual void Function10();
+	virtual void Function11();
+	virtual void Function12();
+	virtual void Function13();
+	virtual void Function14();
+	virtual void Function15();
+	virtual void Function16();
+	virtual void Function17();
+	virtual void Function18();
+	virtual void Function19();
+	virtual void Function20();
+}; //Size: 0x0080
+static_assert(sizeof(D2UIButtonStrc) == 0x80);

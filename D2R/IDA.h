@@ -19,7 +19,6 @@ struct D2StatsArrayStrc;
 struct D2StatListStrc;
 struct D2StatListExStrc;
 struct D2InventoryStrc;
-struct D2InventoryGridInfoStrc;
 struct D2PathPointStrc;
 struct D2DynamicPathStrc;
 struct D2RoomStrc;
@@ -50,6 +49,8 @@ struct D2UIPanelManagerStrc_VMT;
 struct D2UIPanelManagerStrc;
 struct D2UIWidgetStrc_VMT;
 struct D2UIWidgetStrc;
+struct D2UIButtonStrc_VMT;
+struct D2UIButtonStrc;
 #pragma pack(push, 1)
 
 struct D2DataTablesStrc {
@@ -1112,23 +1113,19 @@ struct D2StatListExStrc {
 	uint32_t StatFlagsEx[6]; //0x0AE0 
 };
 
-struct D2InventoryGridInfoStrc {
-
-};
-
 struct D2InventoryStrc {
  	uint32_t Signature; //0x0000
-	void* pMemPool; //0x0004
+	char pad_0004[4]; //0x0004
 	D2UnitStrc *pOwner; //0x0008
 	D2UnitStrc *pFirstItem; //0x0010
 	D2UnitStrc *pLastItem; //0x0018
 	D2InventoryGridStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
-	char pad_00B0[8];
-	uint32_t dwLeftItemGUID; //0x002C
+	char pad_002C[20]; //0x002C
 	D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
+	char pad_0050[56]; //0x0050 
 };
 
 struct D2PathPointStrc {
@@ -1401,7 +1398,7 @@ struct D2InventoryGridStrc {
 	int8_t Width; //0x0010
 	int8_t Height; //0x0011
 	char pad_0012[6]; //0x0012
-	D2UnitStrc* pItems; //0x0018
+	D2UnitStrc **pUnk; //0x0018 
 };
 
 struct D2AnimDataRecordStrc {
@@ -1485,6 +1482,51 @@ struct D2UIWidgetStrc {
 	uint64_t NumChildren; //0x0060
 	uint64_t Allocated; //0x0068
 	char pad_0070[32]; //0x0070
+	 
+};
+
+struct D2UIButtonStrc_VMT {
+ 	void(__fastcall* BUTTON_Func0)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func1)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func2)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func3)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_OnMessage)(D2UIButtonStrc* pThis, uint64_t aMessage[]);
+	void(__fastcall* BUTTON_Func5)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func6)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func7)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func8)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func9)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func10)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func11)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func12)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func13)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func14)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func15)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func16)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func17)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func18)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Func19)(D2UIButtonStrc* pThis);
+	void(__fastcall* BUTTON_Click)(D2UIButtonStrc* pThis, bool bClicked); 
+};
+
+struct D2UIButtonStrc {
+ 	D2UIButtonStrc_VMT *_VMT;
+	char *pName; //0x0008
+	uint64_t NameLength; //0x0010
+	uint32_t MaxNameLength; //0x0018
+	uint32_t TextFlags; //0x001C
+	char InlineName[16]; //0x0020
+	D2UIWidgetStrc *pParent; //0x0030
+	char pad_0038[16]; //0x0038
+	float RelPosX; //0x0048
+	float RelPosY; //0x004C
+	uint8_t Enabled; //0x0050
+	uint8_t Visible; //0x0051
+	char pad_0052[6]; //0x0052
+	D2UIWidgetStrc **pChildren; //0x0058
+	uint64_t NumChildren; //0x0060
+	uint64_t Allocated; //0x0068
+	char pad_0070[16]; //0x0070
 	 
 };
 

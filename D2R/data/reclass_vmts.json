@@ -26,5 +26,28 @@
     {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func9", "args": "(D2UIWidgetStrc* pThis)"},
     {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func10", "args": "(D2UIWidgetStrc* pThis)"},
     {"ret": "void", "conv": "__fastcall", "name": "WIDGET_Func11", "args": "(D2UIWidgetStrc* pThis)"}
+],
+"D2UIButtonStrc":[
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func0", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func1", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func2", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func3", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_OnMessage", "args": "(D2UIButtonStrc* pThis, uint64_t aMessage[])"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func5", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func6", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func7", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func8", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func9", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func10", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func11", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func12", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func13", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func14", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func15", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func16", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func17", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func18", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func19", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Click", "args": "(D2UIButtonStrc* pThis, bool bClicked)"}
 ]
 }
