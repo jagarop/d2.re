@@ -40,7 +40,7 @@ def BuildEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'] ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
