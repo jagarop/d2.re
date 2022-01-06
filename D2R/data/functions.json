@@ -24,11 +24,14 @@
 {"ret": "__int64*", "conv": "__fastcall", "name": "DATATBLS_GetMagicAffixTxtRecord", "args": "(uint16_t nIndex)", "pattern": "E8 ? ? ? ? 48 8B 3F 48 8B F0", "type": "operand", "operand": 0},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "DATATBLS_GetStringIdFromReferenceString", "args": "(uint8_t *a1)", "pattern": "48 83 EC 58 80 39 00", "type": "absoulte"},
 {"ret": "D2LvlWarpTxt*", "conv": "__fastcall", "name": "DATATBLS_ItemCalcLinker", "args": "(char *pSrc, void *pRecord, __int64 a3)", "pattern": "48 85 D2 0F 84 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 48 89 BC 24 ? ? ? ? 49 63 F8 48 03 FA 48 85 C9 74 2D 48 8D 05 ? ? ? ? 48 89 44 24 ? 4C 8D 0D ? ? ? ? 48 8D 05 ? ? ? ? 48 8D 54 24 ? 48 89 44 24 ? E8 ? ? ? ? 85 C0 7F 08 C7 07 ? ? ? ? EB 3E 48 8B 15 ? ? ? ? 4C 8D 4C 24 ? 48 98 4C 8D 44 24 ? 48 89 9C 24 ? ? ? ? 48 8D 0D ? ? ? ? 48 8B 1D ? ? ? ? 4C 03 C8 48 03 D3 E8 ? ? ? ? 89 1F 48 8B 9C 24 ? ? ? ? 48 8B BC 24 ? ? ? ? 48 8B 8C 24 ? ? ? ? 48 33 CC E8 ? ? ? ? 48 81 C4 ? ? ? ? C3 AB", "type": "absoulte"},
+{"ret": "void", "conv": "__fastcall", "name": "DATATBLS_ItemParamLinker", "args": "(const __m128i *a1, void *pRecord, int nOffset)", "pattern": "48 85 D2 0F 84 ? ? ? ? 57 48 83 EC 20 48 89 5C 24 ? 48 8B F9 49 63 D8", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadAllTxts", "args": "()", "pattern": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ?", "type": "absoulte"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "DATATBLS_LoadMonStatsTxt", "args": "()", "pattern": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 56 48 8D AC 24 ? ? ? ?", "type": "absoulte"},
-{"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadLvlPrestTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 85 ? ? ? ? 48 8D 35 ? ? ? ? ", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadLvlPrestTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 85 ? ? ? ? 48 8D 35 ? ? ? ?", "type": "operand", "operand": 0},
+{"ret": "uint64_t", "conv": "__fastcall", "name": "DATATBLS_LoadRunesTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 4C 89 A5 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "D2ObjectsTxt*", "conv": "__fastcall", "name": "DATATBLS_LoadObjectsTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadSomeTxts", "args": "()", "pattern": "4C 8B DC 55 49 8D AB ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 89 5B 08 48 8D 05 ? ? ? ? 49 89 73 10", "type": "absoulte"},
+{"ret": "uint64_t", "conv": "__fastcall", "name": "DATATBLS_LoadItemRatioTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 4C 89 A5 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadItemTypesTxt", "args": "()", "pattern": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 33 FF", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_LoadPetTypeTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 45 33 F6", "type": "operand", "operand": 0},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "DATATBLS_LoadOverlayTxt", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 45 33 F6", "type": "operand", "operand": 0},
@@ -57,12 +60,7 @@
 {"ret": "uint64_t", "conv": "__fastcall", "name": "DRLG_GetNumberOfPopulatedRoomsInLevel", "args": "(D2DrlgStrc *pDrlg, int nLevelId)", "pattern": "E8 ? ? ? ? 89 46 0C", "type": "operand", "operand": 0},
 {"ret": "D2RoomExStrc*", "conv": "__fastcall", "name": "DRLG_GetRoomExFromCoordinates", "args": "(int nX, int nY, D2DrlgStrc* pDrlg, D2RoomExStrc* pRoomEx, D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 48 8B D8 48 85 C0 74 4A", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLG_InitLevel", "args": "(D2DrlgLevelStrc* pLevel)", "pattern": "E8 ? ? ? ? 83 BB ? ? ? ? ? 48 8B CE", "type": "operand", "operand": 0},
-
-
-
 {"ret": "void", "conv": "__fastcall", "name": "DRLGPRESET_LoadDrlgFile", "args": "(D2DrlgFileStrc **ppDrlgFile, const char *szFile)", "pattern": "E8 ? ? ? ? 48 8B 0D ? ? ? ? 48 8B 04 D9", "type": "operand", "operand": 0},
-
-
 {"ret": "void", "conv": "__fastcall", "name": "DUNGEON_AddRoomData", "args": "(D2DrlgActStrc* pAct, uint32_t nLevelNo, uint32_t nRoomx, uint32_t nRoomY, D2RoomStrc* room1)", "pattern": "40 57 41 56 41 57 48 83 EC 30 45 8B F1 45 8B F8 8B FA 48 85 C9", "type": "absoulte"},
 {"ret": "D2DrlgActStrc*", "conv": "__fastcall", "name": "DUNGEON_AllocAct", "args": "(uint8_t nAct, uint32_t nInitSeed, BOOL bClient, void* pGame, uint8_t nDifficulty, int nTownLevelId, void* pfAutoMap, void* pfTownAutoMap)", "pattern": "E8 ? ? ? ? 48 8B 8F ? ? ? ? 48 89 04 F1", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DUNGEON_FreeAct", "args": "(D2DrlgActStrc* pAct)", "pattern": "E8 ? ? ? ? 49 8B 85 ? ? ? ? 4C 89 3C 03", "type": "operand", "operand": 0},
@@ -73,6 +71,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "Fog_10212_FreeLinker", "args": "(void* pLinker)", "pattern": "E8 ? ? ? ? 48 39 2D ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "Fog_10215", "args": "(void *pBin, int a2)", "pattern": "E8 ? ? ? ? 41 8B 4F 08 83 F9 0A", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "Fog_10254", "args": "(char *pSrc, char *pBuffer, int nBufferSize, void *a4, void *a5, void *a6)", "pattern": "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 48 8B 85 ? ? ? ? 4C 8D 44 24 ?", "type": "absoulte"},
+{"ret": "int64_t", "conv": "__fastcall", "name": "Fog_10217_UNK_sub_7FF7FC6E6430", "args": "(__int64 a1, const __m128i *a2)", "pattern": "E8 ? ? ? ? 66 41 89 86 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "GAME_AuraCallback", "args": "(D2UnitStrc* pUnit, int64_t nUMod, bool bUnique)", "pattern": "E8 ? ? ? ? 8B 13 83 FA 01", "type": "operand", "operand": 0, "summary": "https://discord.com/channels/321843290150535169/321845508266262529/923580445982093383"},
 {"ret": "void", "conv": "__fastcall", "name": "GAME_DestroyUnit", "args": "(D2GameStrc* pGame, D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 45 8B 57 50", "type": "operand", "operand": 0, "summary": "https://discord.com/channels/321843290150535169/321845508266262529/915526186073980938"},
 {"ret": "uint8_t", "conv": "__fastcall", "name": "GAME_GetDifficulty", "args": "()", "pattern": "E8 ? ? ? ? 0F B6 D0 83 EA 01", "type": "operand", "operand": 0},
