@@ -48,6 +48,7 @@
     {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func17", "args": "(D2UIButtonStrc* pThis)"},
     {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func18", "args": "(D2UIButtonStrc* pThis)"},
     {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func19", "args": "(D2UIButtonStrc* pThis)"},
+    {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Func20", "args": "(D2UIButtonStrc* pThis)"},
     {"ret": "void", "conv": "__fastcall", "name": "BUTTON_Click", "args": "(D2UIButtonStrc* pThis, bool bClicked)"}
 ]
 }
