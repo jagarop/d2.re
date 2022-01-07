@@ -1212,7 +1212,7 @@ struct D2PlayerDataStrc {
 	uint32_t bodylocation;
 	char pad_00unk1[24];
 	D2PlayerTradeStrc* pTrade;
-	char pad_00unk2[16];
+	char pad_00unk2[8];
 	D2UnitStrc* pNextItem;
 	char pad_00unk3[16];
 	uint32_t nRightSkillId;
