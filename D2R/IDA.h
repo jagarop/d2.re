@@ -11,10 +11,14 @@ struct D2UnitHashTableStrc;
 struct D2UnitStrc;
 struct D2PlayerDataStrc;
 struct D2MonsterDataStrc;
+struct D2DrlgFileStrc;
 struct D2ObjectDataStrc;
 struct D2ItemExtraDataStrc;
 struct D2ItemDataStrc;
+struct D2DrlgCoordStrc;
+struct D2LvlPrestTxt;
 struct D2PlayerTradeStrc;
+struct D2DrlgPresetInfoStrc;
 struct D2DrlgActStrc;
 struct D2StatsArrayStrc;
 struct D2StatListStrc;
@@ -27,11 +31,13 @@ struct D2SkillListStrc;
 struct D2SkillStrc;
 struct D2GameStrc;
 struct D2ClientStrc;
+struct D2DrlgMapStrc;
 struct D2PresetUnitStrc;
 struct D2StatStrc;
 struct D2DrlgStrc;
 struct D2RoomExStrc;
 struct D2DrlgCoordsStrc;
+struct D2DrlgGridStrc;
 struct D2RoomCollisionGridStrc;
 struct D2RoomTileStrc;
 struct D2DrlgLevelStrc;
@@ -56,10 +62,28 @@ struct D2UnkFogStrc;
 struct D2UIButtonStrc_VMT;
 struct D2UIButtonStrc;
 struct D2MissilesTxt;
+struct D2UnkOutdoorStrc;
 
 #pragma pack(push, 1)
 
 
+struct D2UnkOutdoorStrc
+{
+	D2DrlgLevelStrc* pLevel;			//0x00
+	int32_t* field_4;					//0x04
+	D2DrlgGridStrc* pGrid1;				//0x08
+	D2DrlgGridStrc* pGrid2;				//0x0C
+	int32_t nLevelPrestId;				//0x10
+	int32_t field_14;					//0x14
+	int32_t nLvlSubId;					//0x18
+	unsigned int(__fastcall* field_1C)(D2DrlgLevelStrc* pLevel, int nX, int nY);						//0x1C
+	BOOL(__fastcall* field_20)(D2DrlgLevelStrc* pLevel, int nX, int nY, int nId, int nOffset, char nFlags);						//0x20
+	BOOL(__fastcall* field_24)(D2DrlgLevelStrc* pLevel, int nX, int nY, int a4, int a5, unsigned int a6);						//0x24
+	int(__fastcall* field_28)(D2DrlgLevelStrc* pLevel, int nStyle, int a3);						//0x28
+	void(__fastcall* field_2C)(D2DrlgLevelStrc* pLevel, int nX, int nY);						//0x2C
+	void(__fastcall* field_30)(D2DrlgLevelStrc* pLevel, int nX, int nY);						//0x30
+	void(__fastcall* field_34)(D2DrlgLevelStrc* pLevel, int nX, int nY, int nLevelPrestId, int nRand, BOOL a6);						//0x34
+};
 
 
 struct D2MissilesTxt
@@ -1538,10 +1562,101 @@ struct D2RoomTileStrc {
 	uint64_t *Unk0x0028; //0x0028 
 };
 
+struct D2LvlPrestTxt
+{
+	uint32_t dwDef;							//0x00
+	uint32_t dwLevelId;						//0x04
+	uint32_t dwPopulate;					//0x08
+	uint32_t dwLogicals;					//0x0C
+	uint32_t dwOutdoors;					//0x10
+	uint32_t dwAnimate;						//0x14
+	uint32_t dwKillEdge;					//0x18
+	uint32_t dwFillBlanks;					//0x1C
+	uint32_t dwExpansion;					//0x20
+	uint32_t nAnimSpeed;					//0x24
+	int32_t nSizeX;							//0x28
+	int32_t nSizeY;							//0x2C
+	uint32_t dwAutoMap;						//0x30
+	uint32_t dwScan;						//0x34
+	uint32_t dwPops;						//0x38
+	uint32_t dwPopPad;						//0x3C
+	uint32_t dwFiles;						//0x40
+	char szFile[6][60];						//0x44
+	//char szFile1[60];						//0x44
+	//char szFile2[60];						//0x80
+	//char szFile3[60];						//0xBC
+	//char szFile4[60];						//0xF8
+	//char szFile5[60];						//0x134
+	//char szFile6[60];						//0x170
+	uint32_t dwDt1Mask;						//0x1AC
+};
+
+struct D2DrlgCoordStrc
+{
+	int32_t nPosX;								//0x00
+	int32_t nPosY;								//0x04
+	int32_t nWidth;								//0x08
+	int32_t nHeight;							//0x0C
+};
+
+struct D2DrlgFileStrc
+{
+	int32_t unk0x00;							//0x00
+	void* pDS1File;								//0x04
+	int32_t unk0x08;							//0x08
+	int32_t nWidth;								//0x0C
+	int32_t nHeight;							//0x10
+	int32_t nWalls;								//0x14
+	int32_t nFloors;							//0x18
+	void* pOrientationLayer[4];					//0x1C
+	void* pWallLayer[4];						//0x2C
+	void* pFloorLayer[2];						//0x3C
+	void* pShadowLayer;							//0x44
+	void* pSubstGroupTags;						//0x48
+	int32_t nSubstGroups;						//0x4C named nClusters in original game
+	struct D2DrlgSubstGroupStrc* pSubstGroups;	//0x50
+	D2PresetUnitStrc* pPresetUnit;				//0x54
+	D2DrlgFileStrc* pNext;						//0x58
+};
+
+struct D2DrlgGridStrc
+{
+	int32_t* pCellsFlags;					//0x00
+	int32_t* pCellsRowOffsets;				//0x04
+	int32_t nWidth;							//0x08
+	int32_t nHeight;						//0x0C
+	int32_t unk0x10;						//0x10 Maybe indicates if uninitialized? No memset when set to 1
+};
+
+struct D2DrlgMapStrc
+{
+	int32_t nLevelPrest;						//0x00
+	int32_t nPickedFile;						//0x04
+	D2LvlPrestTxt* pLvlPrestTxtRecord;		//0x08
+	D2DrlgFileStrc* pFile;					//0x0C
+	D2DrlgCoordStrc pDrlgCoord;				//0x10
+	BOOL bHasInfo;							//0x20
+	D2DrlgGridStrc pMapGrid;				//0x24
+	D2PresetUnitStrc* pPresetUnit;			//0x38
+	BOOL bInited;							//0x3C
+	int32_t nPops;								//0x40
+	int32_t* pPopsIndex;						//0x44
+	int32_t* pPopsSubIndex;						//0x48
+	int32_t* pPopsOrientation;					//0x4C
+	D2DrlgCoordStrc* pPopsLocation;			//0x50
+	D2DrlgMapStrc* pNext;					//0x54
+};
+
+struct D2DrlgPresetInfoStrc
+{
+	D2DrlgMapStrc* pDrlgMap;				//0x00
+	int32_t nDirection;							//0x04
+};
+
 struct D2DrlgLevelStrc {
  	char pad_0000[16]; //0x0000
 	D2RoomExStrc *pRoomExFirst; //0x0010
-	char pad_0018[12]; //0x0018
+	D2DrlgPresetInfoStrc* pPreset;
 	uint32_t PosX; //0x0024
 	uint32_t PosY; //0x0028
 	uint32_t SizeX; //0x002C
