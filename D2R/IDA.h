@@ -1715,8 +1715,8 @@ struct D2DrlgLevelStrc {
 	char pad_01C0[8]; //0x01C0
 	D2DrlgStrc *pDrlg; //0x01C8
 	char pad_01D0[40]; //0x01D0
-	uint32_t LevelNo; //0x01F8
-	char pad_01FC[12]; //0x01FC
+	uint64_t nLevelId; //0x01F8
+	char pad_01FC[8]; //0x01FC
 	union //0x0208
 	{
 		int32_t RoomCenterX[9]; //0x0000
