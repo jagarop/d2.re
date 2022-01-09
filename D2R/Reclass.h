@@ -998,8 +998,11 @@ public:
 	uint32_t DurielFlag; //0x001C
 	uint8_t MonUMod[10]; //0x0020
 	uint16_t BossLineID; //0x002A
-}; //Size: 0x002C
-static_assert(sizeof(D2MonsterDataStrc) == 0x2C);
+	char pad_002C[6]; //0x002C
+	uint16_t MercID; //0x0032
+	char pad_0034[56]; //0x0034
+}; //Size: 0x006C
+static_assert(sizeof(D2MonsterDataStrc) == 0x6C);
 
 class D2ObjectDataStrc
 {
@@ -1503,7 +1506,10 @@ public:
 	class D2UIWidgetStrc **pChildren; //0x0058
 	uint64_t NumChildren; //0x0060
 	uint64_t Allocated; //0x0068
-	char pad_0070[256]; //0x0070
+	char pad_0070[76]; //0x0070
+	uint32_t ScreenWidth; //0x00BC
+	uint32_t ScreenHeight; //0x00C0
+	char pad_00C4[172]; //0x00C4
 	
 	virtual void Function0();
 	virtual void Function1();
