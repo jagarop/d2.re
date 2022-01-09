@@ -1,6 +1,10 @@
 [
 {"ret": "D2DrlgWarpStrc*", "conv": "__fastcall", "name": "DRLG_GetDrlgWarpFromLevelId", "args": "(D2DrlgStrc *pDrlg, int nLevelId)", "pattern": "E8 ? ? ? ? 48 8B F0 41 8B DC", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "D2Common_6FD823C0", "args": "(D2DrlgStrc *pDrlg, D2DrlgLinkStrc *pDrlgLink, int (__fastcall *a3)(D2DrlgLevelLinkDataStrc *, int), void (__fastcall *a4)(D2DrlgLevelStrc *, int, int *))", "pattern": "E8 ? ? ? ? 45 33 C9 48 8D 15 ? ? ? ? 45 33 C0", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? FE C8", "type": "operand", "operand": 0},
+{"ret": "D2DrlgLevelStrc*", "conv": "__fastcall", "name": "D2Common_6FD82820", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? 48 8B C8 E8 ? ? ? ? BA ? ? ? ? 48 8B CB 44 8D 42 08", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "INVENTORY_CanItemBePlaced", "args": "(D2InventoryStrc *pInventory, D2UnitStrc *pItem, int nXPos, int nYPos, int nInventoryRecordId, D2UnitStrc **ppExchangeItem, unsigned int *pHoveredItems, uint8_t nPage)", "pattern": "E8 ? ? ? ? 8B 44 24 58 83 F8 01", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "DRLGOUTPLACE_CreateLevelConnections", "args": "(D2DrlgStrc *pDrlg, uint8_t nActNo)", "pattern": "E8 ? ? ? ? 45 85 E4 74 3B", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "BITMANIP_Write", "args": "(D2BitBufferStrc* pBuffer, uint32_t dwValue, uint64_t nBits)", "pattern": "40 53 4D 8B D0", "type": "absoulte"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "COLLISION_AdaptBoundingBoxToGrid", "args": "(D2RoomStrc *pRoom, void *pBoundingBox, void *pBoundingBoxes)", "pattern": "48 83 EC 28 44 8B 5A 04", "type": "absoulte"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "COLLISION_CheckCollisionMaskForBoundingBox", "args": "(D2RoomCollisionGridStrc *pCollisionGrid, void *pBoundingBox, uint16_t nMask)", "pattern": "48 89 5C 24 ? 57 44 8B 5A 04", "type": "absoulte"},
