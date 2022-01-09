@@ -63,9 +63,58 @@ struct D2UIButtonStrc_VMT;
 struct D2UIButtonStrc;
 struct D2MissilesTxt;
 struct D2UnkOutdoorStrc;
+struct D2DrlgWarpStrc;
+struct D2DrlgLinkStrc;
+struct D2DrlgLevelLinkDataStrc;
+struct D2SeedStrc;
 
 #pragma pack(push, 1)
 
+
+
+struct D2SeedStrc
+{
+	union
+	{
+		struct
+		{
+			uint32_t nLowSeed;					//0x00
+			uint32_t nHighSeed;					//0x04
+		};
+		uint64_t lSeed;		//0x00
+	};
+};
+
+struct D2DrlgLevelLinkDataStrc
+{
+	D2SeedStrc pSeed;						//0x00
+	D2DrlgCoordStrc pLevelCoord[15];		//0x08
+	D2DrlgLinkStrc* pLink;					//0xF8
+	union
+	{
+		int32_t nRand[4][15];					//0xFC
+		int32_t nRand2[60];						//0xFC
+	};
+	int32_t nIteration;							//0x1EC
+	int32_t nCurrentLevel;						//0x1F0
+};
+
+
+struct D2DrlgLinkStrc
+{
+	void* pfLinker;							//0x00
+	int32_t nLevel;								//0x04
+	int32_t nLevelLink;							//0x08
+	int32_t nLevelLinkEx;						//0x0C
+};
+
+struct D2DrlgWarpStrc
+{
+	int32_t nLevel;								//0x00
+	int32_t nVis[8];							//0x04
+	int32_t nWarp[8];							//0x24
+	D2DrlgWarpStrc* pNext;					//0x44
+};
 
 struct D2UnkOutdoorStrc
 {
