@@ -71,22 +71,37 @@ with open(os.path.join(path, 'data', 'functions.json')) as f:
     functions = json.load(f)
 with open(os.path.join(path, 'data', 'variables.json')) as f:
     variables = json.load(f)
-if os.path.isfile(os.path.join(path, 'data', '_functions.json')):
+if os.path.exists(os.path.join(path, 'data', '_functions.json')) and os.path.isfile(os.path.join(path, 'data', '_functions.json')):
     with open(os.path.join(path, 'data', '_functions.json')) as f:
         functions = functions + json.load(f)
-if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
+if os.path.exists(os.path.join(path, 'data', '_variables.json')) and os.path.isfile(os.path.join(path, 'data', '_variables.json')):
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
 
+with open(os.path.join(path, 'data', 'd2gs_c2s.json')) as f:
+    d2gs_c2s = json.load(f)
+if os.path.exists(os.path.join(path, 'data', '_d2gs_c2s.json')) and os.path.isfile(os.path.join(path, 'data', '_d2gs_c2s.json')):
+    with open(os.path.join(path, 'data', '_d2gs_c2s.json')) as f:
+        d2gs_c2s = d2gs_c2s + json.load(f)
+with open(os.path.join(path, 'data', 'd2gs_s2c.json')) as f:
+    d2gs_s2c = json.load(f)
+if os.path.exists(os.path.join(path, 'data', '_d2gs_s2c.json')) and os.path.isfile(os.path.join(path, 'data', '_d2gs_s2c.json')):
+    with open(os.path.join(path, 'data', '_d2gs_s2c.json')) as f:
+        d2gs_s2c = d2gs_s2c + json.load(f)
+
+
 functions = sorted(functions, key=lambda x: x['name'])
 variables = sorted(variables, key=lambda x: x['name'])
+d2gs_c2s = sorted(d2gs_c2s, key=lambda x: int(x['id'], 16))
+d2gs_s2c = sorted(d2gs_s2c, key=lambda x: int(x['id'], 16))
 
 #sort files
 for filename in ['_functions.json', 'functions.json', '_variables.json', 'variables.json']:
-    with open(os.path.join(path, 'data', filename)) as f:
-        data = json.load(f, object_pairs_hook=OrderedDict)
-    with open(os.path.join(path, 'data', filename), 'w') as outfile:
-        write(outfile, data)
+    if os.path.exists(os.path.join(path, 'data', filename)) and os.path.isfile(os.path.join(path, 'data', filename)):
+        with open(os.path.join(path, 'data', filename)) as f:
+            data = json.load(f, object_pairs_hook=OrderedDict)
+        with open(os.path.join(path, 'data', filename), 'w') as outfile:
+            write(outfile, data)
 
 
 with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
@@ -124,5 +139,36 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     outfile.write("//Functions: \n")
     for item in functions:
         outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item)).rstrip("L")))
+
+with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
+    outfile.write("#pragma once\n")
+    outfile.write("#include <Windows.h>\n")
+    outfile.write("#include <cstdint>\n")
+    outfile.write("\n")
+    outfile.write("#pragma pack(push, 1)\n\n")
+    outfile.write("//Client to Server: \n")
+    for item in d2gs_c2s:
+        outfile.write("/// <summary>\n")
+        outfile.write("/// D2GS Packet {}\n".format(item['id']))
+        if 'summary' in item:
+            for l in item['summary'].splitlines(True):
+                outfile.write("/// {}".format(l))
+        outfile.write("/// </summary>\n")
+        outfile.write("struct {} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
+        for field in item['fields']:
+            outfile.write("\t{} {}".format(field['type'], field['name']))
+            if 'value' in field:
+                outfile.write(" = {}".format(field['value']))
+            outfile.write(";")
+            if 'summary' in field:
+                outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+            outfile.write("\n")
+        outfile.write("};\n")
+        if 'size' in item:
+            outfile.write("static_assert(sizeof({}) == {});\n".format(item['name'], item['size']))
+        outfile.write("\n")
+
+    outfile.write("\n#pragma pack(pop)")
+
 
 print('Done')

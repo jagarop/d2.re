@@ -87,14 +87,14 @@ variables = []
 with open(os.path.join(path, 'data', 'functions.json')) as f:
     functions = functions + json.load(f)
 
-if os.path.isfile(os.path.join(path, 'data', '_functions.json')):
+if os.path.exists(os.path.join(path, 'data', '_functions')) and os.path.isfile(os.path.join(path, 'data', '_functions.json')):
     with open(os.path.join(path, 'data', '_functions.json')) as f:
         functions = functions + json.load(f)
 
 with open(os.path.join(path, 'data', 'variables.json')) as f:
     variables = variables + json.load(f)
 
-if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
+if os.path.exists(os.path.join(path, 'data', '_variables')) and os.path.isfile(os.path.join(path, 'data', '_variables.json')):
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
 
@@ -103,10 +103,11 @@ variables = sorted(variables, key=lambda x: x['name'])
 
 #sort files
 for filename in ['_functions.json', 'functions.json', '_variables.json', 'variables.json']:
-    with open(os.path.join(path, 'data', filename)) as f:
-        data = json.load(f, object_pairs_hook=OrderedDict)
-    with open(os.path.join(path, 'data', filename), 'w') as outfile:
-        write(outfile, data)
+    if os.path.exists(os.path.join(path, 'data', filename)) and os.path.isfile(os.path.join(path, 'data', filename)):
+        with open(os.path.join(path, 'data', filename)) as f:
+            data = json.load(f, object_pairs_hook=OrderedDict)
+        with open(os.path.join(path, 'data', filename), 'w') as outfile:
+            write(outfile, data)
 
 
 #uncomment if u want ida to load IDA.H
