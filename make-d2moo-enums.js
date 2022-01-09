@@ -22,11 +22,12 @@ let s = `#pragma once
 
 `;
 
-for (const filePath of walkSync(__dirname)) {
+for (const filePath of walkSync(D2MOO_PATH)) {
   if(!filePath.endsWith(".h")
     || filePath.includes("D2Unicode.h")) {
     continue;
   }
+  console.log(filePath);
   let lines = fs.readFileSync(filePath, 'utf-8').split(/\r?\n/);
   for(var i = 0; i < lines.length; i++) {
     if(!lines[i].trim().match(/^enum/)) {
