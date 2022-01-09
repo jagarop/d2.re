@@ -112,7 +112,8 @@ struct D2DrlgWarpStrc
 {
 	int32_t nLevel;								//0x00
 	int32_t nVis[8];							//0x04
-	int32_t nWarp[8];							//0x24
+	int32_t nWarp[8];
+	int32_t unkval;
 	D2DrlgWarpStrc* pNext;					//0x44
 };
 
@@ -1540,7 +1541,8 @@ struct D2StatStrc {
 };
 
 struct D2DrlgStrc {
- 	char pad_0000[288]; //0x0000
+ 	char pad_0000[280]; //0x0000
+	D2DrlgWarpStrc* pWarp;
 	uint32_t StaffTombLevel; //0x0120
 	char pad_0124[1844]; //0x0124
 	D2DrlgActStrc *pAct; //0x0858
@@ -1715,8 +1717,8 @@ struct D2DrlgLevelStrc {
 	char pad_01C0[8]; //0x01C0
 	D2DrlgStrc *pDrlg; //0x01C8
 	char pad_01D0[40]; //0x01D0
-	uint32_t LevelNo; //0x01F8
-	char pad_01FC[12]; //0x01FC
+	uint64_t nLevelId; //0x01F8
+	char pad_01FC[8]; //0x01FC
 	union //0x0208
 	{
 		int32_t RoomCenterX[9]; //0x0000
