@@ -63,9 +63,18 @@ struct D2UIButtonStrc_VMT;
 struct D2UIButtonStrc;
 struct D2MissilesTxt;
 struct D2UnkOutdoorStrc;
+struct D2DrlgWarpStrc;
 
 #pragma pack(push, 1)
 
+
+struct D2DrlgWarpStrc
+{
+	int32_t nLevel;								//0x00
+	int32_t nVis[8];							//0x04
+	int32_t nWarp[8];							//0x24
+	D2DrlgWarpStrc* pNext;					//0x44
+};
 
 struct D2UnkOutdoorStrc
 {
