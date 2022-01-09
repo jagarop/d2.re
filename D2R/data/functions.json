@@ -61,9 +61,6 @@
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PlaceAct4Lava", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "40 57 48 83 EC 20 48 8B F9 48 8B 89 ? ? ? ? 80 B9 ? ? ? ? ?", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PlaceArcaneSanctuary", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 8B 83 ? ? ? ? 4C 8D 45 30", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_ScanReplaceSpecialPreset", "args": "(D2DrlgLevelStrc *pLevel, const void *pMazeInit, int *pRand)", "pattern": "E8 ? ? ? ? 48 63 55 30", "type": "operand", "operand": 0},
-<<<<<<< HEAD
-{"ret": "void", "conv": "__fastcall", "name": "DRLGPRESET_LoadDrlgFile", "args": "(void **ppDrlgFile, const char *szFile)", "pattern": "E8 ? ? ? ? 48 8B 0D ? ? ? ? 48 8B 04 D9", "type": "operand", "operand": 0},
-=======
 {"ret": "void", "conv": "__fastcall", "name": "DRLGOUTDESR_InitAct2OutdoorLevel", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? EB 08 48 8B CE E8 ? ? ? ? 48 8B CE", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGOUTDOORS_AlterAdjacentPresetGridCells", "args": "(D2DrlgLevelStrc *pLevel, int nX, int nY)", "pattern": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B 71 18 49 63 C0 48 8D 1C 85 ? ? ? ? 48 63 FA 33 D2 48 8B 46 28 48 63 0C 18 48 8B 46 20 48 03 CF 48 8D 0C C8 E8 ? ? ? ? 48 8B 46 78 33 D2", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGOUTDOORS_SetBlankGridCell", "args": "(D2DrlgLevelStrc *pLevel, int nX, int nY)", "pattern": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B 71 18 49 63 C0 48 8D 1C 85 ? ? ? ? 48 63 FA 33 D2 48 8B 46 28 48 63 0C 18 48 8B 46 20 48 03 CF 48 8D 0C C8 E8 ? ? ? ? 48 8B 46 78 BA ? ? ? ?", "type": "absoulte"},
@@ -73,7 +70,6 @@
 {"ret": "void", "conv": "__fastcall", "name": "DRLGOUTPLACE_PlaceAct1245OutdoorBorders", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 8B 8E ? ? ? ? 83 E9 68", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGOUTPLACE_SetOutGridLinkFlags", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? EB 0D E8 ? ? ? ? 48 8B CE", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGPRESET_LoadDrlgFile", "args": "(D2DrlgFileStrc **ppDrlgFile, const char *szFile)", "pattern": "E8 ? ? ? ? 48 8B 0D ? ? ? ? 48 8B 04 D9", "type": "operand", "operand": 0},
->>>>>>> 7986814025a2b55916df64db6e8b46ed859bd7e0
 {"ret": "__int64", "conv": "__fastcall", "name": "DRLGROOMTILE_LoadDT1FilesForRoom", "args": "(D2RoomExStrc* pRoomEx)", "pattern": "E8 ? ? ? ? 83 7B 74 02", "type": "operand", "operand": 0},
 {"ret": "D2RoomExStrc*", "conv": "__fastcall", "name": "DRLGROOM_AllocRoomEx", "args": "(D2DrlgLevelStrc *pLevel, int nType)", "pattern": "E8 ? ? ? ? 48 8B F8 09 58 50", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGTILESUB_AddSecondaryBorder", "args": "(D2UnkOutdoorStrc *a1)", "pattern": "40 53 41 57 48 83 EC 28 48 63 59 28", "type": "absoulte"},
