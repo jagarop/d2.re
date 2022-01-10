@@ -7,6 +7,7 @@
 {"ctype": "char*", "name": "g_CreateGameDesc", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 83 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameName", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 93 ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GameStrc*", "name": "g_CurrentSinglePlayerGame", "pattern": "48 89 05 ? ? ? ? 48 85 C0 75 06 48 83 C4 20 5B C3 45 8B C3 8B D3 48 8B C8 E8 ? ? ? ? 48 83 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
+{"ctype": "int64_t", "name": "g_D2GS_C2S_FunctionTable", "pattern": "48 8D 0D ? ? ? ? 48 89 74 24 ? 48 83 3C D1 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GSServerToClientHandler", "name": "g_D2GS_S2C_FunctionTable", "pattern": "4C 8D A2 ? ? ? ? 41 8B 44 CC ?", "operand": 1, "type": "other"},
 {"ctype": "D2DataTablesStrc", "name": "g_DataTables", "pattern": "48 03 3D ? ? ? ? 74 3B 49 8B CE E8 ? ? ? ? 4C 8B E0 48 C7 C1 ? ? ? ? 48 FF C1 40 38 34 0F 75 F7", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_FPS", "pattern": "89 05 ? ? ? ? 41 8B C5 89 05 ? ? ? ? ", "operand": 0, "type": "operand"},

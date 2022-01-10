@@ -55,24 +55,46 @@ def BuildEnum(items):
 
 #Renames all the functions in the D2GS_S2C_FunctionTable
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
-def RenameD2GSFunctions():
-    item = [x for x in variables if x['name'] == 'g_D2GS_S2C_FunctionTable'][0]
+def RenameD2GSS2CFunctions(address, i):
+    func = get_qword(address + (i * 0x18))
+    funcex = get_qword(address + (i * 0x18) + 0x10)
+    if func != 0x0:
+        name = 'D2GS_S2C_0x{:02X}_PacketHandler'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(void* pPacket)'.format(name))
+    set_name(address + (i * 0x18) + 0x8 , 'D2GS_S2C_0x{:02X}_PacketSize'.format(i))
+    idc.SetType(address + (i * 0x18) + 0x8 , 'int64_t')
+    if funcex != 0x0:
+        name = 'D2GS_S2C_0x{:02X}_PacketHandlerEx'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(funcex, name)
+        idc.SetType(funcex, '__int64 __fastcall  {}(D2UnitStrc* pUnit, void* pPacket)'.format(name))
+
+def RenameD2GSC2SFunctions(address, i):
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        name = 'D2GS_C2S_0x{:02X}_PacketHandler'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, void* pPacket, int nPacketSize)'.format(name))
+
+def RenameTableFunctions(name, size, func):
+    item = [x for x in variables if x['name'] == name][0]
     address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
     if address == idaapi.BADADDR:
         return
-    address = base + idc.get_operand_value(address, item['operand'])
-    print("Renaming D2GS_S2C Functions: %-16s" % ( hex(address).rstrip("L") ))
-    for i in range(0xAE):
-        func = get_qword(address + (i * 0x18))
-        funcex = get_qword(address + (i * 0x18) + 0x10)
-        if func != 0x0:
-            set_name(func, 'D2GS_S2C_0x{:02X}_PacketHandler'.format(i))
-            idc.SetType(func, '__int64 __fastcall  D2GS_S2C_0x{:02X}_PacketHandler(void* pPacket)'.format(i))
-        set_name(address + (i * 0x18) + 0x8 , 'D2GS_S2C_0x{:02X}_PacketSize'.format(i))
-        idc.SetType(address + (i * 0x18) + 0x8 , 'int64_t')
-        if funcex != 0x0:
-            set_name(funcex, 'D2GS_S2C_0x{:02X}_PacketHandlerEx'.format(i))
-            idc.SetType(funcex, '__int64 __fastcall  D2GS_S2C_0x{:02X}_PacketHandlerEx(D2UnitStrc* pUnit, void* pPacket)'.format(i))
+    if item['type'] == 'operand':
+        address = idc.get_operand_value(address, item['operand'])
+    #idk have to do this for function table..
+    elif item['type'] == 'other':
+        address = base + idc.get_operand_value(address, item['operand'])
+    #sig points to an absolute addr usually start of func or something unnecassary code but making it explict what is happening
+    elif item['type'] == 'absolute':
+        None
+    print("Renaming %s Functions: %-16s" % ( name, hex(address).rstrip("L") ))
+    for i in range(size):
+        func(address, i)
 
 
 version = ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN)
@@ -123,5 +145,7 @@ print('enum class Variables : uint64_t {')
 BuildEnum(variables)
 print('}')
 
-RenameD2GSFunctions()
+RenameTableFunctions('g_D2GS_S2C_FunctionTable', 0xAE, RenameD2GSS2CFunctions)
+RenameTableFunctions('g_D2GS_C2S_FunctionTable', 0x64, RenameD2GSC2SFunctions) # is this the right size?
+
 print('Done')
