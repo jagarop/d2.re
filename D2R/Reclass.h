@@ -1601,3 +1601,11 @@ public:
 	virtual void Function20();
 }; //Size: 0x0070
 static_assert(sizeof(D2UIButtonStrc) == 0x70);
+
+class D2PointFloat
+{
+public:
+	float X; //0x0000
+	float Y; //0x0004
+}; //Size: 0x0008
+static_assert(sizeof(D2PointFloat) == 0x8);

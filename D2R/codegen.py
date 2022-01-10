@@ -149,12 +149,12 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
     outfile.write("//Client to Server: \n")
     for item in d2gs_c2s:
         outfile.write("/// <summary>\n")
-        outfile.write("/// D2GS Packet {}\n".format(item['id']))
+        outfile.write("/// D2GS Client to Server Packet {}\n".format(item['id']))
         if 'summary' in item:
             for l in item['summary'].splitlines(True):
                 outfile.write("/// {}".format(l))
         outfile.write("/// </summary>\n")
-        outfile.write("struct {} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
+        outfile.write("struct D2GS_C2S_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
         for field in item['fields']:
             outfile.write("\t{} {}".format(field['type'], field['name']))
             if 'value' in field:
@@ -165,7 +165,29 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
             outfile.write("\n")
         outfile.write("};\n")
         if 'size' in item:
-            outfile.write("static_assert(sizeof({}) == {});\n".format(item['name'], item['size']))
+            outfile.write("static_assert(sizeof(D2GS_C2S_{}) == {});\n".format(item['name'], item['size']))
+        outfile.write("\n")
+
+    outfile.write("//Server to Client: \n")
+    for item in d2gs_s2c:
+        outfile.write("/// <summary>\n")
+        outfile.write("/// D2GS Server to Client Packet {}\n".format(item['id']))
+        if 'summary' in item:
+            for l in item['summary'].splitlines(True):
+                outfile.write("/// {}".format(l))
+        outfile.write("/// </summary>\n")
+        outfile.write("struct D2GS_S2C_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
+        for field in item['fields']:
+            outfile.write("\t{} {}".format(field['type'], field['name']))
+            if 'value' in field:
+                outfile.write(" = {}".format(field['value']))
+            outfile.write(";")
+            if 'summary' in field:
+                outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+            outfile.write("\n")
+        outfile.write("};\n")
+        if 'size' in item:
+            outfile.write("static_assert(sizeof(D2GS_S2C_{}) == {});\n".format(item['name'], item['size']))
         outfile.write("\n")
 
     outfile.write("\n#pragma pack(pop)")
