@@ -67,10 +67,103 @@ struct D2DrlgWarpStrc;
 struct D2DrlgLinkStrc;
 struct D2DrlgLevelLinkDataStrc;
 struct D2SeedStrc;
+struct D2DrlgTileDataStrc;
+struct D2TileLibraryEntryStrc;
+struct D2TileRecordStrc;
+struct D2TileLibraryHashStrc;
+struct D2TileLibraryHashRefStrc;
+struct D2TileLibraryHashNodeStrc;
+struct D2UnkDrlgLogicStrc;
+struct D2PropertyStrc;
 
 #pragma pack(push, 1)
 
 
+struct D2UnkDrlgLogicStrc
+{
+	D2RoomExStrc* pRoomEx;					//0x00
+	D2DrlgGridStrc* field_4;				//0x04
+	D2DrlgGridStrc* pOrientationGrid;		//0x08
+	D2DrlgGridStrc* pWallGrid;				//0x0C
+	D2DrlgGridStrc* pFloorGrid;				//0x10
+	D2DrlgGridStrc* field_14;				//0x14
+	int32_t field_18;						//0x18
+	int32_t nFlags;							//0x1C
+};
+
+
+struct D2TileLibraryHashStrc
+{
+	D2TileLibraryHashNodeStrc* pNodes[128];	//0x00
+};
+
+struct D2TileLibraryHashRefStrc
+{
+	D2TileLibraryEntryStrc* pTile;			//0x00
+	D2TileLibraryHashRefStrc* pPrev;		//0x04
+};
+
+struct D2TileLibraryHashNodeStrc
+{
+	int32_t nIndex;								//0x00
+	int32_t nSubIndex;							//0x04
+	int32_t nOrientation;						//0x08
+	D2TileLibraryHashRefStrc* pRef;			//0x0C
+	D2TileLibraryHashNodeStrc* pPrev;		//0x10
+};
+
+struct D2TileRecordStrc
+{
+	char szLibraryName[260];				//0x00
+	void* pLibrary;							//0x104
+	D2TileLibraryHashStrc* pHashBlock;		//0x108
+	D2TileRecordStrc* pPrev;				//0x10C
+};
+struct D2TileLibraryEntryStrc
+{
+	int32_t nDirection;							//0x00
+	uint16_t nRoofHeight;						//0x04
+	uint16_t nFlags;							//0x06
+	int32_t nHeight;							//0x08
+	int32_t nWidth;								//0x0C
+	int32_t unk0x10;							//0x10
+	int32_t nOrientation;						//0x14
+	int32_t nIndex;								//0x18
+	int32_t nSubIndex;							//0x1C
+	int32_t nFrame_Rarity;						//0x20
+	int32_t unk0x24;							//0x24
+	uint8_t dwTileFlags[4];					//0x28
+	int32_t dwBlockOffset_pBlock;				//0x2C
+	int32_t nBlockSize;							//0x30
+	int32_t nBlocks;							//0x34
+	D2TileRecordStrc* pParent;				//0x38
+	uint16_t unk0x3C;							//0x3C
+	uint16_t nCacheIndex;						//0x3E
+	uint32_t unk0x40[4];						//0x40
+	//int32_t field_50;
+	//int32_t field_54;
+	//int32_t field_58;
+	//int32_t field_5C;
+};
+
+struct D2DrlgTileDataStrc
+{
+	int32_t nWidth;								//0x00
+	int32_t nHeight;							//0x04
+	int32_t nPosX;								//0x08
+	int32_t nPosY;								//0x0C
+	int32_t unk0x10;							//0x10
+	uint32_t dwFlags;					//0x14
+	D2TileLibraryEntryStrc* pTile;			//0x18
+	int32_t unk0x1C;							//0x1C
+	D2DrlgTileDataStrc* unk0x20;			//0x20
+	int32_t unk0x24;							//0x24
+	uint8_t nRed;								//0x28
+	uint8_t nGreen;							//0x29
+	uint8_t nBlue;								//0x2A
+	uint8_t nIntensity;						//0x2B
+	int32_t unk0x2C;							//0x2C
+};
 
 struct D2SeedStrc
 {
@@ -1907,6 +2000,15 @@ struct D2UIButtonStrc_VMT {
 	void(__fastcall* BUTTON_Func18)(D2UIButtonStrc* pThis);
 	void(__fastcall* BUTTON_Func19)(D2UIButtonStrc* pThis);
 	void(__fastcall* BUTTON_Click)(D2UIButtonStrc* pThis, bool bClicked); 
+};
+
+
+struct D2PropertyStrc
+{
+	int32_t nProperty;					//0x00
+	int32_t nLayer;						//0x04
+	int32_t nMin;						//0x08
+	int32_t nMax;						//0x0C
 };
 
 struct D2UIButtonStrc {
