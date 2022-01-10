@@ -74,6 +74,7 @@ struct D2TileLibraryHashStrc;
 struct D2TileLibraryHashRefStrc;
 struct D2TileLibraryHashNodeStrc;
 struct D2UnkDrlgLogicStrc;
+struct D2PropertyStrc;
 
 #pragma pack(push, 1)
 
@@ -1999,6 +2000,15 @@ struct D2UIButtonStrc_VMT {
 	void(__fastcall* BUTTON_Func18)(D2UIButtonStrc* pThis);
 	void(__fastcall* BUTTON_Func19)(D2UIButtonStrc* pThis);
 	void(__fastcall* BUTTON_Click)(D2UIButtonStrc* pThis, bool bClicked); 
+};
+
+
+struct D2PropertyStrc
+{
+	int32_t nProperty;					//0x00
+	int32_t nLayer;						//0x04
+	int32_t nMin;						//0x08
+	int32_t nMax;						//0x0C
 };
 
 struct D2UIButtonStrc {
