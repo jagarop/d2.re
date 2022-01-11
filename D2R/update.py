@@ -9,6 +9,9 @@ path = os.path.abspath(os.path.dirname(__file__))
 base = idaapi.get_imagebase()
 end_ea = idc.get_segm_end(0)
 
+countFunctions = 0
+countVariables = 0
+
 def Parse():
     header_h = ida_kernwin.ask_file(0, "*.h", "Select IDA.H file")
     idaapi.idc_parse_types(header_h, idc.PT_FILE)
@@ -25,6 +28,8 @@ def write(outfile, data):
     return
 
 def BuildEnum(items):
+    global countFunctions
+    global countVariables
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
@@ -49,16 +54,20 @@ def BuildEnum(items):
         set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']))
         if 'ctype' in item:
+            countVariables = countVariables + 1
             idc.SetType(address, str(item['ctype']))
         else:
+            countFunctions = countFunctions + 1
             idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
 #Renames all the functions in the D2GS_S2C_FunctionTable
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
 def RenameD2GSS2CFunctions(address, i):
+    global countFunctions
     func = get_qword(address + (i * 0x18))
     funcex = get_qword(address + (i * 0x18) + 0x10)
     if func != 0x0:
+        countFunctions = countFunctions + 1
         name = 'D2GS_S2C_0x{:02X}_PacketHandler'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
@@ -66,18 +75,62 @@ def RenameD2GSS2CFunctions(address, i):
     set_name(address + (i * 0x18) + 0x8 , 'D2GS_S2C_0x{:02X}_PacketSize'.format(i))
     idc.SetType(address + (i * 0x18) + 0x8 , 'int64_t')
     if funcex != 0x0:
+        countFunctions = countFunctions + 1
         name = 'D2GS_S2C_0x{:02X}_PacketHandlerEx'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(funcex, name)
         idc.SetType(funcex, '__int64 __fastcall  {}(D2UnitStrc* pUnit, void* pPacket)'.format(name))
 
 def RenameD2GSC2SFunctions(address, i):
+    global countFunctions
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
+        countFunctions = countFunctions + 1
         name = 'D2GS_C2S_0x{:02X}_PacketHandler'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, void* pPacket, int nPacketSize)'.format(name))
+
+#todo find a way to resuse this..
+def RenameSkillsSrvStFuncFunctions(address, i):
+    global countFunctions
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        countFunctions = countFunctions + 1
+        name = 'SKILL_ServerStart_{}'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
+
+def RenameSkillsSrvDoFuncFunctions(address, i):
+    global countFunctions
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        countFunctions = countFunctions + 1
+        name = 'SKILL_ServerDo_{}'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
+
+def RenameSkillsCltStFuncFunctions(address, i):
+    global countFunctions
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        countFunctions = countFunctions + 1
+        name = 'SKILL_ClientStart_{}'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
+
+def RenameSkillsCltDoFuncFunctions(address, i):
+    global countFunctions
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        countFunctions = countFunctions + 1
+        name = 'SKILL_ClientDo_{}'.format(i)
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
 
 def RenameTableFunctions(name, size, func):
     item = [x for x in variables if x['name'] == name][0]
@@ -148,4 +201,10 @@ print('}')
 RenameTableFunctions('g_D2GS_S2C_FunctionTable', 0xAE, RenameD2GSS2CFunctions)
 RenameTableFunctions('g_D2GS_C2S_FunctionTable', 0x64, RenameD2GSC2SFunctions) # is this the right size?
 
+RenameTableFunctions('g_SkillsSrvStFunc', 0x42, RenameSkillsSrvStFuncFunctions)
+RenameTableFunctions('g_SkillsSrvDoFunc', 0x98, RenameSkillsSrvDoFuncFunctions)
+RenameTableFunctions('g_SkillsCltStFunc', 0x35, RenameSkillsCltStFuncFunctions)
+RenameTableFunctions('g_SkillsCltDoFunc', 0x60, RenameSkillsCltDoFuncFunctions)
+
+print("Renamed {} Functions and {} Variables".format(countFunctions, countVariables))
 print('Done')
