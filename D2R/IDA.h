@@ -76,6 +76,7 @@ struct D2TileLibraryHashNodeStrc;
 struct D2UnkDrlgLogicStrc;
 struct D2PropertyStrc;
 struct D2MagicAffixTxt;
+struct D2DrlgEnvironmentStrc;
 
 #pragma pack(push, 1)
 
@@ -1286,6 +1287,29 @@ struct D2ItemsTxt {
 	uint32_t HellUpgrade; //0x01A8
 	char pad_01AC[4]; //0x01AC 
 };
+
+
+struct D2DrlgEnvironmentStrc
+{
+	int32_t nCycleIndex;					//0x00
+	int32_t nPeriodOfDay;					//0x04
+	int32_t nTicks;							//0x08
+	int32_t nIntensity;						//0x0C
+	uint32_t dwInitTick;					//0x10
+	int32_t unk0x14;						//0x14
+	uint8_t nRed;							//0x18
+	uint8_t nGreen;							//0x19
+	uint8_t nBlue;							//0x1A
+	uint8_t pad0x1B;						//0x1B
+	float fCos;								//0x1C
+	float fLast;							//0x20
+	float fSin;								//0x24
+	int32_t nTimeRate;						//0x28
+	int32_t nTimeRateIndex;					//0x2C
+	BOOL bEclipse;							//0x30
+	int32_t nPrev;							//0x34
+};
+
 
 struct D2MonStatsTxt {
  	uint16_t ID; //0x0000
