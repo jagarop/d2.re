@@ -11,6 +11,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "COLLISION_SetMaskWithSize", "args": "(D2RoomStrc* pRoom, int nX, int nY, int nUnitSize, uint16_t nMask)", "pattern": "E8 ? ? ? ? 66 41 09 5D ?", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "COLLISION_SetMaskWithSizeXY", "args": "(D2RoomStrc* pRoom, int nX, int nY, unsigned int nSizeX, unsigned int nSizeY, uint16_t nMask)", "pattern": "E8 ? ? ? ? 4C 8B 7C 24 ? E9 ? ? ? ? 48 8B CB", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2COMMON_10475_PostStatToStatList", "args": "(D2UnitStrc* pUnit, BOOL a2)", "pattern": "E8 ? ? ? ? 0F BF 57 74", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "D2COMMON_11013_ConvertMode", "args": "(D2UnitStrc *pUnit, int *pType, int *pClass, int *pMode)", "pattern": "E8 ? ? ? ? 41 83 FE 40", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "D2Common_10299_7FF7FC24CF50", "args": "(D2UnitStrc *pUnit, int nBodyLoc, D2UnitStrc *pItem, BOOL bDontCheckReqs)", "pattern": "E8 ? ? ? ? 85 C0 74 16 80 3D ? ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "D2Common_10434", "args": "(D2UnitStrc* pUnit, BOOL a2)", "pattern": "E8 ? ? ? ? 48 85 C0 74 E9", "type": "operand", "operand": 0, "summary": "https://github1s.com/ThePhrozenKeep/D2MOO/blob/master/source/D2Common/src/Units/Units.cpp#L2579-L2580"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "D2Common_11034", "args": "(int nLevel, int nSkillId)", "pattern": "85 D2 78 61 48 63 C2", "type": "absoulte"},
@@ -48,6 +49,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_AllocGlobalTileLibraryHash", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "D2AnimDataRecordStrc*", "conv": "__fastcall", "name": "DATATBLS_GetAnimDataRecord", "args": "(D2UnitStrc *pUnit, int nClassId, int nMode, int nUnitType, D2InventoryStrc *pInventory)", "pattern": "E8 ? ? ? ? 44 8B 70 08", "type": "operand", "operand": 0},
 {"ret": "void*", "conv": "__fastcall", "name": "DATATBLS_GetHirelingTxtRecordFromIdAndLevel", "args": "(BOOL bExpansion, int nId, int nLevel)", "pattern": "45 33 C9 81 FA ? ? ? ? 7D 6D", "type": "absoulte"},
+{"ret": "D2ItemRatioTxt*", "conv": "__fastcall", "name": "DATATBLS_GetItemRatioTxtRecord", "args": "(int nItemId, uint8_t nDifficulty, uint16_t wVersion)", "pattern": "48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC 20 3B 0D ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "D2ItemsTxt*", "conv": "__fastcall", "name": "DATATBLS_GetItemRecordFromItemCode", "args": "(int a1, __int64 a2, const void *a3, unsigned int a4)", "pattern": "4C 8B 11 4C 8B 59 08", "type": "absoulte"},
 {"ret": "D2LvlWarpTxt*", "conv": "__fastcall", "name": "DATATBLS_GetLvlWarpTxtRecordFromLevelIdAndDirection", "args": "(int nLevelId, char szDirection)", "pattern": "48 83 EC 28 48 8B 05 ? ? ? ? 44 8B C9", "type": "absoulte"},
 {"ret": "__int64*", "conv": "__fastcall", "name": "DATATBLS_GetMagicAffixTxtRecord", "args": "(uint16_t nIndex)", "pattern": "E8 ? ? ? ? 48 8B 3F 48 8B F0", "type": "operand", "operand": 0},
@@ -86,6 +88,7 @@
 {"ret": "D2RoomExStrc*", "conv": "__fastcall", "name": "DRLGMAZE_GetRandomRoomExFromLevel", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 48 8D 3D ? ? ? ? 8B 83 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "__int64*", "conv": "__fastcall", "name": "DRLGMAZE_InitBasicMazeLayout", "args": "(D2DrlgLevelStrc *pLevel, int a2)", "pattern": "E8 ? ? ? ? 8B 83 ? ? ? ? 48 8D 35 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PickRoomPreset", "args": "(D2RoomExStrc *pRoomEx)", "pattern": "E8 ? ? ? ? 48 8B 5B 48", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PlaceAct1Barracks", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 48 8B CB E8 ? ? ? ? 4C 8B 6B 10", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "DRLGMAZE_PlaceAct2TombPrev_Act5BaalPrev", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC 20 8B 81 ? ? ? ?", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PlaceAct4Lava", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "40 57 48 83 EC 20 48 8B F9 48 8B 89 ? ? ? ? 80 B9 ? ? ? ? ?", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DRLGMAZE_PlaceArcaneSanctuary", "args": "(D2DrlgLevelStrc *pLevel)", "pattern": "E8 ? ? ? ? 8B 83 ? ? ? ? 4C 8D 45 30", "type": "operand", "operand": 0},
@@ -139,6 +142,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "DUNGEON_GetAdjacentRoomsListFromRoom", "args": "(D2RoomStrc* pRoom, D2RoomStrc*** pppRoomList, int* pNumRooms)", "pattern": "E8 ? ? ? ? 8B 45 EB", "type": "operand", "operand": 0, "summary": "Undsure of RET type. Legacy uses VOID"},
 {"ret": "void", "conv": "__fastcall", "name": "DUNGEON_RemoveRoomData", "args": "(D2DrlgActStrc* pAct, uint32_t nLevelNo, uint32_t nRoomx, uint32_t nRoomY, D2RoomStrc* room1)", "pattern": "40 53 55 41 56 48 83 EC 30 41 8B E9 45 8B F0 8B DA 48 85 C9", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "DUNGEON_RemoveRoomFromAct", "args": "(D2DrlgActStrc* pAct, D2RoomStrc* pRoom)", "pattern": "E8 ? ? ? ? EB 04 44 89 67 10 ", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "ENVIRONMENT_UpdateLightIntensity", "args": "(D2DrlgEnvironmentStrc *pEnvironment, int nLevelId, int nAct", "pattern": "E8 ? ? ? ? 45 85 F6 44 89 73 30", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "Fog_10211_AllocLinker", "args": "()", "pattern": "48 83 EC 28 E8 ? ? ? ? 48 8B 05 ? ? ? ?", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "Fog_10212_FreeLinker", "args": "(void* pLinker)", "pattern": "E8 ? ? ? ? 48 39 2D ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "Fog_10215", "args": "(void *pBin, int a2)", "pattern": "E8 ? ? ? ? 41 8B 4F 08 83 F9 0A", "type": "operand", "operand": 0},
@@ -308,9 +312,5 @@
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_TestCollision", "args": "(int nX1, int nY1, int nSize1, int nX2, int nY2, int nSize2, D2RoomStrc* pRoom, int nCollisionType)", "pattern": "E8 ? ? ? ? 4C 8B 7C 24 ? 85 F6", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_TestCollisionWithUnit", "args": "(D2UnitStrc* pUnit1, D2UnitStrc* pUnit2, int nCollisionType)", "pattern": "E8 ? ? ? ? 8B 55 14", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "pfAutoMap", "args": "(D2RoomStrc* pRoom)", "pattern": "48 89 5C 24 ? 57 48 83 EC 20 48 8B 05 ? ? ? ? 48 8B F9 48 85 C0 74 04 8B 18 EB 05 BB ? ? ? ? 33 D2 48 85 FF 75 04 8B C2 EB 15 48 8B 41 18 48 8B 88 ? ? ? ? 8B 81 ? ? ? ? 85 C0 78 16", "type": "absoulte"},
-{"ret": "void", "conv": "__fastcall", "name": "D2COMMON_11013_ConvertMode", "args": "(D2UnitStrc *pUnit, int *pType, int *pClass, int *pMode)", "pattern": "E8 ? ? ? ? 41 83 FE 40", "type": "operand", "operand": 0},
-{"ret": "void", "conv": "__fastcall", "name": "ENVIRONMENT_UpdateLightIntensity", "args": "(D2DrlgEnvironmentStrc *pEnvironment, int nLevelId, int nAct", "pattern": "E8 ? ? ? ? 45 85 F6 44 89 73 30", "type": "operand", "operand": 0},
-
-
 {"ret": "void", "conv": "__fastcall", "name": "pfTownAutoMap", "args": "(int a1, __int64 a2, __int64 a3, __int64 a4)", "pattern": "40 53 55 56 57 41 57 48 83 EC 50", "type": "absoulte"}
 ]

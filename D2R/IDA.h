@@ -77,8 +77,32 @@ struct D2UnkDrlgLogicStrc;
 struct D2PropertyStrc;
 struct D2MagicAffixTxt;
 struct D2DrlgEnvironmentStrc;
+struct D2ItemRatioTxt;
 
 #pragma pack(push, 1)
+
+struct D2ItemRatioTxt
+{
+	uint32_t dwUnique;						//0x00
+	uint32_t dwUniqueDivisor;				//0x04
+	uint32_t dwUniqueMin;					//0x08
+	uint32_t dwRare;						//0x0C
+	uint32_t dwRareDivisor;					//0x10
+	uint32_t dwRareMin;						//0x14
+	uint32_t dwSet;							//0x18
+	uint32_t dwSetDivisor;					//0x1C
+	uint32_t dwSetMin;						//0x20
+	uint32_t dwMagic;						//0x24
+	uint32_t dwMagicDivisor;				//0x28
+	uint32_t dwMagicMin;					//0x2C
+	uint32_t dwHiQuality;					//0x30
+	uint32_t dwHiQualityDivisor;			//0x34
+	uint32_t dwNormal;						//0x38
+	uint32_t dwNormalDivisor;				//0x3C
+	uint16_t wVersion;						//0x40
+	uint8_t nUber;							//0x42
+	uint8_t nClassSpecific;					//0x43 
+};
 
 
 struct D2MagicAffixTxt
