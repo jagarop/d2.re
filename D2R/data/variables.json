@@ -18,10 +18,10 @@
 {"ctype": "uint32_t", "name": "g_PlayerUnitIndex", "pattern": "8B 0D ? ? ? ? 48 8B 58 18", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_QuestFlags", "pattern": "48 8B 15 ? ? ? ? 4D 8D 7D 08", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc", "name": "g_ServerSideUnitHashTable", "pattern": "48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
-{"ctype": "int64_t", "name": "g_SkillsCltDoFunc", "pattern": "49 83 BC C3 ? ? ? ? ? ", "operand": 0, "type": "other", "summary": "int (__fastcall* D2SkillCltDoFunc_t)(D2UnitStrc* pUnit, int nSkill, int nSkillLevel); --- https://d2mods.info/forum/viewtopic.php?f=8&t=60933 --- https://d2r-txt-guide.github.io/#_Toc52465984"},
-{"ctype": "int64_t", "name": "g_SkillsCltStFunc", "pattern": "4C 8B 8C C1 ? ? ? ? 4D 85 C9 74 6A 45 8B C5 41 8B D4 48 8B CF 41 FF D1 44 8B F8", "operand": 1, "type": "other", "summary": "int (__fastcall* D2SkillCltStFunc_t)(D2UnitStrc* pUnit, int nSkill, int nSkillLevel);"},
-{"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand", "summary": "int (__fastcall* D2SkillSrvDoFunc_t)(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel);"},
-{"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other", "summary": "int (__fastcall* D2SkillSrvStFunc_t)(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel);"},
+{"ctype": "int64_t", "name": "g_SkillsCltDoFunc", "pattern": "49 83 BC C3 ? ? ? ? ? ", "operand": 0, "type": "other", "summary": "--- https://d2mods.info/forum/viewtopic.php?f=8&t=60933 --- https://d2r-txt-guide.github.io/#_Toc52465984"},
+{"ctype": "int64_t", "name": "g_SkillsCltStFunc", "pattern": "4C 8B 8C C1 ? ? ? ? 4D 85 C9 74 6A 45 8B C5 41 8B D4 48 8B CF 41 FF D1 44 8B F8", "operand": 1, "type": "other" },
+{"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand" },
+{"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other" },
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
