@@ -75,9 +75,36 @@ struct D2TileLibraryHashRefStrc;
 struct D2TileLibraryHashNodeStrc;
 struct D2UnkDrlgLogicStrc;
 struct D2PropertyStrc;
+struct D2MagicAffixTxt;
 
 #pragma pack(push, 1)
 
+
+struct D2MagicAffixTxt
+{
+	char szName[32];								//0x00
+	uint16_t wTblIndex;								//0x20
+	uint16_t wVersion;								//0x22
+	D2PropertyStrc pProperties[3];					//0x24
+	uint16_t wSpawnable;							//0x54
+	char nTransformColor;							//0x56
+	uint8_t unk0x57;								//0x57
+	uint32_t dwLevel;								//0x58
+	uint32_t dwGroup;								//0x5C
+	uint32_t dwMaxLevel;							//0x60
+	uint8_t nRare;									//0x64
+	uint8_t nLevelReq;								//0x65
+	uint8_t nClassSpecific;							//0x66
+	uint8_t nClass;									//0x67
+	uint8_t nClassLevelReq;							//0x68
+	uint8_t pad0x69;								//0x69
+	uint16_t wIType[7];								//0x6A
+	uint16_t wEType[5];								//0x78
+	uint16_t wFrequency;							//0x82
+	uint32_t dwDivide;								//0x84
+	uint32_t dwMultiply;							//0x88
+	uint32_t dwAdd;									//0x8C
+};
 
 struct D2UnkDrlgLogicStrc
 {
