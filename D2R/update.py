@@ -97,7 +97,7 @@ def RenameSkillsSrvStFuncFunctions(address, i):
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
         countFunctions = countFunctions + 1
-        name = 'SKILLS_ServerStart_{}'.format(i)
+        name = 'SKILLS_SrvStFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
@@ -107,7 +107,7 @@ def RenameSkillsSrvDoFuncFunctions(address, i):
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
         countFunctions = countFunctions + 1
-        name = 'SKILLS_ServerDo_{}'.format(i)
+        name = 'SKILLS_SrvDoFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
@@ -117,7 +117,7 @@ def RenameSkillsCltStFuncFunctions(address, i):
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
         countFunctions = countFunctions + 1
-        name = 'SKILLS_ClientStart_{}'.format(i)
+        name = 'SKILLS_CltStFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
@@ -127,7 +127,7 @@ def RenameSkillsCltDoFuncFunctions(address, i):
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
         countFunctions = countFunctions + 1
-        name = 'SKILLS_ClientDo_{}'.format(i)
+        name = 'SKILLS_CltDoFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))

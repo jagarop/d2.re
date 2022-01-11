@@ -238,6 +238,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "SKILLS_CalculateKickDamage", "args": "(D2UnitStrc *pUnit, int *pMinDamage, int *pMaxDamage, int *pDamagePercent)", "pattern": "48 85 C9 0F 84 ? ? ? ? 4C 89 4C 24 ?", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "SKILLS_FreeSkillList", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 83 3F 01 75 37", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "SKILLS_GetRequiredLevelBasedOnCurrent", "args": "(D2UnitStrc *pUnit, int nSkillId)", "pattern": "48 83 EC 28 4C 63 C2", "type": "absoulte"},
+{"ret": "__int64", "conv": "__fastcall", "name": "SKILLS_GetUseState", "args": "(D2UnitStrc *pUnit, D2SkillStrc *pSkill)", "pattern": "E8 ? ? ? ? 85 C0 75 69", "type": "operand", "operand": 0},
 {"ret": "int64_t", "conv": "__fastcall", "name": "SKILLS_GetWeaponMasteryBonus", "args": "(D2UnitStrc *pUnit, D2UnitStrc *pItem, D2SkillStrc *pSkill, int nType)", "pattern": "E8 ? ? ? ? 41 8D 2C 07", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "SKILLS_InitSkill", "args": "(D2UnitStrc *pUnit, int a2, int a3, int a4)", "pattern": "E8 ? ? ? ? 49 8B 06 EB 03", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "SKILLS_SetLevelAndUpdate", "args": "(D2UnitStrc *pUnit, int a2, int a3, int a4)", "pattern": "E8 ? ? ? ? F6 46 24 20", "type": "operand", "operand": 0},
