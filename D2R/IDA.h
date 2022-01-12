@@ -75,9 +75,61 @@ struct D2TileLibraryHashRefStrc;
 struct D2TileLibraryHashNodeStrc;
 struct D2UnkDrlgLogicStrc;
 struct D2PropertyStrc;
+struct D2MagicAffixTxt;
+struct D2DrlgEnvironmentStrc;
+struct D2ItemRatioTxt;
 
 #pragma pack(push, 1)
 
+struct D2ItemRatioTxt
+{
+	uint32_t dwUnique;						//0x00
+	uint32_t dwUniqueDivisor;				//0x04
+	uint32_t dwUniqueMin;					//0x08
+	uint32_t dwRare;						//0x0C
+	uint32_t dwRareDivisor;					//0x10
+	uint32_t dwRareMin;						//0x14
+	uint32_t dwSet;							//0x18
+	uint32_t dwSetDivisor;					//0x1C
+	uint32_t dwSetMin;						//0x20
+	uint32_t dwMagic;						//0x24
+	uint32_t dwMagicDivisor;				//0x28
+	uint32_t dwMagicMin;					//0x2C
+	uint32_t dwHiQuality;					//0x30
+	uint32_t dwHiQualityDivisor;			//0x34
+	uint32_t dwNormal;						//0x38
+	uint32_t dwNormalDivisor;				//0x3C
+	uint16_t wVersion;						//0x40
+	uint8_t nUber;							//0x42
+	uint8_t nClassSpecific;					//0x43 
+};
+
+
+struct D2MagicAffixTxt
+{
+	char szName[32];								//0x00
+	uint16_t wTblIndex;								//0x20
+	uint16_t wVersion;								//0x22
+	D2PropertyStrc pProperties[3];					//0x24
+	uint16_t wSpawnable;							//0x54
+	char nTransformColor;							//0x56
+	uint8_t unk0x57;								//0x57
+	uint32_t dwLevel;								//0x58
+	uint32_t dwGroup;								//0x5C
+	uint32_t dwMaxLevel;							//0x60
+	uint8_t nRare;									//0x64
+	uint8_t nLevelReq;								//0x65
+	uint8_t nClassSpecific;							//0x66
+	uint8_t nClass;									//0x67
+	uint8_t nClassLevelReq;							//0x68
+	uint8_t pad0x69;								//0x69
+	uint16_t wIType[7];								//0x6A
+	uint16_t wEType[5];								//0x78
+	uint16_t wFrequency;							//0x82
+	uint32_t dwDivide;								//0x84
+	uint32_t dwMultiply;							//0x88
+	uint32_t dwAdd;									//0x8C
+};
 
 struct D2UnkDrlgLogicStrc
 {
@@ -1259,6 +1311,29 @@ struct D2ItemsTxt {
 	uint32_t HellUpgrade; //0x01A8
 	char pad_01AC[4]; //0x01AC 
 };
+
+
+struct D2DrlgEnvironmentStrc
+{
+	int32_t nCycleIndex;					//0x00
+	int32_t nPeriodOfDay;					//0x04
+	int32_t nTicks;							//0x08
+	int32_t nIntensity;						//0x0C
+	uint32_t dwInitTick;					//0x10
+	int32_t unk0x14;						//0x14
+	uint8_t nRed;							//0x18
+	uint8_t nGreen;							//0x19
+	uint8_t nBlue;							//0x1A
+	uint8_t pad0x1B;						//0x1B
+	float fCos;								//0x1C
+	float fLast;							//0x20
+	float fSin;								//0x24
+	int32_t nTimeRate;						//0x28
+	int32_t nTimeRateIndex;					//0x2C
+	BOOL bEclipse;							//0x30
+	int32_t nPrev;							//0x34
+};
+
 
 struct D2MonStatsTxt {
  	uint16_t ID; //0x0000
