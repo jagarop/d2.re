@@ -3,6 +3,8 @@
 {"ctype": "float", "name": "g_AutomapScale", "pattern": "F3 0F 59 05 ? ? ? ? F3 0F 5F 05 ? ? ? ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_AutomapShift", "pattern": "48 89 35 ? ? ? ? E8 ? ? ? ? 41 0F B6 46 ?", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_AutomapShiftDirection", "pattern": "8B 05 ? ? ? ? 89 44 24 20 74 07", "operand": 1, "type": "operand"},
+{"ctype": "void", "name": "g_BeltInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 48 85 C0 74 1F 83 FF 0F 77 1A 48 8B 40 18 48 63 CF 48 39 2C C8 ", "operand": 1, "type": "operand"},
+{"ctype": "void", "name": "g_BodyLocInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? 33 D2 48 8B CF E8 ? ? ? ? 48 85 C0 75 04 33 DB EB 08 48 8B 40 18 48 8B 58 20 ", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc", "name": "g_ClientSideUnitHashTable", "pattern": "4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameDesc", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 83 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameName", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 93 ? ? ? ?", "operand": 1, "type": "operand"},
@@ -19,9 +21,9 @@
 {"ctype": "int64_t", "name": "g_QuestFlags", "pattern": "48 8B 15 ? ? ? ? 4D 8D 7D 08", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc", "name": "g_ServerSideUnitHashTable", "pattern": "48 8D 05 ? ? ? ? F7 83 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_SkillsCltDoFunc", "pattern": "49 83 BC C3 ? ? ? ? ? ", "operand": 0, "type": "other", "summary": "--- https://d2mods.info/forum/viewtopic.php?f=8&t=60933 --- https://d2r-txt-guide.github.io/#_Toc52465984"},
-{"ctype": "int64_t", "name": "g_SkillsCltStFunc", "pattern": "4C 8B 8C C1 ? ? ? ? 4D 85 C9 74 6A 45 8B C5 41 8B D4 48 8B CF 41 FF D1 44 8B F8", "operand": 1, "type": "other" },
-{"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand" },
-{"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other" },
+{"ctype": "int64_t", "name": "g_SkillsCltStFunc", "pattern": "4C 8B 8C C1 ? ? ? ? 4D 85 C9 74 6A 45 8B C5 41 8B D4 48 8B CF 41 FF D1 44 8B F8", "operand": 1, "type": "other"},
+{"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand"},
+{"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
