@@ -78,6 +78,8 @@ struct D2PropertyStrc;
 struct D2MagicAffixTxt;
 struct D2DrlgEnvironmentStrc;
 struct D2ItemRatioTxt;
+struct D2InventoryNodeStrc;
+struct D2PathInfoStrc;
 
 #pragma pack(push, 1)
 
@@ -1571,6 +1573,37 @@ struct D2StatListExStrc {
 	uint32_t StatFlagsEx[6]; //0x0AE0 
 };
 
+struct D2PathInfoStrc
+{
+	D2PathPointStrc pStartCoord;			//0x00
+	D2PathPointStrc tTargetCoord;				//0x04
+	D2RoomStrc* pRoom;						//0x08
+	D2RoomStrc* field_C;					//0x0C
+	int32_t field_10;							//0x10
+	uint8_t field_14;							//0x14
+	uint8_t field_15;							//0x15
+	uint16_t field_16;							//0x16
+	int32_t nDistMax;							//0x18
+	uint8_t field_1C;							//0x1C
+	uint8_t field_1D;							//0x1D
+	uint16_t field_1E;							//0x1E
+	int32_t nPathType;							//0x20
+	int32_t nUnitSize;							//0x24
+	int32_t nCollisionPattern;					//0x28
+	int32_t nCollisionType;						//0x2C
+	union
+	{
+		D2DynamicPathStrc* pDynamicPath;	//0x30 - not sure yet
+		D2PathInfoStrc* pNext;				//0x30
+	};
+};
+
+struct D2InventoryNodeStrc
+{
+	int32_t nItemId;							//0x00
+	D2InventoryNodeStrc* pNext;				//0x04
+};
+
 struct D2InventoryStrc {
  	uint32_t Signature; //0x0000
 	char pad_0004[4]; //0x0004
@@ -1584,7 +1617,9 @@ struct D2InventoryStrc {
 	D2UnitStrc *pCursorItem; //0x0040
 	uint32_t OwnerID; //0x0048
 	uint32_t ItemCount; //0x004C
-	char pad_0050[120]; //0x0050 
+	char pad_0050[24]; //0x0050
+	D2InventoryNodeStrc* pFirstNode;
+	D2InventoryNodeStrc* pLastNode;
 };
 
 struct D2PathPointStrc {
