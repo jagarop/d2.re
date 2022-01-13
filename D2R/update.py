@@ -162,14 +162,14 @@ variables = []
 with open(os.path.join(path, 'data', 'functions.json')) as f:
     functions = functions + json.load(f)
 
-if os.path.exists(os.path.join(path, 'data', '_functions')) and os.path.isfile(os.path.join(path, 'data', '_functions.json')):
+if os.path.isfile(os.path.join(path, 'data', '_functions.json')):
     with open(os.path.join(path, 'data', '_functions.json')) as f:
         functions = functions + json.load(f)
 
 with open(os.path.join(path, 'data', 'variables.json')) as f:
     variables = variables + json.load(f)
 
-if os.path.exists(os.path.join(path, 'data', '_variables')) and os.path.isfile(os.path.join(path, 'data', '_variables.json')):
+if os.path.isfile(os.path.join(path, 'data', '_variables.json')):
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
 
