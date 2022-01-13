@@ -24,6 +24,7 @@
 {"ctype": "int64_t", "name": "g_SkillsCltStFunc", "pattern": "4C 8B 8C C1 ? ? ? ? 4D 85 C9 74 6A 45 8B C5 41 8B D4 48 8B CF 41 FF D1 44 8B F8", "operand": 1, "type": "other"},
 {"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other"},
+{"ctype": "int64_t", "name": "g_Unk1ScreenToWorld", "pattern": "0F B7 0D ? ? ? ? 48 8D 55 A0", "operand": 1, "type": "operand", "summary": "a1 in GAME_ScreenToWorld"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
