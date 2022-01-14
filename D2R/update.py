@@ -33,7 +33,7 @@ def BuildEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L"), hex(address).rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L")+",", hex(address).rstrip("L") ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -45,11 +45,11 @@ def BuildEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L"), hex(address).rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
         #remove old variable name if exists anywhere
         set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']))
@@ -156,6 +156,8 @@ if version == idaapi.BADADDR:
 else:
     version = idc.get_strlit_contents(idc.get_operand_value(version, 1))
 print('//D2R Version - %s' % ( version ))
+exeBase = ida_nalt.get_imagebase()
+print ('\r//Image Base - %s' % (str(hex(exeBase).upper().replace("0X", "0x").rstrip("L"))))
 
 functions = []
 variables = []
@@ -192,11 +194,11 @@ for filename in ['_functions.json', 'functions.json', '_variables.json', 'variab
 
 print('enum class Functions : uint64_t {')
 BuildEnum(functions)
-print('}')
+print('};')
 
 print('enum class Variables : uint64_t {')
 BuildEnum(variables)
-print('}')
+print('};')
 
 RenameTableFunctions('g_D2GS_S2C_FunctionTable', 0xAE, RenameD2GSS2CFunctions)
 RenameTableFunctions('g_D2GS_C2S_FunctionTable', 0x64, RenameD2GSC2SFunctions) # is this the right size?
