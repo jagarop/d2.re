@@ -80,6 +80,9 @@ struct D2DrlgEnvironmentStrc;
 struct D2ItemRatioTxt;
 struct D2InventoryNodeStrc;
 struct D2PathInfoStrc;
+struct D2UnitFindDataStrc;
+struct D2UnitFindArgStrc;
+typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
 
@@ -1432,7 +1435,7 @@ struct D2UnitStrc {
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
 	D2SkillListStrc *pSkills; //0x0100
-	char pad_0108[24]; //0x0108
+	char pad_0108[28]; //0x0108
 	uint32_t Flags; //0x0120
 	uint32_t FlagsEx; //0x0124
 	char pad_0128[32]; //0x0128
@@ -1644,15 +1647,18 @@ struct D2DynamicPathStrc {
 	uint32_t dwPathPoints; //0x0034
 	char pad_0038[8]; //0x0038
 	D2UnitStrc *pUnit; //0x0040
-	char pad_0048[24]; //0x0048
+	char pad_0048[8]; //0x0048
+	uint32_t dwPathType;
+	uint32_t dwUnitSize;
+	uint32_t dwCollisionPattern;
 	uint32_t dwCollisionType; //0x0060
 	uint32_t nUnk0x64; //0x0064
 	char pad_0068[56]; //0x0068
 	uint32_t dwVelocity; //0x00A0
-	char pad_00A4[25]; //0x00A4
+	char pad_00A4[24]; //0x00A4
 	uint8_t nDistMax; //0x00BD
 	uint8_t nUnk0xBE; //0x00BE
-	char pad_00BF[9]; //0x00BF
+	char pad_00BF[6]; //0x00BF
 	D2PathPointStrc PathPoints[78]; //0x00C8
 	uint32_t nSavedStepsCount; //0x0200
 	D2PathPointStrc SavedSteps[7]; //0x0204
@@ -1721,17 +1727,50 @@ struct D2GameStrc {
 	D2DrlgActStrc *pAct; //0x00B8 
 };
 
+struct D2UnitFindArgStrc
+{
+	int32_t nFlags;								//0x00
+	int32_t unk0x04;							//0x04
+	D2UnitStrc* pUnit;						//0x08
+	int32_t nX;									//0x0C
+	int32_t nY;									//0x10
+	int32_t nSize;								//0x14
+	int32_t nMaxArrayEntries;					//0x18
+	int32_t nIndex;								//0x1C
+	D2FieldStrc* pField;					//0x20
+	UNITFINDTEST pfnUnitTest;				//0x24
+	int32_t unk0x28;							//0x28
+	int32_t unk0x2C;							//0x2C
+	int32_t unk0x30;							//0x30
+	int32_t unk0x34;							//0x34
+};
+
+struct D2UnitFindDataStrc
+{
+	D2UnitStrc** pUnitsArray;				//0x04
+	D2RoomStrc* pRoom;						//0x08
+	UNITFINDTEST pfnUnitTest;				//0x0C
+	D2UnitFindArgStrc* pUnitFindArg;		//0x10
+	int32_t nFlags;								//0x14
+	int32_t nIndex;								//0x18
+	int32_t nMaxArrayEntries;					//0x1C
+	int32_t nX;									//0x20
+	int32_t nY;									//0x24
+	int32_t nSize;								//0x28
+};
+
+
 struct D2ClientStrc {
  	char pad_0000[136]; //0x0000 
 };
 
 struct D2PresetUnitStrc {
- 	char pad_0000[4]; //0x0000
+ 	uint32_t LevelNo; //0x0000
 	uint32_t Index; //0x0004
 	uint32_t PosX; //0x0008
 	char pad_000C[4]; //0x000C
 	D2PresetUnitStrc *pPresetNext; //0x0010
-	char pad_0018[8]; //0x0018
+	uint64_t AreaID; //0x0018
 	uint32_t Type; //0x0020
 	uint32_t PosY; //0x0024
 	char pad_0028[8]; //0x0028 
@@ -1983,6 +2022,11 @@ struct D2MissileDataStrc {
 };
 
 struct D2Point32 {
+ 	int32_t X; //0x0000
+	int32_t Y; //0x0004 
+};
+
+struct D2FieldStrc {
  	int32_t X; //0x0000
 	int32_t Y; //0x0004 
 };
