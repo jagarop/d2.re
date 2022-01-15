@@ -82,6 +82,7 @@ struct D2InventoryNodeStrc;
 struct D2PathInfoStrc;
 struct D2UnitFindDataStrc;
 struct D2UnitFindArgStrc;
+struct D2MissileDamageDataStrc;
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
@@ -265,6 +266,41 @@ struct D2DrlgWarpStrc
 	int32_t nWarp[8];
 	int32_t unkval;
 	D2DrlgWarpStrc* pNext;					//0x44
+};
+
+struct D2MissileDamageDataStrc
+{
+	int32_t nFlags;								//0x00
+	int32_t nMinDamage;							//0x04
+	int32_t nMaxDamage;							//0x08
+	int32_t nFireMinDamage;						//0x0C
+	int32_t nFireMaxDamage;						//0x10
+	int32_t nFireLength;						//0x14
+	int32_t nLightMinDamage;					//0x18
+	int32_t nLightMaxDamage;					//0x1C
+	int32_t nMagicMinDamage;					//0x20
+	int32_t nMagicMaxDamage;					//0x24
+	int32_t nColdMinDamage;						//0x28
+	int32_t nColdMaxDamage;						//0x2C
+	int32_t nColdLength;						//0x30
+	int32_t nPoisonMinDamage;					//0x34
+	int32_t nPoisonMaxDamage;					//0x38
+	int32_t nPoisonLength;						//0x3C
+	int32_t nPoisonCount;						//0x40
+	int32_t nLifeDrainMinDamage;				//0x44
+	int32_t nLifeDrainMaxDamage;				//0x48
+	int32_t nManaDrainMinDamage;				//0x4C
+	int32_t nManaDrainMaxDamage;				//0x50
+	int32_t nStaminaDrainMinDamage;				//0x54
+	int32_t nStaminaDrainMaxDamage;				//0x58
+	int32_t nStunLength;						//0x5C
+	int32_t nBurningMin;						//0x60
+	int32_t nBurningMax;						//0x64
+	int32_t nBurnLength;						//0x68
+	int32_t nDemonDamagePercent;				//0x6C
+	int32_t nUndeadDamagePercent;				//0x70
+	int32_t nDamageTargetAC;					//0x74
+	int32_t nDamagePercent;						//0x78
 };
 
 struct D2UnkOutdoorStrc
