@@ -83,9 +83,31 @@ struct D2PathInfoStrc;
 struct D2UnitFindDataStrc;
 struct D2UnitFindArgStrc;
 struct D2MissileDamageDataStrc;
+struct D2HirelingInitStrc;
+struct D2MonStatsInitStrc;
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+
+
+struct D2MonStatsInitStrc
+{
+	int32_t nMinHP;								//0x00
+	int32_t nMaxHP;								//0x04
+	int32_t nAC;								//0x08
+	int32_t nTH;								//0x0C
+	int32_t nExp;								//0x10
+	int32_t nA1MinD;							//0x14
+	int32_t nA1MaxD;							//0x18
+	int32_t nA2MinD;							//0x1C
+	int32_t nA2MaxD;							//0x20
+	int32_t nS1MinD;							//0x24
+	int32_t nS1MaxD;							//0x28
+	int32_t nElMinD;							//0x2C
+	int32_t nElMaxD;							//0x30
+	int32_t nElDur;								//0x34
+};
 
 struct D2ItemRatioTxt
 {
@@ -1664,6 +1686,25 @@ struct D2InventoryStrc {
 struct D2PathPointStrc {
  	uint16_t X; //0x0000
 	uint16_t Y; //0x0002 
+};
+
+struct D2HirelingInitStrc
+{
+	int32_t nId;								//0x00
+	int32_t nLevel;								//0x04
+	int32_t nHitpoints;							//0x08
+	int32_t nStrength;							//0x0C
+	int32_t nDexterity;							//0x10
+	int32_t nGold;								//0x14
+	int32_t nExperience;						//0x18
+	int32_t nDefense;							//0x1C
+	int32_t nMinDamage;							//0x20
+	int32_t nMaxDamage;							//0x24
+	int32_t nShare;								//0x28
+	int32_t nResist;							//0x2C
+	int32_t nHireDesc;							//0x30
+	int32_t field_34;							//0x34
+	int16_t nFlags;							//0x38
 };
 
 struct D2DynamicPathStrc {

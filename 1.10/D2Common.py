@@ -588,7 +588,7 @@ Funcs = [
 		[0x6FDA3010, "ITEMS_SerializeItemComplete", "void __fastcall ITEMS_SerializeItemComplete(D2UnitStrc* pItem, D2BitBufferStrc* pBuffer, BOOL bServer, BOOL bGamble)"],
 		[0x6FDA42B0, "ITEMS_GetItemStatCostTxtRecord", "D2ItemStatCostTxt* __fastcall ITEMS_GetItemStatCostTxtRecord(int nStatId)"],
 		[0x6FDA42E0, "ITEMS_GetNoOfSetItemsFromItem", "int __stdcall ITEMS_GetNoOfSetItemsFromItem(D2UnitStrc* pItem)"],
-		[0x6FDA4380, "D2Common_6FDA4380", "BOOL __fastcall sub_6FDA4380(D2UnitStrc* pItem, unsigned int nSetItemMask)"],
+		[0x6FDA4380, "ITEMS_RecalculateSetItemSpecificMods", "BOOL __fastcall sub_6FDA4380(D2UnitStrc* pItem, unsigned int nSetItemMask)"],
 		[0x6FDA4490, "D2Common_6FDA4490", "BOOL __fastcall sub_6FDA4490(D2UnitStrc* pUnit, D2UnitStrc* pItem, int a3)"],
 		[0x6FDA4640, "ITEMS_UpdateSets", "BOOL __stdcall ITEMS_UpdateSets(D2UnitStrc* pPlayer, D2UnitStrc* pItem, int a3, int a4)"],
 		[0x6FDA4C10, "MONSTERS_HirelingInit", "int __fastcall MONSTERS_HirelingInit(BOOL bExpansion, D2UnitStrc* pMonster, int nLowSeed, int nAct, int nDifficulty, D2HirelingInitStrc* pHirelingInit)"],
