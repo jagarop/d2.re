@@ -87,9 +87,66 @@ struct D2HirelingInitStrc;
 struct D2MonStatsInitStrc;
 struct D2TCExInfoStrc;
 struct D2TCExShortStrc;
+struct D2MissileCalcStrc;
+struct D2SkillCalcStrc;
+struct D2ItemCalcStrc;
+struct D2ItemSaleInfo;
+struct D2UnkMissileCalcStrc;
+struct D2RunesTxt;
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+
+struct D2RunesTxt
+{
+	char szName[64];						//0x00
+	char szRuneName[64];					//0x40
+	uint8_t nComplete;						//0x80
+	uint8_t nServer;						//0x81
+	uint16_t wStringId;						//0x82
+	uint16_t pad0x84;						//0x84
+	uint16_t wIType[6];						//0x86
+	uint16_t wEType[3];						//0x92
+	int32_t nRune[6];						//0x98
+	D2PropertyStrc pProperties[7];			//0xB0
+};
+
+
+struct D2UnkMissileCalcStrc
+{
+	int32_t field_0;
+	int32_t field_4;
+	int32_t field_8;
+	int32_t field_C;
+	int32_t field_10;
+	int32_t field_14;
+	int32_t field_18;
+	int32_t field_1C;
+	D2SeedStrc pSeed;
+};
+
+struct D2ItemSaleInfo {
+	uint32_t Unk0x0000;            //0x0000
+    int32_t Page;                //0x0004
+    int16_t PosX;                //0x0008
+    int16_t PosY;                //0x000A
+    uint32_t Unk0x000C;            //0x000C
+    int32_t Valid;                //0x0010
+};
+
+struct D2ItemCalcStrc
+{
+	D2UnitStrc* pUnit;						//0x00
+	D2UnitStrc* pItem;						//0x04
+};
+
+struct D2SkillCalcStrc
+{
+	D2UnitStrc* pUnit;						//0x00
+	int32_t nSkillId;							//0x04
+	int32_t nSkillLevel;						//0x08
+};
 
 
 struct D2TCExInfoStrc
@@ -912,7 +969,7 @@ struct D2DataTablesStrc {
 	uint64_t *pObjGroupTxt; //0x1448
 	uint64_t nObjGroupTxtCount; //0x1450
 	uint64_t nObjGroupTxtCountEx; //0x1458
-	uint64_t *pRunesTxt; //0x1460
+	D2RunesTxt *pRunesTxt_wrong; //0x1460
 	uint64_t nRunesTxtCount; //0x1468
 	uint64_t nRunesTxtCountEx; //0x1470
 	uint64_t *N00000967; //0x1478
@@ -1017,8 +1074,8 @@ struct D2DataTablesStrc {
 	uint64_t N00000ACE; //0x1768
 	uint64_t N00000ACF; //0x1770
 	uint64_t N00000AD0; //0x1778
-	uint64_t N00000AD1; //0x1780
-	uint64_t N00000AD2; //0x1788
+	D2RunesTxt *pRunesTxt; //0x1780
+	uint64_t nRunesTxtRecordCount; //0x1788
 	uint64_t N00000AD3; //0x1790
 	uint64_t *pLowQualityItemsTxt; //0x1798
 	uint64_t nLowQualityItemsTxtCount; //0x17A0
@@ -1622,6 +1679,14 @@ struct D2UnitHashTableStrc {
 	D2UnitStrc *Missiles[128]; //0x0C00
 	D2UnitStrc *Items[128]; //0x1000
 	D2UnitStrc *Tiles[128]; //0x1400 
+};
+
+struct D2MissileCalcStrc
+{
+	D2UnitStrc* pMissile;					//0x00
+	D2UnitStrc* pOwner;						//0x04
+	int32_t nMissileId;							//0x08
+	int32_t nMissileLevel;						//0x0C
 };
 
 struct D2UnitStrc {
