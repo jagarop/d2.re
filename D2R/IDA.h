@@ -1601,10 +1601,15 @@ struct D2ItemsTxt {
 	uint16_t SubType; //0x0129
 	uint16_t DropSound; //0x012B
 	uint16_t UseSound; //0x012D
-	char pad_012F[9]; //0x012F
+	uint8_t unkkk1;
+	uint8_t unkkk2;
+	uint8_t nUnique;
+	uint8_t nQuest;
+	char pad_012F[5]; //0x012F
 	uint8_t BeltType; //0x0138
 	uint8_t AutoBelt; //0x0139
-	char pad_013A[106]; //0x013A
+	uint8_t nStackable; //0x013A
+	char pad_013B[105]; //0x013B
 	uint32_t NightmareUpgrade; //0x01A4
 	uint32_t HellUpgrade; //0x01A8
 	char pad_01AC[4]; //0x01AC 
@@ -2267,7 +2272,8 @@ struct D2DrlgPresetInfoStrc
 };
 
 struct D2DrlgLevelStrc {
- 	char pad_0000[16]; //0x0000
+	uint32_t nDrlgType;
+ 	char pad_0000[12]; //0x0000
 	D2RoomExStrc *pRoomExFirst; //0x0010
 	D2DrlgPresetInfoStrc* pPreset;
 	uint32_t PosX; //0x0024
@@ -2278,7 +2284,9 @@ struct D2DrlgLevelStrc {
 	D2DrlgLevelStrc *pLevelNext; //0x01B8
 	char pad_01C0[8]; //0x01C0
 	D2DrlgStrc *pDrlg; //0x01C8
-	char pad_01D0[40]; //0x01D0
+	char pad_01D0[20];
+	uint32_t nLevelType;
+	char pad_01D[20]; //0x01D0
 	uint64_t nLevelId; //0x01F8
 	char pad_01FC[8]; //0x01FC
 	union //0x0208
