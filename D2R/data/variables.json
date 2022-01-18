@@ -10,6 +10,7 @@
 {"ctype": "char*", "name": "g_CreateGameDesc", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 83 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameName", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 93 ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GameStrc*", "name": "g_CurrentSinglePlayerGame", "pattern": "48 89 05 ? ? ? ? 48 85 C0 75 06 48 83 C4 20 5B C3 45 8B C3 8B D3 48 8B C8 E8 ? ? ? ? 48 83 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
+{"ctype": "int", "name": "g_CursorType", "pattern": "C7 05 ? ? ? ? ? ? ? ? EB 4C", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_D2GS_C2S_FunctionTable", "pattern": "48 8D 0D ? ? ? ? 48 89 74 24 ? 48 83 3C D1 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GSServerToClientHandler", "name": "g_D2GS_S2C_FunctionTable", "pattern": "4C 8D A2 ? ? ? ? 41 8B 44 CC ?", "operand": 1, "type": "other"},
 {"ctype": "HWND", "name": "g_D2rWindowHandle", "pattern": "48 89 1D ? ? ? ? E8 ? ? ? ? 48 8B 5C 24 ?", "operand": 0, "type": "operand"},
@@ -29,6 +30,6 @@
 {"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other"},
 {"ctype": "", "name": "g_TokenEncKey", "pattern": "48 8D 05 ? ? ? ? 89 74 24 60 ", "operand": 1, "type": "operand"},
-{"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
+{"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]

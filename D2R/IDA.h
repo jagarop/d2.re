@@ -93,10 +93,32 @@ struct D2ItemCalcStrc;
 struct D2ItemSaleInfo;
 struct D2UnkMissileCalcStrc;
 struct D2RunesTxt;
+struct D2CorpseStrc;
+struct D2MonModeTxtStub;
+struct D2HireDescTxt;
+struct D2DrlgVertexStrc;
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
 
+struct D2DrlgVertexStrc
+{
+	int32_t nPosX;								//0x00
+	int32_t nPosY;								//0x04
+	uint8_t nDirection;						//0x08
+	uint8_t pad0x09[3];						//0x09
+	int32_t dwFlags;							//0x0C
+	D2DrlgVertexStrc* pNext;				//0x10
+};
+
+
+struct D2CorpseStrc
+{
+	uint32_t unk0x00;							//0x00
+	uint32_t dwUnitId;							//0x04
+	uint32_t unk0x08;							//0x08
+	D2CorpseStrc* pNextCorpse;				//0x0C
+};
 
 struct D2RunesTxt
 {
@@ -630,6 +652,15 @@ struct D2UnkFogStrc
 	int32_t unk0x04;				//0x04
 };
 
+struct D2MonModeTxtStub
+{
+	uint32_t dwCode;						//0x00
+};
+
+struct D2HireDescTxt
+{
+	uint32_t dwCode;						//0x00
+};
 
 struct D2DataTablesStrc {
  	uint64_t *pPlayerClassTxt; //0x0000
@@ -1649,10 +1680,10 @@ struct D2MonStatsTxt {
 };
 
 struct D2ObjectsTxt {
- 	uint16_t ID; //0x0000
-	char Name[64]; //0x0002
-	char Description[64]; //0x0042
-	char Token[3]; //0x0082
+    uint16_t ID; //0x0000
+    char Class[64]; //0x0002
+    char Name[64]; //0x0042
+    char Token[3]; //0x0082
 	char pad_0085[227]; //0x0085 
 };
 
@@ -1913,22 +1944,25 @@ struct D2InventoryNodeStrc
 	D2InventoryNodeStrc* pNext;				//0x04
 };
 
-struct D2InventoryStrc {
- 	uint32_t Signature; //0x0000
-	char pad_0004[4]; //0x0004
-	D2UnitStrc *pOwner; //0x0008
-	D2UnitStrc *pFirstItem; //0x0010
-	D2UnitStrc *pLastItem; //0x0018
-	D2InventoryGridStrc *pGrids; //0x0020
-	int32_t GridCount; //0x0028
+struct D2InventoryStrc
+{
+	uint32_t dwSignature;					//0x00
+	char pad_0004[4];							//0x04
+	D2UnitStrc* pOwner;						//0x08
+	D2UnitStrc* pFirstItem;					//0x0C
+	D2UnitStrc* pLastItem;					//0x10
+	D2InventoryGridStrc* pGrids;			//0x14
+	int32_t nGridCount;						//0x18
 	char pad_002C[12]; //0x002C
-	int64_t dwLeftItemGUID; //0x0038
-	D2UnitStrc *pCursorItem; //0x0040
-	uint32_t OwnerID; //0x0048
-	uint32_t ItemCount; //0x004C
-	char pad_0050[24]; //0x0050
-	D2InventoryNodeStrc* pFirstNode;
-	D2InventoryNodeStrc* pLastNode;
+	int64_t dwLeftItemGUID;				//0x1C
+	D2UnitStrc* pCursorItem;				//0x20
+	uint32_t dwOwnerId;						//0x24
+	uint32_t dwItemCount;					//0x28
+	D2InventoryNodeStrc* pFirstNode;		//0x2C
+	D2InventoryNodeStrc* pLastNode;			//0x30
+	D2CorpseStrc* pFirstCorpse;				//0x34
+	D2CorpseStrc* pLastCorpse;				//0x38
+	int32_t nCorpseCount;					//0x3C
 };
 
 struct D2PathPointStrc {
@@ -2348,11 +2382,6 @@ struct D2MazeLevelIdStrc
 
 struct D2MissileDataStrc {
  	char pad_0000[136]; //0x0000 
-};
-
-struct D2Point32 {
- 	int32_t X; //0x0000
-	int32_t Y; //0x0004 
 };
 
 struct D2FieldStrc {

@@ -5,7 +5,10 @@
 #idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
 
 base = idaapi.get_imagebase()
-
+def Parse():
+    header_h = ida_kernwin.ask_file(0, "*.h", "Select IDA.H file")
+    idaapi.idc_parse_types(header_h, idc.PT_FILE)
+    
 functions = [
 #D2CLIENT
 { 'offset': 0xB32D0, 'name': 'D2CLIENT_GetQuestInfo', 'ctype': 'void* __stdcall D2CLIENT_GetQuestInfo()' },
@@ -212,6 +215,12 @@ def BuildEnum(items):
         set_name(base + item['offset'], item['name'])
         idc.SetType(base + item['offset'], item['ctype'])
         print('\t%-20s = %-20s //%-20s' % (item['name'], hex(item['offset']), hex(base + item['offset'])[:-1] ))
+
+
+print('Load IDA.H file for Parsing')
+Parse()
+print('IDA.H Loaded')
+
 
 print('enum class Functions : uint32_t {')
 BuildEnum(functions)
