@@ -51,14 +51,14 @@ def BuildEnum(items):
         else:
             print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
         #remove old variable name if exists anywhere
-        #set_name(get_name_ea_simple(str(item['name'])), '')
-        #set_name(address, str(item['name']))
-        #if 'ctype' in item:
-        #    countVariables = countVariables + 1
-        #    idc.SetType(address, str(item['ctype']))
-        #else:
-        #    countFunctions = countFunctions + 1
-        #    idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
+        set_name(get_name_ea_simple(str(item['name'])), '')
+        set_name(address, str(item['name']))
+        if 'ctype' in item:
+            countVariables = countVariables + 1
+            idc.SetType(address, str(item['ctype']))
+        else:
+            countFunctions = countFunctions + 1
+            idc.SetType(address, "{} {} {}{}".format(item['ret'], item['conv'], item['name'], item['args']))
 
 #Renames all the functions in the D2GS_S2C_FunctionTable
 # to D2GS_S2C_0xXX_PacketHandler and D2GS_S2C_0xXX_PacketHandlerEx
@@ -192,9 +192,9 @@ for filename in ['_functions.json', 'functions.json', '_variables.json', 'variab
 #Parse()
 #print('IDA.H Loaded')
 
-#print('enum class Functions : uint64_t {')
-#BuildEnum(functions)
-#print('};')
+print('enum class Functions : uint64_t {')
+BuildEnum(functions)
+print('};')
 
 print('enum class Variables : uint64_t {')
 BuildEnum(variables)
