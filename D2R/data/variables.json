@@ -17,6 +17,7 @@
 {"ctype": "D2DataTablesStrc", "name": "g_DataTables", "pattern": "48 03 3D ? ? ? ? 74 3B 49 8B CE E8 ? ? ? ? 4C 8B E0 48 C7 C1 ? ? ? ? 48 FF C1 40 38 34 0F 75 F7", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_DesktopMousePosition", "pattern": "48 89 05 ? ? ? ? 48 89 0D ? ? ? ? FF 15 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_FPS", "pattern": "89 05 ? ? ? ? 41 8B C5 89 05 ? ? ? ? ", "operand": 0, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_GameStructIndex", "pattern": "48 8B 15 ? ? ? ? 45 33 DB", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_JoinGameName", "pattern": "48 8B 15 ? ? ? ? 4C 8B 05 ? ? ? ? EB 06 48 8B D5", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_JoinGamePassword", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E8 ? ? ? ? 48 8B D3 48 8B C8 4C 8B 00 41 FF 50 20 E9 ? ? ? ? 48 B9 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_MousePosition", "pattern": "48 8B 0D ? ? ? ? F3 0F 7F 45 ?", "operand": 1, "type": "operand"},
