@@ -664,8 +664,8 @@ struct D2DataTablesStrc {
 	uint64_t nSkillCalcTxtCount; //0x0120
 	uint64_t nSkillCalcTxtCountEx; //0x0128
 	uint64_t *pSkillCalcTxtLinker; //0x0130
-	uint64_t *N000000D3; //0x0138 something dealing w/ skills
-	uint64_t N000000D4; //0x0140
+	uint64_t *pSkillsCode; //0x0138 something dealing w/ skills
+	uint64_t nSkillsCodeSize; //0x0140
 	uint64_t N000000D5; //0x0148
 	uint64_t *N000000D6; //0x0150 something dealing w/ skills
 	uint64_t N000000D7; //0x0158
@@ -882,8 +882,8 @@ struct D2DataTablesStrc {
 	uint64_t *N0000090A; //0x1190
 	uint64_t N0000090B; //0x1198
 	uint64_t N0000090C; //0x11A0
-	uint64_t *N0000090D; //0x11A8
-	uint64_t N0000090E; //0x11B0
+	uint64_t *pPassiveSkills; //0x11A8
+	uint64_t nPassiveSkills; //0x11B0
 	uint64_t N0000090F; //0x11B8
 	uint64_t *N00000910; //0x11C0
 	uint64_t *pOverlayTxt; //0x11C8
@@ -2021,17 +2021,18 @@ struct D2SkillListStrc {
 	char pad_0020[96]; //0x0020 
 };
 
-struct D2SkillStrc {
- 	D2SkillsTxt *pSkillsTxt; //0x0000
-	D2SkillStrc *pNextSkill; //0x0008
-	uint32_t dwSkillMode;
-	char pad_0010[34]; //0x0010
+class D2SkillStrc // Size might have changed, as stuff did shift recently
+{
+	class D2SkillsTxt *pSkillsTxt; //0x0000
+	class D2SkillStrc *pNextSkill; //0x0008
+	char pad_0010[36]; //0x0010
 	uint32_t Level; //0x0034
-	char pad_0038[4]; //0x0038
+	int32_t nLevelBonus; //0x0038
 	uint32_t Quantity; //0x003C
-	char pad_0040[8]; //0x0040
+	int32_t nOwnerGUID; //0x0040
+	char pad_0044[4]; //0x0044
 	uint32_t Charges; //0x0048
-	char pad_004C[4]; //0x004C 
+	char pad_004C[4]; //0x004C
 };
 
 struct D2GameStrc {
