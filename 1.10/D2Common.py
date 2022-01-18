@@ -816,7 +816,7 @@ Funcs = [
 		[0x6FDB6A30, "STATLIST_RemoveStat_6FDB6A30", "void __fastcall STATLIST_RemoveStat_6FDB6A30(void* pMemPool, D2StatsArrayStrc* pStatEx, D2StatStrc* pStat)"],
 		[0x6FDB6AB0, "STATLIST_UpdateUnitStat", "void __fastcall STATLIST_UpdateUnitStat(D2StatListExStrc* pStatList, D2SLayerStatIdStrc::PackedType nLayer_StatId, int nValue, D2ItemStatCostTxt* pItemStatCostTxtRecord, D2UnitStrc* pUnit)"],
 		[0x6FDB6C10, "D2Common_6FDB6C10", "void __fastcall sub_6FDB6C10(D2StatListExStrc* pStatListEx, D2SLayerStatIdStrc::PackedType nLayer_StatId, int nValue, D2UnitStrc* pUnit)"],
-		[0x6FDB6E30, "D2Common_ExpireStatList_6FDB6E30", "void __stdcall D2Common_ExpireStatList_6FDB6E30(D2StatListStrc* pStatList)"],
+		[0x6FDB6E30, "STATLIST_ExpireStatList", "void __stdcall D2Common_ExpireStatList_6FDB6E30(D2StatListStrc* pStatList)"],
 		[0x6FDB7030, "STATLIST_FreeStatList", "void __stdcall STATLIST_FreeStatList(D2StatListStrc* pStatList)"],
 		[0x6FDB7050, "D2Common_STATLIST_FreeStatListImpl_6FDB7050", "void __fastcall D2Common_STATLIST_FreeStatListImpl_6FDB7050(D2StatListStrc* pStatList)"],
 		[0x6FDB7110, "STATLIST_FreeStatListEx", "void __stdcall STATLIST_FreeStatListEx(D2UnitStrc* pUnit)"],
