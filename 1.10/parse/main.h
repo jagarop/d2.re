@@ -1,4 +1,5 @@
 #include "D2Structs.h"
+#include "Fog.h"
 #include "D2Constants.h"
 #include "D2QuestDataEx.h"
 #include "D2BasicTypes.h"
