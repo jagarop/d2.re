@@ -97,9 +97,23 @@ struct D2CorpseStrc;
 struct D2MonModeTxtStub;
 struct D2HireDescTxt;
 struct D2DrlgVertexStrc;
+enum D2TradeStates;
+struct D2LvlPrestTxt;
+
+struct D2DrlgTileGridStrc;
+struct D2DrlgTileLinkStrc;
+struct D2DrlgRoomTilesStrc;
+struct D2DrlgAnimTileGridStrc;
+
+
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+enum D2TradeStates
+{
+	TRADESTATE_OTHERNOROOM,
+	TRADESTATE_SELFNOROOM,
+};
 
 struct D2DrlgVertexStrc
 {
@@ -351,7 +365,8 @@ struct D2DrlgTileDataStrc
 	int32_t nPosX;								//0x08
 	int32_t nPosY;								//0x0C
 	int32_t unk0x10;							//0x10
-	uint32_t dwFlags;					//0x14
+	uint32_t dwFlags;	
+	int64_t unk0pad;				//0x14
 	D2TileLibraryEntryStrc* pTile;			//0x18
 	int32_t unk0x1C;							//0x1C
 	D2DrlgTileDataStrc* unk0x20;			//0x20
@@ -1726,9 +1741,9 @@ struct D2MissileCalcStrc
 };
 
 struct D2UnitStrc {
- 	uint32_t Type; //0x0000
-	uint32_t LineID; //0x0004
-	uint32_t ID; //0x0008
+ 	uint32_t dwUnitType; //0x0000
+	uint32_t dwClassId; //0x0004
+	uint32_t dwUnitId; //0x0008
 	uint32_t AnimationMode; //0x000C
 	union //0x0010
 	{
@@ -1738,7 +1753,7 @@ struct D2UnitStrc {
 		D2ItemDataStrc *pItemData; //0x0000
 		void *pMissileData; //0x0000
 	};
-	uint8_t ActID; //0x0018
+	uint8_t nAct; //0x0018
 	char pad_0019[7]; //0x0019
 	D2DrlgActStrc *pDrlgAct; //0x0020
 	uint32_t LowSeed; //0x0028
@@ -1750,15 +1765,15 @@ struct D2UnitStrc {
 		D2StaticPathStrc *pStaticPath; //0x0000
 	};
 	int64_t *pAnimSeq; //0x0040
-	uint32_t SeqFrameCount; //0x0048
-	uint32_t SeqFrame; //0x004C
+	uint32_t dwSeqFrameCount; //0x0048
+	uint32_t dwSeqFrame; //0x004C
 	char pad_0050[4]; //0x0050
-	uint32_t AnimSpeed; //0x0054
+	uint32_t dwAnimSpeed; //0x0054
 	char pad_0058[4]; //0x0058
-	uint32_t GFXCurrentFrame; //0x005C
+	uint32_t dwGFXcurrentFrame; //0x005C
 	char pad_0060[4]; //0x0060
-	uint32_t FrameCount; //0x0064
-	uint16_t AnimSpeedEx; //0x0068
+	uint32_t dwFrameCount; //0x0064
+	uint16_t wAnimSpeed; //0x0068
 	char pad_006A[6]; //0x006A
 	D2AnimDataRecordStrc *pAnimData; //0x0070
 	uint64_t *pUnk0x78; //0x0078
@@ -1768,13 +1783,13 @@ struct D2UnitStrc {
 	char pad_0098[16]; //0x0098
 	uint64_t *pUnk0xA8; //0x00A8
 	char pad_00B0[56]; //0x00B0
-	uint32_t OwnerType; //0x00E8
+	uint32_t dwOwnerType; //0x00E8
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
 	D2SkillListStrc *pSkills; //0x0100
 	char pad_0108[28]; //0x0108
-	uint32_t Flags; //0x0120
-	uint32_t FlagsEx; //0x0124
+	uint32_t dwFlags; //0x0120
+	uint32_t dwFlagEx; //0x0124
 	char pad_0128[32]; //0x0128
 	D2UnitStrc *pChangeNextUnit; //0x0148
 	D2UnitStrc *pListNext; //0x0150
@@ -1841,7 +1856,7 @@ struct D2ItemDataStrc {
 	uint32_t OwnerGUID; //0x000C
 	uint32_t InitSeed; //0x0010
 	uint32_t CommandFlags; //0x0014
-	uint32_t Flags; //0x0018
+	uint32_t dwFlags; //0x0018
 	char pad_001C[28]; //0x001C
 	uint32_t ItemLevel; //0x0038
 	char pad_003C[4]; //0x003C
@@ -1882,7 +1897,7 @@ struct D2StatListStrc {
 	uint32_t OwnerType; //0x0008
 	uint32_t OwnerID; //0x000C
 	char pad_0010[12]; //0x0010
-	uint32_t Flags; //0x001C
+	uint32_t dwFlags; //0x001C
 	uint32_t SkillID; //0x0020
 	float ExpireFrame; //0x0024
 	char pad_0028[8]; //0x0028
@@ -1894,7 +1909,7 @@ struct D2StatListExStrc {
 	uint32_t OwnerType; //0x0008
 	uint32_t OwnerID; //0x000C
 	char pad_0010[12]; //0x0010
-	uint32_t Flags; //0x001C
+	uint32_t dwFlags; //0x001C
 	uint32_t SkillID; //0x0020
 	float ExpireFrame; //0x0024
 	char pad_0028[8]; //0x0028
@@ -2281,6 +2296,50 @@ struct D2DrlgGridStrc
 	int32_t unk0x10;						//0x10 Maybe indicates if uninitialized? No memset when set to 1
 };
 
+struct D2DrlgTileGridStrc
+{
+	D2DrlgTileLinkStrc* pMapLinks;			//0x00
+	D2DrlgAnimTileGridStrc* pAnimTiles;		//0x04
+	int32_t nWalls;								//0x08
+	int32_t nFloors;							//0x0C
+	int32_t nShadows;							//0x10
+	D2DrlgRoomTilesStrc pTiles;				//0x14
+};
+
+struct D2DrlgTileLinkStrc
+{
+	BOOL bFloor;							//0x00
+	D2DrlgTileDataStrc* pMapTile;			//0x04
+	D2DrlgTileLinkStrc* pNext;				//0x08
+};
+struct D2DrlgRoomTilesStrc
+{
+	D2DrlgTileDataStrc* pWallTiles;			//0x00
+	int32_t nWalls;								//0x04
+	D2DrlgTileDataStrc* pFloorTiles;		//0x08
+	int32_t nFloors;							//0x0C
+	D2DrlgTileDataStrc* pRoofTiles;			//0x10
+	int32_t nRoofs;								//0x14
+};
+
+struct D2DrlgAnimTileGridStrc
+{
+	D2DrlgTileDataStrc** ppMapTileData;		//0x00
+	int32_t nFrames;							//0x04
+	int32_t nCurrentFrame;						//0x08
+	int32_t nAnimationSpeed;					//0x0C
+	D2DrlgAnimTileGridStrc* pNext;			//0x10
+};
+struct D2DrlgTileGridStrc
+{
+	D2DrlgTileLinkStrc* pMapLinks;			//0x00
+	D2DrlgAnimTileGridStrc* pAnimTiles;		//0x04
+	int32_t nWalls;								//0x08
+	int32_t nFloors;							//0x0C
+	int32_t nShadows;							//0x10
+	D2DrlgRoomTilesStrc pTiles;				//0x14
+};
+
 struct D2DrlgMapStrc
 {
 	int32_t nLevelPrest;						//0x00
@@ -2403,7 +2462,7 @@ struct D2InventoryGridStrc {
 	int8_t Width; //0x0010
 	int8_t Height; //0x0011
 	char pad_0012[6]; //0x0012
-	D2UnitStrc* pItems; //0x0018
+	D2UnitStrc** ppItems; //0x0018
 };
 
 struct D2AnimDataRecordStrc {
