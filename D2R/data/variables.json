@@ -1,4 +1,5 @@
 [
+{"ctype": "int64_t", "name": "LOD_off_6FDE5804", "pattern": "4C 8D 0D ? ? ? ? 44 2B D0 89 54 24 44", "operand": 1, "type": "operand"},
 {"ctype": "D2PointFloat", "name": "g_AutomapCellScale", "pattern": "F3 0F 10 15 ? ? ? ? 48 8D 8C 24 ? ? ? ?  ", "operand": 1, "type": "operand"},
 {"ctype": "float", "name": "g_AutomapScale", "pattern": "F3 0F 59 05 ? ? ? ? F3 0F 5F 05 ? ? ? ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_AutomapShift", "pattern": "48 89 35 ? ? ? ? E8 ? ? ? ? 41 0F B6 46 ?", "operand": 0, "type": "operand"},
@@ -9,12 +10,14 @@
 {"ctype": "char*", "name": "g_CreateGameDesc", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 83 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameName", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 93 ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GameStrc*", "name": "g_CurrentSinglePlayerGame", "pattern": "48 89 05 ? ? ? ? 48 85 C0 75 06 48 83 C4 20 5B C3 45 8B C3 8B D3 48 8B C8 E8 ? ? ? ? 48 83 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
+{"ctype": "int", "name": "g_CursorType", "pattern": "C7 05 ? ? ? ? ? ? ? ? EB 4C", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_D2GS_C2S_FunctionTable", "pattern": "48 8D 0D ? ? ? ? 48 89 74 24 ? 48 83 3C D1 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2GSServerToClientHandler", "name": "g_D2GS_S2C_FunctionTable", "pattern": "4C 8D A2 ? ? ? ? 41 8B 44 CC ?", "operand": 1, "type": "other"},
 {"ctype": "HWND", "name": "g_D2rWindowHandle", "pattern": "48 89 1D ? ? ? ? E8 ? ? ? ? 48 8B 5C 24 ?", "operand": 0, "type": "operand"},
 {"ctype": "D2DataTablesStrc", "name": "g_DataTables", "pattern": "48 03 3D ? ? ? ? 74 3B 49 8B CE E8 ? ? ? ? 4C 8B E0 48 C7 C1 ? ? ? ? 48 FF C1 40 38 34 0F 75 F7", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_DesktopMousePosition", "pattern": "48 89 05 ? ? ? ? 48 89 0D ? ? ? ? FF 15 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_FPS", "pattern": "89 05 ? ? ? ? 41 8B C5 89 05 ? ? ? ? ", "operand": 0, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_GameStructIndex", "pattern": "48 8B 15 ? ? ? ? 45 33 DB", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_JoinGameName", "pattern": "48 8B 15 ? ? ? ? 4C 8B 05 ? ? ? ? EB 06 48 8B D5", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_JoinGamePassword", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E8 ? ? ? ? 48 8B D3 48 8B C8 4C 8B 00 41 FF 50 20 E9 ? ? ? ? 48 B9 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_MousePosition", "pattern": "48 8B 0D ? ? ? ? F3 0F 7F 45 ?", "operand": 1, "type": "operand"},
@@ -28,6 +31,7 @@
 {"ctype": "int64_t", "name": "g_SkillsSrvDoFunc", "pattern": "4C 8D 15 ? ? ? ? 4D 8B 14 CA", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_SkillsSrvStFunc", "pattern": "48 83 BC C1 ? ? ? ? ?", "operand": 0, "type": "other"},
 {"ctype": "int64_t", "name": "g_Unk1ScreenToWorld", "pattern": "0F B7 0D ? ? ? ? 48 8D 55 A0", "operand": 1, "type": "operand", "summary": "a1 in GAME_ScreenToWorld"},
-{"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ? ", "operand": 1, "type": "operand"},
+{"ctype": "", "name": "g_TokenEncKey", "pattern": "48 8D 05 ? ? ? ? 89 74 24 60 ", "operand": 1, "type": "operand"},
+{"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
