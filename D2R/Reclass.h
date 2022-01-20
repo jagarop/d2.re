@@ -1609,3 +1609,178 @@ public:
 	float Y; //0x0004
 }; //Size: 0x0008
 static_assert(sizeof(D2PointFloat) == 0x8);
+
+class D2FieldStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2FieldStrc) == 0x80);
+
+class D2TileLibraryHashStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2TileLibraryHashStrc) == 0x80);
+
+class D2BoundingBoxStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2BoundingBoxStrc) == 0x80);
+
+class D2DrlgLevelLinkDataStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgLevelLinkDataStrc) == 0x80);
+
+class D2PropertyStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2PropertyStrc) == 0x80);
+
+class D2UnkMissileCalcStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2UnkMissileCalcStrc) == 0x80);
+
+class D2ItemCalcStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2ItemCalcStrc) == 0x80);
+
+class D2PathInfoStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2PathInfoStrc) == 0x80);
+
+class D2SkillCalcStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2SkillCalcStrc) == 0x80);
+
+class D2TCExShortStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2TCExShortStrc) == 0x80);
+
+class D2TCExInfoStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2TCExInfoStrc) == 0x80);
+
+class D2DrlgTileDataStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgTileDataStrc) == 0x80);
+
+class D2DrlgGridStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgGridStrc) == 0x80);
+
+class D2DrlgVertexStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgVertexStrc) == 0x80);
+
+class D2UnkDrlgLogicStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2UnkDrlgLogicStrc) == 0x80);
+
+class D2DrlgMapStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgMapStrc) == 0x80);
+
+class D2MissileDamageDataStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2MissileDamageDataStrc) == 0x80);
+
+class D2MissileCalcStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2MissileCalcStrc) == 0x80);
+
+class D2HirelingInitStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2HirelingInitStrc) == 0x80);
+
+class D2MonStatsInitStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2MonStatsInitStrc) == 0x80);
+
+class D2TileLibraryEntryStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2TileLibraryEntryStrc) == 0x80);
+
+class D2DrlgEnvironmentStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2DrlgEnvironmentStrc) == 0x80);
+
+class D2MagicAffixTxt
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2MagicAffixTxt) == 0x80);
+
+class D2RunesTxt
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2RunesTxt) == 0x80);
+
+class D2ItemRatioTxt
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2ItemRatioTxt) == 0x80);
