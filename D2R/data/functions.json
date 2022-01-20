@@ -466,7 +466,6 @@
 {"ret": "int64_t", "conv": "__fastcall", "name": "STATLIST_GetUnitStatSigned", "args": "(D2UnitStrc* pUnit, uint32_t nStatId, uint16_t nLayer)", "pattern": "48 83 EC 28 45 0F B7 C8 48 85 C9 74 42 48 8B 89 ? ? ? ? 48 85 C9 74 2F", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_InsertStatModOrFail", "args": "(__int64 a1, int a2)", "pattern": "E8 ? ? ? ? 3B EB", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_MergeStatLists", "args": "(D2UnitStrc *pTarget, D2UnitStrc *pUnit, BOOL bType)", "pattern": "E8 ? ? ? ? EB 0B 48 8B CF", "type": "operand", "operand": 0},
-{"ret": "void", "conv": "__fastcall", "name": "STATLIST_SetBaseStat", "args": "(D2UnitStrc *pItem)", "pattern": "E8 ? ? ? ? B8 ? ? ? ? EB 9E", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_SetStatIfListIsValid", "args": "(D2StatListStrc* pStatList, int nStatId, int nValue, uint16_t nLayer)", "pattern": "E8 ? ? ? ? EB 92", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_SetUnitStat", "args": "(D2UnitStrc* pUnit, int nStatId, int nValue, uint16_t nLayer)", "pattern": "E8 ? ? ? ? 8D 04 BF", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_UpdateUnitStat", "args": "(D2StatListStrc *pStatList, unsigned int a2, int a3, _BYTE *a4)", "pattern": "E8 ? ? ? ? FF C5 49 83 C6 02", "type": "operand", "operand": 0},
@@ -506,6 +505,8 @@
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "UNITS_GetPlayerUnit", "args": "(int32_t pIndex)", "pattern": "E8 ? ? ? ? 48 83 FB 1F", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetPrecisionX", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? C1 E8 0D 48 8B CF", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetPrecisionY", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? C1 FF 0D", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "PATH_ComputePathChargedBolt", "args": "(D2DynamicPathStrc *pDynamicPath, D2SeedStrc *pSeed)", "pattern": "E8 ? ? ? ? 83 4B 48 20", "type": "operand", "operand": 0},
+
 {"ret": "D2RoomStrc*", "conv": "__fastcall", "name": "UNITS_GetRoom", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 44 8B 1F", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_GetTargetCoords", "args": "(D2UnitStrc* pUnit, D2FieldStrc* pCoord)", "pattern": "48 83 EC 28 4C 8B C1 48 85 C9 74 3E ", "type": "absoulte", "summary": "unsure..."},
 {"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetUnitSizeX", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 49 8B CE 41 89 86 ? ? ? ?", "type": "operand", "operand": 0},
