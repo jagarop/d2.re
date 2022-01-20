@@ -137,7 +137,7 @@ def RenamePropertyFunc(address, i):
     func = get_qword(address + (i * 0x8))
     if func != 0x0:
         countFunctions = countFunctions + 1
-        name = 'ITEMMODS_PropertyFunc{:02}'.format(int(i))
+        name = 'ITEMMODS_PropertyFunc_{:02}'.format(int(i))
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(int nType, D2UnitStrc *pUnit, D2UnitStrc *pItem, const D2PropertyStrc *pProperty, int nSet, __int16 nStatId, int nLayer, int nValue, int nState, int fStatList, D2UnitStrc *a11)'.format(name))

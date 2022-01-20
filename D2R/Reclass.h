@@ -1784,3 +1784,10 @@ public:
 	char pad_0000[128]; //0x0000
 }; //Size: 0x0080
 static_assert(sizeof(D2ItemRatioTxt) == 0x80);
+
+class D2SeedStrc
+{
+public:
+	char pad_0000[128]; //0x0000
+}; //Size: 0x0080
+static_assert(sizeof(D2SeedStrc) == 0x80);
