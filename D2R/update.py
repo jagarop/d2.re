@@ -132,6 +132,16 @@ def RenameSkillsCltDoFuncFunctions(address, i):
         set_name(func, name)
         idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
 
+def RenamePropertyFunc(address, i):
+    global countFunctions
+    func = get_qword(address + (i * 0x8))
+    if func != 0x0:
+        countFunctions = countFunctions + 1
+        name = 'ITEMMODS_PropertyFunc{:02}'.format(int(i))
+        set_name(get_name_ea_simple(name), '')
+        set_name(func, name)
+        idc.SetType(func, '__int64 __fastcall  {}(int nType, D2UnitStrc *pUnit, D2UnitStrc *pItem, const D2PropertyStrc *pProperty, int nSet, __int16 nStatId, int nLayer, int nValue, int nState, int fStatList, D2UnitStrc *a11)'.format(name))
+
 def RenameTableFunctions(name, size, func):
     item = [x for x in variables if x['name'] == name][0]
     address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
@@ -202,11 +212,11 @@ print('};')
 
 RenameTableFunctions('g_D2GS_S2C_FunctionTable', 0xAE, RenameD2GSS2CFunctions)
 RenameTableFunctions('g_D2GS_C2S_FunctionTable', 0x64, RenameD2GSC2SFunctions) # is this the right size?
-
 RenameTableFunctions('g_SkillsSrvStFunc', 0x42, RenameSkillsSrvStFuncFunctions)
 RenameTableFunctions('g_SkillsSrvDoFunc', 0x98, RenameSkillsSrvDoFuncFunctions)
 RenameTableFunctions('g_SkillsCltStFunc', 0x35, RenameSkillsCltStFuncFunctions)
 RenameTableFunctions('g_SkillsCltDoFunc', 0x60, RenameSkillsCltDoFuncFunctions)
+RenameTableFunctions('g_AssignProperty', 0x20, RenamePropertyFunc)
 
 print("Renamed {} Functions and {} Variables".format(countFunctions, countVariables))
 print('Done')
