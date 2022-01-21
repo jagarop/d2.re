@@ -1,8 +1,11 @@
 [
 {"ctype": "int64_t", "name": "LOD_off_6FDE5804", "pattern": "4C 8D 0D ? ? ? ? 44 2B D0 89 54 24 44", "operand": 1, "type": "operand"},
 {"ctype": "int32_t", "name": "RecentInteractId", "pattern": "8B 0D ? ? ? ? 0F 1F 00 76 08", "operand": 1, "type": "operand"},
+{"ctype": "int32_t", "name": "RecentTradeId", "pattern": "C7 05 ? ? ? ? ? ? ? ? E8 ? ? ? ? 0F 1F 40 00", "operand": 0, "type": "operand"},
+{"ctype": "bool", "name": "g_AlwaysRun", "pattern": "39 2D ? ? ? ? 0F B6 C9 0F 45 CE 39 2D ? ? ? ? 88 4C 24 59 0F B6 4C 24 ? 0F 45 CE 48 8B 74 24 ? 88 4C 24 58 48 85 C0 0F 84 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_AssignProperty", "pattern": "48 8D 15 ? ? ? ? 49 89 73 10 33 F6", "operand": 1, "type": "operand"},
 {"ctype": "D2PointFloat", "name": "g_AutomapCellScale", "pattern": "F3 0F 10 15 ? ? ? ? 48 8D 8C 24 ? ? ? ?  ", "operand": 1, "type": "operand"},
+{"ctype": "bool", "name": "g_AutomapOn", "pattern": "0F B6 2D ? ? ? ? 41 B0 01 8D 4A 08 E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 8B 0D ? ? ? ? 48 89 5C 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "float", "name": "g_AutomapScale", "pattern": "F3 0F 59 05 ? ? ? ? F3 0F 5F 05 ? ? ? ? ", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_AutomapShift", "pattern": "48 89 35 ? ? ? ? E8 ? ? ? ? 41 0F B6 46 ?", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_AutomapShiftDirection", "pattern": "8B 05 ? ? ? ? 89 44 24 20 74 07", "operand": 1, "type": "operand"},
