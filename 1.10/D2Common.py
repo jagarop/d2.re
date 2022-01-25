@@ -830,7 +830,7 @@ Funcs = [
 		[0x6FDB72E0, "STATLIST_GetState", "int __stdcall STATLIST_GetState(D2StatListStrc* pStatList)"],
 		[0x6FDB7300, "STATLIST_SetExpireFrame", "void __stdcall STATLIST_SetExpireFrame(D2StatListStrc* pStatList, int nExpireFrame)"],
 		[0x6FDB7320, "STATLIST_GetExpireFrame", "int __stdcall STATLIST_GetExpireFrame(D2StatListStrc* pStatList)"],
-		[0x6FDB7340, "D2COMMON_10475_PostStatToStatList", "void __stdcall D2COMMON_10475_PostStatToStatList(D2UnitStrc* pUnit, D2StatListStrc* pStatList, BOOL bResetFlag)"],
+		[0x6FDB7340, "STATLIST_PostStatToStatList(", "void __stdcall STATLIST_PostStatToStatList((D2UnitStrc* pUnit, D2StatListStrc* pStatList, BOOL bResetFlag)"],
 		[0x6FDB7560, "STATLIST_AddStat", "void __stdcall STATLIST_AddStat(D2StatListStrc* pStatList, int nStatId, int nValue, uint16_t nLayer)"],
 		[0x6FDB7690, "STATLIST_InsertStatModOrFail", "void __fastcall STATLIST_InsertStatModOrFail(D2StatListStrc* pStatList, D2SLayerStatIdStrc::PackedType nLayer_StatId)"],
 		[0x6FDB77B0, "STATLIST_SetStat", "BOOL __stdcall STATLIST_SetStat(D2StatListStrc* pStatList, int nStatId, int nValue, uint16_t nLayer)"],
