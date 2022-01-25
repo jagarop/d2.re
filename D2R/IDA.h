@@ -106,11 +106,35 @@ struct D2DrlgRoomTilesStrc;
 struct D2DrlgAnimTileGridStrc;
 struct AutomapCell;
 struct AutomapLayer;
-
+struct TransactionDialogsLine;
+struct TransactionDialogsInfo;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+struct TransactionDialogsLine {
+	wchar_t text[120];          // 0x000
+	int32_t unk[6];               // 0x0F0
+	void(__stdcall* handler)(); // 0x108
+	int32_t bMaybeSelectable;     // 0x10C
+	};
+
+struct TransactionDialogsInfo {
+	int32_t unk[0x14];                          // 0x000
+	int32_t numLines;                           // 0x050
+	int32_t unk_2[0x5];                         // 0x054
+	TransactionDialogsLine dialogLines[10]; // 0x068
+	void* something;                          // 0xB08
+	};
+
+
+class D2Point32
+{
+public:
+	int32_t X;
+	int32_t Y;
+};
 
 struct AutomapCell {
             int32_t fSaved;       // 0x00
