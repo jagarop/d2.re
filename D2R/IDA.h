@@ -99,16 +99,68 @@ struct D2HireDescTxt;
 struct D2DrlgVertexStrc;
 enum D2TradeStates;
 struct D2LvlPrestTxt;
-
+struct D2TxtLinkTblStrc;
 struct D2DrlgTileGridStrc;
 struct D2DrlgTileLinkStrc;
 struct D2DrlgRoomTilesStrc;
 struct D2DrlgAnimTileGridStrc;
-
+struct AutomapCell;
+struct AutomapLayer;
+struct TransactionDialogsLine;
+struct TransactionDialogsInfo;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+struct TransactionDialogsLine {
+	wchar_t text[120];          // 0x000
+	int32_t unk[6];               // 0x0F0
+	void(__stdcall* handler)(); // 0x108
+	int32_t bMaybeSelectable;     // 0x10C
+	};
+
+struct TransactionDialogsInfo {
+	int32_t unk[0x14];                          // 0x000
+	int32_t numLines;                           // 0x050
+	int32_t unk_2[0x5];                         // 0x054
+	TransactionDialogsLine dialogLines[10]; // 0x068
+	void* something;                          // 0xB08
+	};
+
+
+class D2Point32
+{
+public:
+	int32_t X;
+	int32_t Y;
+};
+
+struct AutomapCell {
+            int32_t fSaved;       // 0x00
+            int16_t nCellNo;       // 0x04
+            int16_t xPixel;        // 0x06
+            int16_t yPixel;        // 0x08
+            int16_t wWeight;       // 0x0A
+            AutomapCell* pLess; // 0x0C
+            AutomapCell* pMore; // 0x10
+        };
+
+struct AutomapLayer {
+            int32_t nLayerNo;           // 0x00
+            int32_t fSaved;             // 0x04
+            AutomapCell* pFloors;     // 0x08
+            AutomapCell* pWalls;      // 0x0C
+            AutomapCell* pObjects;    // 0x10
+            AutomapCell* pExtras;     // 0x14
+            AutomapLayer* pNextLayer; // 0x18
+        };
+
+        struct AutomapLayer2 {
+            int32_t _1[2];    // 0x00
+            int32_t nLayerNo; // 0x08
+        };
+
 enum D2TradeStates
 {
 	TRADESTATE_OTHERNOROOM,
