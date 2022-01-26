@@ -1,4 +1,4 @@
-// Created with fdyuhfvyfusayyukdftudfktydcjxdFTKYHJGFCV 1.2 by udifdshfudysfdls
+// Created with Garbage 1.2 by KN4CK3R
 
 class D2DataTablesStrc // this was good 2 patches ago or so since then a lot of stuff moved around still "mostly" good
 {
@@ -909,14 +909,21 @@ static_assert(sizeof(D2LevelsTxt) == 0x188);
 class D2UnitHashTableStrc
 {
 public:
-	class D2UnitStrc *Players[128]; //0x0000
-	class D2UnitStrc *Monsters[128]; //0x0400
-	class D2UnitStrc *Objects[128]; //0x0800
-	class D2UnitStrc *Missiles[128]; //0x0C00
-	class D2UnitStrc *Items[128]; //0x1000
-	class D2UnitStrc *Tiles[128]; //0x1400
+	class D2UnitStrc *Units[128]; //0x0000
+}; //Size: 0x0400
+static_assert(sizeof(D2UnitHashTableStrc) == 0x400);
+
+class D2UnitHashTablesStrc
+{
+public:
+	class D2UnitHashTableStrc Players; //0x0000
+	class D2UnitHashTableStrc Monsters; //0x0400
+	class D2UnitHashTableStrc Objects; //0x0800
+	class D2UnitHashTableStrc Missiles; //0x0C00
+	class D2UnitHashTableStrc Items; //0x1000
+	class D2UnitHashTableStrc Tiles; //0x1400
 }; //Size: 0x1800
-static_assert(sizeof(D2UnitHashTableStrc) == 0x1800);
+static_assert(sizeof(D2UnitHashTablesStrc) == 0x1800);
 
 class D2UnitStrc
 {
@@ -983,9 +990,14 @@ public:
 	char Name[16]; //0x0000
 	uint64_t *pQuestData[3]; //0x0010 not sure on these two
 	uint64_t *pWaypointData[3]; //0x0028
-	char pad_0040[352]; //0x0040
-}; //Size: 0x01A0
-static_assert(sizeof(D2PlayerDataStrc) == 0x1A0);
+	char pad_0040[84]; //0x0040
+	uint32_t RightSkillId; //0x0094
+	uint32_t LeftSkillId; //0x0098
+	uint32_t RightSkillFlags; //0x009C
+	uint32_t LeftSkillFlags; //0x00A0
+	char pad_00A4[764]; //0x00A4
+}; //Size: 0x03A0
+static_assert(sizeof(D2PlayerDataStrc) == 0x3A0);
 
 class D2MonsterDataStrc
 {
@@ -1096,9 +1108,10 @@ public:
 }; //Size: 0x0048
 static_assert(sizeof(D2StatListStrc) == 0x48);
 
-class D2StatListExStrc : public D2StatListStrc
+class D2StatListExStrc
 {
 public:
+	class D2StatListStrc StatList; //0x0000
 	class D2StatListExStrc *pPrevLink; //0x0048 might be wrong
 	char pad_0050[8]; //0x0050
 	class D2StatListExStrc *pParent; //0x0058
@@ -1122,7 +1135,7 @@ public:
 	class D2UnitStrc *pOwner; //0x0008
 	class D2UnitStrc *pFirstItem; //0x0010
 	class D2UnitStrc *pLastItem; //0x0018
-	class D2InventoryGridStrc *pGrids; //0x0020
+	class D2InventoryGridArrayStrc *pGrids; //0x0020
 	int32_t GridCount; //0x0028
 	char pad_002C[12]; //0x002C
 	int64_t dwLeftItemGUID; //0x0038
@@ -1199,8 +1212,9 @@ public:
 	char pad_00A0[8]; //0x00A0
 	class D2UnitStrc *pUnitFirst; //0x00A8
 	class D2RoomStrc *pRoomNext; //0x00B0
-}; //Size: 0x00B8
-static_assert(sizeof(D2RoomStrc) == 0xB8);
+	char pad_00B8[256]; //0x00B8
+}; //Size: 0x01B8
+static_assert(sizeof(D2RoomStrc) == 0x1B8);
 
 class D2SkillListStrc
 {
@@ -1222,7 +1236,8 @@ public:
 	uint32_t Level; //0x0034
 	char pad_0038[4]; //0x0038
 	uint32_t Quantity; //0x003C
-	char pad_0040[8]; //0x0040
+	uint32_t OwnerGUID; //0x0040
+	char pad_0044[4]; //0x0044
 	uint32_t Charges; //0x0048
 	char pad_004C[4]; //0x004C
 }; //Size: 0x0050
@@ -1332,9 +1347,10 @@ public:
 }; //Size: 0x0020
 static_assert(sizeof(D2DrlgCoordsStrc) == 0x20);
 
-class D2RoomCollisionGridStrc : public D2DrlgCoordsStrc
+class D2RoomCollisionGridStrc
 {
 public:
+	class D2DrlgCoordsStrc pRoomCoords; //0x0000
 	uint16_t *pCollisionMask; //0x0020
 }; //Size: 0x0028
 static_assert(sizeof(D2RoomCollisionGridStrc) == 0x28);
@@ -1784,6 +1800,19 @@ public:
 	char pad_0000[128]; //0x0000
 }; //Size: 0x0080
 static_assert(sizeof(D2ItemRatioTxt) == 0x80);
+
+class D2InventoryGridArrayStrc
+{
+public:
+	class D2InventoryGridStrc Equipped; //0x0000
+	class D2InventoryGridStrc Belt; //0x0020
+	class D2InventoryGridStrc Inventory; //0x0040
+	class D2InventoryGridStrc TradeReceive; //0x0060
+	class D2InventoryGridStrc TradeOffer; //0x0080
+	class D2InventoryGridStrc Cube; //0x00A0
+	class D2InventoryGridStrc Stash; //0x00C0
+}; //Size: 0x00E0
+static_assert(sizeof(D2InventoryGridArrayStrc) == 0xE0);
 
 class D2SeedStrc
 {
