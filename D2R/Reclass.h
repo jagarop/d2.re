@@ -844,17 +844,18 @@ public:
 	uint8_t ArmorComp[6]; //0x011D
 	uint8_t _2Handed; //0x0123
 	uint8_t Useable; //0x0124
-	uint16_t Type[2]; //0x0125
-	uint16_t SubType; //0x0129
-	uint16_t DropSound; //0x012B
-	uint16_t UseSound; //0x012D
-	char pad_012F[9]; //0x012F
-	uint8_t BeltType; //0x0138
-	uint8_t AutoBelt; //0x0139
-	char pad_013A[106]; //0x013A
-	uint32_t NightmareUpgrade; //0x01A4
-	uint32_t HellUpgrade; //0x01A8
-	char pad_01AC[4]; //0x01AC
+	char pad_0125[1]; //0x0125
+	uint16_t Type[2]; //0x0126
+	uint16_t SubType; //0x012A
+	uint16_t DropSound; //0x012C
+	uint16_t UseSound; //0x012E
+	char pad_0130[9]; //0x0130
+	uint8_t BeltType; //0x0139
+	uint8_t AutoBelt; //0x013A
+	char pad_013B[106]; //0x013B
+	uint32_t NightmareUpgrade; //0x01A5
+	uint32_t HellUpgrade; //0x01A9
+	char pad_01AD[3]; //0x01AD
 }; //Size: 0x01B0
 static_assert(sizeof(D2ItemsTxt) == 0x1B0);
 
