@@ -1,6 +1,27 @@
 #pragma once
 #include <cstdint>
 
+//custom enums
+
+enum D2C_ClickOnMapState {
+	CLICKMAPSTATE_DOWN = 0x0,
+	CLICKMAPSTATE_HOLD = 0x1,
+	CLICKMAPSTATE_UP = 0x2,
+};
+
+enum D2C_ClickOnMapActions {
+	CLICKMAPACTION_LEFT_CLICK = 0x0,
+	CLICKMAPACTION_RIGHT_CLICK = 0x3,
+	CLICKMAPACTION_FORCE_MOVE = 0xB,
+};
+
+enum D2C_ClickOnMapFlags {
+	CLICKMAPFLAG_WALK = 0x0,
+	CLICKMAPFLAG_SHIFT = 0x1,
+	CLICKMAPFLAG_RUN = 0x100,
+};
+
+
 //dump of D2MOO enums. some of these may not be valid for D2R.
 
 enum D2C_CollisionFlags : uint32_t

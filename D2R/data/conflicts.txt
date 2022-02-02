@@ -1,0 +1,10 @@
+Duplicates
+
+{"ret": "__int64", "conv": "__fastcall", "name": "LOD114d_sub_456300", "args": "(D2UnitStrc* pUnit, int nX)", "pattern": "E9 ? ? ? ? 48 85 D2 74 07", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "LOD114d_sub_456300", "args": "(D2UnitStrc *pUnit, int nX)", "pattern": "E9 ? ? ? ? 48 85 D2 74 07", "type": "operand", "operand": 0},
+
+{"ret": "void", "conv": "__fastcall", "name": "LOD114d_sub_4B4830", "args": "()", "pattern": "E9 ? ? ? ? 66 90 97", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "LOD114d_sub_4B4830", "args": "(_WORD *a1, uint16_t a2, uint16_t a3, int a4, char a5)", "pattern": "E8 ? ? ? ? E9 ? ? ? ? 41 3B DB", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "LOD114d_sub_4B4830", "args": "(D2UnitStrc *a1, D2UnitStrc *a2, int a3, unsigned __int8 a4)", "pattern": "E8 ? ? ? ? 83 3B 04 75 5F", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "LOD114d_sub_4B6DD0", "args": "(unsigned __int8 a1, void *rdx0, const void *r8_0, unsigned __int8 r9_0)", "pattern": "44 88 4C 24 ? 55 53 57", "type": "absolute"},
+{"ret": "void", "conv": "__fastcall", "name": "LOD114d_sub_4B6DD0", "args": "(unsigned __int8 a1, void *rdx0, const void *r8_0, unsigned __int8 r9_0)", "pattern": "44 88 4C 24 ? 55 53 57", "type": "absolute"},

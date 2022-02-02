@@ -140,6 +140,24 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     for item in functions:
         outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item)).rstrip("L")))
 
+with open(os.path.join(path, 'gen', 'D2GS.cpp'), "w") as outfile:
+    outfile.write("#include \"D2GS.h\"\n")
+    outfile.write("#include <iostream>\n\n")
+
+    outfile.write("void D2GS_C2S_Print(uint8_t* pPacket, uint64_t nLen)\n{\n\tswitch(pPacket[0])\n\t{\n")
+    for item in d2gs_c2s:
+        if 'ignore' in item and item['ignore']:
+            outfile.write("\tcase {}: {{ break; }} //D2GS_C2S_{}\n".format(item['id'], item['name']))
+        else:
+            outfile.write("\tcase {}: {{ D2GS_C2S_{}* pCasted = reinterpret_cast<D2GS_C2S_{}*>(pPacket); printf(\"{}: ".format(item['id'], item['name'], item['name'], item['name']))
+            for field in item['fields']:
+                outfile.write("{}: %d ".format(field['name']))
+            outfile.write("\\n\"".format(item['name']))
+            for field in item['fields']:
+                outfile.write(", pCasted->{}".format(field['name']))
+            outfile.write("); break; }\n")
+    outfile.write("\tdefault: { printf(\"Unknown Packet: \"); for (int i = 0; i < nLen; i++) { printf(\"%02X \", pPacket[i]); } printf(\"\\n\"); break; }\n\t}\n}\n\n")
+
 with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
     outfile.write("#pragma once\n")
     outfile.write("#include <Windows.h>\n")
@@ -147,48 +165,57 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
     outfile.write("\n")
     outfile.write("#pragma pack(push, 1)\n\n")
     outfile.write("//Client to Server: \n")
+
+    outfile.write("void D2GS_C2S_Print(uint8_t* pPacket, uint64_t nLen);\n")
+
     for item in d2gs_c2s:
-        outfile.write("/// <summary>\n")
-        outfile.write("/// D2GS Client to Server Packet {}\n".format(item['id']))
-        if 'summary' in item:
-            for l in item['summary'].splitlines(True):
-                outfile.write("/// {}".format(l))
-        outfile.write("/// </summary>\n")
-        outfile.write("struct D2GS_C2S_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
-        for field in item['fields']:
-            outfile.write("\t{} {}".format(field['type'], field['name']))
-            if 'value' in field:
-                outfile.write(" = {}".format(field['value']))
-            outfile.write(";")
-            if 'summary' in field:
-                outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+        if 'ignore' in item and item['ignore']:
+            continue
+        else:
+            outfile.write("/// <summary>\n")
+            outfile.write("/// D2GS Client to Server Packet {}\n".format(item['id']))
+            if 'summary' in item:
+                for l in item['summary'].splitlines(True):
+                    outfile.write("/// {}".format(l))
+            outfile.write("/// </summary>\n")
+            outfile.write("struct D2GS_C2S_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
+            for field in item['fields']:
+                outfile.write("\t{} {}".format(field['type'], field['name']))
+                if 'value' in field:
+                    outfile.write(" = {}".format(field['value']))
+                outfile.write(";")
+                if 'summary' in field:
+                    outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+                outfile.write("\n")
+            outfile.write("};\n")
+            if 'size' in item:
+                outfile.write("static_assert(sizeof(D2GS_C2S_{}) == {});\n".format(item['name'], item['size']))
             outfile.write("\n")
-        outfile.write("};\n")
-        if 'size' in item:
-            outfile.write("static_assert(sizeof(D2GS_C2S_{}) == {});\n".format(item['name'], item['size']))
-        outfile.write("\n")
 
     outfile.write("//Server to Client: \n")
     for item in d2gs_s2c:
-        outfile.write("/// <summary>\n")
-        outfile.write("/// D2GS Server to Client Packet {}\n".format(item['id']))
-        if 'summary' in item:
-            for l in item['summary'].splitlines(True):
-                outfile.write("/// {}".format(l))
-        outfile.write("/// </summary>\n")
-        outfile.write("struct D2GS_S2C_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
-        for field in item['fields']:
-            outfile.write("\t{} {}".format(field['type'], field['name']))
-            if 'value' in field:
-                outfile.write(" = {}".format(field['value']))
-            outfile.write(";")
-            if 'summary' in field:
-                outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+        if 'ignore' in item and item['ignore']:
+            continue
+        else:
+            outfile.write("/// <summary>\n")
+            outfile.write("/// D2GS Server to Client Packet {}\n".format(item['id']))
+            if 'summary' in item:
+                for l in item['summary'].splitlines(True):
+                    outfile.write("/// {}".format(l))
+            outfile.write("/// </summary>\n")
+            outfile.write("struct D2GS_S2C_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
+            for field in item['fields']:
+                outfile.write("\t{} {}".format(field['type'], field['name']))
+                if 'value' in field:
+                    outfile.write(" = {}".format(field['value']))
+                outfile.write(";")
+                if 'summary' in field:
+                    outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+                outfile.write("\n")
+            outfile.write("};\n")
+            if 'size' in item:
+                outfile.write("static_assert(sizeof(D2GS_S2C_{}) == {});\n".format(item['name'], item['size']))
             outfile.write("\n")
-        outfile.write("};\n")
-        if 'size' in item:
-            outfile.write("static_assert(sizeof(D2GS_S2C_{}) == {});\n".format(item['name'], item['size']))
-        outfile.write("\n")
 
     outfile.write("\n#pragma pack(pop)")
 

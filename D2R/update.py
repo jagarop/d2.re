@@ -120,7 +120,7 @@ def RenameSkillsCltStFuncFunctions(address, i):
         name = 'SKILLS_CltStFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
-        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
+        idc.SetType(func, '__int64 __fastcall  {}(D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
 
 def RenameSkillsCltDoFuncFunctions(address, i):
     global countFunctions
@@ -130,7 +130,7 @@ def RenameSkillsCltDoFuncFunctions(address, i):
         name = 'SKILLS_CltDoFunc_{:03}'.format(i)
         set_name(get_name_ea_simple(name), '')
         set_name(func, name)
-        idc.SetType(func, '__int64 __fastcall  {}(D2GameStrc* pGame, D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
+        idc.SetType(func, '__int64 __fastcall  {}(D2UnitStrc* pUnit, int nSkill, int nSkillLevel)'.format(name))
 
 def RenamePropertyFunc(address, i):
     global countFunctions
