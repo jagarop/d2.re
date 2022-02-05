@@ -14,6 +14,7 @@
 {"ctype": "D2UnitHashTablesStrc", "name": "g_ClientSideUnitHashTable", "pattern": "4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameDesc", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 83 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 80 B8 ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "char*", "name": "g_CreateGameName", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E9 ? ? ? ? 48 8B 93 ? ? ? ?", "operand": 1, "type": "operand"},
+{"ctype": "char*", "name": "g_CreateGamePassword", "pattern": "48 8D 15 ?? ?? ?? ?? 48 8D 4C 24 50 E8 ?? ?? ?? ?? 80 7D 88 00 0F 84 91 FE FF FF", "operand": 1, "type": "operand"},
 {"ctype": "D2GameStrc*", "name": "g_CurrentSinglePlayerGame", "pattern": "48 89 05 ? ? ? ? 48 85 C0 75 06 48 83 C4 20 5B C3 45 8B C3 8B D3 48 8B C8 E8 ? ? ? ? 48 83 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "int", "name": "g_CursorType", "pattern": "C7 05 ? ? ? ? ? ? ? ? EB 4C", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_D2GS_C2S_FunctionTable", "pattern": "48 8D 0D ? ? ? ? 48 89 74 24 ? 48 83 3C D1 ?", "operand": 1, "type": "operand"},
