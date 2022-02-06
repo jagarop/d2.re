@@ -3,7 +3,13 @@
 
 #print("Loading Header File: IDA.h")
 #idaapi.idc_parse_types(os.path.join(os.path.abspath(os.path.dirname(__file__)), "IDA.h"), idc.PT_FILE)
-
+import os
+import json
+from collections import OrderedDict
+countFunctions = 0
+countVariables = 0
+path = os.path.abspath(os.path.dirname(__file__))
+end_ea = idc.get_segm_end(0)
 base = idaapi.get_imagebase()
 def Parse():
     header_h = ida_kernwin.ask_file(0, "*.h", "Select IDA.H file")
@@ -136,6 +142,7 @@ functions = [
 ]
 
 variables = [
+{ 'name': 'g_D2GS_S2C_FunctionTable', 'ctype': 'D2GSServerToClientHandler', 'offset': 0x3114D0},
 { 'name': 'ScreenSizeX', 'ctype': 'DWORD ScreenSizeX', 'offset': 0x31146C },
 { 'name': 'ScreenSizeY', 'ctype': 'DWORD ScreenSizeY', 'offset': 0x311470 },
 { 'name': 'CursorHoverX', 'ctype': 'DWORD CursorHoverX', 'offset': 0x321E4C },
@@ -207,7 +214,6 @@ variables = [
 { 'name': 'XPacKey', 'ctype': 'char* XPacKey', 'offset': 0x48274C },
 { 'name': 'KeyOwner', 'ctype': 'char* KeyOwner', 'offset': 0x482750 },
 { 'name': 'WindowHandlers', 'ctype': 'WindowHandlerHashTable WindowHandlers', 'offset': 0x379300 }
-
 ]
 
 def BuildEnum(items):
@@ -217,9 +223,9 @@ def BuildEnum(items):
         print('\t%-20s = %-20s //%-20s' % (item['name'], hex(item['offset']), hex(base + item['offset'])[:-1] ))
 
 
-print('Load IDA.H file for Parsing')
-Parse()
-print('IDA.H Loaded')
+#print('Load IDA.H file for Parsing')
+#Parse()
+#print('IDA.H Loaded')
 
 
 print('enum class Functions : uint32_t {')

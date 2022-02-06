@@ -20,6 +20,14 @@
         struct OverheadMsg;
         struct Skill;
 
+
+struct D2GSServerToClientHandler {
+ 	void* pHandler; //0x0000 void (__fastcall* D2GSServerToClient_t)(void* pPacket);
+	uint32_t PacketSize; //0x0004
+	void* pHandlerEx; //0x008 void (__fastcall* D2GSServerToClient_t)(D2UnitStrc* pUnit, void* pPacket); 
+};
+
+
         struct SplitText {
             wchar_t* lpwszText;
             SplitText* lpsNext;
