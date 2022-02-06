@@ -1742,7 +1742,7 @@ Funcs = [
 		[0x6FDBE060, "UNITS_BlockCollisionPath", "void __stdcall UNITS_BlockCollisionPath(D2UnitStrc* pUnit, D2RoomStrc* pRoom, int nX, int nY)"],
 		[0x6FDBE1A0, "UNITS_InitializeStaticPath", "void __stdcall UNITS_InitializeStaticPath(D2UnitStrc* pUnit, D2RoomStrc* pRoom, int nX, int nY)"],
 		[0x6FDBE210, "UNITS_ResetRoom", "void __stdcall UNITS_ResetRoom(D2UnitStrc* pUnit)"],
-		[0x6FDBE270, "UNITS_GetRoom", "D2RoomStrc* __stdcall UNITS_GetRoom(D2UnitStrc* pUnit)"],
+		[0x6FDBE270, "UNITS_GetRoomFromUnit", "D2RoomStrc* __stdcall UNITS_GetRoom(D2UnitStrc* pUnit)"],
 		[0x6FDBE2D0, "UNITS_SetTargetUnitForDynamicUnit", "void __stdcall UNITS_SetTargetUnitForDynamicUnit(D2UnitStrc* pUnit, D2UnitStrc* pTargetUnit)"],
 		[0x6FDBE330, "UNITS_GetTargetTypeFromDynamicUnit", "int __stdcall UNITS_GetTargetTypeFromDynamicUnit(D2UnitStrc* pUnit)"],
 		[0x6FDBE3A0, "UNITS_GetTargetGUIDFromDynamicUnit", "int __stdcall UNITS_GetTargetGUIDFromDynamicUnit(D2UnitStrc* pUnit)"],

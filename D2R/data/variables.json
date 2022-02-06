@@ -1,7 +1,8 @@
 [
 {"ctype": "int64_t", "name": "LOD_off_6FDE5804", "pattern": "4C 8D 0D ? ? ? ? 44 2B D0 89 54 24 44", "operand": 1, "type": "operand"},
 {"ctype": "int32_t", "name": "RecentInteractId", "pattern": "8B 0D ? ? ? ? 0F 1F 00 76 08", "operand": 1, "type": "operand"},
-{"ctype": "int32_t", "name": "RecentTradeId", "pattern": "C7 05 ? ? ? ? ? ? ? ? E8 ? ? ? ? 0F 1F 40 00", "operand": 0, "type": "operand"},
+{"ctype": "uint32_t", "name": "ScreenSizeX", "pattern": "8B 05 ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? EB 16", "operand": 1, "type": "operand"},
+{"ctype": "uint32_t", "name": "ScreenSizeY", "pattern": "8B 0D ?? ?? ?? ?? EB 16", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_AlwaysRun", "pattern": "39 2D ? ? ? ? 0F B6 C9 0F 45 CE 39 2D ? ? ? ? 88 4C 24 59 0F B6 4C 24 ? 0F 45 CE 48 8B 74 24 ? 88 4C 24 58 48 85 C0 0F 84 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_AssignProperty", "pattern": "48 8D 15 ? ? ? ? 49 89 73 10 33 F6", "operand": 1, "type": "operand"},
 {"ctype": "D2PointFloat", "name": "g_AutomapCellScale", "pattern": "F3 0F 10 15 ? ? ? ? 48 8D 8C 24 ? ? ? ?  ", "operand": 1, "type": "operand"},
@@ -25,6 +26,7 @@
 {"ctype": "D2DataTablesStrc", "name": "g_DataTables", "pattern": "48 03 3D ? ? ? ? 74 3B 49 8B CE E8 ? ? ? ? 4C 8B E0 48 C7 C1 ? ? ? ? 48 FF C1 40 38 34 0F 75 F7", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_DesktopMousePosition", "pattern": "48 89 05 ? ? ? ? 48 89 0D ? ? ? ? FF 15 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "int8_t", "name": "g_Difficulty", "pattern": "73 09 C6 05 ? ? ? ? ?", "operand": 0, "type": "operand"},
+{"ctype": "size_t", "name": "g_ElementSize", "pattern": "48 83 3D ?? ?? ?? ?? ?? 0F 84 B2 00 00 00", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_FPS", "pattern": "89 05 ? ? ? ? 41 8B C5 89 05 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_GameStructIndex", "pattern": "48 8B 15 ? ? ? ? 45 33 DB", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_HelpNotifyIcon", "pattern": "44 0F B6 35 ?? ?? ?? ?? 33 D2 41 B0 01 8D 4A 1C", "operand": 0, "type": "operand"},
