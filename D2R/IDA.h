@@ -108,6 +108,8 @@ struct AutomapCell;
 struct AutomapLayer;
 struct TransactionDialogsLine;
 struct TransactionDialogsInfo;
+struct D2QuestInfo;
+struct D2Waypoint;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
@@ -1855,6 +1857,14 @@ struct D2PlayerTradeStrc
 	int32_t unk0x08[4];
 };
 
+struct D2QuestInfo {
+	void* pBuffer; // 0x00
+    uint64_t _1;      // 0x04
+};
+struct D2Waypoint {
+     BYTE flags; // 0x00
+};
+
 struct D2PlayerDataStrc {
  	char Name[16]; //0x0000
 	uint64_t *pQuestData[3]; //0x0010 not sure on these two
@@ -1868,6 +1878,12 @@ struct D2PlayerDataStrc {
 	char pad_00unk3[16];
 	uint32_t nRightSkillId;
 	char pad_00402[244]; //0x0040
+	D2QuestInfo* pNormalQuest;
+	D2QuestInfo* pNightmareQuest;
+    D2QuestInfo* pHellQuest;
+    D2Waypoint* pNormalWaypoint;
+	D2Waypoint* pNightmareWaypoint;
+	D2Waypoint* pHellWaypoint;
 	char pad_00403[352]; //0x0040 
 };
 

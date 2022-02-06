@@ -52,7 +52,7 @@ def BuildEnum(items):
             print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
         #remove old variable name if exists anywhere
         set_name(get_name_ea_simple(str(item['name'])), '')
-        set_name(address, str(item['name']))
+        set_name(address, str(item['name']),SN_PUBLIC)
         if 'ctype' in item:
             countVariables = countVariables + 1
             idc.SetType(address, str(item['ctype']))
