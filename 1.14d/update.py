@@ -28,7 +28,7 @@ functions = [
 { 'offset': 0x78A90, 'name': 'D2CLIENT_GetMercUnit', 'ctype': 'UnitAny* __fastcall D2CLIENT_GetMercUnit()' },
 { 'offset': 0x66DE0, 'name': 'D2CLIENT_SetSelectedUnit_I', 'ctype': 'void __fastcall D2CLIENT_SetSelectedUnit_I(UnitAny* pUnit)' },
 { 'offset': 0x8C060, 'name': 'D2CLIENT_GetItemName', 'ctype': 'BOOL __fastcall D2CLIENT_GetItemName(UnitAny* pItem, wchar_t* wBuffer, DWORD dwSize)' },
-{ 'offset': 0x8DD90, 'name': 'D2CLIENT_LoadItemDesc', 'ctype': 'BOOL __stdcall D2CLIENT_LoadItemDesc(UnitAny* pItem, int type)' },
+{ 'offset': 0x8DD90, 'name': 'ITEMS_GetFullDescription', 'ctype': 'BOOL __stdcall ITEMS_GetFullDescription(UnitAny* pItem, int type)' },
 { 'offset': 0x79150, 'name': 'D2CLIENT_GetMonsterOwner', 'ctype': 'DWORD __fastcall D2CLIENT_GetMonsterOwner(DWORD nMonsterId)' },
 { 'offset': 0x79080, 'name': 'D2CLIENT_GetUnitHPPercent', 'ctype': 'DWORD __fastcall D2CLIENT_GetUnitHPPercent(DWORD dwUnitId)' },
 { 'offset': 0x845A0, 'name': 'D2CLIENT_InitInventory', 'ctype': 'void __fastcall D2CLIENT_InitInventory()' },
@@ -65,7 +65,7 @@ functions = [
 { 'offset': 0xDC440, 'name': 'D2CLIENT_TestPvpFlag', 'ctype': 'DWORD __fastcall D2CLIENT_QuitGame(DWORD dwUnitId1, DWORD dwUnitId2, DWORD dwFlag)' },
 { 'offset': 0x125150, 'name': 'D2CLIENT_GetGameLanguageCode', 'ctype': 'DWORD __fastcall D2CLIENT_QuitGame()' },
 #D2COMMON
-{ 'offset': 0x2424A0, 'name': 'D2COMMON_InitLevel', 'ctype': 'void __stdcall D2COMMON_InitLevel(Level* pLevel)' },
+{ 'offset': 0x2424A0, 'name': 'DRLG_InitLevel', 'ctype': 'void __stdcall DRLG_InitLevel(Level* pLevel)' },
 { 'offset': 0x21AFD3, 'name': 'D2COMMON_UnloadAct', 'ctype': 'unsigned __stdcall D2COMMON_UnloadAct(Act* pAct)' },
 { 'offset': 0x240E90, 'name': 'D2COMMON_GetObjectTxt', 'ctype': 'ObjectTxt* __stdcall D2COMMON_GetObjectTxt(DWORD objno)' },
 { 'offset': 0x2194A0, 'name': 'D2COMMON_LoadAct', 'ctype': 'Act* __stdcall D2COMMON_LoadAct(DWORD ActNumber, DWORD MapId, DWORD Unk, DWORD Unk_2, DWORD Unk_3, DWORD Unk_4, DWORD TownLevelId, DWORD Func_1, DWORD Func_2)' },
@@ -117,7 +117,7 @@ functions = [
 { 'offset': 0x201340, 'name': 'D2CMP_InitCellFile', 'ctype': 'void __stdcall D2CMP_InitCellFile(LPVOID File, CellFile** Out, LPSTR SourceFile, DWORD Line, DWORD FileVersion, LPSTR Filename)' },
 { 'offset': 0x201A50, 'name': 'D2CMP_DeleteCellFile', 'ctype': 'void __stdcall D2CMP_DeleteCellFile(CellFile* File)' },
 #D2LANG
-{ 'offset': 0x124A30, 'name': 'D2LANG_GetLocaleText', 'ctype': 'wchar_t* __fastcall D2LANG_GetLocaleText(WORD nLocaleTxtNo)' },
+{ 'offset': 0x124A30, 'name': 'LANG_GetWideStringFromKey', 'ctype': 'wchar_t* __fastcall LANG_GetWideStringFromKey(WORD nLocaleTxtNo)' },
 #D2WIN
 { 'offset': 0xFF5A0, 'name': 'D2WIN_SetControlText', 'ctype': 'void* __fastcall D2WIN_SetControlText(Control* box, const wchar_t* txt)' },
 { 'offset': 0xF9870, 'name': 'D2WIN_DrawSprites', 'ctype': ' void __fastcall D2WIN_DrawSprites()' },
