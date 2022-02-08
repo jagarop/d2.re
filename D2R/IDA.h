@@ -110,10 +110,29 @@ struct TransactionDialogsLine;
 struct TransactionDialogsInfo;
 struct D2QuestInfo;
 struct D2Waypoint;
+struct RosterUnit;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+class RosterUnit
+{
+	char szName[24]; //0x0000
+	int32_t dwUnitId; //0x0018
+	int32_t dwPartyLife; //0x001C
+	int32_t _1; //0x0020
+	int32_t dwClassId; //0x0024
+	int16_t wLevel; //0x0028
+	int16_t wPartyId; //0x002A
+	int32_t dwLevelId; //0x002C
+	char pad_0030[16]; //0x0030
+	void* UnkPtr40; //0x0040
+	char pad_0048[50]; //0x0048
+	char szName2[24]; //0x007A
+	char pad_0092[288]; //0x0092
+};
+
 
 struct TransactionDialogsLine {
 	wchar_t text[120];          // 0x000

@@ -29,7 +29,7 @@ functions = [
 { 'offset': 0x66DE0, 'name': 'D2CLIENT_SetSelectedUnit_I', 'ctype': 'void __fastcall D2CLIENT_SetSelectedUnit_I(UnitAny* pUnit)' },
 { 'offset': 0x8C060, 'name': 'D2CLIENT_GetItemName', 'ctype': 'BOOL __fastcall D2CLIENT_GetItemName(UnitAny* pItem, wchar_t* wBuffer, DWORD dwSize)' },
 { 'offset': 0x8DD90, 'name': 'ITEMS_GetFullDescription', 'ctype': 'BOOL __stdcall ITEMS_GetFullDescription(UnitAny* pItem, int type)' },
-{ 'offset': 0x79150, 'name': 'D2CLIENT_GetMonsterOwner', 'ctype': 'DWORD __fastcall D2CLIENT_GetMonsterOwner(DWORD nMonsterId)' },
+{ 'offset': 0x79150, 'name': 'UNITS_GetMonsterOwnerID', 'ctype': 'DWORD __fastcall UNITS_GetMonsterOwnerID(DWORD nMonsterId)' },
 { 'offset': 0x79080, 'name': 'D2CLIENT_GetUnitHPPercent', 'ctype': 'DWORD __fastcall D2CLIENT_GetUnitHPPercent(DWORD dwUnitId)' },
 { 'offset': 0x845A0, 'name': 'D2CLIENT_InitInventory', 'ctype': 'void __fastcall D2CLIENT_InitInventory()' },
 { 'offset': 0x55F20, 'name': 'D2CLIENT_SetUIVar', 'ctype': 'DWORD __fastcall D2CLIENT_SetUIVar(DWORD varno, DWORD howset, DWORD unknown1)' },
