@@ -338,7 +338,7 @@ struct D2ItemRatioTxt
 };
 
 // jmr: This is wrong, pretty sure this is 0x8C in size.
-//      See 0x140306D1F in 67554
+//      See around 0x306D1F in 67554
 struct D2MagicAffixTxt
 {
 	char szName[32];								//0x00
@@ -1472,7 +1472,7 @@ struct D2CharStatsTxt {
 //       Should be 0x264 in size
 //       ReqLevel is at 0x18C
 //       CharClass should be 0x2C
-//       See 0x1403168A0 on 67554
+//       See around 0x3168A0 on 67554
 struct D2SkillsTxt
 {
 	int16_t nSkillId; 						//0x00
