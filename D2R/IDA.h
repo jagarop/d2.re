@@ -147,7 +147,7 @@ struct TransactionDialogsInfo {
 	int32_t unk_2[0x5];                         // 0x054
 	TransactionDialogsLine dialogLines[10]; // 0x068
 	void* something;                          // 0xB08
-	};
+};
 
 
 class D2Point32
@@ -158,29 +158,29 @@ public:
 };
 
 struct AutomapCell {
-            int32_t fSaved;       // 0x00
-            int16_t nCellNo;       // 0x04
-            int16_t xPixel;        // 0x06
-            int16_t yPixel;        // 0x08
-            int16_t wWeight;       // 0x0A
-            AutomapCell* pLess; // 0x0C
-            AutomapCell* pMore; // 0x10
-        };
+    int32_t fSaved;       // 0x00
+    int16_t nCellNo;       // 0x04
+    int16_t xPixel;        // 0x06
+    int16_t yPixel;        // 0x08
+    int16_t wWeight;       // 0x0A
+    AutomapCell* pLess; // 0x0C
+    AutomapCell* pMore; // 0x10
+};
 
 struct AutomapLayer {
-            int32_t nLayerNo;           // 0x00
-            int32_t fSaved;             // 0x04
-            AutomapCell* pFloors;     // 0x08
-            AutomapCell* pWalls;      // 0x0C
-            AutomapCell* pObjects;    // 0x10
-            AutomapCell* pExtras;     // 0x14
-            AutomapLayer* pNextLayer; // 0x18
-        };
+    int32_t nLayerNo;           // 0x00
+    int32_t fSaved;             // 0x04
+    AutomapCell* pFloors;     // 0x08
+    AutomapCell* pWalls;      // 0x0C
+    AutomapCell* pObjects;    // 0x10
+    AutomapCell* pExtras;     // 0x14
+    AutomapLayer* pNextLayer; // 0x18
+};
 
-        struct AutomapLayer2 {
-            int32_t _1[2];    // 0x00
-            int32_t nLayerNo; // 0x08
-        };
+struct AutomapLayer2 {
+    int32_t _1[2];    // 0x00
+    int32_t nLayerNo; // 0x08
+};
 
 enum D2TradeStates
 {
@@ -337,7 +337,8 @@ struct D2ItemRatioTxt
 	uint8_t nClassSpecific;					//0x43 
 };
 
-
+// jmr: This is wrong, pretty sure this is 0x8C in size.
+//      See around 0x306D1F in 67554
 struct D2MagicAffixTxt
 {
 	char szName[32];								//0x00
@@ -1467,6 +1468,11 @@ struct D2CharStatsTxt {
 	char pad_0030[192]; //0x0030 
 };
 
+// jmr: pretty sure this is wrong.
+//       Should be 0x264 in size
+//       ReqLevel is at 0x18C
+//       CharClass should be 0x2C
+//       See around 0x3168A0 on 67554
 struct D2SkillsTxt
 {
 	int16_t nSkillId; 						//0x00
@@ -1645,7 +1651,9 @@ struct D2ItemTypesTxt {
 };
 
 struct D2RareAffixTxt {
- 	char pad_0000[128]; //0x0000 
+	char pad_0000[38]; //0x0000
+	char Name[32]; //0x0026
+	char pad_0046[2]; //0x0046
 };
 
 struct D2ItemsTxt {
@@ -1728,12 +1736,40 @@ struct D2ItemsTxt {
 	uint8_t BeltType; //0x0138
 	uint8_t AutoBelt; //0x0139
 	uint8_t nStackable; //0x013A
-	char pad_013B[105]; //0x013B
-	uint32_t NightmareUpgrade; //0x01A4
-	uint32_t HellUpgrade; //0x01A8
-	char pad_01AC[4]; //0x01AC 
+	char pad_013B[12]; //0x013B
+	uint8_t LevelReq; //0x0147
+	char pad_0148[104]; //0x0148
 };
 
+struct D2UniqueItemsTxt
+{
+	char pad_0000[2]; //0x0000
+	char Name[32]; //0x0002
+	char pad_0022[6]; //0x0022
+	char Code[4]; //0x0028
+	char pad_002C[10]; //0x002C
+	uint16_t LvlReq; //0x0036
+	char pad_0038[280]; //0x0038
+}; //Size: 0x0150
+
+struct D2SetItemsTxt
+{
+	char pad_0000[2]; //0x0000
+	char Name[32]; //0x0002
+	char pad_0022[6]; //0x0022
+	char Code[4]; //0x0028
+	char pad_002C[6]; //0x002C
+	int16_t LvlReq; //0x0032
+	char pad_0034[392]; //0x0034
+}; //Size: 0x01BC
+
+class BNetSession
+{
+	char pad_0000[304]; //0x0000
+	char *BattleTag; //0x0130
+	uint64_t BattleTagLength; //0x0138
+	char pad_0140[64]; //0x0140
+};
 
 struct D2DrlgEnvironmentStrc
 {
@@ -1855,7 +1891,9 @@ struct D2UnitStrc {
 	D2InventoryStrc *pInventory; //0x0090
 	char pad_0098[16]; //0x0098
 	uint64_t *pUnk0xA8; //0x00A8
-	char pad_00B0[56]; //0x00B0
+	char pad_00B0[40]; //0x00B0
+	uint32_t UnkSortSharedStashesBy; //0x00D8
+	char pad_00DC[12]; //0x00DC
 	uint32_t dwOwnerType; //0x00E8
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
@@ -1958,9 +1996,10 @@ struct D2ItemDataStrc {
 	uint8_t CellOverlap; //0x0056
 	uint8_t ItemCell; //0x0057
 	uint8_t EarLvl; //0x0058
-	uint8_t InvGfxIdx; //0x0059
-	char pad_005A[22]; //0x005A
-	D2ItemExtraDataStrc pExtraData; //0x0070 
+	char pad_0059[5]; //0x0059
+	uint8_t InvGfxIdx; //0x005E
+	char pad_005F[17]; //0x005F
+	class D2ItemExtraDataStrc pExtraData; //0x0070
 };
 
 struct D2DrlgActStrc {
