@@ -78,6 +78,11 @@ if os.path.exists(os.path.join(path, 'data', '_variables.json')) and os.path.isf
     with open(os.path.join(path, 'data', '_variables.json')) as f:
         variables = variables + json.load(f)
 
+with open(os.path.join(path, 'data', 'd2gs_types.json')) as f:
+    d2gs_types = json.load(f)
+if os.path.exists(os.path.join(path, 'data', '_d2gs_types.json')) and os.path.isfile(os.path.join(path, 'data', '_d2gs_types.json')):
+    with open(os.path.join(path, 'data', '_d2gs_types.json')) as f:
+        d2gs_types = d2gs_s2c + json.load(f)
 with open(os.path.join(path, 'data', 'd2gs_c2s.json')) as f:
     d2gs_c2s = json.load(f)
 if os.path.exists(os.path.join(path, 'data', '_d2gs_c2s.json')) and os.path.isfile(os.path.join(path, 'data', '_d2gs_c2s.json')):
@@ -158,12 +163,39 @@ with open(os.path.join(path, 'gen', 'D2GS.cpp'), "w") as outfile:
             outfile.write("); break; }\n")
     outfile.write("\tdefault: { printf(\"Unknown Packet: \"); for (int i = 0; i < nLen; i++) { printf(\"%02X \", pPacket[i]); } printf(\"\\n\"); break; }\n\t}\n}\n\n")
 
+
+
 with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
     outfile.write("#pragma once\n")
     outfile.write("#include <Windows.h>\n")
     outfile.write("#include <cstdint>\n")
     outfile.write("\n")
     outfile.write("#pragma pack(push, 1)\n\n")
+    outfile.write("//Shared Types: \n")
+    for item in d2gs_types:
+        if 'ignore' in item and item['ignore']:
+            continue
+        else:
+            outfile.write("struct D2GS_{} {{\n".format(item['name']))
+            for field in item['fields']:
+                if any(x['name'] == field['type'] for x in d2gs_types):
+                    outfile.write("\tD2GS_{} {}".format(field['type'], field['name']))
+                else:
+                    outfile.write("\t{} {}".format(field['type'], field['name']))
+                if 'array' in field and 'len' in field and field['array']:
+                    outfile.write("[{}]".format(field['len']))
+                if 'value' in field:
+                    outfile.write(" = {}".format(field['value']))
+                outfile.write(";")
+                if 'summary' in field:
+                    outfile.write(" //{}".format(field['summary'].replace('\n', ' ')))
+                outfile.write("\n")
+            outfile.write("};\n")
+            if 'size' in item:
+                outfile.write("static_assert(sizeof(D2GS_{}) == {});\n".format(item['name'], item['size']))
+            outfile.write("\n")
+
+
     outfile.write("//Client to Server: \n")
 
     outfile.write("void D2GS_C2S_Print(uint8_t* pPacket, uint64_t nLen);\n")
@@ -180,7 +212,12 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
             outfile.write("/// </summary>\n")
             outfile.write("struct D2GS_C2S_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
             for field in item['fields']:
-                outfile.write("\t{} {}".format(field['type'], field['name']))
+                if any(x['name'] == field['type'] for x in d2gs_types):
+                    outfile.write("\tD2GS_{} {}".format(field['type'], field['name']))
+                else:
+                    outfile.write("\t{} {}".format(field['type'], field['name']))
+                if 'array' in field and 'len' in field and field['array']:
+                    outfile.write("[{}]".format(field['len']))
                 if 'value' in field:
                     outfile.write(" = {}".format(field['value']))
                 outfile.write(";")
@@ -205,7 +242,12 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
             outfile.write("/// </summary>\n")
             outfile.write("struct D2GS_S2C_{} {{\n\tuint8_t ID = {};\n".format(item['name'], item['id']))
             for field in item['fields']:
-                outfile.write("\t{} {}".format(field['type'], field['name']))
+                if any(x['name'] == field['type'] for x in d2gs_types):
+                    outfile.write("\tD2GS_{} {}".format(field['type'], field['name']))
+                else:
+                    outfile.write("\t{} {}".format(field['type'], field['name']))
+                if 'array' in field and 'len' in field and field['array']:
+                    outfile.write("[{}]".format(field['len']))
                 if 'value' in field:
                     outfile.write(" = {}".format(field['value']))
                 outfile.write(";")

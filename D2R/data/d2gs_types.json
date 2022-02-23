@@ -1,0 +1,17 @@
+[
+{
+"name": "Shift", "size": 6, 
+"fields": [
+{"type":"uint32_t", "name": "UnitId", "value": "0xFFFFFFFF" },
+{"type":"uint8_t", "name": "From", "value": "0x00" },
+{"type":"uint8_t", "name": "To", "value": "0x00" }
+]
+},
+{
+"name": "SortLocation", "size": 5, 
+"fields": [
+{"type":"uint8_t", "name": "XY", "value": "0x00", "summary": "2 nibbles. first 4 bits is the Y location and next 4 is the X location. i.e. (Y << 4) | X" },
+{"type":"uint32_t", "name": "UnitId" }
+]
+}
+]

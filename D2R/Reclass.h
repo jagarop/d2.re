@@ -728,9 +728,13 @@ class D2SkillsTxt
 public:
 	uint16_t ID; //0x0000
 	char Name[32]; //0x0002
-	char pad_0022[570]; //0x0022
-}; //Size: 0x025C
-static_assert(sizeof(D2SkillsTxt) == 0x25C);
+	char pad_0022[10]; //0x0022
+	uint8_t CharClass; //0x002C
+	char pad_002D[351]; //0x002D
+	uint16_t ReqLevel; //0x018C
+	char pad_018E[214]; //0x018E
+}; //Size: 0x0264
+static_assert(sizeof(D2SkillsTxt) == 0x264);
 
 class D2ItemTypesTxt
 {
@@ -770,9 +774,11 @@ static_assert(sizeof(D2ItemTypesTxt) == 0xE4);
 class D2RareAffixTxt
 {
 public:
-	char pad_0000[128]; //0x0000
-}; //Size: 0x0080
-static_assert(sizeof(D2RareAffixTxt) == 0x80);
+	char pad_0000[38]; //0x0000
+	char Name[32]; //0x0026
+	char pad_0046[2]; //0x0046
+}; //Size: 0x0048
+static_assert(sizeof(D2RareAffixTxt) == 0x48);
 
 class D2ItemsTxt
 {
@@ -852,10 +858,9 @@ public:
 	char pad_0130[9]; //0x0130
 	uint8_t BeltType; //0x0139
 	uint8_t AutoBelt; //0x013A
-	char pad_013B[106]; //0x013B
-	uint32_t NightmareUpgrade; //0x01A5
-	uint32_t HellUpgrade; //0x01A9
-	char pad_01AD[3]; //0x01AD
+	char pad_013B[12]; //0x013B
+	uint8_t LevelReq; //0x0147
+	char pad_0148[104]; //0x0148
 }; //Size: 0x01B0
 static_assert(sizeof(D2ItemsTxt) == 0x1B0);
 
@@ -970,7 +975,9 @@ public:
 	class D2InventoryStrc *pInventory; //0x0090
 	char pad_0098[16]; //0x0098
 	uint64_t *pUnk0xA8; //0x00A8
-	char pad_00B0[56]; //0x00B0
+	char pad_00B0[40]; //0x00B0
+	uint32_t UnkSortSharedStashesBy; //0x00D8
+	char pad_00DC[12]; //0x00DC
 	uint32_t OwnerType; //0x00E8
 	uint32_t OwnerID; //0x00EC
 	char pad_00F0[16]; //0x00F0
@@ -982,8 +989,11 @@ public:
 	class D2UnitStrc *pChangeNextUnit; //0x0148
 	class D2UnitStrc *pListNext; //0x0150
 	class D2UnitStrc *pRoomNext; //0x0158
-}; //Size: 0x0160
-static_assert(sizeof(D2UnitStrc) == 0x160);
+	char pad_0160[24]; //0x0160
+	uint32_t SizeX; //0x0178
+	uint32_t SizeY; //0x017C
+}; //Size: 0x0180
+static_assert(sizeof(D2UnitStrc) == 0x180);
 
 class D2PlayerDataStrc
 {
@@ -1052,25 +1062,28 @@ public:
 	uint32_t InitSeed; //0x0010
 	uint32_t CommandFlags; //0x0014
 	uint32_t Flags; //0x0018
-	char pad_001C[28]; //0x001C
-	uint32_t ItemLevel; //0x0038
-	char pad_003C[4]; //0x003C
-	uint16_t ItemFormat; //0x0040 0: classic 101: xp
-	uint16_t RarePrefix; //0x0042
-	uint16_t RareSuffix; //0x0044
-	uint16_t AutoAffix; //0x0046
-	uint16_t MagicPrefix[3]; //0x0048
-	uint16_t MagicSuffix[3]; //0x004E
-	uint8_t BodyLoc; //0x0054
-	uint8_t InvPage; //0x0055
-	uint8_t CellOverlap; //0x0056
-	uint8_t ItemCell; //0x0057
-	uint8_t EarLvl; //0x0058
-	uint8_t InvGfxIdx; //0x0059
-	char pad_005A[22]; //0x005A
-	class D2ItemExtraDataStrc pExtraData; //0x0070
-}; //Size: 0x00A0
-static_assert(sizeof(D2ItemDataStrc) == 0xA0);
+	char pad_001C[24]; //0x001C
+	uint16_t FileIndex; //0x0034
+	char pad_0036[3]; //0x0036
+	uint32_t ItemLevel; //0x0039
+	char pad_003D[4]; //0x003D
+	uint16_t ItemFormat; //0x0041 0: classic 101: xp
+	uint16_t RarePrefix; //0x0043
+	uint16_t RareSuffix; //0x0045
+	uint16_t AutoAffix; //0x0047
+	uint16_t MagicPrefix[3]; //0x0049
+	uint16_t MagicSuffix[3]; //0x004F
+	uint8_t BodyLoc; //0x0055
+	uint8_t InvPage; //0x0056
+	uint8_t CellOverlap; //0x0057
+	uint8_t ItemCell; //0x0058
+	uint8_t EarLvl; //0x0059
+	char pad_005A[5]; //0x005A
+	uint8_t InvGfxIdx; //0x005F
+	char pad_0060[17]; //0x0060
+	class D2ItemExtraDataStrc pExtraData; //0x0071
+}; //Size: 0x00A1
+static_assert(sizeof(D2ItemDataStrc) == 0xA1);
 
 class D2DrlgActStrc
 {
@@ -1784,9 +1797,15 @@ static_assert(sizeof(D2DrlgEnvironmentStrc) == 0x80);
 class D2MagicAffixTxt
 {
 public:
-	char pad_0000[128]; //0x0000
-}; //Size: 0x0080
-static_assert(sizeof(D2MagicAffixTxt) == 0x80);
+	char Name[32]; //0x0000
+	char pad_0020[69]; //0x0020
+	uint8_t LevelReq; //0x0065
+	char pad_0066[1]; //0x0066
+	uint8_t Class; //0x0067
+	uint8_t ClassLevelReq; //0x0068
+	char pad_0069[35]; //0x0069
+}; //Size: 0x008C
+static_assert(sizeof(D2MagicAffixTxt) == 0x8C);
 
 class D2RunesTxt
 {
@@ -1821,3 +1840,42 @@ public:
 	char pad_0000[128]; //0x0000
 }; //Size: 0x0080
 static_assert(sizeof(D2SeedStrc) == 0x80);
+
+class D2UniqueItemsTxt
+{
+public:
+	char pad_0000[2]; //0x0000
+	char Name[32]; //0x0002
+	uint16_t NameStr; //0x0022
+	char pad_0024[4]; //0x0024
+	char Code[4]; //0x0028
+	char pad_002C[10]; //0x002C
+	uint16_t LvlReq; //0x0036
+	char pad_0038[280]; //0x0038
+}; //Size: 0x0150
+static_assert(sizeof(D2UniqueItemsTxt) == 0x150);
+
+class D2SetItemsTxt
+{
+public:
+	char pad_0000[2]; //0x0000
+	char Name[32]; //0x0002
+	char pad_0022[2]; //0x0022
+	uint16_t NameStr; //0x0024
+	char pad_0026[2]; //0x0026
+	char Code[4]; //0x0028
+	char pad_002C[6]; //0x002C
+	int16_t LvlReq; //0x0032
+	char pad_0034[392]; //0x0034
+}; //Size: 0x01BC
+static_assert(sizeof(D2SetItemsTxt) == 0x1BC);
+
+class BNetSession
+{
+public:
+	char pad_0000[304]; //0x0000
+	char *BattleTag; //0x0130
+	uint64_t BattleTagLength; //0x0138
+	char pad_0140[64]; //0x0140
+}; //Size: 0x0180
+static_assert(sizeof(BNetSession) == 0x180);
