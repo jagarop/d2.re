@@ -23,6 +23,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "Custom_wsprintfA", "args": "(uint8_t *a1, unsigned __int64 a2, unsigned __int8 *a3, ...)", "pattern": "E8 ? ? ? ? 80 7D 07 31", "type": "operand", "operand": 0},
 {"ret": "wchar_t*", "conv": "__fastcall", "name": "D2CLIENT_GetLevelName", "args": "(int levelID)", "pattern": "48 83 EC 38 85 C9", "type": "absoulte"},
 {"ret": "BOOL", "conv": "__fastcall", "name": "D2CLIENT_SetUIVar", "args": "(int varno, int howset)", "pattern": "E8 ? ? ? ? EB 21 8B D7", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "D2CLIENT_Transmute", "args": "()", "pattern": "E8 ? ? ? ? EB 41 48 8B 03", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2CMP_10088", "args": "(D2TileLibraryHashStrc *a1, int a2, int a3, int a4, __int64 a5)", "pattern": "E8 ? ? ? ? 44 8B C8 85 C0 75 2F", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2COMMON_11013_ConvertMode", "args": "(D2UnitStrc *pUnit, int *pType, int *pClass, int *pMode)", "pattern": "E8 ? ? ? ? 41 83 FE 40", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "D2COMMON_GetMissileOwnerUnit", "args": "(D2UnitStrc *pMissile)", "pattern": "E8 ? ? ? ? 8B 6E 78", "type": "operand", "operand": 0},
