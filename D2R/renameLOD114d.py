@@ -2,10 +2,6 @@
 import os
 import json
 from collections import OrderedDict
-countFunctions = 0
-countVariables = 0
-path = os.path.abspath(os.path.dirname(__file__))
-end_ea = idc.get_segm_end(0)
 base = idaapi.get_imagebase()
 
 functions = [
@@ -224,9 +220,9 @@ functions = [
 { 'offset': 0x0194EFC4, 'name': 'LOD114d_sub_413590' }
 ]
 
-def BuildEnum(items):
+def Rename114d(items):
     for item in items:
         set_name(base + item['offset'], item['name'])
         print('\t%-20s = %-20s //%-20s' % (item['name'], hex(item['offset']), hex(base + item['offset'])[:-1] ))
 
-BuildEnum(functions)
+Rename114d(functions)
