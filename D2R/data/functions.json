@@ -609,6 +609,7 @@
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_TestCollisionByCoordinates", "args": "(D2UnitStrc *pUnit, int nX, int nY, int nFlags)", "pattern": "E8 ? ? ? ? 85 C0 74 37 41 8B D7", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_TestCollisionWithUnit", "args": "(D2UnitStrc* pUnit1, D2UnitStrc* pUnit2, int nCollisionType)", "pattern": "E8 ? ? ? ? 8B 55 14", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UpdateAnimRateAndVelocity", "args": "(D2UnitStrc *pUnit, D2UnitStrc *a2, int nLine)", "pattern": "E8 ? ? ? ? 83 FF 10", "type": "operand", "operand": 0},
+{"ret": "D2UIWidgetStrc*", "conv": "__fastcall", "name": "WIDGET_FindChildRecursive", "args": "(D2UIWidgetStrc *pParent, char* szName)", "pattern": "E8 ? ? ? ? 4D 8D A7 ? ? ? ? ", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "pfAutoMap", "args": "(D2RoomStrc* pRoom)", "pattern": "48 89 5C 24 ? 57 48 83 EC 20 48 8B 05 ? ? ? ? 48 8B F9 48 85 C0 74 04 8B 18 EB 05 BB ? ? ? ? 33 D2 48 85 FF 75 04 8B C2 EB 15 48 8B 41 18 48 8B 88 ? ? ? ? 8B 81 ? ? ? ? 85 C0 78 16", "type": "absoulte"},
 {"ret": "void", "conv": "__fastcall", "name": "pfTownAutoMap", "args": "(int a1, __int64 a2, __int64 a3, __int64 a4)", "pattern": "40 53 55 56 57 41 57 48 83 EC 50", "type": "absoulte"}
 ]
