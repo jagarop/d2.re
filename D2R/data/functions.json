@@ -99,6 +99,7 @@
 {"ret": "float*", "conv": "__fastcall", "name": "D2GFX_DrawAutomapCell2_Possibly_1", "args": "(float *a1, unsigned int a2, unsigned __int8 a3)", "pattern": "E8 ? ? ? ? 48 8D 4C 24 ? 90", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2R_DEBUG_ERROR", "args": "(D2UnitStrc* pUnit, BOOL a2)", "pattern": "E8 ? ? ? ? 8D 4D FF", "type": "operand", "operand": 0},
 {"ret": "void*", "conv": "__fastcall", "name": "D2R_DEBUG_STACK_RET_ADDRESS", "args": "()", "pattern": "48 8B 04 24 C3", "type": "absoulte"},
+{"ret": "void*", "conv": "__fastcall", "name": "D2WIN_LoadCellFile", "args": "(const char *szFile)", "pattern": "E8 ? ? ? ? 41 8B CF 48 89 04 FB", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "DATATBLS_AllocGlobalTileLibraryHash", "args": "()", "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "DATATBLS_CalculateMonsterStatsByLevel", "args": "(int nMonsterId, int nGameType, int nDifficulty, int nLevel, __int16 nFlags, D2MonStatsInitStrc *pMonStatsInit)", "pattern": "E8 ? ? ? ? 8B 75 84", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "DATATBLS_CalculatePercentage", "args": "(int nValue1, int nValue2, int nDivisor)", "pattern": "4C 63 CA 45 85 C0", "type": "absoulte"},
