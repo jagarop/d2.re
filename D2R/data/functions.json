@@ -27,6 +27,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "D2CLIENT_Transmute", "args": "()", "pattern": "E8 ? ? ? ? EB 41 48 8B 03", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2CMP_10088", "args": "(D2TileLibraryHashStrc *a1, int a2, int a3, int a4, __int64 a5)", "pattern": "E8 ? ? ? ? 44 8B C8 85 C0 75 2F", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2COMMON_11013_ConvertMode", "args": "(D2UnitStrc *pUnit, int *pType, int *pClass, int *pMode)", "pattern": "E8 ? ? ? ? 41 83 FE 40", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "D2COMMON_CheckWaypoint", "args": "(__int64 WaypointTable, __int64 dwLevelId)", "pattern": "E8 ? ? ? ? 4C 63 74 24 ? 4C 8B E8", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "D2COMMON_GetMissileOwnerUnit", "args": "(D2UnitStrc *pMissile)", "pattern": "E8 ? ? ? ? 8B 6E 78", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2Common_10078", "args": "(D2DrlgStrc *pDrlg)", "pattern": "E8 ? ? ? ? 44 89 2D ? ? ? ? E8 ? ? ? ? 44 88 AD ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "D2Common_10142", "args": "(D2DynamicPathStrc *pDynamicPath, D2UnitStrc *pUnits, BOOL bUnk1, BOOL bUnk2)", "pattern": "E8 ? ? ? ? 4C 89 7B 70", "type": "operand", "operand": 0},
