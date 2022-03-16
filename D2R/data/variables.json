@@ -39,6 +39,8 @@
 {"ctype": "char*", "name": "g_JoinGamePassword", "pattern": "48 8D 15 ? ? ? ? 48 8D 4C 24 ? E8 ? ? ? ? 80 7D 88 00 0F 84 ? ? ? ? 48 83 7C 24 ? ? 0F 8C ? ? ? ? 48 8B 5C 24 ? E8 ? ? ? ? 48 8B D3 48 8B C8 4C 8B 00 41 FF 50 20 E9 ? ? ? ? 48 B9 ? ? ? ? ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_MercReviveCost", "pattern": "44 8B 0D ? ? ? ? 48 8D 4C 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_MercStrIndex", "pattern": "66 89 15 ? ? ? ? 66 3B D0", "operand": 0, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_MouseOverUnitID", "pattern": "8B 8C FD ? ? ? ? E8 ? ? ? ?", "operand": 0, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_MouseOverUnitType", "pattern": "33 DB 41 89 8C F6 ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_MousePosition", "pattern": "48 8B 0D ? ? ? ? F3 0F 7F 45 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_MousePosition2", "pattern": "48 8B 1D ? ? ? ? 3B 9F ? ? ? ? 75 2E", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_NewStatNotifyIcon", "pattern": "44 38 35 ?? ?? ?? ?? 0F 84 D9 04 00 00", "operand": 0, "type": "operand"},
@@ -64,6 +66,7 @@
 {"ctype": "int64_t", "name": "g_Unk1ScreenToWorld", "pattern": "0F B7 0D ? ? ? ? 48 8D 55 A0", "operand": 1, "type": "operand", "summary": "a1 in GAME_ScreenToWorld"},
 {"ctype": "int64_t", "name": "g_WaypointTable", "pattern": "48 89 05 ? ? ? ? 0F 11 00", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_WpMenuOpen", "pattern": "80 3D ?? ?? ?? ?? ?? 0F 85 F5 00 00 00 80 3D", "operand": 0, "type": "operand"},
+{"ctype": "bool", "name": "g_bIsMouseOverUnit", "pattern": "48 8D 3D ? ? ? ? BB ? ? ? ? 48 8B CF E8 ? ? ? ? 48 83 C7 10", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
 ]
