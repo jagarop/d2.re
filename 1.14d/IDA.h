@@ -19,7 +19,7 @@
         struct RosterUnit;
         struct OverheadMsg;
         struct Skill;
-
+        struct D2AnimDataRecordStrc;
 
 struct D2GSServerToClientHandler {
  	void* pHandler; //0x0000 void (__fastcall* D2GSServerToClient_t)(void* pPacket);
@@ -612,6 +612,13 @@ struct D2GSServerToClientHandler {
             // Leaving rest undefined, use Path
         };
 
+        struct D2AnimDataRecordStrc {
+ 	        char AnimDataName[8]; //0x0000
+	        DWORD Frames; //0x0008
+	        DWORD AnimSpeed; //0x000C
+	        char pad_0010[120]; //0x0010 
+        };
+
         struct UnitAny {
             DWORD dwType;      // 0x00
             DWORD dwTxtFileNo; // 0x04
@@ -639,7 +646,7 @@ struct D2GSServerToClientHandler {
             DWORD dwFrameRemain;      // 0x48
             WORD wFrameRate;          // 0x4C
             WORD _4;                  // 0x4E
-            BYTE* pGfxUnk;            // 0x50
+            D2AnimDataRecordStrc *pAnimData; //0x0070
             DWORD* pGfxInfo;          // 0x54
             DWORD _5;                 // 0x58
             StatList* pStats;         // 0x5C
