@@ -21,6 +21,7 @@
 {"ret": "BOOL", "conv": "__fastcall", "name": "COMPOSIT_IsWeaponBowOrXBow", "args": "(D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 85 C0 41 8B FD", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "ClientAddPlayerToGame", "args": "(D2ClientStrc *pClient, D2GameStrc *pGame)", "pattern": "E8 ? ? ? ? 85 C0 75 6F", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "Custom_wsprintfA", "args": "(uint8_t *a1, unsigned __int64 a2, unsigned __int8 *a3, ...)", "pattern": "E8 ? ? ? ? 80 7D 07 31", "type": "operand", "operand": 0},
+{"ret": "int", "conv": "__stdcall", "name": "D2CLIENT_ClearScreen", "args": "()", "pattern": "E8 ? ? ? ? 44 8B 43 0C B1 37", "type": "operand", "operand": 0},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "D2CLIENT_GetGameLanguageCode", "args": "()", "pattern": "E8 ? ? ? ? 88 46 08", "type": "operand", "operand": 0},
 {"ret": "wchar_t*", "conv": "__fastcall", "name": "D2CLIENT_GetLevelName", "args": "(int levelID)", "pattern": "48 83 EC 38 85 C9", "type": "absoulte"},
 {"ret": "BOOL", "conv": "__fastcall", "name": "D2CLIENT_SetUIVar", "args": "(int varno, int howset)", "pattern": "E8 ? ? ? ? EB 21 8B D7", "type": "operand", "operand": 0},
