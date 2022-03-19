@@ -131,15 +131,15 @@ struct RosterUnit
     uint32_t posY; //0x0034
     uint32_t partyFlags; //0x0038
     char pad_038[4]; //0x003c
-    HostileInfo *pHostileInfo; //0x0040
+    HostileInfo* pHostileInfo; //0x0040
     char pad_040[200]; //0x0108
-    uint64_t *pNext; //0x0118
+    RosterUnit *pNext; //0x0118
 };
 struct HostileInfo
 {
     uint32_t dwUnitId; //0x0000
     uint32_t hostileFlag; //0x0004
-    HostileInfo* nextHostile; //0x0008
+    HostileInfo *nextHostile; //0x0008
 };
 
 
