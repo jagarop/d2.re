@@ -111,7 +111,6 @@ struct TransactionDialogsInfo;
 struct D2QuestInfo;
 struct D2Waypoint;
 struct RosterUnit;
-struct RosterUnit;
 struct HostileInfo;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
