@@ -111,26 +111,36 @@ struct TransactionDialogsInfo;
 struct D2QuestInfo;
 struct D2Waypoint;
 struct RosterUnit;
+struct RosterUnit;
+struct HostileInfo;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
 
-class RosterUnit
+struct RosterUnit
 {
-	char szName[24]; //0x0000
-	int32_t dwUnitId; //0x0018
-	int32_t dwPartyLife; //0x001C
-	int32_t _1; //0x0020
-	int32_t dwClassId; //0x0024
-	int16_t wLevel; //0x0028
-	int16_t wPartyId; //0x002A
-	int32_t dwLevelId; //0x002C
-	char pad_0030[16]; //0x0030
-	void* UnkPtr40; //0x0040
-	char pad_0048[50]; //0x0048
-	char szName2[24]; //0x007A
-	char pad_0092[288]; //0x0092
+    char name[16]; //0x0000
+    char pad_010[8]; // 0x0010
+    uint32_t dwUnitId; //0x0018
+    char pad_018[8]; //0x001c
+    uint32_t playerClass; //0x0024
+    uint16_t playerLevel; //0x0028
+    uint16_t partyID; // 0x002A
+    uint32_t area; //0x002C
+    uint32_t posX; //0x0030
+    uint32_t posY; //0x0034
+    uint32_t partyFlags; //0x0038
+    char pad_038[4]; //0x003c
+    HostileInfo *pHostileInfo; //0x0040
+    char pad_040[200]; //0x0108
+    uint64_t *pNext; //0x0118
+};
+struct HostileInfo
+{
+    uint32_t dwUnitId; //0x0000
+    uint32_t hostileFlag; //0x0004
+    HostileInfo* nextHostile; //0x0008
 };
 
 
