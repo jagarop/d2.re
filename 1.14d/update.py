@@ -17,7 +17,7 @@ def Parse():
     
 functions = [
 #D2CLIENT
-{ 'offset': 0xB32D0, 'name': 'D2CLIENT_GetQuestInfo', 'ctype': 'void* __stdcall D2CLIENT_GetQuestInfo()' },
+{ 'offset': 0xB32D0, 'name': 'D2CLIENT_GetQuestInfo', 'ctype': 'QuestInfo* __stdcall D2CLIENT_GetQuestInfo()' },
 { 'offset': 0xB2370, 'name': 'D2CLIENT_SubmitItem', 'ctype': 'void __fastcall D2CLIENT_SubmitItem(DWORD dwItemId)' },
 { 'offset': 0x8A0D0, 'name': 'D2CLIENT_Transmute', 'ctype': 'void __fastcall D2CLIENT_Transmute()' },
 { 'offset': 0x63990, 'name': 'D2CLIENT_FindClientSideUnit', 'ctype': 'UnitAny* __fastcall D2CLIENT_FindClientSideUnit(DWORD dwId, DWORD dwType)' },

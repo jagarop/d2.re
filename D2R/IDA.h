@@ -112,10 +112,52 @@ struct D2QuestInfo;
 struct D2Waypoint;
 struct RosterUnit;
 struct HostileInfo;
+struct unkqwordGameStruct;
+struct BnetData;
+struct D2RString;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+struct D2RString {
+	int32_t Size; //0x0000
+	char pad_0004[12]; //0x0004
+	char Data[24]; //0x0010
+};
+
+
+class LauncherData{
+	char pad_0000[192]; //0x0000
+	char* SessionID; //0x00C0
+	char pad_00C8[104]; //0x00C8
+	char* BnetUserName; //0x0130
+	char pad_0138[80]; //0x0138
+	char* BnetOwnername; //0x0188
+	char pad_0190[64]; //0x0190
+};
+
+class BnetData{
+	class LauncherData* pLaunchData; //0x0000
+	char pad_0008[32]; //0x0008
+	char* SessionID; //0x0028
+	D2RString SessionIDString;
+	char* GameName; //0x0058
+	D2RString GameNameString;
+	char* GamePassword; //0x0088
+	D2RString GamePasswordString;
+	char* RegionString; //0x00B8
+	char pad_00C0[288]; //0x00C0
+	char* GameIPAddress; //0x01E0
+	char pad_01E8[96]; //0x01E8
+	char* GitBuild; //0x0248
+	char pad_0250[1584]; //0x0250
+};
+
+struct unkqwordGameStruct{
+	char unkstuff[92];
+	bool bIsExpansion;
+};
 
 class HostileInfo
 {
