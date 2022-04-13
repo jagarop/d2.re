@@ -70,6 +70,8 @@
 {"ctype": "bool", "name": "g_WpMenuOpen", "pattern": "80 3D ?? ?? ?? ?? ?? 0F 85 F5 00 00 00 80 3D", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_bIsInTown", "pattern": "89 05 ?? ?? ?? ?? 48 8B CE E8 ?? ?? ?? ?? 48 85 F6", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_bIsMouseOverUnit", "pattern": "48 8D 3D ? ? ? ? BB ? ? ? ? 48 8B CF E8 ? ? ? ? 48 83 C7 10", "operand": 1, "type": "operand"},
+{"ctype": "void*", "name": "g_pCurrentInteractingDialog", "pattern": "48 8B 15 ? ? ? ? 48 8B C8 4C 8B 00 41 FF 50 20 48 8B 0D ? ? ? ? 4C 8D 44 24 ? 48 89 1D ? ? ? ? 48 89 5C 24 ? E8 ? ? ? ? 44 0F B7 05 ? ? ? ?", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
-{"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"}
+{"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"},
+{"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"}
 ]
