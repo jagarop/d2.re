@@ -607,6 +607,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_InitializeSequence", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 48 8B CB E8 ? ? ? ? EB 58", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_IsInMeleeRange", "args": "(D2UnitStrc* pUnit1, D2UnitStrc* pUnit2, int nRangeBonus)", "pattern": "E8 ? ? ? ? 8B 4E 0C", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_IsInMovingMode", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 33 C9 48 8B D7", "type": "operand", "operand": 0},
+{"ret": "bool", "conv": "__fastcall", "name": "UNITS_IsItemRepairable", "args": "(D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 85 C0 74 67 48 8B CF", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "UNITS_IsObjectInInteractRange", "args": "(D2UnitStrc* pUnit, D2UnitStrc* pObject)", "pattern": "E8 ? ? ? ? 85 C0 74 2B 49 63 C5", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_MergeDualWieldWeaponStatLists", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 41 B8 ? ? ? ? 49 8B D5 EB 13", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_SetAnimData", "args": "(D2UnitStrc *pUnit, int nUnitType, int nClassId, int nMode)", "pattern": "E8 ? ? ? ? 4C 8B 6F 70", "type": "operand", "operand": 0},

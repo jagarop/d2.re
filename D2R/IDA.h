@@ -115,10 +115,64 @@ struct HostileInfo;
 struct unkqwordGameStruct;
 struct BnetData;
 struct D2RString;
+class D2ChatMsg;
+class InGameMsgPtr;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+class InGameMsgPtr
+{
+	char pad_0000[32]; //0x0000
+	int64_t ChannelID; //0x0020
+	wchar_t *pChannelName; //0x0028
+	int16_t ChannelNameLen; //0x0030
+	char pad_0032[6]; //0x0032
+	int16_t ChannelNameLenMax; //0x0038
+	char pad_003A[6]; //0x003A
+	wchar_t N00000684[16]; //0x0040
+	wchar_t *pMessage; //0x0060
+	int16_t MessageLen; //0x0068
+	char pad_006A[62]; //0x006A
+	wchar_t *BnetName; //0x00A8
+	int16_t BnetNameLen; //0x00B0
+	char pad_00B2[6]; //0x00B2
+	int16_t BnetNameMaxLen; //0x00B8
+	char pad_00BA[6]; //0x00BA
+};
+class D2ChatMsg
+{
+	char pad_0000[24]; //0x0000
+	void *N00000056; //0x0018
+	int32_t int0020; //0x0020
+	char pad_0024[4]; //0x0024
+	int32_t int0028; //0x0028
+	char pad_002C[28]; //0x002C
+	int64_t ChannelID; //0x0048
+	wchar_t *pChannelName; //0x0050
+	int16_t ChannelNameLen; //0x0058
+	char pad_005A[6]; //0x005A
+	int16_t ChannelNameLenMax; //0x0060
+	char pad_0062[6]; //0x0062
+	wchar_t ChannelName[16]; //0x0068
+	char pad_0088[24]; //0x0088
+	void *N00000062; //0x00A0
+	int32_t MsqQty; //0x00A8
+	char pad_00AC[4]; //0x00AC
+	void *N00000064; //0x00B0
+	int32_t MsqQty2; //0x00B8
+	char pad_00BC[4]; //0x00BC
+	void *N00000066; //0x00C0
+	char pad_00C8[8]; //0x00C8
+	void *N00000068; //0x00D0
+	int32_t MsqQtyTimesFive; //0x00D8
+	char pad_00DC[4]; //0x00DC
+	void *N0000006A; //0x00E0
+	char pad_00E8[88]; //0x00E8
+	class InGameMsgPtr *pInGameMsg; //0x0140
+};
+
 
 struct D2RString {
 	int32_t Size; //0x0000
