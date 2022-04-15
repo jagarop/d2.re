@@ -117,10 +117,19 @@ struct BnetData;
 struct D2RString;
 class D2ChatMsg;
 class InGameMsgPtr;
+class D2MouseOver;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+class D2MouseOver
+{
+	int8_t g_bIsMouseOverUnit; //0x0000
+	char pad_0001[3]; //0x0001
+	int32_t g_MouseOverUnitType; //0x0004
+	int32_t g_MouseOverUnitID; //0x0008
+}; 
 
 class InGameMsgPtr
 {
@@ -2068,43 +2077,42 @@ struct D2ObjectDataStrc {
 };
 
 struct D2ItemExtraDataStrc {
- 	D2InventoryStrc *pParentInventory; //0x0000
-	D2UnitStrc *pPreviousItem; //0x0008
-	D2UnitStrc *pNextItem; //0x0010
-	uint8_t NodePos; //0x0018
-	uint8_t NodePosOther; //0x0019
-	char pad_001A[6]; //0x001A
-	D2UnitStrc *pPrevGridItem; //0x0020
-	D2UnitStrc *pNextGridItem; //0x0028 
-};
-
-struct D2ItemDataStrc {
- 	uint32_t Rarity; //0x0000
-	uint32_t LowSeed; //0x0004
-	uint32_t HighSeed; //0x0008
-	uint32_t OwnerGUID; //0x000C
-	uint32_t InitSeed; //0x0010
-	uint32_t CommandFlags; //0x0014
-	uint32_t dwFlags; //0x0018
-	char pad_001C[28]; //0x001C
-	uint32_t ItemLevel; //0x0038
-	char pad_003C[4]; //0x003C
-	uint16_t ItemFormat; //0x0040 0: classic 101: xp
-	uint16_t RarePrefix; //0x0042
-	uint16_t RareSuffix; //0x0044
-	uint16_t AutoAffix; //0x0046
-	uint16_t MagicPrefix[3]; //0x0048
-	uint16_t MagicSuffix[3]; //0x004E
-	uint8_t BodyLoc; //0x0054
-	uint8_t InvPage; //0x0055
-	uint8_t CellOverlap; //0x0056
-	uint8_t ItemCell; //0x0057
-	uint8_t EarLvl; //0x0058
-	char pad_0059[5]; //0x0059
-	uint8_t InvGfxIdx; //0x005E
-	char pad_005F[17]; //0x005F
-	class D2ItemExtraDataStrc pExtraData; //0x0070
-};
+            Inventory* pParentInventory; //0x0000 0x70
+            Unit* pPreviousItem; //0x0008 0x78
+            Unit* pNextItem; //0x0010 0x80
+            uint8_t NodePos; //0x0018 0x88
+            uint8_t NodePosOther; //0x0019 0x89
+            char Unk0x008A[14]; //0x001A 0x8A
+            Unit* pNextItemSamePage; //0x0028 0x98
+        };
+ struct ItemData {
+            //This changed since alpha a lot of it is wrong... i thnk somewhere near the rare prefixes it gets off (maybe ilvl)
+            uint32_t Rarity; //0x0000
+            uint32_t LowSeed; //0x0004
+            uint32_t HighSeed; //0x0008
+            uint32_t OwnerGUID; //0x000C
+            uint32_t InitSeed; //0x0010
+            uint32_t CommandFlags; //0x0014
+            uint32_t Flags; //0x0018
+            char pad_001C[24]; //0x001C
+            uint32_t FileText; //0x0034
+            uint32_t ItemLevel; //0x0038
+            char pad_003C[4]; //0x003C
+            uint16_t ItemFormat; //0x0040 0: classic 101: xp
+            uint16_t RarePrefix; //0x0042
+            uint16_t RareSuffix; //0x0044
+            uint16_t AutoAffix; //0x0046
+            uint16_t MagicPrefix[3]; //0x0048
+            uint16_t MagicSuffix[3]; //0x004E
+            uint8_t BodyLoc; //0x0054
+            uint8_t InvPage; //0x0055
+            uint8_t CellOverlap; //0x0056
+            uint8_t ItemCell; //0x0057
+            uint8_t EarLvl; //0x0058
+            uint8_t InvGfxIdx; //0x0059
+            char pad_005A[70]; //0x005A
+            ItemExtraData pExtraData;            //0x00A0
+        };
 
 struct D2DrlgActStrc {
  	char pad_0000[20]; //0x0000
@@ -2300,18 +2308,16 @@ struct D2SkillListStrc {
 	char pad_0020[96]; //0x0020 
 };
 
-class D2SkillStrc // Size might have changed, as stuff did shift recently
-{
-	class D2SkillsTxt *pSkillsTxt; //0x0000
-	class D2SkillStrc *pNextSkill; //0x0008
-	char pad_0010[36]; //0x0010
-	uint32_t Level; //0x0034
-	int32_t nLevelBonus; //0x0038
-	uint32_t Quantity; //0x003C
-	int32_t nOwnerGUID; //0x0040
-	char pad_0044[4]; //0x0044
-	uint32_t Charges; //0x0048
-	char pad_004C[4]; //0x004C
+struct D2SkillStrc {
+    D2SkillsTxt *pSkillsTxt; //0x0000
+    D2SkillStrc *pNextSkill; //0x0008
+    char pad_0010[40]; //0x0010
+    uint32_t Level; //0x0034
+    char pad_0038[4]; //0x0038
+    uint32_t Quantity; //0x003C
+    char pad_0040[8]; //0x0040
+    uint32_t Charges; //0x0048
+    char pad_004C[4]; //0x004C 
 };
 
 struct D2GameStrc {
