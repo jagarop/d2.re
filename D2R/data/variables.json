@@ -48,6 +48,7 @@
 {"ctype": "void*", "name": "g_NPCTalkDialog", "pattern": "48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 80 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_NewStatNotifyIcon", "pattern": "44 38 35 ?? ?? ?? ?? 0F 84 D9 04 00 00", "operand": 0, "type": "operand"},
 {"ctype": "BOOL", "name": "g_NoPickup", "pattern": "80 3D ? ? ? ? ? 74 04 84 C9", "operand": 0, "type": "operand"},
+{"ctype": "int64_t*", "name": "g_PanelManagerVMT", "pattern": "48 8D 05 ?? ?? ?? ?? 33 C9 48 89 03 48 89 4B 30", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_Paused", "pattern": "80 3D ?? ?? ?? ?? ?? 75 04 84 C0", "operand": 0, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_PlayerPos", "pattern": "8B 05 ? ? ? ? 8D 34 80", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_PlayerPos2", "pattern": "8B 0D ? ? ? ? 03 CD", "operand": 1, "type": "operand"},
