@@ -118,10 +118,22 @@ struct D2RString;
 class D2ChatMsg;
 class InGameMsgPtr;
 class D2MouseOver;
+struct InputBoxData;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
 #pragma pack(push, 1)
+
+
+		struct InputBoxData {
+			wchar_t* pData;			//0x0000
+			uint32_t Len;			//0x0008
+			uint32_t Unk0x000C;		//0x000C
+			uint32_t MaxLen;		//0x0010
+			uint32_t Unk0x0014;		//0x0014
+			wchar_t Data[0xF];
+			uint64_t Valid;
+		};
 
 class D2MouseOver
 {
@@ -2077,14 +2089,14 @@ struct D2ObjectDataStrc {
 };
 
 struct D2ItemExtraDataStrc {
-            Inventory* pParentInventory; //0x0000 0x70
-            Unit* pPreviousItem; //0x0008 0x78
-            Unit* pNextItem; //0x0010 0x80
+            D2InventoryStrc* pParentInventory; //0x0000 0x70
+            D2UnitStrc* pPreviousItem; //0x0008 0x78
+            D2UnitStrc* pNextItem; //0x0010 0x80
             uint8_t NodePos; //0x0018 0x88
             uint8_t NodePosOther; //0x0019 0x89
             char Unk0x008A[14]; //0x001A 0x8A
-            Unit* pNextItemSamePage; //0x0028 0x98
-        };
+            D2UnitStrc* pNextItemSamePage; //0x0028 0x98
+};
  struct ItemData {
             //This changed since alpha a lot of it is wrong... i thnk somewhere near the rare prefixes it gets off (maybe ilvl)
             uint32_t Rarity; //0x0000
@@ -2111,7 +2123,7 @@ struct D2ItemExtraDataStrc {
             uint8_t EarLvl; //0x0058
             uint8_t InvGfxIdx; //0x0059
             char pad_005A[70]; //0x005A
-            ItemExtraData pExtraData;            //0x00A0
+            D2ItemExtraDataStrc* pExtraData;            //0x00A0
         };
 
 struct D2DrlgActStrc {
@@ -2784,7 +2796,6 @@ struct D2UIWidgetStrc {
 	char pad_0070[32]; //0x0070
 	 
 };
-
 struct D2UIButtonStrc_VMT {
  	void(__fastcall* BUTTON_Func0)(D2UIButtonStrc* pThis);
 	void(__fastcall* BUTTON_Func1)(D2UIButtonStrc* pThis);
