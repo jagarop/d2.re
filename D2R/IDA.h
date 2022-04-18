@@ -220,6 +220,8 @@ class BnetData{
 struct unkqwordGameStruct{
 	char unkstuff[92];
 	bool bIsExpansion;
+	char pad_005D[3]; //0x005D
+	bool Ladder; //0x0060
 };
 
 class HostileInfo
