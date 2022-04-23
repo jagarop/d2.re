@@ -1,6 +1,5 @@
 [
 {"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? FE C8", "type": "operand", "operand": 0},
-{"ret": "int64_t", "conv": "__fastcall", "name": "UI_SetInputBoxData", "args": "(InputBoxData* InputBoxData, const wchar_t* pBuffer, uint64_t nLen)", "pattern": "E8 ? ? ? ? 4C 8B 5D B8", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "BITMANIP_Write", "args": "(D2BitBufferStrc* pBuffer, uint32_t dwValue, uint64_t nBits)", "pattern": "40 53 4D 8B D0", "type": "absoulte"},
 {"ret": "D2QuestInfo*", "conv": "__fastcall", "name": "CLIENT_GetQuestInfoFromGameAndUnit", "args": "(D2GameStrc *pGame, D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 8B 4D 40", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "CLIENT_RevealAutomapRoom", "args": "(D2RoomStrc* pRoom1, int dwClipFlag, void* aLayer)", "pattern": "E8 ? ? ? ? 90 80 E7 FF", "type": "operand", "operand": 0},
@@ -558,6 +557,8 @@
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_UpdateUnitStat", "args": "(D2StatListStrc *pStatList, unsigned int a2, int a3, uint8_t *a4)", "pattern": "E8 ? ? ? ? FF C5 49 83 C6 02", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "Screen_to_world", "args": "(__int64* a1, float* fX, float* fY, D2PointFloat screenCoords)", "pattern": "E8 ? ? ? ? 8B 55 14", "type": "operand", "operand": 0},
 {"ret": "unsigned __int64", "conv": "__fastcall", "name": "Storm_578_some_print_func", "args": "(uint8_t *a1, unsigned __int64 a2, __int64 a3, ...)", "pattern": "E8 ? ? ? ? 48 85 F6 74 43", "type": "operand", "operand": 0},
+{"ret": "int64_t", "conv": "__fastcall", "name": "UI_SetInputBoxData", "args": "(InputBoxData* InputBoxData, const wchar_t* pBuffer, uint64_t nLen)", "pattern": "E8 ? ? ? ? 4C 8B 5D B8", "type": "operand", "operand": 0},
+{"ret": "int64_t", "conv": "__fastcall", "name": "UI_SetInputBoxData", "args": "(InputBoxData* InputBoxData, const wchar_t* pBuffer, uint64_t nLen)", "pattern": "E8 ? ? ? ? 4C 8B 5D B8", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UMODEVENT_FireEnchantedModeChange", "args": "(D2GameStrc* pGame, D2UnitStrc* pBoss, int nEvent, BOOL bUnique)", "pattern": "48 83 EC 38 45 85 C9 75 06", "type": "absoulte", "summary": "unsure on this one need to debug it on 1.10f. https://discord.com/channels/321843290150535169/321845508266262529/928443243790737438"},
 {"ret": "void", "conv": "__fastcall", "name": "UNITROOM_RefreshUnit", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 80 7D 21 00", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_AllocPlayerData", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 48 3B F7 74 49", "type": "operand", "operand": 0},
@@ -584,6 +585,7 @@
 {"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetDistanceToCoordinates", "args": "(D2UnitStrc *pUnit, int nX, int nY)", "pattern": "E8 ? ? ? ? EB 9A", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetFrameBonus", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 8B C8 8B 43 5C", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetHitClass", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 09 45 7C", "type": "operand", "operand": 0},
+{"ret": "uint8_t", "conv": "__fastcall", "name": "UNITS_GetInteractTypeOfObject", "args": "(D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 3C 7D", "type": "operand", "operand": 0},
 {"ret": "D2InventoryStrc*", "conv": "__fastcall", "name": "UNITS_GetInventory", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 4C 8B E8 48 85 C0 0F 84 ? ? ? ? 81 38 ? ? ? ? 0F 85 ? ? ? ? 48 8B 48 10 48 85 C9 0F 84 ? ? ? ?", "type": "operand", "operand": 0},
 {"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetInventoryRecordId", "args": "(D2UnitStrc* pUnit, unsigned __int8 nInvPage, int isLoD)", "pattern": "E8 ? ? ? ? 8B 17 44 8B D0 44 8B C2 41 83 E8 02 74 23 41 83 E8 02 74 1D 41 83 F8 01 74 17 ", "type": "operand", "operand": 0},
 {"ret": "uint8_t", "conv": "__fastcall", "name": "UNITS_GetItemComponentId", "args": "(D2UnitStrc *pUnit, D2UnitStrc *pItem)", "pattern": "E8 ? ? ? ? 8B 56 0A", "type": "operand", "operand": 0},
