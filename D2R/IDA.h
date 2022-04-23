@@ -232,6 +232,8 @@ class BnetData{
 struct unkqwordGameStruct{
 	char unkstuff[92];
 	bool bIsExpansion;
+	char pad_005D[3]; //0x005D
+	bool bIsLadder; //0x0060 -- based on offline chars with ladder flag set.
 };
 
 class HostileInfo

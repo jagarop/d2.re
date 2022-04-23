@@ -77,5 +77,7 @@
 {"ctype": "void*", "name": "g_pCurrentInteractingDialog", "pattern": "48 8B 15 ?? ?? ?? ?? 48 8B C8 4C 8B 00 41 FF 50 ?? 48 8B 0D ?? ?? ?? ?? 4C 8D 44 24 40 33 DB 48 89 1D ?? ?? ?? ?? 48 89 5C 24 40 E8 ?? ?? ?? ?? 48 89 1D", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"},
-{"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"}
+{"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_CharFlags", "pattern": "48 8B 2D ? ? ? ? 8B FE", "operand": 1, "type": "operand", "summary": "0x4 hc, 0x8 diedbefore, 0x20 expansion, 0x40 ladder (also has flags for titles/patriarch etc)"},
+{"ctype": "void*", "name": "g_WidgetStates", "pattern": "48 8B 0D ? ? ? ? 48 C7 C7", "operand": 1, "type": "operand"}
 ]
