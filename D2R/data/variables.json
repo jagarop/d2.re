@@ -15,6 +15,7 @@
 {"ctype": "uint32_t", "name": "g_AutomapShiftDirection", "pattern": "8B 05 ? ? ? ? 89 44 24 20 74 07", "operand": 1, "type": "operand"},
 {"ctype": "void", "name": "g_BeltInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 48 85 C0 74 1F 83 FF 0F 77 1A 48 8B 40 18 48 63 CF 48 39 2C C8 ", "operand": 1, "type": "operand"},
 {"ctype": "void", "name": "g_BodyLocInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? 33 D2 48 8B CF E8 ? ? ? ? 48 85 C0 75 04 33 DB EB 08 48 8B 40 18 48 8B 58 20 ", "operand": 1, "type": "operand"},
+{"ctype": "uint32_t", "name": "g_CharFlags", "pattern": "48 8B 2D ? ? ? ? 8B FE", "operand": 1, "type": "operand", "summary": "0x4 hc, 0x8 diedbefore, 0x20 expansion, 0x40 ladder (also has flags for titles/patriarch etc)"},
 {"ctype": "bool", "name": "g_CharacterWindowOpen", "pattern": "80 3D ? ? ? ? ? 0F 85 02 01 00 00", "operand": 0, "type": "operand"},
 {"ctype": "D2ChatMsg", "name": "g_ChatStruct", "pattern": "48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 4C 85 7C 24 38", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTablesStrc", "name": "g_ClientSideUnitHashTable", "pattern": "4C 8D 05 ? ? ? ? 48 63 03 8B CA 48 C1 E0 07 83 E1 7F 48 03 C8", "operand": 1, "type": "operand"},
@@ -48,6 +49,7 @@
 {"ctype": "void*", "name": "g_NPCTalkDialog", "pattern": "48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 80 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_NewStatNotifyIcon", "pattern": "44 38 35 ?? ?? ?? ?? 0F 84 D9 04 00 00", "operand": 0, "type": "operand"},
 {"ctype": "BOOL", "name": "g_NoPickup", "pattern": "80 3D ? ? ? ? ? 74 04 84 C9", "operand": 0, "type": "operand"},
+{"ctype": "int64_t*", "name": "g_PanelManagerVMT", "pattern": "48 8D 05 ?? ?? ?? ?? 33 C9 48 89 03 48 89 4B 30", "operand": 0, "type": "operand"},
 {"ctype": "bool", "name": "g_Paused", "pattern": "80 3D ?? ?? ?? ?? ?? 75 04 84 C0", "operand": 0, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_PlayerPos", "pattern": "8B 05 ? ? ? ? 8D 34 80", "operand": 1, "type": "operand"},
 {"ctype": "D2Point32", "name": "g_PlayerPos2", "pattern": "8B 0D ? ? ? ? 03 CD", "operand": 1, "type": "operand"},
@@ -69,6 +71,7 @@
 {"ctype": "void*", "name": "g_TransactionDialog", "pattern": "48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 48 83 3D ? ? ? ? ? 0F 85 ? ? ? ? 80 3D ? ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_Unk1ScreenToWorld", "pattern": "0F B7 0D ? ? ? ? 48 8D 55 A0", "operand": 1, "type": "operand", "summary": "a1 in GAME_ScreenToWorld"},
 {"ctype": "int64_t", "name": "g_WaypointTable", "pattern": "48 89 05 ? ? ? ? 0F 11 00", "operand": 0, "type": "operand"},
+{"ctype": "void*", "name": "g_WidgetStates", "pattern": "48 8B 0D ? ? ? ? 48 C7 C7", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_WpMenuOpen", "pattern": "80 3D ?? ?? ?? ?? ?? 0F 85 F5 00 00 00 80 3D", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_bIsInTown", "pattern": "89 05 ?? ?? ?? ?? 48 8B CE E8 ?? ?? ?? ?? 48 85 F6", "operand": 0, "type": "operand"},
 {"ctype": "D2MouseOver", "name": "g_bIsMouseOverUnit", "pattern": "48 8D 3D ? ? ? ? BB ? ? ? ? 48 8B CF E8 ? ? ? ? 48 83 C7 10", "operand": 1, "type": "operand"},
@@ -76,7 +79,5 @@
 {"ctype": "void*", "name": "g_pCurrentInteractingDialog", "pattern": "48 8B 15 ?? ?? ?? ?? 48 8B C8 4C 8B 00 41 FF 50 ?? 48 8B 0D ?? ?? ?? ?? 4C 8D 44 24 40 33 DB 48 89 1D ?? ?? ?? ?? 48 89 5C 24 40 E8 ?? ?? ?? ?? 48 89 1D", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "4C 8D 05 ? ? ? ? F3 0F 7F 44 24 ?", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"},
-{"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"},
-{"ctype": "uint32_t", "name": "g_CharFlags", "pattern": "48 8B 2D ? ? ? ? 8B FE", "operand": 1, "type": "operand", "summary": "0x4 hc, 0x8 diedbefore, 0x20 expansion, 0x40 ladder (also has flags for titles/patriarch etc)"},
-{"ctype": "void*", "name": "g_WidgetStates", "pattern": "48 8B 0D ? ? ? ? 48 C7 C7", "operand": 1, "type": "operand"}
+{"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"}
 ]
