@@ -1,6 +1,5 @@
 [
 {"ctype": "D2RosterPetStrc*", "name": "D2RosterPet", "pattern": "48 8B 05 ? ? ? ? 48 89 41 30 89 59 08", "operand": 1, "type": "operand"},
-{"ctype": "int64_t", "name": "ItemPriceList", "pattern": "48 8B 15 ? ? ? ? 4D 8D 7D 08", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "LOD_off_6FDE5804", "pattern": "4C 8D 0D ? ? ? ? 44 2B D0 89 54 24 44", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "NetworkClass_MPRecvPacket", "pattern": "48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? B2 01", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "NetworkClass_SPRecvPacket", "pattern": "48 8D 0D ? ? ? ? FF 50 08 41 B9 ? ? ? ?", "operand": 1, "type": "operand"},
