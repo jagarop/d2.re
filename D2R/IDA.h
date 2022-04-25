@@ -119,6 +119,7 @@ class D2ChatMsg;
 class InGameMsgPtr;
 class D2MouseOver;
 struct InputBoxData;
+struct D2RosterPetStrc;
 
 typedef int32_t(__fastcall* UNITFINDTEST)(D2UnitStrc* pUnit, D2UnitFindArgStrc* pUnitFindArg);
 
@@ -142,6 +143,19 @@ class D2MouseOver
 	int32_t g_MouseOverUnitType; //0x0004
 	int32_t g_MouseOverUnitID; //0x0008
 }; 
+
+
+class D2RosterPetStrc
+{
+	int32_t nMonStatsId; //0x0000
+	int32_t nPetTypeId; //0x0004
+	int32_t dwUnitId; //0x0008
+	int32_t dwOwnerId; //0x000C
+	char pad_0010[12]; //0x0010
+	int32_t nLifePercent; //0x001C
+	char pad_0020[16]; //0x0020
+	class D2RosterPetStrc *pNext; //0x0030
+};
 
 class InGameMsgPtr
 {
