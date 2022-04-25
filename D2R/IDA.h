@@ -151,10 +151,12 @@ class D2RosterPetStrc
 	int32_t nPetTypeId; //0x0004
 	int32_t dwUnitId; //0x0008
 	int32_t dwOwnerId; //0x000C
-	char pad_0010[12]; //0x0010
+	bool bDrawIcon; //0x0010
+	char pad_0011[11]; //0x0011
 	int32_t nLifePercent; //0x001C
 	char pad_0020[16]; //0x0020
 	class D2RosterPetStrc *pNext; //0x0030
+
 };
 
 class InGameMsgPtr
