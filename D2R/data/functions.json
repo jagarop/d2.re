@@ -2,7 +2,7 @@
 {"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? FE C8", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "BITMANIP_Write", "args": "(D2BitBufferStrc* pBuffer, uint32_t dwValue, uint64_t nBits)", "pattern": "40 53 4D 8B D0", "type": "absoulte"},
 {"ret": "D2QuestInfo*", "conv": "__fastcall", "name": "CLIENT_GetQuestInfoFromGameAndUnit", "args": "(D2GameStrc *pGame, D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 8B 4D 40", "type": "operand", "operand": 0},
-{"ret": "void", "conv": "__fastcall", "name": "CLIENT_RevealAutomapRoom", "args": "(D2RoomStrc* pRoom1, int dwClipFlag, void* aLayer)", "pattern": "E8 ? ? ? ? 90 80 E7 FF", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "CLIENT_RevealAutomapRoom", "args": "(D2RoomStrc* pRoom1, int dwClipFlag, void* aLayer)", "pattern": "E8 ? ? ? ? A9 ? ? ? ? 71 3A", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "CLIENT_SwapWeaponSlot", "args": "(uint8_t bPrimarySlot)", "pattern": "E8 ? ? ? ? EB 9C 48 85 FF", "type": "operand", "operand": 0, "summary": "1 = Slot 1, 0 = Slot 2"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "COLLISION_AdaptBoundingBoxToGrid", "args": "(D2RoomStrc *pRoom, void *pBoundingBox, void *pBoundingBoxes)", "pattern": "48 83 EC 28 44 8B 5A 04", "type": "absoulte"},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "COLLISION_CheckCollisionMask", "args": "(D2RoomStrc *a1, D2RoomStrc ***a2, int *a3, __int16 nMask)", "pattern": "E8 ? ? ? ? 66 F7 D8", "type": "operand", "operand": 0},
