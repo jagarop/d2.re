@@ -591,7 +591,7 @@
 {"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetInventoryRecordId", "args": "(D2UnitStrc* pUnit, unsigned __int8 nInvPage, int isLoD)", "pattern": "E8 ? ? ? ? 8B 17 44 8B D0 44 8B C2 41 83 E8 02 74 23 41 83 E8 02 74 1D 41 83 F8 01 74 17 ", "type": "operand", "operand": 0},
 {"ret": "uint8_t", "conv": "__fastcall", "name": "UNITS_GetItemComponentId", "args": "(D2UnitStrc *pUnit, D2UnitStrc *pItem)", "pattern": "E8 ? ? ? ? 8B 56 0A", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetMeleeRange", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? 41 8B 56 2C", "type": "operand", "operand": 0},
-{"ret": "uint32_t", "conv": "__fastcall", "name": "UNITS_GetMonsterOwnerID", "args": "(uint32_t nMonsterID)", "pattern": "E8 ? ? ? ? 41 3B 46 08", "type": "operand", "operand": 0},
+{"ret": "uint32_t", "conv": "__fastcall", "name": "UNITS_GetMonsterOwnerID", "args": "(uint32_t nMonsterID)", "pattern": "E8 ? ? ? ? 41 3B 47 08", "type": "operand", "operand": 0},
 {"ret": "char*", "conv": "__fastcall", "name": "UNITS_GetName", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 48 8B 4B 18 4C 8B C8", "type": "operand", "operand": 0, "summary": "Seems to mostly work... Method does some weird stuff not dealing w/ name."},
 {"ret": "char*", "conv": "__fastcall", "name": "UNITS_GetPlayerName", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 0F B7 4F 08", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "UNITS_GetPlayerUnit", "args": "(int32_t pIndex)", "pattern": "E8 ? ? ? ? 48 83 FB 1F", "type": "operand", "operand": 0},
