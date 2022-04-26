@@ -105,6 +105,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "D2GFX_DrawLine", "args": "(int a1, int a2, int a3, int a4, unsigned __int8 a5, char a6)", "pattern": "E8 ? ? ? ? 4C 63 5B 10", "type": "operand", "operand": 0, "summary": "Unconfirmed offset"},
 {"ret": "void", "conv": "__fastcall", "name": "D2GFX_DrawRectangle", "args": "(int a1, int a2, int a3, int a4, unsigned __int8 a5, unsigned __int8 a6, unsigned __int8 a7, int a8, int a9)", "pattern": "E8 ? ? ? ? 8B 4E 6C", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2R_DEBUG_ERROR", "args": "(D2UnitStrc* pUnit, BOOL a2)", "pattern": "E8 ? ? ? ? 8D 4D FF", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "D2R_DEBUG_EXIT", "args": "(int a1)", "pattern": "E8 ? ? ? ? CC AD", "type": "absoulte", "operand": 0},
 {"ret": "void*", "conv": "__fastcall", "name": "D2R_DEBUG_STACK_RET_ADDRESS", "args": "()", "pattern": "48 8B 04 24 C3", "type": "absoulte"},
 {"ret": "void*", "conv": "__fastcall", "name": "D2WIN_LoadCellFile", "args": "(const char *szFile)", "pattern": "E8 ? ? ? ? 41 8B CF 48 89 04 FB", "type": "operand", "operand": 0},
 {"ret": "uint64_t", "conv": "__fastcall", "name": "D2WIN_SetTextSize", "args": "(int dwSize)", "pattern": "E9 ? ? ? ? B7 A4", "type": "operand", "operand": 0},
