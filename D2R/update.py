@@ -160,7 +160,7 @@ def RenameTableFunctions(name, size, func):
         func(address, i)
 
 
-version = ida_search.find_binary(0, end_ea, '48 8D 15 ? ? ? ? 48 8B C8 4C 8B 00', 16, idc.SEARCH_DOWN)
+version = ida_search.find_binary(0, end_ea, '48 8D 15 ?? ?? ?? ?? 48 8B C8 4C 8B 00 41 FF 50 ?? 48 8B 9C 24 80 00 00 00', 16, idc.SEARCH_DOWN)
 if version == idaapi.BADADDR:
     version = 'Unknown'
 else:
