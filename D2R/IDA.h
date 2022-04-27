@@ -119,10 +119,47 @@ class D2ChatMsg;
 class D2MouseOver;
 struct InputBoxData;
 struct D2RosterPetStrc;
+enum D2PanelName;
 
 typedef int32_t(__fastcall * UNITFINDTEST)(D2UnitStrc * pUnit, D2UnitFindArgStrc * pUnitFindArg);
 
 #pragma pack(push, 1)
+
+enum D2PanelName : uint8_t {
+    g_CharacterWindowOpen = 2,
+    g_unkpanel3 = 3,
+    g_unkpanel4 = 4,
+    g_unkpanel5 = 5,
+    g_NewStatNotifyIcon = 6,
+    g_unkpanel7 = 7,
+    g_unkpanel8 = 8,
+    g_unkpanel9 = 9,
+    g_AutomapOn = 10,
+    g_TradeOpen = 11,
+    g_unkpanel12 = 12,
+    g_ImbuneOrSocketOpen = 13,
+    g_QuestLogOpen = 14,
+    g_unkpanel15 = 15,
+    g_unkpanel16 = 16,
+    g_unkpanel17 = 17,
+    g_unkpanel18 = 18,
+    g_WpMenuOpen = 19,
+    g_unkpanel20 = 20,
+    g_unkpanel21 = 21,
+    g_unkpanel22 = 22,
+    g_unkpanel23 = 23,
+    g_StashOpen = 24,
+    g_CubeOpen = 25,
+    g_unkpanel26 = 26,
+    g_HelpOpen = 27,
+    g_HelpNotifyIcon = 28,
+    g_unkpanel29 = 29,
+    g_unkpanel30 = 30,
+    g_unkpanel31 = 31,
+    g_unkpanel32 = 32,
+    g_unkpanel33 = 33,
+    g_unkpanel34 = 34,
+};
 
 struct InputBoxData {
   wchar_t * pData; //0x0000
