@@ -354,6 +354,16 @@ struct D2RunesTxt {
   D2PropertyStrc pProperties[7]; //0xB0
 };
 
+struct D2SeedStrc {
+  union {
+    struct {
+      uint32_t nLowSeed; //0x00
+      uint32_t nHighSeed; //0x04
+    };
+    uint64_t lSeed; //0x00
+  };
+};
+
 struct D2UnkMissileCalcStrc {
   int32_t field_0;
   int32_t field_4;
@@ -564,16 +574,6 @@ struct D2DrlgTileDataStrc {
   uint8_t nBlue; //0x2A
   uint8_t nIntensity; //0x2B
   int32_t unk0x2C; //0x2C
-};
-
-struct D2SeedStrc {
-  union {
-    struct {
-      uint32_t nLowSeed; //0x00
-      uint32_t nHighSeed; //0x04
-    };
-    uint64_t lSeed; //0x00
-  };
 };
 
 struct D2DrlgCoordStrc {
