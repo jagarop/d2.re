@@ -33,7 +33,6 @@
 {"ctype": "int8_t", "name": "g_Difficulty", "pattern": "73 09 C6 05 ? ? ? ? ?", "operand": 0, "type": "operand"},
 {"ctype": "size_t", "name": "g_ElementSize", "pattern": "48 83 3D ?? ?? ?? ?? ?? 0F 84 B2 00 00 00", "operand": 0, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_FPS", "pattern": "8B 1D ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ?? 48 8D 4C 24 40", "operand": 1, "type": "operand"},
-{"ctype": "void*", "name": "g_GamePanelStates", "pattern": "48 8D 1D ? ? ? ? 48 8D 35 ? ? ? ? 0F 1F 80", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_GameStructIndex", "pattern": "48 8B 15 ? ? ? ? 45 33 DB", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_HelpNotifyIcon", "pattern": "44 0F B6 35 ?? ?? ?? ?? 33 D2 41 B0 01 8D 4A 1C", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_HelpOpen", "pattern": "0F B6 35 ?? ?? ?? ?? 48 89 7C 24 50", "operand": 1, "type": "operand"},
