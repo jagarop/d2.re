@@ -2090,13 +2090,13 @@ struct ItemData {
 };
 
 struct D2DrlgActStrc {
-  char pad_0000[20]; //0x0000
-  uint32_t nSeed; //0x0014
-  D2RoomStrc * pRoom; //0x0018
-  uint32_t ActNo; //0x0020
-  char pad_0024[76]; //0x0024
-  D2DrlgStrc * pDrlg; //0x0070
-  char pad_0078[16]; //0x0078 
+  char pad_0000[28]; //0x0000
+  uint32_t nSeed; //0x001C
+  D2RoomStrc * pRoom; //0x0020
+  uint32_t ActNo; //0x0028
+  char pad_0024[76]; //0x002C
+  D2DrlgStrc * pDrlg; //0x0078
+  char pad_0078[16]; //0x0080
 };
 
 struct D2StatsArrayStrc {
