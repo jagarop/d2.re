@@ -577,7 +577,7 @@
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_FreePlayerData", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 48 8B 9D ? ? ? ? 48 85 DB 74 19", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "UNITS_FreeUnit", "args": "(D2UnitStrc* pUnit)", "pattern": "48 85 C9 0F 84 ? ? ? ? 57 48 83 EC 20 48 8B F9 48 8B 89 ? ? ? ?", "type": "absoulte"},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetAttackRate", "args": "(D2UnitStrc* pUnit)", "pattern": "E9 ? ? ? ? 83 EA 01", "type": "operand", "operand": 0},
-{"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetBeltCapacity", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 44 38 25 ? ? ? ? 41 89 86 ? ? ? ?", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "UNITS_GetBeltCapacity", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 41 8D 4C 24 ? 41 89 86", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetBeltType", "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 83 F8 06 77 25", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetBlockRate", "args": "(D2UnitStrc* pUnit, BOOL bExpansion)", "pattern": "E8 ? ? ? ? 8B F8 85 C0 7E 63", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "UNITS_GetClientSideUnit", "args": "(uint32_t nUnitID, uint32_t nUnitType)", "pattern": "E8 ? ? ? ? 8B 4F 05", "type": "operand", "operand": 0},
