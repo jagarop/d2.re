@@ -754,13 +754,13 @@ struct GamePanelStates
 
 struct Grid
 {
-    D2UnitStrc * Item;	//0x0000
-    D2UnitStrc * LastItem;	//0x0008
+    D2UnitStrc* Item;	//0x0000
+    D2UnitStrc* LastItem;	//0x0008
     int8_t Columns;	//0x0010
     int8_t Rows;	//0x0011
     uint32_t Unk0x0012;	//0x0012
     uint16_t Unk0x0016;	//0x0016
-    uint64_t * ItemArray;	//0x0018
+    uint64_t* ItemArray;	//0x0018
 };
 
 enum D2PanelName: uint8_t
@@ -768,7 +768,7 @@ enum D2PanelName: uint8_t
     g_unkpanel0 = 0,
     g_InventoryOpen = 1,
     g_CharacterWindowOpen = 2,
-    g_unkpanel3 = 3,
+    g_skillSelectPopupOpen = 3,
     g_SkillTreeOpen = 4,
     g_unkpanel5 = 5,
     g_NewStatNotifyIcon = 6,
@@ -795,7 +795,7 @@ enum D2PanelName: uint8_t
     g_HelpOpen = 27,
     g_HelpNotifyIcon = 28,
     g_unkpanel29 = 29,
-    g_unkpanel30 = 30,
+    g_MercInvWindowOpen = 30,
     g_unkpanel31 = 31,
     g_unkpanel32 = 32,
     g_unkpanel33 = 33,
@@ -831,7 +831,7 @@ class D2RosterPetStrc
     char pad_0011[11];	//0x0011
     int32_t nLifePercent;	//0x001C
     char pad_0020[16];	//0x0020
-    class D2RosterPetStrc * pNext;	//0x0030
+    class D2RosterPetStrc* pNext;	//0x0030
 
 };
 
@@ -873,7 +873,7 @@ class LauncherData
 
 class BnetData
 {
-    class LauncherData * pLaunchData;	//0x0000
+    class LauncherData* pLaunchData;	//0x0000
     char pad_0008[32];	//0x0008
     char *SessionID;	//0x0028
     D2RString SessionIDString;
@@ -901,7 +901,7 @@ class HostileInfo
 {
     int32_t dwUnitId;	//0x0000
     int32_t hostileFlag;	//0x0004
-    class HostileInfo * nextHostile;	//0x0008
+    class HostileInfo* nextHostile;	//0x0008
 };
 class RosterUnit
 {
@@ -917,9 +917,9 @@ class RosterUnit
     int32_t posY;	//0x0034
     int32_t partyFlags;	//0x0038
     char pad_003C[4];	//0x003C
-    class HostileInfo * pHostileInfo;	//0x0040
+    class HostileInfo* pHostileInfo;	//0x0040
     char pad_0048[192];	//0x0048
-    class RosterUnit * pNextRoster;	//0x0108
+    class RosterUnit* pNextRoster;	//0x0108
 };
 
 struct TransactionDialogsLine
@@ -953,19 +953,19 @@ struct AutomapCell
     int16_t xPixel;	// 0x06
     int16_t yPixel;	// 0x08
     int16_t wWeight;	// 0x0A
-    AutomapCell * pLess;	// 0x0C
-    AutomapCell * pMore;	// 0x10
+    AutomapCell* pLess;	// 0x0C
+    AutomapCell* pMore;	// 0x10
 };
 
 struct AutomapLayer
 {
     int32_t nLayerNo;	// 0x00
     int32_t fSaved;	// 0x04
-    AutomapCell * pFloors;	// 0x08
-    AutomapCell * pWalls;	// 0x0C
-    AutomapCell * pObjects;	// 0x10
-    AutomapCell * pExtras;	// 0x14
-    AutomapLayer * pNextLayer;	// 0x18
+    AutomapCell* pFloors;	// 0x08
+    AutomapCell* pWalls;	// 0x0C
+    AutomapCell* pObjects;	// 0x10
+    AutomapCell* pExtras;	// 0x14
+    AutomapLayer* pNextLayer;	// 0x18
 };
 
 struct AutomapLayer2
@@ -987,7 +987,7 @@ struct D2DrlgVertexStrc
     uint8_t nDirection;	//0x08
     uint8_t pad0x09[3];	//0x09
     int32_t dwFlags;	//0x0C
-    D2DrlgVertexStrc * pNext;	//0x10
+    D2DrlgVertexStrc* pNext;	//0x10
 };
 
 struct D2CorpseStrc
@@ -995,7 +995,7 @@ struct D2CorpseStrc
     uint32_t unk0x00;	//0x00
     uint32_t dwUnitId;	//0x04
     uint32_t unk0x08;	//0x08
-    D2CorpseStrc * pNextCorpse;	//0x0C
+    D2CorpseStrc* pNextCorpse;	//0x0C
 };
 
 struct D2PropertyStrc
@@ -1058,13 +1058,13 @@ struct D2ItemSaleInfo
 
 struct D2ItemCalcStrc
 {
-    D2UnitStrc * pUnit;	//0x00
-    D2UnitStrc * pItem;	//0x04
+    D2UnitStrc* pUnit;	//0x00
+    D2UnitStrc* pItem;	//0x04
 };
 
 struct D2SkillCalcStrc
 {
-    D2UnitStrc * pUnit;	//0x00
+    D2UnitStrc* pUnit;	//0x00
     int32_t nSkillId;	//0x04
     int32_t nSkillLevel;	//0x08
 };
@@ -1103,7 +1103,7 @@ struct D2TCExShortStrc
     int16_t nSuperior;	//0x22
     int16_t nNormal;	//0x24
     int16_t unk0x26;	//0x26
-    D2TCExInfoStrc * pInfo;	//0x28
+    D2TCExInfoStrc* pInfo;	//0x28
 };
 
 struct D2MonStatsInitStrc
@@ -1177,12 +1177,12 @@ struct D2MagicAffixTxt
 
 struct D2UnkDrlgLogicStrc
 {
-    D2RoomExStrc * pRoomEx;	//0x00
-    D2DrlgGridStrc * field_4;	//0x04
-    D2DrlgGridStrc * pOrientationGrid;	//0x08
-    D2DrlgGridStrc * pWallGrid;	//0x0C
-    D2DrlgGridStrc * pFloorGrid;	//0x10
-    D2DrlgGridStrc * field_14;	//0x14
+    D2RoomExStrc* pRoomEx;	//0x00
+    D2DrlgGridStrc* field_4;	//0x04
+    D2DrlgGridStrc* pOrientationGrid;	//0x08
+    D2DrlgGridStrc* pWallGrid;	//0x0C
+    D2DrlgGridStrc* pFloorGrid;	//0x10
+    D2DrlgGridStrc* field_14;	//0x14
     int32_t field_18;	//0x18
     int32_t nFlags;	//0x1C
 };
@@ -1194,8 +1194,8 @@ struct D2TileLibraryHashStrc
 
 struct D2TileLibraryHashRefStrc
 {
-    D2TileLibraryEntryStrc * pTile;	//0x00
-    D2TileLibraryHashRefStrc * pPrev;	//0x04
+    D2TileLibraryEntryStrc* pTile;	//0x00
+    D2TileLibraryHashRefStrc* pPrev;	//0x04
 };
 
 struct D2TileLibraryHashNodeStrc
@@ -1203,16 +1203,16 @@ struct D2TileLibraryHashNodeStrc
     int32_t nIndex;	//0x00
     int32_t nSubIndex;	//0x04
     int32_t nOrientation;	//0x08
-    D2TileLibraryHashRefStrc * pRef;	//0x0C
-    D2TileLibraryHashNodeStrc * pPrev;	//0x10
+    D2TileLibraryHashRefStrc* pRef;	//0x0C
+    D2TileLibraryHashNodeStrc* pPrev;	//0x10
 };
 
 struct D2TileRecordStrc
 {
     char szLibraryName[260];	//0x00
     void *pLibrary;	//0x104
-    D2TileLibraryHashStrc * pHashBlock;	//0x108
-    D2TileRecordStrc * pPrev;	//0x10C
+    D2TileLibraryHashStrc* pHashBlock;	//0x108
+    D2TileRecordStrc* pPrev;	//0x10C
 };
 struct D2TileLibraryEntryStrc
 {
@@ -1231,7 +1231,7 @@ struct D2TileLibraryEntryStrc
     int32_t dwBlockOffset_pBlock;	//0x2C
     int32_t nBlockSize;	//0x30
     int32_t nBlocks;	//0x34
-    D2TileRecordStrc * pParent;	//0x38
+    D2TileRecordStrc* pParent;	//0x38
     uint16_t unk0x3C;	//0x3C
     uint16_t nCacheIndex;	//0x3E
     uint32_t unk0x40[4];	//0x40
@@ -1250,9 +1250,9 @@ struct D2DrlgTileDataStrc
     int32_t unk0x10;	//0x10
     uint32_t dwFlags;
     int64_t unk0pad;	//0x14
-    D2TileLibraryEntryStrc * pTile;	//0x18
+    D2TileLibraryEntryStrc* pTile;	//0x18
     int32_t unk0x1C;	//0x1C
-    D2DrlgTileDataStrc * unk0x20;	//0x20
+    D2DrlgTileDataStrc* unk0x20;	//0x20
     int32_t unk0x24;	//0x24
     uint8_t nRed;	//0x28
     uint8_t nGreen;	//0x29
@@ -1273,7 +1273,7 @@ struct D2DrlgLevelLinkDataStrc
 {
     D2SeedStrc pSeed;	//0x00
     D2DrlgCoordStrc pLevelCoord[15];	//0x08
-    D2DrlgLinkStrc * pLink;	//0xF8
+    D2DrlgLinkStrc* pLink;	//0xF8
     union
     {
         int32_t nRand[4][15];	//0xFC
@@ -1297,7 +1297,7 @@ struct D2DrlgWarpStrc
     int32_t nVis[8];	//0x04
     int32_t nWarp[8];
     int32_t unkval;
-    D2DrlgWarpStrc * pNext;	//0x44
+    D2DrlgWarpStrc* pNext;	//0x44
 };
 
 struct D2MissileDamageDataStrc
@@ -1337,10 +1337,10 @@ struct D2MissileDamageDataStrc
 
 struct D2UnkOutdoorStrc
 {
-    D2DrlgLevelStrc * pLevel;	//0x00
-    int32_t * field_4;	//0x04
-    D2DrlgGridStrc * pGrid1;	//0x08
-    D2DrlgGridStrc * pGrid2;	//0x0C
+    D2DrlgLevelStrc* pLevel;	//0x00
+    int32_t* field_4;	//0x04
+    D2DrlgGridStrc* pGrid1;	//0x08
+    D2DrlgGridStrc* pGrid2;	//0x0C
     int32_t nLevelPrestId;	//0x10
     int32_t field_14;	//0x14
     int32_t nLvlSubId;	//0x18
@@ -1458,8 +1458,8 @@ struct D2TxtLinkNodeStrc
 {
     char szText[32];	//0x00
     int nLinkIndex;	//0x20
-    D2TxtLinkNodeStrc * pPrevious;	//0x24
-    D2TxtLinkNodeStrc * pNext;	//0x28
+    D2TxtLinkNodeStrc* pPrevious;	//0x24
+    D2TxtLinkNodeStrc* pNext;	//0x28
 };
 
 struct D2TxtLinkTblStrc
@@ -1476,14 +1476,14 @@ struct D2TxtLinkStrc
 {
     int32_t nRecords;	//0x00
     int32_t nAllocatedCells;	//0x04
-    D2TxtLinkTblStrc * pTbl;	//0x08
-    D2TxtLinkNodeStrc * pFirstNode;	//0x0C
+    D2TxtLinkTblStrc* pTbl;	//0x08
+    D2TxtLinkNodeStrc* pFirstNode;	//0x0C
 };
 
 struct D2BinFileStrc
 {
-    uint8_t * pDataBuffer;	//0x00
-    uint8_t * pData;	//0x04
+    uint8_t* pDataBuffer;	//0x00
+    uint8_t* pData;	//0x04
     int32_t nRecordCount;	//0x08
     int32_t nCellCount;	//0x0C
 };
@@ -1530,9 +1530,9 @@ struct D2BinFieldStrc
 
 struct D2UnkExcelStrc
 {
-    D2UnkExcelStrc * pNext;	//0x00
+    D2UnkExcelStrc* pNext;	//0x00
     uint32_t dwHash;	//0x04
-    D2BinFieldStrc * pBinField;	//0x08
+    D2BinFieldStrc* pBinField;	//0x08
 };
 
 struct D2UnkFogStrc
@@ -1553,353 +1553,353 @@ struct D2HireDescTxt
 
 struct D2DataTablesStrc
 {
-    uint64_t * pPlayerClassTxt;	//0x0000
+    uint64_t* pPlayerClassTxt;	//0x0000
     uint64_t nPlayerClassTxtCount;	//0x0008
     uint64_t nPlayerClassTxtCountEx;	//0x0010
-    uint64_t * pPlayerClassTxtLinker;	//0x0018
-    uint64_t * pBodyLocsTxt;	//0x0020
+    uint64_t* pPlayerClassTxtLinker;	//0x0018
+    uint64_t* pBodyLocsTxt;	//0x0020
     uint64_t nBodyLocsTxtCount;	//0x0028
     uint64_t nBodyLocsTxtCountEx;	//0x0030
-    uint64_t * pBodyLocsTxtLinker;	//0x0038
-    uint64_t * pStorePageTxt;	//0x0040
+    uint64_t* pBodyLocsTxtLinker;	//0x0038
+    uint64_t* pStorePageTxt;	//0x0040
     uint64_t nStorePageTxtCount;	//0x0048
     uint64_t nStorePageTxtCountEx;	//0x0050
-    uint64_t * pStorePageTxtLinker;	//0x0058
-    uint64_t * pElemTypesTxt;	//0x0060
+    uint64_t* pStorePageTxtLinker;	//0x0058
+    uint64_t* pElemTypesTxt;	//0x0060
     uint64_t nElemTypesTxtCount;	//0x0068
     uint64_t nElemTypesTxtCountEx;	//0x0070
-    uint64_t * pElemTypesTxtLinker;	//0x0078
-    uint64_t * pHitClassTxt;	//0x0080
+    uint64_t* pElemTypesTxtLinker;	//0x0078
+    uint64_t* pHitClassTxt;	//0x0080
     uint64_t nHitClassTxtCount;	//0x0088
     uint64_t nHitClassTxtCountEx;	//0x0090
-    uint64_t * pHitClassTxtLinker;	//0x0098
+    uint64_t* pHitClassTxtLinker;	//0x0098
     char pad_00A0[64];	//0x00A0
-    uint64_t * pActInfoTxt;	//0x00E0
+    uint64_t* pActInfoTxt;	//0x00E0
     uint64_t nActInfoTxtCount;	//0x00E8
     uint64_t nActInfoTxtCountEx;	//0x00F0
-    uint64_t * pActInfoTxtLinker;	//0x00F8
-    uint64_t * pCommonActCOF;	//0x0100
+    uint64_t* pActInfoTxtLinker;	//0x00F8
+    uint64_t* pCommonActCOF;	//0x0100
     uint64_t nCommonActCOFCount;	//0x0108
     uint64_t nCommonActCOFCountEx;	//0x0110
-    uint64_t * pSkillCalcTxt;	//0x0118
+    uint64_t* pSkillCalcTxt;	//0x0118
     uint64_t nSkillCalcTxtCount;	//0x0120
     uint64_t nSkillCalcTxtCountEx;	//0x0128
-    uint64_t * pSkillCalcTxtLinker;	//0x0130
-    uint64_t * pSkillsCode;	//0x0138 something dealing w/ skills
+    uint64_t* pSkillCalcTxtLinker;	//0x0130
+    uint64_t* pSkillsCode;	//0x0138 something dealing w/ skills
     uint64_t nSkillsCodeSize;	//0x0140
     uint64_t N000000D5;	//0x0148
-    uint64_t * N000000D6;	//0x0150 something dealing w/ skills
+    uint64_t* N000000D6;	//0x0150 something dealing w/ skills
     uint64_t N000000D7;	//0x0158
     uint64_t N000000D8;	//0x0160
-    uint64_t * pMissileCalcTxt;	//0x0168
+    uint64_t* pMissileCalcTxt;	//0x0168
     uint64_t nMissileCalcTxtCount;	//0x0170
     uint64_t nMissileCalcTxtCountEx;	//0x0178
-    uint64_t * pMissileCalcTxtLinker;	//0x0180
-    uint64_t * pMissCode;	//0x0188
+    uint64_t* pMissileCalcTxtLinker;	//0x0180
+    uint64_t* pMissCode;	//0x0188
     uint64_t nMissCodeCount;	//0x0190
     uint64_t nMissCodeCountEx;	//0x0198
-    uint64_t * pSkillCode;	//0x01A0
+    uint64_t* pSkillCode;	//0x01A0
     uint64_t nSkillCodeCount;	//0x01A8
     uint64_t nSkillCodeCountEx;	//0x01B0
-    uint64_t * iSkillCode;	//0x01B8
+    uint64_t* iSkillCode;	//0x01B8
     uint64_t pEventsTxt;	//0x01C0
     uint64_t nEventsTxtCount;	//0x01C8
     uint64_t nEventsTxtCountEx;	//0x01D0
-    uint64_t * pEventsTxtLinker;	//0x01D8
-    uint64_t * pCompCodeTxt;	//0x01E0
+    uint64_t* pEventsTxtLinker;	//0x01D8
+    uint64_t* pCompCodeTxt;	//0x01E0
     uint64_t nCompCodeTxtCount;	//0x01E8
     uint64_t nCompCodeTxtCountEx;	//0x01F0
-    uint64_t * pCompCodeTxtLinker;	//0x01F8
-    uint64_t * pMonAiTxt;	//0x0200
+    uint64_t* pCompCodeTxtLinker;	//0x01F8
+    uint64_t* pMonAiTxt;	//0x0200
     uint64_t nMonAiTxtCount;	//0x0208
     uint64_t nMonAiTxtCountEx;	//0x0210
-    uint64_t * pMonAiTxtLinker;	//0x0218
-    uint64_t * pItemsLinker;	//0x0220
-    uint64_t * pItemsCode;	//0x0228
+    uint64_t* pMonAiTxtLinker;	//0x0218
+    uint64_t* pItemsLinker;	//0x0220
+    uint64_t* pItemsCode;	//0x0228
     uint64_t nItemsCodeCount;	//0x0230
     uint64_t nItemsCodeCountEx;	//0x0238
-    uint64_t * pPropertiesTxt;	//0x0240
+    uint64_t* pPropertiesTxt;	//0x0240
     uint64_t nPropertiesTxtCount;	//0x0248
     uint64_t nPropertiesTxtCountEx;	//0x0250
-    uint64_t * pPropertiesTxtLinker;	//0x0258
-    uint64_t * pRunesTxtLinker;	//0x0260 this doesnt seem right?
-    uint64_t * pObjectsTxtLinker;	//0x0268 this doesnt seem right?
-    uint64_t * pStatesTxt;	//0x0270
+    uint64_t* pPropertiesTxtLinker;	//0x0258
+    uint64_t* pRunesTxtLinker;	//0x0260 this doesnt seem right?
+    uint64_t* pObjectsTxtLinker;	//0x0268 this doesnt seem right?
+    uint64_t* pStatesTxt;	//0x0270
     uint64_t nStatesTxtCount;	//0x0278
     uint64_t nStatesTxtCountEx;	//0x0280
-    uint64_t * pStatesTxtLinker;	//0x0288
-    uint32_t * pStateMasks;	//0x0290
+    uint64_t* pStatesTxtLinker;	//0x0288
+    uint32_t* pStateMasks;	//0x0290
     uint64_t nStateMasksCount;	//0x0298 ?????
     uint64_t nStateMasksCountEx;	//0x02A0 ?????
     uint32_t *fStateMasks[40];	//0x02A8
-    uint64_t * pProgressiveStates;	//0x03E8
+    uint64_t* pProgressiveStates;	//0x03E8
     char pad_03F0[8];	//0x03F0
     uint64_t nProgressiveStates;	//0x03F8
     uint64_t nMaxProgressiveStates;	//0x0400
-    uint64_t * pCurseStates;	//0x0408
+    uint64_t* pCurseStates;	//0x0408
     uint64_t nCurseStates;	//0x0410
     uint64_t nMaxCurseStates;	//0x0418
-    uint64_t * N0000012F;	//0x0420
+    uint64_t* N0000012F;	//0x0420
     uint64_t N00000130;	//0x0428
     uint64_t N00000131;	//0x0430
-    uint64_t * pTransformStates;	//0x0438
+    uint64_t* pTransformStates;	//0x0438
     uint64_t nTransformStates;	//0x0440
     uint64_t nMaxTransformStates;	//0x0448
-    uint64_t * N00000135;	//0x0450
+    uint64_t* N00000135;	//0x0450
     uint64_t N00000136;	//0x0458
     uint64_t N00000137;	//0x0460
-    uint64_t * pActionStates;	//0x0468
+    uint64_t* pActionStates;	//0x0468
     uint64_t nActionStates;	//0x0470
     uint64_t nMaxActionStates;	//0x0478
-    uint64_t * pColourStates;	//0x0480
+    uint64_t* pColourStates;	//0x0480
     uint64_t nColourStates;	//0x0488
     uint64_t nMaxColourStates;	//0x0490
-    uint64_t * pSoundsTxt;	//0x0498
+    uint64_t* pSoundsTxt;	//0x0498
     uint64_t nSoundsTxtCount;	//0x04A0
     uint64_t nSoundsTxtCountEx;	//0x04A8
-    uint64_t * pSoundTxtLinker;	//0x04B0
-    uint64_t * pSoundEnvTxt;	//0x04B8
+    uint64_t* pSoundTxtLinker;	//0x04B0
+    uint64_t* pSoundEnvTxt;	//0x04B8
     uint64_t nSoundEnvTxtCount;	//0x04C0
     uint64_t nSoundEnvTxtCountEx;	//0x04C8
-    uint64_t * pSoundEnvTxtLinker;	//0x04D0
-    uint64_t * pHirelingTxt;	//0x04D8
+    uint64_t* pSoundEnvTxtLinker;	//0x04D0
+    uint64_t* pHirelingTxt;	//0x04D8
     uint64_t nHirelingTxtCount;	//0x04E0
     uint64_t nHirelingTxtCountEx;	//0x04E8
     uint32_t nClassicHirelingStartRecordIds[256];	//0x04F0
     uint32_t nExpansionHirelingStartRecordIds[256];	//0x08F0
-    uint64_t * pNpcTxt;	//0x0CF0
+    uint64_t* pNpcTxt;	//0x0CF0
     uint64_t nNpcTxtCount;	//0x0CF8
     uint64_t nNpcTxtCountEx;	//0x0D00
-    uint64_t * pColorsTxt;	//0x0D08
+    uint64_t* pColorsTxt;	//0x0D08
     uint64_t nColorsTxtCount;	//0x0D10
     uint64_t nColorsTxtCountEx;	//0x0D18
-    uint64_t * pColorsLinker;	//0x0D20
-    uint64_t * pTreasureClassExTxtLinker;	//0x0D28
-    uint64_t * pTreasureClassEx;	//0x0D30
+    uint64_t* pColorsLinker;	//0x0D20
+    uint64_t* pTreasureClassExTxtLinker;	//0x0D28
+    uint64_t* pTreasureClassEx;	//0x0D30
     uint64_t N0000087F;	//0x0D38
     uint64_t N00000880;	//0x0D40
-    uint64_t * N00000881;	//0x0D48 something to w/ treasure classes
+    uint64_t* N00000881;	//0x0D48 something to w/ treasure classes
     uint64_t N00000882;	//0x0D50
     uint32_t N00000883;	//0x0D58
     uint32_t N00001823;	//0x0D5C
-    uint64_t * N00000884;	//0x0D60
-    uint64_t * N00000885;	//0x0D68
-    uint64_t * N00000886;	//0x0D70
-    uint64_t * N00000887;	//0x0D78
-    uint64_t * N00000888;	//0x0D80
-    uint64_t * N00000889;	//0x0D88
-    uint64_t * N0000088A;	//0x0D90
-    uint64_t * N0000088B;	//0x0D98
-    uint64_t * N0000088C;	//0x0DA0
-    uint64_t * N0000088D;	//0x0DA8
-    uint64_t * N0000088E;	//0x0DB0
-    uint64_t * N0000088F;	//0x0DB8
-    uint64_t * N00000890;	//0x0DC0
-    uint64_t * N00000891;	//0x0DC8
-    uint64_t * N00000892;	//0x0DD0
-    uint64_t * N00000893;	//0x0DD8
+    uint64_t* N00000884;	//0x0D60
+    uint64_t* N00000885;	//0x0D68
+    uint64_t* N00000886;	//0x0D70
+    uint64_t* N00000887;	//0x0D78
+    uint64_t* N00000888;	//0x0D80
+    uint64_t* N00000889;	//0x0D88
+    uint64_t* N0000088A;	//0x0D90
+    uint64_t* N0000088B;	//0x0D98
+    uint64_t* N0000088C;	//0x0DA0
+    uint64_t* N0000088D;	//0x0DA8
+    uint64_t* N0000088E;	//0x0DB0
+    uint64_t* N0000088F;	//0x0DB8
+    uint64_t* N00000890;	//0x0DC0
+    uint64_t* N00000891;	//0x0DC8
+    uint64_t* N00000892;	//0x0DD0
+    uint64_t* N00000893;	//0x0DD8
     uint64_t N00000894;	//0x0DE0
     uint32_t N00000895;	//0x0DE8
     uint32_t N00001820;	//0x0DEC
-    uint64_t * N00000896;	//0x0DF0
-    uint64_t * N00000897;	//0x0DF8
-    uint64_t * N00000898;	//0x0E00
-    uint64_t * N00000899;	//0x0E08
-    uint64_t * N0000089A;	//0x0E10
-    uint64_t * N0000089B;	//0x0E18
-    uint64_t * N0000089C;	//0x0E20
-    uint64_t * N0000089D;	//0x0E28
-    uint64_t * N0000089E;	//0x0E30
-    uint64_t * N0000089F;	//0x0E38
-    uint64_t * N000008A0;	//0x0E40
-    uint64_t * N000008A1;	//0x0E48
-    uint64_t * N000008A2;	//0x0E50
-    uint64_t * N000008A3;	//0x0E58
-    uint64_t * N000008A4;	//0x0E60
-    uint64_t * N000008A5;	//0x0E68
+    uint64_t* N00000896;	//0x0DF0
+    uint64_t* N00000897;	//0x0DF8
+    uint64_t* N00000898;	//0x0E00
+    uint64_t* N00000899;	//0x0E08
+    uint64_t* N0000089A;	//0x0E10
+    uint64_t* N0000089B;	//0x0E18
+    uint64_t* N0000089C;	//0x0E20
+    uint64_t* N0000089D;	//0x0E28
+    uint64_t* N0000089E;	//0x0E30
+    uint64_t* N0000089F;	//0x0E38
+    uint64_t* N000008A0;	//0x0E40
+    uint64_t* N000008A1;	//0x0E48
+    uint64_t* N000008A2;	//0x0E50
+    uint64_t* N000008A3;	//0x0E58
+    uint64_t* N000008A4;	//0x0E60
+    uint64_t* N000008A5;	//0x0E68
     uint64_t N000008A6;	//0x0E70
     uint32_t N000008A7;	//0x0E78
     uint32_t N0000181D;	//0x0E7C
-    uint64_t * N000008A8;	//0x0E80
-    uint64_t * N000008A9;	//0x0E88
-    uint64_t * N000008AA;	//0x0E90
-    uint64_t * N000008AB;	//0x0E98
-    uint64_t * N000008AC;	//0x0EA0
-    uint64_t * N000008AD;	//0x0EA8
-    uint64_t * N000008AE;	//0x0EB0
-    uint64_t * N000008AF;	//0x0EB8
-    uint64_t * N000008B0;	//0x0EC0
-    uint64_t * N000008B1;	//0x0EC8
-    uint64_t * N000008B2;	//0x0ED0
-    uint64_t * N000008B3;	//0x0ED8
-    uint64_t * N000008B4;	//0x0EE0
-    uint64_t * N000008B5;	//0x0EE8
-    uint64_t * N000008B6;	//0x0EF0
-    D2MonStatsTxt * pMonStatsTxt;	//0x0EF8
+    uint64_t* N000008A8;	//0x0E80
+    uint64_t* N000008A9;	//0x0E88
+    uint64_t* N000008AA;	//0x0E90
+    uint64_t* N000008AB;	//0x0E98
+    uint64_t* N000008AC;	//0x0EA0
+    uint64_t* N000008AD;	//0x0EA8
+    uint64_t* N000008AE;	//0x0EB0
+    uint64_t* N000008AF;	//0x0EB8
+    uint64_t* N000008B0;	//0x0EC0
+    uint64_t* N000008B1;	//0x0EC8
+    uint64_t* N000008B2;	//0x0ED0
+    uint64_t* N000008B3;	//0x0ED8
+    uint64_t* N000008B4;	//0x0EE0
+    uint64_t* N000008B5;	//0x0EE8
+    uint64_t* N000008B6;	//0x0EF0
+    D2MonStatsTxt* pMonStatsTxt;	//0x0EF8
     uint64_t nMonStatsTxtCount;	//0x0F00
     uint64_t nMonStatsTxtCountEx;	//0x0F08
-    uint64_t * pMonStatsTxtLinker;	//0x0F10
-    uint64_t * pMonSoundsTxt;	//0x0F18
+    uint64_t* pMonStatsTxtLinker;	//0x0F10
+    uint64_t* pMonSoundsTxt;	//0x0F18
     uint64_t nMonSoundsTxtCount;	//0x0F20
     uint64_t nMonSoundsTxtCountEx;	//0x0F28
-    uint64_t * pMonSoundsTxtLinker;	//0x0F30
-    uint64_t * pMonStats2Txt;	//0x0F38
+    uint64_t* pMonSoundsTxtLinker;	//0x0F30
+    uint64_t* pMonStats2Txt;	//0x0F38
     uint64_t nMonStats2TxtCount;	//0x0F40
     uint64_t nMonStats2TxtCountEx;	//0x0F48
-    uint64_t * pMonStats2TxtLinker;	//0x0F50
+    uint64_t* pMonStats2TxtLinker;	//0x0F50
     uint64_t pMonPlaceTxt;	//0x0F58
     uint64_t nMonPlaceTxtCount;	//0x0F60
     uint64_t nMonPlaceTxtCountEx;	//0x0F68
-    uint64_t * pMonPlaceTxtLinker;	//0x0F70
-    uint64_t * pMonPresetTxt;	//0x0F78
+    uint64_t* pMonPlaceTxtLinker;	//0x0F70
+    uint64_t* pMonPresetTxt;	//0x0F78
     uint64_t nMonPresetTxtCount;	//0x0F80
     uint64_t nMonPresetTxtCountEx;	//0x0F88
-    uint64_t * Unk0xF88;	//0x0F90
+    uint64_t* Unk0xF88;	//0x0F90
     uint64_t N000008CB;	//0x0F98
     uint32_t N000008CC;	//0x0FA0
     uint32_t N00001827;	//0x0FA4
-    uint64_t * Unk0xFA0;	//0x0FA8
+    uint64_t* Unk0xFA0;	//0x0FA8
     uint64_t *pMonPresetTxtActSections[5];	//0x0FB0
     uint64_t N000008D3;	//0x0FD8
     uint32_t N000008D4;	//0x0FE0
     uint32_t N0000182A;	//0x0FE4
     uint32_t nMonPresetTxtActRecordCounts[5];	//0x0FE8
     uint32_t N00001CC6;	//0x0FFC
-    uint64_t * Unk0xFF8;	//0x1000 pWanderingMonTxt???
+    uint64_t* Unk0xFF8;	//0x1000 pWanderingMonTxt???
     uint64_t N000008D9;	//0x1008
     uint64_t N000008DA;	//0x1010
-    uint64_t * pSuperUniquesTxt;	//0x1018
+    uint64_t* pSuperUniquesTxt;	//0x1018
     uint64_t nSuperUniquesTxtCount;	//0x1020
     uint64_t nSuperUniquesTxtCountEx;	//0x1028
-    uint64_t * pSuperUniquesLinker;	//0x1030
+    uint64_t* pSuperUniquesLinker;	//0x1030
     uint16_t nSuperUniqueIds[66];	//0x1038
     uint32_t N0000184D;	//0x10BC
-    uint64_t * pMissilesTxt;	//0x10C0
+    uint64_t* pMissilesTxt;	//0x10C0
     uint64_t nMissilesTxtCount;	//0x10C8
     uint64_t nMissilesTxtCountEx;	//0x10D0
-    uint64_t * pMissilesTxtLinker;	//0x10D8
-    uint64_t * pMonLvlTxt;	//0x10E0
+    uint64_t* pMissilesTxtLinker;	//0x10D8
+    uint64_t* pMonLvlTxt;	//0x10E0
     uint64_t nMonLvlTxtCount;	//0x10E8
     uint64_t nMonLvlTxtCountEx;	//0x10F0
-    uint64_t * pMonSeqTxt;	//0x10F8
+    uint64_t* pMonSeqTxt;	//0x10F8
     uint64_t nMonSeqTxtCount;	//0x1100
     uint64_t nMonSeqTxtCountEx;	//0x1108
-    uint64_t * N000008FA;	//0x1110
-    uint64_t * pMonSeqTable;	//0x1118
+    uint64_t* N000008FA;	//0x1110
+    uint64_t* pMonSeqTable;	//0x1118
     uint64_t nMonSeqTableCount;	//0x1120
     uint64_t nMonSeqTableCountEx;	//0x1128
-    uint64_t * pSkillDescTxt;	//0x1130
+    uint64_t* pSkillDescTxt;	//0x1130
     uint64_t nSkillDescTxtCount;	//0x1138
     uint64_t nSkillDescTxtCountEx;	//0x1140
-    uint64_t * pSkillDescTxtLinker;	//0x1148
-    D2SkillsTxt * pSkillsTxt;	//0x1150
+    uint64_t* pSkillDescTxtLinker;	//0x1148
+    D2SkillsTxt* pSkillsTxt;	//0x1150
     uint64_t nSkillTxtCount;	//0x1158
     uint64_t nSkillTxtCountEx;	//0x1160
-    uint64_t * pSkillsTxtLinker;	//0x1168
-    uint64_t * Unk0x1168;	//0x1170
+    uint64_t* pSkillsTxtLinker;	//0x1168
+    uint64_t* Unk0x1168;	//0x1170
     uint64_t Unk0x1170;	//0x1178
     uint64_t Unk0x1178;	//0x1180
     uint64_t N00000909;	//0x1188
-    uint64_t * N0000090A;	//0x1190
+    uint64_t* N0000090A;	//0x1190
     uint64_t N0000090B;	//0x1198
     uint64_t N0000090C;	//0x11A0
-    uint64_t * pPassiveSkills;	//0x11A8
+    uint64_t* pPassiveSkills;	//0x11A8
     uint64_t nPassiveSkills;	//0x11B0
     uint64_t N0000090F;	//0x11B8
-    uint64_t * N00000910;	//0x11C0
-    uint64_t * pOverlayTxt;	//0x11C8
+    uint64_t* N00000910;	//0x11C0
+    uint64_t* pOverlayTxt;	//0x11C8
     uint64_t nOverlayTxtCount;	//0x11D0
     uint64_t nOverlayTxtCountEx;	//0x11D8
-    uint64_t * pCharStatsTxt;	//0x11E0
+    uint64_t* pCharStatsTxt;	//0x11E0
     uint64_t nCharStatTxtCount;	//0x11E8
     uint64_t nCharStatTxtCountEx;	//0x11F0
-    uint64_t * pItemStatCostTxt;	//0x11F8
+    uint64_t* pItemStatCostTxt;	//0x11F8
     uint64_t nItemStatCostTxtCount;	//0x1200
     uint64_t nItemStatCostTxtCountEx;	//0x1208
-    uint64_t * pItemStatCostTxtLinker;	//0x1210
-    uint64_t * N0000091B;	//0x1218
+    uint64_t* pItemStatCostTxtLinker;	//0x1210
+    uint64_t* N0000091B;	//0x1218
     uint64_t N0000091C;	//0x1220
     uint64_t N0000091D;	//0x1228
-    uint64_t * pMonEquipTxt;	//0x1230
+    uint64_t* pMonEquipTxt;	//0x1230
     uint64_t nMonEquipTxtCount;	//0x1238
     uint64_t nMonEquipTxtCountEx;	//0x1240
-    uint64_t * pPetTypeTxt;	//0x1248
+    uint64_t* pPetTypeTxt;	//0x1248
     uint64_t nPetTypeTxtCount;	//0x1250
     uint64_t nPetTypeTxtCountEx;	//0x1258
-    uint64_t * pPetTypeTxtLinker;	//0x1260
-    uint64_t * pItemTypesTxtLinker;	//0x1268
-    D2ItemTypesTxt * pItemTypesTxt;	//0x1270
+    uint64_t* pPetTypeTxtLinker;	//0x1260
+    uint64_t* pItemTypesTxtLinker;	//0x1268
+    D2ItemTypesTxt* pItemTypesTxt;	//0x1270
     uint64_t nItemTypesTxtCount;	//0x1278
     uint64_t nItemTypesTxtCountEx;	//0x1280
     uint64_t nItemTypesIndex;	//0x1288
-    uint32_t * pItemTypesEquivalenceLUTs;	//0x1290
+    uint32_t* pItemTypesEquivalenceLUTs;	//0x1290
     uint64_t N0000092B;	//0x1298
     uint64_t N0000092C;	//0x12A0
-    uint64_t * pSetsTxtLinker;	//0x12A8
-    uint64_t * pSetsTxt;	//0x12B0
+    uint64_t* pSetsTxtLinker;	//0x12A8
+    uint64_t* pSetsTxt;	//0x12B0
     uint64_t nSetTxtCount;	//0x12B8
     uint64_t nSetTxtCountEx;	//0x12C0
-    uint64_t * pSetItemsTxtLinker;	//0x12C8
-    uint64_t * pSetItemsTxt;	//0x12D0
+    uint64_t* pSetItemsTxtLinker;	//0x12C8
+    uint64_t* pSetItemsTxt;	//0x12D0
     uint64_t nSetItemsTxtCount;	//0x12D8
     uint64_t nSetItemsTxtCountEx;	//0x12E0
-    uint64_t * pUniqueItemsTxtLinker;	//0x12E8
-    uint64_t * pUniqueItemsTxt;	//0x12F0
+    uint64_t* pUniqueItemsTxtLinker;	//0x12E8
+    uint64_t* pUniqueItemsTxt;	//0x12F0
     uint64_t nUniqueItemsTxtCount;	//0x12F8
     uint64_t nUniqueItemsTxtCountEx;	//0x1300
-    uint64_t * pMonPropTxtLinker;	//0x1308
-    uint64_t * pMonPropTxt;	//0x1310
+    uint64_t* pMonPropTxtLinker;	//0x1308
+    uint64_t* pMonPropTxt;	//0x1310
     uint64_t nMonPropTxtCount;	//0x1318
     uint64_t nMonPropTxtCountEx;	//0x1320
-    uint64_t * pMonTypeTxtLinker;	//0x1328
-    uint64_t * pMonTypeTxt;	//0x1330
+    uint64_t* pMonTypeTxtLinker;	//0x1328
+    uint64_t* pMonTypeTxt;	//0x1330
     uint64_t nMonTypeTxtCount;	//0x1338
     uint64_t nMonTypeTxtCountEx;	//0x1340
-    uint64_t * N00000941;	//0x1348
+    uint64_t* N00000941;	//0x1348
     uint64_t N00000942;	//0x1350
     uint64_t N00000943;	//0x1358
     uint64_t N00000944;	//0x1360
-    uint64_t * pMonUModTxtLinker;	//0x1368
-    uint64_t * pMonUModTxt;	//0x1370
+    uint64_t* pMonUModTxtLinker;	//0x1368
+    uint64_t* pMonUModTxt;	//0x1370
     uint64_t nMonUModTxtCount;	//0x1378
     uint64_t nMonUModTxtCountEx;	//0x1380
-    D2LevelsTxt * pLevelsTxt;	//0x1388
+    D2LevelsTxt* pLevelsTxt;	//0x1388
     uint64_t nLevelsTxtCount;	//0x1390
     uint64_t nLevelsTxtCountEx;	//0x1398
-    uint64_t * N0000094C;	//0x13A0
-    uint64_t * N0000094D;	//0x13A8
+    uint64_t* N0000094C;	//0x13A0
+    uint64_t* N0000094D;	//0x13A8
     uint64_t N0000094E;	//0x13B0
     uint64_t N0000094F;	//0x13B8
-    uint64_t * pLvlPrestTxt;	//0x13C0
+    uint64_t* pLvlPrestTxt;	//0x13C0
     uint64_t nLvlPrestTxtCount;	//0x13C8
     uint64_t nLvlPrestTxtCountEx;	//0x13D0
     uint64_t N00000953;	//0x13D8
-    uint64_t * pAnimData;	//0x13E0 maybe?
-    uint64_t * pExperienceTxt;	//0x13E8
+    uint64_t* pAnimData;	//0x13E0 maybe?
+    uint64_t* pExperienceTxt;	//0x13E8
     uint64_t nExperienceTxtCount;	//0x13F0
     uint64_t nExperienceTxtCountEx;	//0x13F8
-    uint64_t * pDifficultyLevelsTxt;	//0x1400
+    uint64_t* pDifficultyLevelsTxt;	//0x1400
     uint64_t nDifficultyLevelsTxtCount;	//0x1408
     uint64_t nDifficultyLevelsTxtCountEx;	//0x1410
     uint64_t N0000095B;	//0x1418
     uint64_t N0000095C;	//0x1420
     uint64_t N0000095D;	//0x1428
-    D2ObjectsTxt * pObjectsTxt;	//0x1430
+    D2ObjectsTxt* pObjectsTxt;	//0x1430
     uint64_t nObjectsTxtCount;	//0x1438
     uint64_t nObjectsTxtCountEx;	//0x1440
-    uint64_t * pObjGroupTxt;	//0x1448
+    uint64_t* pObjGroupTxt;	//0x1448
     uint64_t nObjGroupTxtCount;	//0x1450
     uint64_t nObjGroupTxtCountEx;	//0x1458
-    D2RunesTxt * pRunesTxt_wrong;	//0x1460
+    D2RunesTxt* pRunesTxt_wrong;	//0x1460
     uint64_t nRunesTxtCount;	//0x1468
     uint64_t nRunesTxtCountEx;	//0x1470
-    uint64_t * N00000967;	//0x1478
+    uint64_t* N00000967;	//0x1478
     uint64_t N00000968;	//0x1480
     uint64_t N00000969;	//0x1488
-    uint64_t * N0000096A;	//0x1490
-    uint64_t * N0000096B;	//0x1498
-    uint64_t * N0000096C;	//0x14A0
-    uint64_t * N0000096D;	//0x14A8 i think this struct ends here
+    uint64_t* N0000096A;	//0x1490
+    uint64_t* N0000096B;	//0x1498
+    uint64_t* N0000096C;	//0x14A0
+    uint64_t* N0000096D;	//0x14A8 i think this struct ends here
     uint64_t N00000A77;	//0x14B0
     uint64_t N00000A78;	//0x14B8
     uint64_t N00000A79;	//0x14C0
@@ -1914,14 +1914,14 @@ struct D2DataTablesStrc
     uint32_t N00000A82;	//0x1508
     uint32_t Unk0x1504;	//0x150C
     uint64_t N00000A83;	//0x1510
-    uint64_t * N00000A84;	//0x1518
+    uint64_t* N00000A84;	//0x1518
     uint32_t N00000A85;	//0x1520
     uint32_t N00001F8B;	//0x1524
     uint64_t N00000A86;	//0x1528
-    uint64_t * N00000A87;	//0x1530
-    uint64_t * N00000A88;	//0x1538
-    uint64_t * N00000A89;	//0x1540
-    uint64_t * N00000A8A;	//0x1548
+    uint64_t* N00000A87;	//0x1530
+    uint64_t* N00000A88;	//0x1538
+    uint64_t* N00000A89;	//0x1540
+    uint64_t* N00000A8A;	//0x1548
     uint64_t N00000A8B;	//0x1550
     uint64_t N00000A8C;	//0x1558
     uint64_t N00000A8D;	//0x1560
@@ -1935,14 +1935,14 @@ struct D2DataTablesStrc
     uint64_t N00000A95;	//0x15A0
     uint64_t N00000A96;	//0x15A8
     uint64_t N00000A97;	//0x15B0
-    uint64_t * N00000A98;	//0x15B8
+    uint64_t* N00000A98;	//0x15B8
     uint32_t N00000A99;	//0x15C0
     uint32_t Unk0x15BC;	//0x15C4
     uint64_t N00000A9A;	//0x15C8
-    uint64_t * N00000A9B;	//0x15D0
-    uint64_t * N00000A9C;	//0x15D8
-    uint64_t * N00000A9D;	//0x15E0
-    uint64_t * N00000A9E;	//0x15E8
+    uint64_t* N00000A9B;	//0x15D0
+    uint64_t* N00000A9C;	//0x15D8
+    uint64_t* N00000A9D;	//0x15E0
+    uint64_t* N00000A9E;	//0x15E8
     uint64_t N00000A9F;	//0x15F0
     uint64_t N00000AA0;	//0x15F8
     uint64_t N00000AA1;	//0x1600
@@ -1995,57 +1995,57 @@ struct D2DataTablesStrc
     uint64_t N00000ACE;	//0x1768
     uint64_t N00000ACF;	//0x1770
     uint64_t N00000AD0;	//0x1778
-    D2RunesTxt * pRunesTxt;	//0x1780
+    D2RunesTxt* pRunesTxt;	//0x1780
     uint64_t nRunesTxtRecordCount;	//0x1788
     uint64_t N00000AD3;	//0x1790
-    uint64_t * pLowQualityItemsTxt;	//0x1798
+    uint64_t* pLowQualityItemsTxt;	//0x1798
     uint64_t nLowQualityItemsTxtCount;	//0x17A0
     uint64_t nLowQualityItemsTxtCountEx;	//0x17A8
-    uint64_t * N00000AD7;	//0x17B0
+    uint64_t* N00000AD7;	//0x17B0
     uint64_t N00000AD8;	//0x17B8
     uint64_t N00000AD9;	//0x17C0
-    uint64_t * pGambleTxt;	//0x17C8
+    uint64_t* pGambleTxt;	//0x17C8
     uint32_t Unk0x17C8[104];	//0x17D0
-    uint64_t * pItemRatioTxt;	//0x1970
+    uint64_t* pItemRatioTxt;	//0x1970
     uint64_t nItemRatioTxtCount;	//0x1978
     uint64_t nItemRatioTxtCountEx;	//0x1980
-    uint64_t * pBooksTxt;	//0x1988
+    uint64_t* pBooksTxt;	//0x1988
     uint64_t nBooksTxtCount;	//0x1990
     uint64_t nBooksTxtCountEx;	//0x1998
-    D2RareAffixTxt * pMagicAffixTxt;	//0x19A0
+    D2RareAffixTxt* pMagicAffixTxt;	//0x19A0
     uint64_t nMagicAffixTxtCount;	//0x19A8
     uint64_t nMagicAffixTxtCountEx;	//0x19B0
-    D2RareAffixTxt * pMagicSuffix;	//0x19B8
-    D2RareAffixTxt * pMagicPrefix;	//0x19C0
-    D2RareAffixTxt * pAutoMagic;	//0x19C8
-    D2RareAffixTxt * pRareAffixTxt;	//0x19D0
+    D2RareAffixTxt* pMagicSuffix;	//0x19B8
+    D2RareAffixTxt* pMagicPrefix;	//0x19C0
+    D2RareAffixTxt* pAutoMagic;	//0x19C8
+    D2RareAffixTxt* pRareAffixTxt;	//0x19D0
     uint64_t nRareAffixTxtCount;	//0x19D8
     uint64_t nRareAffixTxtCountEx;	//0x19E0
-    uint64_t * pRareSuffix;	//0x19E8
-    uint64_t * pRarePrefix;	//0x19F0
-    uint64_t * pGemsTxt;	//0x19F8
+    uint64_t* pRareSuffix;	//0x19E8
+    uint64_t* pRarePrefix;	//0x19F0
+    uint64_t* pGemsTxt;	//0x19F8
     uint64_t nGemsTxtCount;	//0x1A00
     uint64_t nGemsTxtCountEx;	//0x1A08
-    D2ItemsTxt * pItemTxt;	//0x1A10
+    D2ItemsTxt* pItemTxt;	//0x1A10
     uint64_t nItemTxtCount;	//0x1A18
     uint64_t nItemTxtCountEx;	//0x1A20
-    D2ItemsTxt * pWeaponsTxt;	//0x1A28
-    D2ItemsTxt * pArmorTxt;	//0x1A30
-    D2ItemsTxt * pMiscTxt;	//0x1A38
+    D2ItemsTxt* pWeaponsTxt;	//0x1A28
+    D2ItemsTxt* pArmorTxt;	//0x1A30
+    D2ItemsTxt* pMiscTxt;	//0x1A38
     char pad_1A40[24];	//0x1A40
-    uint64_t * N000004DB;	//0x1A58
+    uint64_t* N000004DB;	//0x1A58
     uint64_t N000004DC;	//0x1A60
     uint64_t N000004DD;	//0x1A68
-    uint64_t * N000004DE;	//0x1A70
+    uint64_t* N000004DE;	//0x1A70
     uint64_t N000004DF;	//0x1A78
     uint64_t N000004E0;	//0x1A80
-    uint64_t * N000004E1;	//0x1A88
+    uint64_t* N000004E1;	//0x1A88
     uint64_t N000004E2;	//0x1A90
     uint64_t N000004E3;	//0x1A98
-    uint64_t * N000004E4;	//0x1AA0
-    uint64_t * N000004E5;	//0x1AA8
-    uint64_t * N000004E6;	//0x1AB0
-    uint64_t * N000004E7;	//0x1AB8
+    uint64_t* N000004E4;	//0x1AA0
+    uint64_t* N000004E5;	//0x1AA8
+    uint64_t* N000004E6;	//0x1AB0
+    uint64_t* N000004E7;	//0x1AB8
     uint64_t N000004E8;	//0x1AC0
     uint64_t N000004E9;	//0x1AC8
     uint64_t N000004EA;	//0x1AD0
@@ -2059,13 +2059,13 @@ struct D2DataTablesStrc
     uint64_t N000004F2;	//0x1B10
     uint64_t N000004F3;	//0x1B18
     uint64_t N000004F4;	//0x1B20
-    uint64_t * N000004F5;	//0x1B28
+    uint64_t* N000004F5;	//0x1B28
     uint64_t N000004F6;	//0x1B30
     uint64_t N000004F7;	//0x1B38
-    uint64_t * N000004F8;	//0x1B40
-    uint64_t * N000004F9;	//0x1B48
-    uint64_t * N000004FA;	//0x1B50
-    uint64_t * N000004FB;	//0x1B58
+    uint64_t* N000004F8;	//0x1B40
+    uint64_t* N000004F9;	//0x1B48
+    uint64_t* N000004FA;	//0x1B50
+    uint64_t* N000004FB;	//0x1B58
     uint64_t N000004FC;	//0x1B60
     uint64_t N000004FD;	//0x1B68
     uint64_t N000004FE;	//0x1B70
@@ -2079,13 +2079,13 @@ struct D2DataTablesStrc
     uint64_t N00000506;	//0x1BB0
     uint64_t N00000507;	//0x1BB8
     uint64_t N00000508;	//0x1BC0
-    uint64_t * N00000509;	//0x1BC8
+    uint64_t* N00000509;	//0x1BC8
     uint64_t N0000050A;	//0x1BD0
     uint64_t N0000050B;	//0x1BD8
-    uint64_t * N0000050C;	//0x1BE0
-    uint64_t * N0000050D;	//0x1BE8
-    uint64_t * N0000050E;	//0x1BF0
-    uint64_t * N0000050F;	//0x1BF8
+    uint64_t* N0000050C;	//0x1BE0
+    uint64_t* N0000050D;	//0x1BE8
+    uint64_t* N0000050E;	//0x1BF0
+    uint64_t* N0000050F;	//0x1BF8
     uint64_t N00000510;	//0x1C00
     uint64_t N00000511;	//0x1C08
     uint64_t N00000512;	//0x1C10
@@ -2099,13 +2099,13 @@ struct D2DataTablesStrc
     uint64_t N0000051A;	//0x1C50
     uint64_t N0000051B;	//0x1C58
     uint64_t N0000051C;	//0x1C60
-    uint64_t * N0000051D;	//0x1C68
+    uint64_t* N0000051D;	//0x1C68
     uint64_t N0000051E;	//0x1C70
     uint64_t N0000051F;	//0x1C78
-    uint64_t * N00000520;	//0x1C80
-    uint64_t * N00000521;	//0x1C88
-    uint64_t * N00000522;	//0x1C90
-    uint64_t * N00000523;	//0x1C98
+    uint64_t* N00000520;	//0x1C80
+    uint64_t* N00000521;	//0x1C88
+    uint64_t* N00000522;	//0x1C90
+    uint64_t* N00000523;	//0x1C98
     uint64_t N00000524;	//0x1CA0
     uint64_t N00000525;	//0x1CA8
     uint64_t N00000526;	//0x1CB0
@@ -2119,7 +2119,7 @@ struct D2DataTablesStrc
     uint64_t N0000052E;	//0x1CF0
     uint64_t N0000052F;	//0x1CF8
     uint64_t N00000530;	//0x1D00
-    uint64_t * N00000531;	//0x1D08
+    uint64_t* N00000531;	//0x1D08
     uint64_t N00000532;	//0x1D10
 };
 
@@ -2704,7 +2704,7 @@ class D2ObjectsTxt
 };
 struct D2ObjectDataTbl
 {
-    D2ObjectsTxt * pObjectsTxt;	//0x0000
+    D2ObjectsTxt* pObjectsTxt;	//0x0000
 };
 struct D2LevelsTxt
 {
@@ -2740,8 +2740,8 @@ struct D2UnitHashTableStrc
 
 struct D2MissileCalcStrc
 {
-    D2UnitStrc * pMissile;	//0x00
-    D2UnitStrc * pOwner;	//0x04
+    D2UnitStrc* pMissile;	//0x00
+    D2UnitStrc* pOwner;	//0x04
     int32_t nMissileId;	//0x08
     int32_t nMissileLevel;	//0x0C
 };
@@ -2755,43 +2755,43 @@ struct D2UnitStrc
     union
     {
         //0x0010
-        D2PlayerDataStrc * pPlayerData;
-        D2MonsterDataStrc * pMonsterData;
-        D2ObjectDataStrc * pObjectData;
-        D2ItemDataStrc * pItemData;
+        D2PlayerDataStrc* pPlayerData;
+        D2MonsterDataStrc* pMonsterData;
+        D2ObjectDataStrc* pObjectData;
+        D2ItemDataStrc* pItemData;
         void *pMissleData;
     };
     uint8_t nAct;	//0x0018
     uint8_t Unk0x001A[0x7];	//0x0019
-    D2DrlgActStrc * pAct;	//0x0020
+    D2DrlgActStrc* pAct;	//0x0020
     uint8_t Unk0x0028[0x10];	//0x0028
     union
     {
         //0x0038
-        D2DynamicPathStrc  * pDynamicPath;
-        D2StaticPathStrc  * pStaticPath;
+        D2DynamicPathStrc * pDynamicPath;
+        D2StaticPathStrc * pStaticPath;
     };
     uint8_t Unk0x0040[0x24];	//0x0040
     uint32_t dwFrameRemain;	//0x0064
     uint8_t Unk0x0068[0x20];	//0x0068
-    D2StatListExStrc * pStatListEx;	//0x0088
-    D2InventoryStrc * pInventory;	//0x0090
+    D2StatListExStrc* pStatListEx;	//0x0088
+    D2InventoryStrc* pInventory;	//0x0090
     uint8_t pad_0098[40];	//0x0098
-    uint64_t * pUpdateUnit;	//0x00C0
+    uint64_t* pUpdateUnit;	//0x00C0
     uint8_t pad_00C8[16];	//0x00C8
     uint64_t StashOrder;	//0x00D8
     uint8_t pad_00E0[8];	//0x00E0
     uint32_t OwnerType;	//0x00E8
     uint32_t OwnerID;	//0x00EC
     uint8_t Unk0x00F0[0x10];	//0x00F0
-    D2SkillListStrc * pSkills;	//0x0100
+    D2SkillListStrc* pSkills;	//0x0100
     uint8_t Unk0x0108[0xC];	//0x0108
     uint32_t Flags;	//0x0114
     uint32_t FlagsEx;	//0x0118
     uint8_t Unk0x011C[0x2C];	//0x011C
-    D2UnitStrc * pChangeNextUnit;	//0x0148
-    D2UnitStrc * pListNext;	//0x0150	Next unit in the hash table. The ID % 128 and the pListNext->ID % 128 should always be equal.
-    D2UnitStrc * pRoomNext;	//0x0158	Next unit in the room.
+    D2UnitStrc* pChangeNextUnit;	//0x0148
+    D2UnitStrc* pListNext;	//0x0150	Next unit in the hash table. The ID % 128 and the pListNext->ID % 128 should always be equal.
+    D2UnitStrc* pRoomNext;	//0x0158	Next unit in the room.
     uint8_t Unk0x0160[0x18];	//0x0160
     uint32_t SizeX;	//0x0178
     uint32_t SizeY;	//0x017C
@@ -2800,7 +2800,7 @@ struct D2UnitStrc
 struct D2PlayerTradeStrc
 {
     int32_t nSaveLength;	//0x00
-    uint8_t * pSaveData;	//0x04
+    uint8_t* pSaveData;	//0x04
     int32_t unk0x08[4];
 };
 
@@ -2822,15 +2822,15 @@ struct D2PlayerDataStrc
     char pad_00401[20];
     uint32_t bodylocation;
     char pad_00unk1[24];
-    D2PlayerTradeStrc * pTrade;
+    D2PlayerTradeStrc* pTrade;
     char pad_00unk2[8];
-    D2UnitStrc * pNextItem;
+    D2UnitStrc* pNextItem;
     char pad_00unk3[16];
     uint32_t nRightSkillId;
     char pad_00402[244];	//0x0040
-    D2QuestInfo * pNormalQuest;
-    D2QuestInfo * pNightmareQuest;
-    D2QuestInfo * pHellQuest;
+    D2QuestInfo* pNormalQuest;
+    D2QuestInfo* pNightmareQuest;
+    D2QuestInfo* pHellQuest;
     D2Waypoint *pNormalWaypoint;
     D2Waypoint *pNightmareWaypoint;
     D2Waypoint *pHellWaypoint;
@@ -2839,7 +2839,7 @@ struct D2PlayerDataStrc
 
 struct D2MonsterDataStrc
 {
-    D2MonStatsTxt * pMonstatsTxt;	//0x0000
+    D2MonStatsTxt* pMonstatsTxt;	//0x0000
     char pad_0008[16];	//0x0008
     uint16_t NameSeed;	//0x0018
     MonsterTypeFlags TypeFlags;	//0x001A
@@ -2853,25 +2853,25 @@ struct D2MonsterDataStrc
 
 struct D2ObjectDataStrc
 {
-    D2ObjectsTxt * pObjectTxt;	//0x0000
+    D2ObjectsTxt* pObjectTxt;	//0x0000
     uint8_t InteractType;	//0x0008
     uint8_t PortalFlags;	//0x0009
     char pad_000A[2];	//0x000A
-    uint64_t * pShrineTxt;	//0x000C
+    uint64_t* pShrineTxt;	//0x000C
     char pad_0014[32];	//0x0014
     char szOwner[16];	//0x0034
 };
 
 struct ItemExtraData
 {
-    D2InventoryStrc * pParentInventory;	//0x0000
-    D2InventoryStrc * pPreviousItem;	//0x0008
-    D2InventoryStrc * pNextItem;	//0x0010
+    D2InventoryStrc* pParentInventory;	//0x0000
+    D2InventoryStrc* pPreviousItem;	//0x0008
+    D2InventoryStrc* pNextItem;	//0x0010
     uint8_t NodePos;	//0x0018
     uint8_t NodePosOther;	//0x0019
     char pad_001A[6];	//0x001A
-    D2InventoryStrc * pPrevItemSamePage;	//0x0020
-    D2InventoryStrc * pNextItemSamePage;	//0x0028
+    D2InventoryStrc* pPrevItemSamePage;	//0x0020
+    D2InventoryStrc* pNextItemSamePage;	//0x0028
 };
 struct D2ItemDataStrc
 {
@@ -2900,7 +2900,7 @@ struct D2ItemDataStrc
     uint8_t EarLvl;	//0x0058
     uint8_t InvGfxIdx;	//0x0059
     char pad_005A[70];	//0x005A
-    D2ItemExtraDataStrc * pExtraData;	//0x00A0
+    D2ItemExtraDataStrc* pExtraData;	//0x00A0
 };
 
 struct D2DrlgActStrc
@@ -2918,14 +2918,14 @@ struct D2DrlgActStrc
 
 struct D2StatsArrayStrc
 {
-    D2StatStrc * pStat;	//0x0000
+    D2StatStrc* pStat;	//0x0000
     uint64_t Count;	//0x0008
     uint64_t Capacity;	//0x0010
 };
 
 struct D2StatListStrc
 {
-    D2UnitStrc * pUnit;	//0x0000
+    D2UnitStrc* pUnit;	//0x0000
     uint32_t OwnerType;	//0x0008
     uint32_t OwnerID;	//0x000C
     char pad_0010[12];	//0x0010
@@ -2938,7 +2938,7 @@ struct D2StatListStrc
 
 struct D2StatListExStrc
 {
-    D2UnitStrc * pUnit;	//0x0000
+    D2UnitStrc* pUnit;	//0x0000
     uint32_t OwnerType;	//0x0008
     uint32_t OwnerID;	//0x000C
     char pad_0010[12];	//0x0010
@@ -2947,13 +2947,13 @@ struct D2StatListExStrc
     float ExpireFrame;	//0x0024
     char pad_0028[8];	//0x0028
     D2StatsArrayStrc Stats;	//0x0030
-    D2StatListExStrc * pPrevLink;	//0x0048 might be wrong
+    D2StatListExStrc* pPrevLink;	//0x0048 might be wrong
     char pad_0050[8];	//0x0050
-    D2StatListExStrc * pParent;	//0x0058
+    D2StatListExStrc* pParent;	//0x0058
     char pad_0060[8];	//0x0060
-    D2StatListExStrc * pMyLastList;	//0x0068
-    D2StatListExStrc * pMyStats;	//0x0070
-    D2UnitStrc * pOwner;	//0x0078
+    D2StatListExStrc* pMyLastList;	//0x0068
+    D2StatListExStrc* pMyStats;	//0x0070
+    D2UnitStrc* pOwner;	//0x0078
     D2StatsArrayStrc FullStats;	//0x0080
     D2StatsArrayStrc ModStats;	//0x0098 could be wrong
     char pad_00B0[2584];	//0x00B0
@@ -2971,8 +2971,8 @@ struct D2PathInfoStrc
 {
     D2PathPointStrc pStartCoord;	//0x00
     D2PathPointStrc tTargetCoord;	//0x04
-    D2RoomStrc * pRoom;	//0x08
-    D2RoomStrc * field_C;	//0x0C
+    D2RoomStrc* pRoom;	//0x08
+    D2RoomStrc* field_C;	//0x0C
     int32_t field_10;	//0x10
     uint8_t field_14;	//0x14
     uint8_t field_15;	//0x15
@@ -2987,35 +2987,35 @@ struct D2PathInfoStrc
     int32_t nCollisionType;	//0x2C
     union
     {
-        D2DynamicPathStrc * pDynamicPath;	//0x30 - not sure yet
-        D2PathInfoStrc * pNext;	//0x30
+        D2DynamicPathStrc* pDynamicPath;	//0x30 - not sure yet
+        D2PathInfoStrc* pNext;	//0x30
     };
 };
 
 struct D2InventoryNodeStrc
 {
     int32_t nItemId;	//0x00
-    D2InventoryNodeStrc * pNext;	//0x04
+    D2InventoryNodeStrc* pNext;	//0x04
 };
 
 struct D2InventoryStrc
 {
     uint32_t Signature;	//0x0000
     char pad_0004[4];	//0x0004
-    D2UnitStrc * pOwner;	//0x0008
-    D2UnitStrc * pFirstItem;	//0x0010
-    D2UnitStrc * pLastItem;	//0x0018
-    D2InventoryGridStrc * pGrids;	//0x0020
+    D2UnitStrc* pOwner;	//0x0008
+    D2UnitStrc* pFirstItem;	//0x0010
+    D2UnitStrc* pLastItem;	//0x0018
+    D2InventoryGridStrc* pGrids;	//0x0020
     int32_t GridCount;	//0x0028
     char pad_002C[12];	//0x002C
     int64_t dwLeftItemGUID;	//0x0038
-    D2UnitStrc * pCursorItem;	//0x0040
+    D2UnitStrc* pCursorItem;	//0x0040
     uint32_t OwnerID;	//0x0048
     uint32_t ItemCount;	//0x004C
-    D2InventoryNodeStrc * pFirstNode;	//0x2C
-    D2InventoryNodeStrc * pLastNode;	//0x30
-    D2CorpseStrc * pFirstCorpse;	//0x34
-    D2CorpseStrc * pLastCorpse;	//0x38
+    D2InventoryNodeStrc* pFirstNode;	//0x2C
+    D2InventoryNodeStrc* pLastNode;	//0x30
+    D2CorpseStrc* pFirstCorpse;	//0x34
+    D2CorpseStrc* pLastCorpse;	//0x38
     int32_t nCorpseCount;	//0x3C
 };
 
@@ -3061,12 +3061,12 @@ struct D2DynamicPathStrc
     D2PathPointStrc SP2;	//0x0014
     D2PathPointStrc SP3;	//0x0018
     char pad_001C[4];	//0x001C
-    D2RoomStrc * pRoom;	//0x0020
-    D2RoomStrc * pRoomNext;	//0x0028
+    D2RoomStrc* pRoom;	//0x0020
+    D2RoomStrc* pRoomNext;	//0x0028
     uint32_t dwCurrentPointIdx;	//0x0030
     uint32_t dwPathPoints;	//0x0034
     char pad_0038[8];	//0x0038
-    D2UnitStrc * pUnit;	//0x0040
+    D2UnitStrc* pUnit;	//0x0040
     char pad_0048[8];	//0x0048
     uint32_t dwPathType;
     uint32_t dwUnitSize;
@@ -3089,12 +3089,12 @@ struct D2RoomStrc
 {
     D2RoomStrc **pRoomsNear;	//0x0000
     char pad_0008[16];	//0x0008
-    D2RoomExStrc * pRoomEx;	//0x0018
+    D2RoomExStrc* pRoomEx;	//0x0018
     char pad_0020[24];	//0x0020
-    D2RoomCollisionGridStrc * pCollisionGrid;	//0x0038
+    D2RoomCollisionGridStrc* pCollisionGrid;	//0x0038
     uint32_t dwRoomsNear;	//0x0040
     char pad_0044[4];	//0x0044
-    D2DrlgActStrc * pAct;	//0x0048
+    D2DrlgActStrc* pAct;	//0x0048
     char pad_0050[48];	//0x0050
     uint32_t StartX;	//0x0080
     uint32_t StartY;	//0x0084
@@ -3105,23 +3105,23 @@ struct D2RoomStrc
     uint32_t RoomSizeX;	//0x0098
     uint32_t RoomSizeY;	//0x009C
     char pad_00A0[8];	//0x00A0
-    D2UnitStrc * pUnitFirst;	//0x00A8
-    D2RoomStrc * pRoomNext;	//0x00B0
+    D2UnitStrc* pUnitFirst;	//0x00A8
+    D2RoomStrc* pRoomNext;	//0x00B0
 };
 
 struct D2SkillListStrc
 {
-    D2SkillStrc * pFirstSkill;	//0x0000
-    D2SkillStrc * pLeftSkill;	//0x0008
-    D2SkillStrc * pRightSkill;	//0x0010
-    D2SkillStrc * pLastUsedSkill;	//0x0018
+    D2SkillStrc* pFirstSkill;	//0x0000
+    D2SkillStrc* pLeftSkill;	//0x0008
+    D2SkillStrc* pRightSkill;	//0x0010
+    D2SkillStrc* pLastUsedSkill;	//0x0018
     char pad_0020[96];	//0x0020
 };
 
 struct D2SkillStrc
 {
-    D2SkillsTxt * pSkillsTxt;	//0x0000
-    D2SkillStrc * pNextSkill;	//0x0008
+    D2SkillsTxt* pSkillsTxt;	//0x0000
+    D2SkillStrc* pNextSkill;	//0x0008
     uint32_t SkillMode;	//0x0010
     uint32_t Flags;	//0x0014
     uint32_t Unk0x0010[2];	//0x0018
@@ -3159,7 +3159,7 @@ struct D2GameStrc
     char pad_004E[18];	//0x004E
     uint32_t InitSeed;	//0x0060
     char pad_0064[12];	//0x0064
-    D2ClientStrc * pClientList;	//0x0070
+    D2ClientStrc* pClientList;	//0x0070
     uint32_t ClientCount;	//0x0078
     uint32_t SpawnedPlayerCount;	//0x007C
     uint32_t SpawnedMonsterCount;	//0x0080
@@ -3181,13 +3181,13 @@ struct D2UnitFindArgStrc
 {
     int32_t nFlags;	//0x00
     int32_t unk0x04;	//0x04
-    D2UnitStrc * pUnit;	//0x08
+    D2UnitStrc* pUnit;	//0x08
     int32_t nX;	//0x0C
     int32_t nY;	//0x10
     int32_t nSize;	//0x14
     int32_t nMaxArrayEntries;	//0x18
     int32_t nIndex;	//0x1C
-    D2FieldStrc * pField;	//0x20
+    D2FieldStrc* pField;	//0x20
     UNITFINDTEST pfnUnitTest;	//0x24
     int32_t unk0x28;	//0x28
     int32_t unk0x2C;	//0x2C
@@ -3198,9 +3198,9 @@ struct D2UnitFindArgStrc
 struct D2UnitFindDataStrc
 {
     D2UnitStrc **pUnitsArray;	//0x04
-    D2RoomStrc * pRoom;	//0x08
+    D2RoomStrc* pRoom;	//0x08
     UNITFINDTEST pfnUnitTest;	//0x0C
-    D2UnitFindArgStrc * pUnitFindArg;	//0x10
+    D2UnitFindArgStrc* pUnitFindArg;	//0x10
     int32_t nFlags;	//0x14
     int32_t nIndex;	//0x18
     int32_t nMaxArrayEntries;	//0x1C
@@ -3220,7 +3220,7 @@ struct D2PresetUnitStrc
     uint32_t Index;	//0x0004
     uint32_t PosX;	//0x0008
     char pad_000C[4];	//0x000C
-    D2PresetUnitStrc * pPresetNext;	//0x0010
+    D2PresetUnitStrc* pPresetNext;	//0x0010
     uint64_t AreaID;	//0x0018
     uint32_t Type;	//0x0020
     uint32_t PosY;	//0x0024
@@ -3237,36 +3237,36 @@ struct D2StatStrc
 struct D2DrlgStrc
 {
     char pad_0000[280];	//0x0000
-    D2DrlgWarpStrc * pWarp;
+    D2DrlgWarpStrc* pWarp;
     uint32_t StaffTombLevel;	//0x0120
     char pad_0124[1844];	//0x0124
-    D2DrlgActStrc * pAct;	//0x0858
+    D2DrlgActStrc* pAct;	//0x0858
     char pad_0860[8];	//0x0860
-    D2DrlgLevelStrc * pLevelFirst;	//0x0868
+    D2DrlgLevelStrc* pLevelFirst;	//0x0868
     uint32_t ActNo;	//0x0870
     char pad_0874[12];	//0x0874
 };
 
 struct D2RoomExStrc
 {
-    D2RoomExStrc * pFirstRoomEx;	//0x0000
+    D2RoomExStrc* pFirstRoomEx;	//0x0000
     D2RoomExStrc **pRoomExNear;	//0x0010
     uint32_t RoomsNear;	//0x0018
     char pad_001C[44];	//0x001C
-    D2RoomExStrc * pNextRoomEx;	//0x0048
+    D2RoomExStrc* pNextRoomEx;	//0x0048
     uint32_t RoomFlags;	//0x0050
     char pad_0054[4];	//0x0054
-    D2RoomStrc * pRoom1;	//0x0058
+    D2RoomStrc* pRoom1;	//0x0058
     uint32_t PosX;	//0x0060
     uint32_t PosY;	//0x0064
     uint32_t SizeX;	//0x0068
     uint32_t SizeY;	//0x006C
     char pad_0070[4];	//0x0070
     uint32_t dwPresetType;	//0x0074
-    D2RoomTileStrc * pRoomTiles;	//0x0078
+    D2RoomTileStrc* pRoomTiles;	//0x0078
     char pad_0080[16];	//0x0080
-    D2DrlgLevelStrc * pLevel;	//0x0090
-    D2PresetUnitStrc * pPreset;	//0x0098
+    D2DrlgLevelStrc* pLevel;	//0x0090
+    D2PresetUnitStrc* pPreset;	//0x0098
 };
 
 struct D2BoundingBoxStrc
@@ -3299,17 +3299,17 @@ struct D2RoomCollisionGridStrc
     uint32_t dwTilesTop;	//0x0014
     uint32_t dwTilesWidth;	//0x0018
     uint32_t dwTilesHeight;	//0x001C
-    uint16_t * pCollisionMask;	//0x0020
+    uint16_t* pCollisionMask;	//0x0020
 };
 
 struct D2RoomTileStrc
 {
-    D2RoomExStrc * pRoomEx;	//0x0000
-    D2RoomTileStrc * pNext;	//0x0008
+    D2RoomExStrc* pRoomEx;	//0x0000
+    D2RoomTileStrc* pNext;	//0x0008
     uint64_t nEnabled;	//0x0010
-    uint64_t * Unk0x0018;	//0x0018
-    D2LvlWarpTxt * pLvlWarpTxtRecord;	//0x0020
-    uint64_t * Unk0x0028;	//0x0028
+    uint64_t* Unk0x0018;	//0x0018
+    D2LvlWarpTxt* pLvlWarpTxtRecord;	//0x0020
+    uint64_t* Unk0x0028;	//0x0028
 };
 
 struct D2LvlPrestTxt
@@ -3356,15 +3356,15 @@ struct D2DrlgFileStrc
     void *pShadowLayer;	//0x44
     void *pSubstGroupTags;	//0x48
     int32_t nSubstGroups;	//0x4C named nClusters in original game
-    struct D2DrlgSubstGroupStrc * pSubstGroups;	//0x50
-    D2PresetUnitStrc * pPresetUnit;	//0x54
-    D2DrlgFileStrc * pNext;	//0x58
+    struct D2DrlgSubstGroupStrc* pSubstGroups;	//0x50
+    D2PresetUnitStrc* pPresetUnit;	//0x54
+    D2DrlgFileStrc* pNext;	//0x58
 };
 
 struct D2DrlgGridStrc
 {
-    int32_t * pCellsFlags;	//0x00
-    int32_t * pCellsRowOffsets;	//0x04
+    int32_t* pCellsFlags;	//0x00
+    int32_t* pCellsRowOffsets;	//0x04
     int32_t nWidth;	//0x08
     int32_t nHeight;	//0x0C
     int32_t unk0x10;	//0x10 Maybe indicates if uninitialized? No memset when set to 1
@@ -3372,18 +3372,18 @@ struct D2DrlgGridStrc
 
 struct D2DrlgRoomTilesStrc
 {
-    D2DrlgTileDataStrc * pWallTiles;	//0x00
+    D2DrlgTileDataStrc* pWallTiles;	//0x00
     int32_t nWalls;	//0x04
-    D2DrlgTileDataStrc * pFloorTiles;	//0x08
+    D2DrlgTileDataStrc* pFloorTiles;	//0x08
     int32_t nFloors;	//0x0C
-    D2DrlgTileDataStrc * pRoofTiles;	//0x10
+    D2DrlgTileDataStrc* pRoofTiles;	//0x10
     int32_t nRoofs;	//0x14
 };
 
 struct D2DrlgTileGridStrc
 {
-    D2DrlgTileLinkStrc * pMapLinks;	//0x00
-    D2DrlgAnimTileGridStrc * pAnimTiles;	//0x04
+    D2DrlgTileLinkStrc* pMapLinks;	//0x00
+    D2DrlgAnimTileGridStrc* pAnimTiles;	//0x04
     int32_t nWalls;	//0x08
     int32_t nFloors;	//0x0C
     int32_t nShadows;	//0x10
@@ -3393,8 +3393,8 @@ struct D2DrlgTileGridStrc
 struct D2DrlgTileLinkStrc
 {
     BOOL bFloor;	//0x00
-    D2DrlgTileDataStrc * pMapTile;	//0x04
-    D2DrlgTileLinkStrc * pNext;	//0x08
+    D2DrlgTileDataStrc* pMapTile;	//0x04
+    D2DrlgTileLinkStrc* pNext;	//0x08
 };
 
 struct D2DrlgAnimTileGridStrc
@@ -3403,12 +3403,12 @@ struct D2DrlgAnimTileGridStrc
     int32_t nFrames;	//0x04
     int32_t nCurrentFrame;	//0x08
     int32_t nAnimationSpeed;	//0x0C
-    D2DrlgAnimTileGridStrc * pNext;	//0x10
+    D2DrlgAnimTileGridStrc* pNext;	//0x10
 };
 struct D2DrlgTileGridStrc
 {
-    D2DrlgTileLinkStrc * pMapLinks;	//0x00
-    D2DrlgAnimTileGridStrc * pAnimTiles;	//0x04
+    D2DrlgTileLinkStrc* pMapLinks;	//0x00
+    D2DrlgAnimTileGridStrc* pAnimTiles;	//0x04
     int32_t nWalls;	//0x08
     int32_t nFloors;	//0x0C
     int32_t nShadows;	//0x10
@@ -3419,24 +3419,24 @@ struct D2DrlgMapStrc
 {
     int32_t nLevelPrest;	//0x00
     int32_t nPickedFile;	//0x04
-    D2LvlPrestTxt * pLvlPrestTxtRecord;	//0x08
-    D2DrlgFileStrc * pFile;	//0x0C
+    D2LvlPrestTxt* pLvlPrestTxtRecord;	//0x08
+    D2DrlgFileStrc* pFile;	//0x0C
     D2DrlgCoordStrc pDrlgCoord;	//0x10
     BOOL bHasInfo;	//0x20
     D2DrlgGridStrc pMapGrid;	//0x24
-    D2PresetUnitStrc * pPresetUnit;	//0x38
+    D2PresetUnitStrc* pPresetUnit;	//0x38
     BOOL bInited;	//0x3C
     int32_t nPops;	//0x40
-    int32_t * pPopsIndex;	//0x44
-    int32_t * pPopsSubIndex;	//0x48
-    int32_t * pPopsOrientation;	//0x4C
-    D2DrlgCoordStrc * pPopsLocation;	//0x50
-    D2DrlgMapStrc * pNext;	//0x54
+    int32_t* pPopsIndex;	//0x44
+    int32_t* pPopsSubIndex;	//0x48
+    int32_t* pPopsOrientation;	//0x4C
+    D2DrlgCoordStrc* pPopsLocation;	//0x50
+    D2DrlgMapStrc* pNext;	//0x54
 };
 
 struct D2DrlgPresetInfoStrc
 {
-    D2DrlgMapStrc * pDrlgMap;	//0x00
+    D2DrlgMapStrc* pDrlgMap;	//0x00
     int32_t nDirection;	//0x04
 };
 
@@ -3444,16 +3444,16 @@ struct D2DrlgLevelStrc
 {
     uint32_t nDrlgType;
     char pad_0000[12];	//0x0000
-    D2RoomExStrc * pRoomExFirst;	//0x0010
-    D2DrlgPresetInfoStrc * pPreset;
+    D2RoomExStrc* pRoomExFirst;	//0x0010
+    D2DrlgPresetInfoStrc* pPreset;
     uint32_t PosX;	//0x0024
     uint32_t PosY;	//0x0028
     uint32_t SizeX;	//0x002C
     uint32_t SizeY;	//0x0030
     char pad_0034[388];	//0x0034
-    D2DrlgLevelStrc * pLevelNext;	//0x01B8
+    D2DrlgLevelStrc* pLevelNext;	//0x01B8
     char pad_01C0[8];	//0x01C0
-    D2DrlgStrc * pDrlg;	//0x01C8
+    D2DrlgStrc* pDrlg;	//0x01C8
     char pad_01D0[20];
     uint32_t nLevelType;
     char pad_01D[20];	//0x01D0
@@ -3482,7 +3482,7 @@ struct D2LvlWarpTxt
 
 struct D2StaticPathStrc
 {
-    D2RoomStrc * pRoom;	//0x0000
+    D2RoomStrc* pRoom;	//0x0000
     uint32_t TargetX;	//0x0008
     uint32_t TargetY;	//0x000C
     uint32_t PosX;	//0x0010
@@ -3527,7 +3527,7 @@ struct D2MissileDataStrc
 
 struct D2BitBufferStrc
 {
-    uint8_t * pBuffer;	//0x0000
+    uint8_t* pBuffer;	//0x0000
     uint64_t Bits;	//0x0008
     uint64_t Pos;	//0x0010
     uint64_t PosBits;	//0x0018
@@ -3536,8 +3536,8 @@ struct D2BitBufferStrc
 
 struct D2InventoryGridStrc
 {
-    D2UnitStrc * pItem;	//0x0000
-    D2UnitStrc * pLastItem;	//0x0008
+    D2UnitStrc* pItem;	//0x0000
+    D2UnitStrc* pLastItem;	//0x0008
     int8_t Width;	//0x0010
     int8_t Height;	//0x0011
     char pad_0012[6];	//0x0012
@@ -3576,13 +3576,13 @@ struct D2UIPanelManagerStrc_VMT
 
 struct D2UIPanelManagerStrc
 {
-    D2UIPanelManagerStrc_VMT * _VMT;
+    D2UIPanelManagerStrc_VMT* _VMT;
     char *pName;	//0x0008
     uint64_t NameLength;	//0x0010
     uint32_t MaxNameLength;	//0x0018
     uint32_t TextFlags;	//0x001C
     char InlineName[16];	//0x0020
-    D2UIWidgetStrc * pParent;	//0x0030
+    D2UIWidgetStrc* pParent;	//0x0030
     char pad_0038[16];	//0x0038
     float RelPosX;	//0x0048
     float RelPosY;	//0x004C
@@ -3614,13 +3614,13 @@ struct D2UIWidgetStrc_VMT
 
 struct D2UIWidgetStrc
 {
-    D2UIWidgetStrc_VMT * _VMT;
+    D2UIWidgetStrc_VMT* _VMT;
     char *pName;	//0x0008
     uint64_t NameLength;	//0x0010
     uint32_t MaxNameLength;	//0x0018
     uint32_t TextFlags;	//0x001C
     char InlineName[16];	//0x0020
-    D2UIWidgetStrc * pParent;	//0x0030
+    D2UIWidgetStrc* pParent;	//0x0030
     char pad_0038[16];	//0x0038
     float RelPosX;	//0x0048
     float RelPosY;	//0x004C
@@ -3660,13 +3660,13 @@ struct D2UIButtonStrc_VMT
 
 struct D2UIButtonStrc
 {
-    D2UIButtonStrc_VMT * _VMT;
+    D2UIButtonStrc_VMT* _VMT;
     char *pName;	//0x0008
     uint64_t NameLength;	//0x0010
     uint32_t MaxNameLength;	//0x0018
     uint32_t TextFlags;	//0x001C
     char InlineName[16];	//0x0020
-    D2UIWidgetStrc * pParent;	//0x0030
+    D2UIWidgetStrc* pParent;	//0x0030
     char pad_0038[16];	//0x0038
     float RelPosX;	//0x0048
     float RelPosY;	//0x004C
