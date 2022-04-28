@@ -153,7 +153,7 @@ variables = [
 { 'name': 'MouseOffsetZ', 'ctype': 'int MouseOffsetZ', 'offset': 0x3A5214 },
 { 'name': 'MouseOffsetX', 'ctype': 'int MouseOffsetX', 'offset': 0x3A520C },
 { 'name': 'AutomapOn', 'ctype': 'DWORD AutomapOn', 'offset': 0x3A27E8 },
-{ 'name': 'AutomapMode', 'ctype': 'int AutomapMode', 'offset': 0x311254 },
+{ 'name': 'AutomapMode', 'ctype': 'int AutomapMode', 'offset': 0xF16B0 },
 { 'name': 'Offset', 'ctype': 'POINT Offset', 'offset': 0x3A5198 },
 { 'name': 'AutomapLayer', 'ctype': 'AutomapLayer* AutomapLayer', 'offset': 0x3A5164 },
 { 'name': 'MercStrIndex', 'ctype': 'WORD MercStrIndex', 'offset': 0x325494 },
