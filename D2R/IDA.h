@@ -946,6 +946,11 @@ public:
     int32_t Y;
 };
 
+struct D2PointFloat{
+    float X;
+    float Y;
+};
+
 struct AutomapCell
 {
     int32_t fSaved;	// 0x00
@@ -3404,15 +3409,6 @@ struct D2DrlgAnimTileGridStrc
     int32_t nCurrentFrame;	//0x08
     int32_t nAnimationSpeed;	//0x0C
     D2DrlgAnimTileGridStrc* pNext;	//0x10
-};
-struct D2DrlgTileGridStrc
-{
-    D2DrlgTileLinkStrc* pMapLinks;	//0x00
-    D2DrlgAnimTileGridStrc* pAnimTiles;	//0x04
-    int32_t nWalls;	//0x08
-    int32_t nFloors;	//0x0C
-    int32_t nShadows;	//0x10
-    D2DrlgRoomTilesStrc pTiles;	//0x14
 };
 
 struct D2DrlgMapStrc

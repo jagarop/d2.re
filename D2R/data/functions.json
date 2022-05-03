@@ -1,5 +1,6 @@
 [
 {"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? FE C8", "type": "operand", "operand": 0},
+{"ret": "uint8_t", "conv": "__fastcall", "name": "GAME_GetDifficulty", "args": "()", "pattern": "E8 ? ? ? ? 0F B7 17", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "BITMANIP_Write", "args": "(D2BitBufferStrc* pBuffer, uint32_t dwValue, uint64_t nBits)", "pattern": "40 53 4D 8B D0", "type": "absoulte"},
 {"ret": "D2QuestInfo*", "conv": "__fastcall", "name": "CLIENT_GetQuestInfoFromGameAndUnit", "args": "(D2GameStrc *pGame, D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 8B 4D 40", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "CLIENT_RevealAutomapRoom", "args": "(D2RoomStrc* pRoom1, int dwClipFlag, void* aLayer)", "pattern": "E8 ? ? ? ? EB 2B CC", "type": "operand", "operand": 0},
@@ -543,7 +544,6 @@
 {"ret": "D2StatListStrc*", "conv": "__fastcall", "name": "STATLIST_AllocStatList", "args": "(uint32_t fFilter, uint32_t dwTimeout, int nUnitType, int nUnitGUID)", "pattern": "E8 ? ? ? ? 48 8B F0 85 FF", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_ClampStaminaManaHP", "args": "(D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 48 8B 6C 24 ? 48 83 C4 28", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "STATLIST_ExpireUnitStatlist", "args": "(D2StatListStrc *pStatList)", "pattern": "E9 ? ? ? ? 48 39 1F", "type": "operand", "operand": 0},
-{"ret": "void", "conv": "__fastcall", "name": "STATLIST_FreeStatListImpl", "args": "(D2StatListStrc* pStatList)", "pattern": "E8 ? ? ? ? 0F B7 17", "type": "operand", "operand": 0},
 {"ret": "uint32_t", "conv": "__fastcall", "name": "STATLIST_GetMaxDurabilityFromUnit", "args": "(D2UnitStrc* pItem)", "pattern": "E8 ? ? ? ? 3B E8 7C 0A", "type": "operand", "operand": 0},
 {"ret": "int32_t", "conv": "__fastcall", "name": "STATLIST_GetMaxLifeFromUnit", "args": "(D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 48 8B CE 88 45 F7", "type": "operand", "operand": 0, "summary": "result Shift >>8"},
 {"ret": "int32_t", "conv": "__fastcall", "name": "STATLIST_GetMaxManaFromUnit", "args": "(D2UnitStrc *pUnit)", "pattern": "41 54 48 83 EC 40 4C 8B E1", "type": "absolute", "summary": "result Shift >>8"},
