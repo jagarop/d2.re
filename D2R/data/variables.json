@@ -14,7 +14,7 @@
 {"ctype": "uint32_t", "name": "g_AutomapShiftDirection", "pattern": "8B 05 ? ? ? ? 89 44 24 20 74 07", "operand": 1, "type": "operand"},
 {"ctype": "void", "name": "g_BeltInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? BA ? ? ? ? 48 8B CE E8 ? ? ? ? 48 85 C0 74 1F 83 FF 0F 77 1A 48 8B 40 18 48 63 CF 48 39 2C C8 ", "operand": 1, "type": "operand"},
 {"ctype": "void", "name": "g_BodyLocInventoryGridInfo", "pattern": "4C 8D 05 ? ? ? ? 33 D2 48 8B CF E8 ? ? ? ? 48 85 C0 75 04 33 DB EB 08 48 8B 40 18 48 8B 58 20 ", "operand": 1, "type": "operand"},
-{"ctype": "__int128", "name": "g_CameraZoom", "pattern": "66 0F 7F 05 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? C7 05", "operand": 0, "type": "operand", "summary": "offset +0x28. then 0x28, 0x2c, 0x30 are floats dealing w/ camera zoom"},
+{"ctype": "__m128i", "name": "g_CameraZoom", "pattern": "66 0F 7F 05 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? C7 05", "operand": 0, "type": "operand", "summary": "offset +0x28. then 0x28, 0x2c, 0x30 are floats dealing w/ camera zoom"},
 {"ctype": "uint32_t", "name": "g_CharFlags", "pattern": "48 8B 2D ? ? ? ? 8B FE", "operand": 1, "type": "operand", "summary": "0x4 hc, 0x8 diedbefore, 0x20 expansion, 0x40 ladder (also has flags for titles/patriarch etc)"},
 {"ctype": "D2ChatMsg", "name": "g_ChatStruct", "pattern": "48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 4C 85 7C 24 38", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc", "name": "g_ClientSideUnitHashTable", "pattern": "48 8D 0D 8A C0 0E 02 48 C1 E0 0A 48 03 C1", "operand": 1, "type": "operand"},
