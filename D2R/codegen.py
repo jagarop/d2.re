@@ -10,7 +10,7 @@ base = idaapi.get_imagebase()
 end_ea = idc.get_segm_end(0)
 
 shutil.rmtree(os.path.join(path, 'gen'), ignore_errors=True)
-os.makedirs(os.path.join(path, 'gen'))
+os.makedirs(os.path.join(path, 'gen'), exist_ok=True)
 
 def offset(item):
     address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
