@@ -63,7 +63,7 @@
 {"ctype": "bool", "name": "g_bIsOnlineGame", "pattern": "8B 0D ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 83 F9 01 48 8D 05 ?? ?? ?? ?? 48 0F 45 C2 33 D2", "operand": 1, "type": "operand"},
 {"ctype": "void*", "name": "g_pCurrentInteractingDialog", "pattern": "48 8B 15 ?? ?? ?? ?? 48 8B C8 4C 8B 00 41 FF 50 ?? 48 8B 0D ?? ?? ?? ?? 4C 8D 44 24 40 33 DB 48 89 1D ?? ?? ?? ?? 48 89 5C 24 40 E8 ?? ?? ?? ?? 48 89 1D", "operand": 1, "type": "operand"},
 {"ctype": "int64_t", "name": "g_pGAME_QuitEnum", "pattern": "44 89 2D ? ? ? ? E8 ? ? ? ? 41 8B CD", "operand": 0, "type": "operand"},
-{"ctype": "bool", "name": "g_pGamePanelStates", "pattern": "48 8D 0D ?? ?? ?? ?? 0F B6 04 08 C3", "operand": 1, "type": "operand"},
+{"ctype": "GamePanelStates*", "name": "g_pGamePanelStates", "pattern": "48 8D 0D ?? ?? ?? ?? 0F B6 04 08 C3", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"},
 {"ctype": "unkqwordGameStruct*", "name": "unkqwordGameStruct", "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"}
 ]
