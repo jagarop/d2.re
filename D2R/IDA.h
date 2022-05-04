@@ -765,41 +765,37 @@ struct Grid
 
 enum D2PanelName: uint8_t
 {
-    g_unkpanel0 = 0,
-    g_InventoryOpen = 1,
-    g_CharacterWindowOpen = 2,
-    g_skillSelectPopupOpen = 3,
-    g_SkillTreeOpen = 4,
-    g_unkpanel5 = 5,
-    g_NewStatNotifyIcon = 6,
-    g_unkpanel7 = 7,
-    g_TalkDialogOpen = 8,
-    g_Paused = 9,
-    g_AutomapOn = 10,
-    g_TradeOpen = 11,
-    g_unkpanel12 = 12,
-    g_ImbuneOrSocketOpen = 13,
-    g_QuestLogOpen = 14,
-    g_unkpanel15 = 15,
-    g_unkpanel16 = 16,
-    g_unkpanel17 = 17,
-    g_unkpanel18 = 18,
-    g_WpMenuOpen = 19,
-    g_unkpanel20 = 20,
-    g_unkpanel21 = 21,
-    g_unkpanel22 = 22,
-    g_unkpanel23 = 23,
-    g_StashOpen = 24,
-    g_CubeOpen = 25,
-    g_unkpanel26 = 26,
-    g_HelpOpen = 27,
-    g_HelpNotifyIcon = 28,
-    g_unkpanel29 = 29,
-    g_MercInvWindowOpen = 30,
-    g_unkpanel31 = 31,
-    g_unkpanel32 = 32,
-    g_unkpanel33 = 33,
-    g_unkpanel34 = 34,
+    InGame = 0,
+    InventoryVisible = 1,
+    StatsVisible = 2,
+    SkillPopoverVisible = 3,
+    SkillTreeVisible = 4,
+    ChatVisible = 5,
+    N000012BC = 6,
+    N000012CF = 7,
+    NpcDialogVisible = 8,
+    PauseMenuVisible = 9,
+    AutomapVisible = 10,
+    VendorInventoryVisible = 11,
+    ItemsOnGroundVisible = 12,
+    N000012D5 = 13,
+    QuestMenuVisible = 14,
+    N000012D7 = 15,
+    N00001256 = 16,
+    N000012E1 = 17,
+    N0000130D = 18,
+    WaypointMenuVisible = 19,
+    UNK2Visible = 20,
+    PartyVisible = 21,
+    N00001310 = 22,
+    N000012E3 = 23,
+    StashVisible = 24,
+    CubeVisible = 25,
+    BeltVisible = 26,
+    N00001353 = 27,
+    N00001314 = 28,
+    AvatarsVisible = 29,
+    MercInventoryVisible = 30,
 };
 
 struct InputBoxData
@@ -945,7 +941,12 @@ public:
     int32_t X;
     int32_t Y;
 };
-
+struct MousePos{
+    int16_t X;
+    int16_t UNK1;
+    int16_t Y;
+    int16_t UNK2;
+};
 struct D2PointFloat{
     float X;
     float Y;
@@ -2751,55 +2752,63 @@ struct D2MissileCalcStrc
     int32_t nMissileLevel;	//0x0C
 };
 
-struct D2UnitStrc
-{
-    UnitType dwUnitType;	//0x0000
-    uint32_t dwClassId;	//0x0004
-    uint32_t dwUnitId;	//0x0008
-    uint32_t AnimationMode;	//0x000c
-    union
-    {
-        //0x0010
-        D2PlayerDataStrc* pPlayerData;
-        D2MonsterDataStrc* pMonsterData;
-        D2ObjectDataStrc* pObjectData;
-        D2ItemDataStrc* pItemData;
-        void *pMissleData;
-    };
-    uint8_t nAct;	//0x0018
-    uint8_t Unk0x001A[0x7];	//0x0019
-    D2DrlgActStrc* pAct;	//0x0020
-    uint8_t Unk0x0028[0x10];	//0x0028
-    union
-    {
-        //0x0038
-        D2DynamicPathStrc * pDynamicPath;
-        D2StaticPathStrc * pStaticPath;
-    };
-    uint8_t Unk0x0040[0x24];	//0x0040
-    uint32_t dwFrameRemain;	//0x0064
-    uint8_t Unk0x0068[0x20];	//0x0068
-    D2StatListExStrc* pStatListEx;	//0x0088
-    D2InventoryStrc* pInventory;	//0x0090
-    uint8_t pad_0098[40];	//0x0098
-    uint64_t* pUpdateUnit;	//0x00C0
-    uint8_t pad_00C8[16];	//0x00C8
-    uint64_t StashOrder;	//0x00D8
-    uint8_t pad_00E0[8];	//0x00E0
-    uint32_t OwnerType;	//0x00E8
-    uint32_t OwnerID;	//0x00EC
-    uint8_t Unk0x00F0[0x10];	//0x00F0
-    D2SkillListStrc* pSkills;	//0x0100
-    uint8_t Unk0x0108[0xC];	//0x0108
-    uint32_t Flags;	//0x0114
-    uint32_t FlagsEx;	//0x0118
-    uint8_t Unk0x011C[0x2C];	//0x011C
-    D2UnitStrc* pChangeNextUnit;	//0x0148
-    D2UnitStrc* pListNext;	//0x0150	Next unit in the hash table. The ID % 128 and the pListNext->ID % 128 should always be equal.
-    D2UnitStrc* pRoomNext;	//0x0158	Next unit in the room.
-    uint8_t Unk0x0160[0x18];	//0x0160
-    uint32_t SizeX;	//0x0178
-    uint32_t SizeY;	//0x017C
+struct D2UnitStrc {
+	uint32_t Type; //0x0000
+	uint32_t LineID; //0x0004
+	uint32_t ID; //0x0008
+	uint32_t AnimationMode; //0x000C
+	union //0x0010
+	{
+		D2PlayerDataStrc *pPlayerData; //0x0000
+		D2MonsterDataStrc *pMonsterData; //0x0000
+		D2ObjectDataStrc *pObjectData; //0x0000
+		D2ItemDataStrc *pItemData; //0x0000
+		void *pMissileData; //0x0000
+	};
+	uint8_t ActID; //0x0018
+	char pad_0019[7]; //0x0019
+	D2DrlgActStrc *pDrlgAct; //0x0020
+	uint32_t LowSeed; //0x0028
+	uint32_t HighSeed; //0x002C
+	char pad_0030[8]; //0x0030
+	union //0x0038
+	{
+		D2DynamicPathStrc *pDynamicPath; //0x0000
+		D2StaticPathStrc *pStaticPath; //0x0000
+	};
+	int64_t *pAnimSeq; //0x0040
+	uint32_t SeqFrameCount; //0x0048
+	uint32_t SeqFrame; //0x004C
+	char pad_0050[4]; //0x0050
+	uint32_t AnimSpeed; //0x0054
+	char pad_0058[4]; //0x0058
+	uint32_t GFXCurrentFrame; //0x005C
+	char pad_0060[4]; //0x0060
+	uint32_t FrameCount; //0x0064
+	uint16_t AnimSpeedEx; //0x0068
+	char pad_006A[6]; //0x006A
+	D2AnimDataRecordStrc *pAnimData; //0x0070
+	uint64_t *pUnk0x78; //0x0078
+	char pad_0080[8]; //0x0080
+	D2StatListExStrc *pStatListEx; //0x0088
+	D2InventoryStrc *pInventory; //0x0090
+	char pad_0098[16]; //0x0098
+	uint64_t *pUnk0xA8; //0x00A8
+	char pad_00B0[56]; //0x00B0
+	uint32_t OwnerType; //0x00E8
+	uint32_t OwnerID; //0x00EC
+	char pad_00F0[16]; //0x00F0
+	D2SkillListStrc *pSkills; //0x0100
+	char pad_0108[24]; //0x0108
+	uint32_t Flags; //0x0120
+	uint32_t FlagsEx; //0x0124
+	char pad_0128[32]; //0x0128
+	D2UnitStrc *pChangeNextUnit; //0x0148
+	D2UnitStrc *pListNext; //0x0150
+	D2UnitStrc *pRoomNext; //0x0158
+	uint8_t Unk0x0160[0x18];	//0x0160
+	uint32_t SizeX;	//0x0178
+	uint32_t SizeY;	//0x017C
 };
 
 struct D2PlayerTradeStrc
