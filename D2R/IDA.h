@@ -1351,12 +1351,12 @@ struct D2UnkOutdoorStrc
     int32_t field_14;	//0x14
     int32_t nLvlSubId;	//0x18
     unsigned int(__fastcall *field_1C)(D2DrlgLevelStrc *pLevel, int nX, int nY);	//0x1C
-    BOOL(__fastcall *field_20)(D2DrlgLevelStrc *pLevel, int nX, int nY, int nId, int nOffset, char nFlags);	//0x20
-    BOOL(__fastcall *field_24)(D2DrlgLevelStrc *pLevel, int nX, int nY, int a4, int a5, unsigned int a6);	//0x24
+    bool(__fastcall *field_20)(D2DrlgLevelStrc *pLevel, int nX, int nY, int nId, int nOffset, char nFlags);	//0x20
+    bool(__fastcall *field_24)(D2DrlgLevelStrc *pLevel, int nX, int nY, int a4, int a5, unsigned int a6);	//0x24
     int(__fastcall *field_28)(D2DrlgLevelStrc *pLevel, int nStyle, int a3);	//0x28
     void(__fastcall *field_2C)(D2DrlgLevelStrc *pLevel, int nX, int nY);	//0x2C
     void(__fastcall *field_30)(D2DrlgLevelStrc *pLevel, int nX, int nY);	//0x30
-    void(__fastcall *field_34)(D2DrlgLevelStrc *pLevel, int nX, int nY, int nLevelPrestId, int nRand, BOOL a6);	//0x34
+    void(__fastcall *field_34)(D2DrlgLevelStrc *pLevel, int nX, int nY, int nLevelPrestId, int nRand, bool a6);	//0x34
 };
 
 struct D2MissilesTxt
@@ -2356,7 +2356,7 @@ struct D2DrlgEnvironmentStrc
     float fSin;	//0x24
     int32_t nTimeRate;	//0x28
     int32_t nTimeRateIndex;	//0x2C
-    BOOL bEclipse;	//0x30
+    bool bEclipse;	//0x30
     int32_t nPrev;	//0x34
 };
 
@@ -3404,7 +3404,7 @@ struct D2DrlgTileGridStrc
 
 struct D2DrlgTileLinkStrc
 {
-    BOOL bFloor;	//0x00
+    bool bFloor;	//0x00
     D2DrlgTileDataStrc* pMapTile;	//0x04
     D2DrlgTileLinkStrc* pNext;	//0x08
 };
@@ -3425,10 +3425,10 @@ struct D2DrlgMapStrc
     D2LvlPrestTxt* pLvlPrestTxtRecord;	//0x08
     D2DrlgFileStrc* pFile;	//0x0C
     D2DrlgCoordStrc pDrlgCoord;	//0x10
-    BOOL bHasInfo;	//0x20
+    bool bHasInfo;	//0x20
     D2DrlgGridStrc pMapGrid;	//0x24
     D2PresetUnitStrc* pPresetUnit;	//0x38
-    BOOL bInited;	//0x3C
+    bool bInited;	//0x3C
     int32_t nPops;	//0x40
     int32_t* pPopsIndex;	//0x44
     int32_t* pPopsSubIndex;	//0x48
