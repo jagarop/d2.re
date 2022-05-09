@@ -3064,9 +3064,6 @@ struct D2DynamicPathStrc
             uint32_t PrecisionY;	//0x0004
         };
     };
-    uint16_t PosX;	//0x0002
-    uint16_t OffsetY;	//0x0004
-    uint16_t PosY;	//0x0006
     int32_t dwTargetX;	//0x0008 Result of DUNGEON_WorldToScreenCoords
     int32_t dwTargetY;	//0x000C
     D2PathPointStrc SP1;	//0x0010
@@ -3250,7 +3247,9 @@ struct D2DrlgStrc
     char pad_0000[280];	//0x0000
     D2DrlgWarpStrc* pWarp;
     uint32_t StaffTombLevel;	//0x0120
-    char pad_0124[1844];	//0x0124
+    char pad_0124[1804];	//0x0124
+    uint16_t Difficulty; //0x0830
+    char pad_0832[38]; //0x0832
     D2DrlgActStrc* pAct;	//0x0858
     char pad_0860[8];	//0x0860
     D2DrlgLevelStrc* pLevelFirst;	//0x0868
@@ -3261,6 +3260,7 @@ struct D2DrlgStrc
 struct D2RoomExStrc
 {
     D2RoomExStrc* pFirstRoomEx;	//0x0000
+    char pad_0008[8]; //0x0008
     D2RoomExStrc **pRoomExNear;	//0x0010
     uint32_t RoomsNear;	//0x0018
     char pad_001C[44];	//0x001C
