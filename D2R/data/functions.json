@@ -29,6 +29,7 @@
 {"ret": "char*", "conv": "__fastcall", "name": "D2CLIENT_GetLevelName", "args": "(int levelID)", "pattern": "48 83 EC 38 85 C9", "type": "absolute"},
 {"ret": "D2QuestInfo*", "conv": "__fastcall", "name": "D2CLIENT_GetQuestInfo", "args": "()", "pattern": "E8 ? ? ? ? 0F B6 49 01", "type": "operand", "operand": 0},
 {"ret": "AutomapLayer*", "conv": "__fastcall", "name": "D2CLIENT_InitAutomapLayer", "args": "(int32_t a1)", "pattern": "E8 ? ? ? ? 48 8B E8 85 FF", "type": "operand", "operand": 0},
+{"ret": "AutomapCell*", "conv": "__fastcall", "name": "D2CLIENT_NewAutomapCell", "args": "(__int64 *a1, __int64 *a2, __int64 a3)", "pattern": "E8 ? ? ? ? 48 8B 7C 24 ? 48 85 FF 0F 84 ? ? ? ? E8 ? ? ? ? BA ? ? ? ? 48 8B 08 44 8D 42 E0", "type": "operand", "operand": 0},
 {"ret": "BOOL", "conv": "__fastcall", "name": "D2CLIENT_SetUIVar", "args": "(int varno, int howset)", "pattern": "E8 ? ? ? ? EB 21 8B D7", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2CLIENT_Transmute", "args": "()", "pattern": "E8 ? ? ? ? EB 41 48 8B 03", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2CMP_10088", "args": "(D2TileLibraryHashStrc *a1, int a2, int a3, int a4, __int64 a5)", "pattern": "E8 ? ? ? ? 44 8B C8 85 C0 75 2F", "type": "operand", "operand": 0},
