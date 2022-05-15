@@ -800,12 +800,12 @@ enum D2PanelName: uint8_t
 
 struct InputBoxData
 {
-    wchar_t *pData;	//0x0000
-    uint32_t Len;	//0x0008
+    char* pData;	//0x0000
+    uint32_t GameNameLen;	//0x0008
     uint32_t Unk0x000C;	//0x000C
-    uint32_t MaxLen;	//0x0010
+    uint32_t MaxGameNameLen;	//0x0010
     uint32_t Unk0x0014;	//0x0014
-    wchar_t Data[0xF];
+    char GameNameStr[15];
     uint64_t Valid;
 };
 
@@ -868,7 +868,8 @@ class LauncherData
 };
 
 class BnetData
-{
+{   
+    char BigassPad[0x795E68];
     class LauncherData* pLaunchData;	//0x0000
     char pad_0008[32];	//0x0008
     char *SessionID;	//0x0028
