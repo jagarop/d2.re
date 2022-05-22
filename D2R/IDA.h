@@ -119,8 +119,7 @@ class D2ChatMsg;
 class D2MouseOver;
 struct InputBoxData;
 struct D2RosterPetStrc;
-enum D2PanelName;
-struct GamePanelStates;
+struct D2GamePanelStatesStrc;
 struct Grid;
 enum ItemInvPage;
 enum NodePage;
@@ -717,7 +716,7 @@ enum ItemInvPage: uint8_t
     INVPAGE_NULL = 255
 };
 
-struct GamePanelStates
+struct D2GamePanelStatesStrc
 {
     bool InGame;	//0x0000
     bool InventoryVisible;	//0x0001
@@ -761,41 +760,6 @@ struct Grid
     uint32_t Unk0x0012;	//0x0012
     uint16_t Unk0x0016;	//0x0016
     uint64_t* ItemArray;	//0x0018
-};
-
-enum D2PanelName: uint8_t
-{
-    InGame = 0,
-    InventoryVisible = 1,
-    StatsVisible = 2,
-    SkillPopoverVisible = 3,
-    SkillTreeVisible = 4,
-    ChatVisible = 5,
-    N000012BC = 6,
-    N000012CF = 7,
-    NpcDialogVisible = 8,
-    PauseMenuVisible = 9,
-    AutomapVisible = 10,
-    VendorInventoryVisible = 11,
-    ItemsOnGroundVisible = 12,
-    N000012D5 = 13,
-    QuestMenuVisible = 14,
-    N000012D7 = 15,
-    N00001256 = 16,
-    N000012E1 = 17,
-    N0000130D = 18,
-    WaypointMenuVisible = 19,
-    UNK2Visible = 20,
-    PartyVisible = 21,
-    N00001310 = 22,
-    N000012E3 = 23,
-    StashVisible = 24,
-    CubeVisible = 25,
-    BeltVisible = 26,
-    N00001353 = 27,
-    N00001314 = 28,
-    AvatarsVisible = 29,
-    MercInventoryVisible = 30,
 };
 
 struct InputBoxData
@@ -3460,7 +3424,7 @@ struct D2DrlgLevelStrc
     char pad_01D0[20];
     uint32_t nLevelType;
     char pad_01D[20];	//0x01D0
-    uint64_t nLevelId;	//0x01F8
+    uint32_t nLevelId;	//0x01F8
     char pad_01FC[8];	//0x01FC
     union	//0x0208
     {
