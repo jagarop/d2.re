@@ -2971,30 +2971,44 @@ struct D2PathInfoStrc
 
 struct D2InventoryNodeStrc
 {
-    int32_t nItemId;	//0x00
-    D2InventoryNodeStrc* pNext;	//0x04
-};
+	int32_t UintID; //0x0000
+	char pad_0004[12]; //0x0004
+	D2InventoryNodeStrc* pNext; //0x0010
+}; //Size: 0x0018
 
 struct D2InventoryStrc
 {
-    uint32_t Signature;	//0x0000
-    char pad_0004[4];	//0x0004
-    D2UnitStrc* pOwner;	//0x0008
-    D2UnitStrc* pFirstItem;	//0x0010
-    D2UnitStrc* pLastItem;	//0x0018
-    D2InventoryGridStrc* pGrids;	//0x0020
-    int32_t GridCount;	//0x0028
-    char pad_002C[12];	//0x002C
-    int64_t dwLeftItemGUID;	//0x0038
-    D2UnitStrc* pCursorItem;	//0x0040
-    uint32_t OwnerID;	//0x0048
-    uint32_t ItemCount;	//0x004C
-    D2InventoryNodeStrc* pFirstNode;	//0x2C
-    D2InventoryNodeStrc* pLastNode;	//0x30
-    D2CorpseStrc* pFirstCorpse;	//0x34
-    D2CorpseStrc* pLastCorpse;	//0x38
-    int32_t nCorpseCount;	//0x3C
-};
+	uint32_t Signature; //0x0000
+	char pad_0004[4]; //0x0004
+	D2UnitStrc* pOwner; //0x0008
+	D2UnitStrc* pFirstItem; //0x0010
+	D2UnitStrc* pLastItem; //0x0018
+	D2InventoryGridArrayStrc* pGrids; //0x0020
+	int32_t GridCount; //0x0028
+	char pad_002C[12]; //0x002C
+	int64_t dwLeftItemGUID; //0x0038
+	D2UnitStrc* pCursorItem; //0x0040
+	uint32_t OwnerID; //0x0048
+	uint32_t ItemCount; //0x004C
+	char pad_0050[24]; //0x0050
+	D2InventoryNodeStrc* pFirstNode; //0x0068
+	D2InventoryNodeStrc* pLastNode; //0x0070
+	char pad_0078[24]; //0x0078
+	D2UnitStrc* HeadPtr; //0x0090
+	D2UnitStrc* AmmyPtr; //0x0098
+	D2UnitStrc* ChestPtr; //0x00A0
+	D2UnitStrc* CurrentLeftHandPtr; //0x00A8
+	D2UnitStrc* CurrentRightHandPtr; //0x00B0
+	D2UnitStrc* LeftRingPtr; //0x00B8
+	D2UnitStrc* RightRingPtr; //0x00C0
+	D2UnitStrc* BeltPtr; //0x00C8
+	D2UnitStrc* BootPtr; //0x00D0
+	D2UnitStrc* GlovePtr; //0x00D8
+	D2UnitStrc* OffhandLeftPtr; //0x00E0
+	D2UnitStrc* OffhandRightPtr; //0x00E8
+	char pad_00F0[48]; //0x00F0
+	char PlayerName[16]; //0x0120
+}; //Size: 0x0130
 
 struct D2HirelingInitStrc
 {
