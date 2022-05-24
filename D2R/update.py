@@ -1,5 +1,14 @@
 #tested on ida 7.6.210427 and python 2.7.15
 
+#instructions have operands. i.e. if ur sig is to a call addr the operand is the addr.
+#if ur sig is just for the start of the func then i call it absolute. that type is 
+#just a naming convention i used for different sigs. some functions have multiple 
+#operands i.e. lea reg, addr where in that instance the operand u care about might 
+#be at index 1. hence why the operand type has an index 
+
+#"USED"=1 if func/var is used in your project. It will output to Used.txt
+#so you dont have 10000000000 lines of unused stuff
+
 import os
 import json
 from collections import OrderedDict
@@ -44,12 +53,15 @@ def BuildEnum(items):
         elif item['type'] == 'absolute':
             None
         offset = address - base
+        if item['used'] == 1:
+            with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
+                f.write("\t%-60s = %-20s //%-20s\n" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).upper().rstrip("L")+",", hex(address).upper().rstrip("L"), item['summary'].replace('\n', ' ') ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).upper().rstrip("L")+",", hex(address).upper().rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
         #remove old variable name if exists anywhere
         set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']),SN_PUBLIC)
@@ -167,7 +179,7 @@ else:
     version = idc.get_strlit_contents(idc.get_operand_value(version, 1))
 print('//D2R Version - %s' % ( version ))
 exeBase = ida_nalt.get_imagebase()
-print ('\r//Image Base - %s' % (str(hex(exeBase).upper().replace("0X", "0x").rstrip("L"))))
+print ('\r//Image Base - %s' % (str(hex(exeBase).replace("0X", "0x").rstrip("L"))))
 
 functions = []
 variables = []
@@ -201,14 +213,24 @@ for filename in ['_functions.json', 'functions.json', '_variables.json', 'variab
 #print('Load IDA.H file for Parsing')
 #Parse()
 #print('IDA.H Loaded')
+if os.path.exists(f"{path}"+"\\"+"Used.txt"):
+  os.remove(f"{path}"+"\\"+"Used.txt")
 
+with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
+    f.write('enum class Function : uint64_t {\n')
 print('enum class Function : uint64_t {')
 BuildEnum(functions)
 print('};')
+with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
+    f.write('};\n')
 
+with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
+    f.write('enum class Variable : uint64_t {\n')
 print('enum class Variable : uint64_t {')
 BuildEnum(variables)
 print('};')
+with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
+    f.write('};\n')
 
 RenameTableFunctions('g_D2GS_S2C_FunctionTable', 0xAE, RenameD2GSS2CFunctions)
 RenameTableFunctions('g_D2GS_C2S_FunctionTable', 0x64, RenameD2GSC2SFunctions) # is this the right size?
