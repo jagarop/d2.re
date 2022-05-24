@@ -1,5 +1,5 @@
 [
-{"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "E8 ? ? ? ? FE C8", "type": "operand", "operand": 0},
+{"ret": "__int64", "conv": "__fastcall", "name": "BITMANIP_Read", "args": "(D2BitBufferStrc* pBuffer, uint64_t nBits)", "pattern": "48 89 5C 24 10 48 89 6C 24 18 48 89 74 24 20 57 48 8B 41 10", "type": "absolute"},
 {"ret": "void", "conv": "__fastcall", "name": "BITMANIP_Write", "args": "(D2BitBufferStrc* pBuffer, uint32_t dwValue, uint64_t nBits)", "pattern": "40 53 4D 8B D0", "type": "absoulte"},
 {"ret": "D2QuestInfo*", "conv": "__fastcall", "name": "CLIENT_GetQuestInfoFromGameAndUnit", "args": "(D2GameStrc *pGame, D2UnitStrc *pUnit)", "pattern": "E8 ? ? ? ? 8B 4D 40", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "CLIENT_RevealAutomapRoom", "args": "(D2RoomStrc* pRoom1, int dwClipFlag, void* aLayer)", "pattern": "48 89 5C 24 10 48 89 4C 24 08 55 56 57 41 54 41 55 41 56 41 57 48 83 EC 30", "type": "absolute", "operand": 0},

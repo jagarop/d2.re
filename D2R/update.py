@@ -45,11 +45,11 @@ def BuildEnum(items):
             None
         offset = address - base
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).upper().rstrip("L")+",", hex(address).upper().rstrip("L"), item['summary'].replace('\n', ' ') ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).upper().rstrip("L")+",", hex(address).upper().rstrip("L") ))
         #remove old variable name if exists anywhere
         set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']),SN_PUBLIC)
@@ -202,11 +202,11 @@ for filename in ['_functions.json', 'functions.json', '_variables.json', 'variab
 #Parse()
 #print('IDA.H Loaded')
 
-print('enum class Functions : uint64_t {')
+print('enum class Function : uint64_t {')
 BuildEnum(functions)
 print('};')
 
-print('enum class Variables : uint64_t {')
+print('enum class Variable : uint64_t {')
 BuildEnum(variables)
 print('};')
 
