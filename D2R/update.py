@@ -42,7 +42,7 @@ def BuildEnum(items):
     for item in items:
         address = ida_search.find_binary(0, end_ea, str(item['pattern']), 16, idc.SEARCH_DOWN)
         if address == idaapi.BADADDR:
-            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).rstrip("L")+",", hex(address).rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s - Sig Broke" % (item['name'], hex(address).upper().replace("0X", "0x").rstrip("L")+",", hex(address).upper().replace("0X", "0x").rstrip("L") ))
             continue
         if item['type'] == 'operand':
             address = idc.get_operand_value(address, item['operand'])
@@ -55,13 +55,13 @@ def BuildEnum(items):
         offset = address - base
         if item['used'] == 1:
             with open(f"{path}"+"\\"+"Used.txt", 'a') as f:
-                f.write("\t%-60s = %-20s //%-20s\n" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
+                f.write("\t%-60s = %-20s //%-20s\n" % (item['name'], hex(offset).upper().replace("0X", "0x").rstrip("L")+",", hex(address).upper().replace("0X", "0x").rstrip("L") ))
         if 'summary' in item:
-            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L"), item['summary'].replace('\n', ' ') ))
+            print("\t%-60s = %-20s //%-20s - %s" % (item['name'], hex(offset).upper().replace("0X", "0x").rstrip("L")+",", hex(address).upper().replace("0X", "0x").rstrip("L"), item['summary'].replace('\n', ' ') ))
             set_cmt(address, str(item['summary']), False)
             set_func_cmt(address, str(item['summary']), False)
         else:
-            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).rstrip("L")+",", hex(address).rstrip("L") ))
+            print("\t%-60s = %-20s //%-20s" % (item['name'], hex(offset).upper().replace("0X", "0x").rstrip("L")+",", hex(address).upper().replace("0X", "0x").rstrip("L") ))
         #remove old variable name if exists anywhere
         set_name(get_name_ea_simple(str(item['name'])), '')
         set_name(address, str(item['name']),SN_PUBLIC)
@@ -167,7 +167,7 @@ def RenameTableFunctions(name, size, func):
     #sig points to an absolute addr usually start of func or something unnecassary code but making it explict what is happening
     elif item['type'] == 'absolute':
         None
-    print("Renaming %s Functions: %-16s" % ( name, hex(address).rstrip("L") ))
+    print("Renaming %s Functions: %-16s" % ( name, hex(address).upper().rstrip("L") ))
     for i in range(size):
         func(address, i)
 
@@ -179,7 +179,7 @@ else:
     version = idc.get_strlit_contents(idc.get_operand_value(version, 1))
 print('//D2R Version - %s' % ( version ))
 exeBase = ida_nalt.get_imagebase()
-print ('\r//Image Base - %s' % (str(hex(exeBase).replace("0X", "0x").rstrip("L"))))
+print ('\r//Image Base - %s' % (str(hex(exeBase).upper().replace("0X", "0x").rstrip("L"))))
 
 functions = []
 variables = []
