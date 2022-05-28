@@ -2987,7 +2987,7 @@ struct D2UIPanelManagerStrc_VMT
     void(__fastcall *WIDGET_Func0)(D2UIPanelManagerStrc *pThis);
     void(__fastcall *WIDGET_Func1)(D2UIPanelManagerStrc *pThis);
     void(__fastcall *WIDGET_Func2)(D2UIPanelManagerStrc *pThis);
-    void(__fastcall *WIDGET_Func3)(D2UIPanelManagerStrc *pThis);
+    void(__fastcall *WIDGET_OnUpdate)(D2UIPanelManagerStrc *pThis);
     void(__fastcall *WIDGET_OnMessage)(D2UIPanelManagerStrc *pThis, uint64_t aMessage[]);
     void(__fastcall *WIDGET_Func5)(D2UIPanelManagerStrc *pThis);
     void(__fastcall *WIDGET_Func6)(D2UIPanelManagerStrc *pThis);
@@ -2998,20 +2998,19 @@ struct D2UIPanelManagerStrc_VMT
     void(__fastcall *WIDGET_Func11)(D2UIPanelManagerStrc *pThis);
 };
 
-struct D2UIWidgetStrc_VMT
-{
-    void(__fastcall *WIDGET_Func0)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func1)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func2)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func3)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_OnMessage)(D2UIWidgetStrc *pThis, uint64_t aMessage[]);
-    void(__fastcall *WIDGET_Func5)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func6)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func7)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func8)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func9)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func10)(D2UIWidgetStrc *pThis);
-    void(__fastcall *WIDGET_Func11)(D2UIWidgetStrc *pThis);
+struct D2UIWidgetStrc_VMT {
+ 	void(__fastcall* WIDGET_Func0)(D2UIWidgetStrc* pThis, uint8_t flag);
+	void(__fastcall* WIDGET_Func1)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func2)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_OnUpdate)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_OnMessage)(D2UIWidgetStrc* pThis, uint64_t aMessage[]);
+	void(__fastcall* WIDGET_Func5)(D2UIWidgetStrc* pThis, const char* str);
+	void(__fastcall* WIDGET_OnShow)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_OnHide)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_OnResize)(D2UIWidgetStrc* pThis, size_t a1, size_t a2);
+	void(__fastcall* WIDGET_SetEnabled)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_SetVisible)(D2UIWidgetStrc* pThis);
+	void(__fastcall* WIDGET_Func11)(D2UIWidgetStrc* pThis); 
 };
 
 struct D2UIWidgetStrc
