@@ -209,23 +209,26 @@ class D2RosterPetStrc
 
 };
 
-class D2ChatMsg
+struct D2ChatMsg
 {
-    char *pMessage;
-    uint16_t MessageLen;
-    char pad1[6];
-    uint16_t MessageLenMax;
-    char pad2[6];
-    char Message[512];
-    uint64_t ChannelID;
-    char *pChannelName;
-    uint16_t ChannelNameLen;
-    char pad3[6];
-    uint16_t ChannelNameLenMax;
-    char pad4[6];
-    char ChannelName[16];
-    char pad5[112];	//was 104 last patch
-};
+	int32_t UnkInt; //0x0000
+	char pad_0004[4]; //0x0004
+	char *pMessage; //0x0008
+	int32_t N00000055; //0x0010
+	char pad_0014[4]; //0x0014
+	int32_t MessageLenMax; //0x0018
+	char pad_001C[4]; //0x001C
+	char N00000080[512]; //0x0020
+	int32_t ChannelID; //0x0220
+	char pad_0224[4]; //0x0224
+	char *pChannelName; //0x0228
+	int32_t ChannelNameLen; //0x0230
+	char pad_0234[4]; //0x0234
+	int32_t ChannelNameLenMax; //0x0238
+	char pad_023C[4]; //0x023C
+	char N0000008B[16]; //0x0240
+	char pad_0250[104]; //0x0250
+}; //Size: 0x02B8
 
 struct D2RString
 {
