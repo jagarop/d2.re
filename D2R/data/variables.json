@@ -76,5 +76,6 @@
 {"ctype": "int64_t", "name": "g_pGAME_QuitEnum", "used": 1, "pattern": "C7 05 ?? ?? ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 0F B6 4B 01", "operand": 0, "type": "operand"},
 {"ctype": "D2GamePanelStatesStrc", "name": "g_pGamePanelStates", "used": 1, "pattern": "4C 8D 05 ? ? ? ? 4C 8D 0D ? ? ? ? 45 38 38", "operand": 1, "type": "operand"},
 {"ctype": "D2UIPanelManagerStrc*", "name": "g_pPanelManager", "used": 1, "pattern": "48 89 05 ? ? ? ? 48 85 DB 74 1E", "operand": 0, "type": "operand"},
+{"ctype": "numChatMsgs*", "name": "numChatMsgs", "pattern": "48 89 15 ? ? ? ? 48 89 05 ? ? ? ? 0F 57 C0 ", "operand": 0, "type": "operand"},
 {"ctype": "unkGameStrc", "name": "g_unkGameStrc", "used": 1, "pattern": "48 8B 05 ? ? ? ? 48 8B D9 F3 0F 10 50 ?", "operand": 1, "type": "operand"}
 ]
