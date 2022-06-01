@@ -243,7 +243,7 @@ struct D2RString
 struct D2FixedArray
 {
 public:
-	D2RString (*ptr)[500]; //0x0000
+	void* ptr; //0x0000
 	uint64_t count; //0x0008
 	uint32_t allocated; //0x0010
 	uint32_t flags; //0x0014
