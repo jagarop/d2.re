@@ -126,6 +126,12 @@ struct D2InventoryGridArrayStrc;
 struct unkGameStrc;
 struct D2ItemExtraDataStrc;
 struct D2UnitHashTablesStrc;
+struct D2FixedArray;
+struct ChatMsg;
+struct D2DoublyLinkedListNode;
+struct D2DoublyLinkedList;
+struct D2ChatStrc;
+
 
 typedef int32_t(__fastcall *UNITFINDTEST)(D2UnitStrc *pUnit, D2UnitFindArgStrc *pUnitFindArg);
 #pragma pack(push, 1)
@@ -233,6 +239,78 @@ struct D2RString
     char pad_0004[12];	//0x0004
     char Data[24];	//0x0010
 };
+
+struct D2FixedArray
+{
+public:
+	D2RString (*ptr)[500]; //0x0000
+	uint64_t count; //0x0008
+	uint32_t allocated; //0x0010
+	uint32_t flags; //0x0014
+}; //Size: 0x0018
+
+struct ChatMsg
+{
+    D2RString szMessage; //0x0000
+    uint8_t N0000212B[495]; //0x0028 Part of szMessage
+    char pad_0217[1]; //0x0217
+    uint64_t nChannelType; //0x0218
+    D2RString szChannel; //0x0220
+    uint32_t nColorType; //0x0248
+    uint8_t Red; //0x024C
+    char pad_024D[3]; //0x024D
+    uint8_t nGreen; //0x0250
+    char pad_0251[3]; //0x0251
+    uint8_t nBlue; //0x0254
+    char pad_0255[3]; //0x0255
+    uint8_t nAlpha; //0x0258
+    char pad_0259[7]; //0x0259
+    uint64_t nTime; //0x0260
+    char pad_0268[80]; //0x0268
+}; //Size: 0x02B8
+
+struct D2DoublyLinkedListNode
+{
+    void* pNext;
+    void* pPrev;
+};
+
+struct D2DoublyLinkedList
+{
+    D2DoublyLinkedListNode* pPrev; //0x0000
+    D2DoublyLinkedListNode* pNext; //0x0008
+    uint64_t nCount; //0x0010
+}; //Size: 0x0018
+
+struct D2ChatStrc
+{
+    char pad_0000[16]; //0x0000
+    uint64_t nHistoryInsertionIdx; //0x0010
+    D2ChatMsg MessageHistory[1025]; //0x0018
+    D2FixedArray unk_AE2D0; //0xAE2D0
+    char unk_AE2E8[1024][8]; //0xAE2E8
+    uint64_t unk_B02E8; //0xB02E8
+    uint64_t unk_B02F0; //0xB02F0
+    D2ChatMsg unk_B02F8[19]; //0xB02F8
+    uint64_t unk_B36A0; //0xB36A0
+    uint64_t unk_B36A8; //0xB36A8
+    D2ChatMsg unk_B36B0[19]; //0xB36B0
+    uint64_t unk_B6A58; //0xB6A58
+    uint64_t unk_B6A60; //0xB6A60
+    char unk_B6A68[261][8]; //0xB6A68
+    D2RString* ppMessages; //0xB7290 D2RString**
+    uint64_t unk_B7298; //0xB7298
+    char pad_B72A0[8]; //0xB72A0
+    uint64_t nMessageCount; //0xB72A8 number of messages in ppMessages
+    D2DoublyLinkedList Channels; //0xB72B0
+    D2DoublyLinkedList unk_B72C8; //0xB72C8
+    uint32_t nActiveChannelType; //0xB72E0
+    char pad_B72E4[4]; //0xB72E4
+    D2RString szActiveChannel; //0xB72E8
+    char pad_B7310[8]; //0xB7310
+    uint32_t unk_B7318; //0xB7318
+    char pad_B731C[44]; //0xB731C
+}; //Size: 0xB7348
 
 class LauncherData
 {
