@@ -230,7 +230,17 @@ class D2ChatMsg
     uint16_t ChannelNameLenMax;
     char pad4[6];
     char ChannelName[16];
-    char pad5[112];	//was 104 last patch
+    uint32_t nColorType; //0x0248 -- rest of struct from ejt
+    uint8_t Red; //0x024C
+    char pad_024D[3]; //0x024D
+    uint8_t nGreen; //0x0250
+    char pad_0251[3]; //0x0251
+    uint8_t nBlue; //0x0254
+    char pad_0255[3]; //0x0255
+    uint8_t nAlpha; //0x0258
+    char pad_0259[7]; //0x0259
+    uint64_t nTime; //0x0260
+    char pad_0268[80]; //0x0268
 };
 
 struct D2RString
