@@ -195,10 +195,11 @@ struct InputBoxData
 
 class D2MouseOver
 {
-    int8_t g_bIsMouseOverUnit;	//0x0000
-    char pad_0001[3];	//0x0001
-    int32_t g_MouseOverUnitType;	//0x0004
-    int32_t g_MouseOverUnitID;	//0x0008
+    bool bHovered;	//0x0000
+    bool bDoingAction;	//0x0001
+    char pad_0002[2]; //0x0002
+	D2C_UnitTypes UnitType; //0x0004
+	int32_t UnitID; //0x0008
 };
 
 class D2RosterPetStrc
@@ -2215,7 +2216,7 @@ struct D2MissileCalcStrc
 
 struct D2UnitStrc {
     D2C_UnitTypes Type; //0x0000
-    uint32_t LineID; //0x0004
+    D2C_MonsterIds LineID; //0x0004
     uint32_t ID; //0x0008
     D2C_PlayerAnimationMode AnimationMode; //0x000C
     union //0x0010
@@ -2979,7 +2980,7 @@ struct D2DrlgLevelStrc
     char pad_01D0[20];
     uint32_t nLevelType;
     char pad_01D[20];	//0x01D0
-    uint32_t LevelNo;	//0x01F8
+    D2C_AreaIDs LevelNo;	//0x01F8
     char pad_01FC[8];	//0x01FC
     union	//0x0208
     {
