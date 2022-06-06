@@ -136,7 +136,7 @@ struct D2ChatStrc;
 typedef int32_t(__fastcall *UNITFINDTEST)(D2UnitStrc *pUnit, D2UnitFindArgStrc *pUnitFindArg);
 #pragma pack(push, 1)
 
-struct D2GamePanelStatesStrc
+struct D2GamePanelStatesStrc : int8_t
 {
     bool InGame;	//0x0000
     bool InventoryVisible;	//0x0001
