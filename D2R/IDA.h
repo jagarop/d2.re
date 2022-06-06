@@ -2227,7 +2227,7 @@ struct D2UnitStrc {
         D2ItemDataStrc *pItemData; //0x0000
         void *pMissileData; //0x0000
     };
-    uint8_t ActID; //0x0018
+    D2C_AreaIDs ActID; //0x0018
     char pad_0019[7]; //0x0019
     D2DrlgActStrc *pDrlgAct; //0x0020
     uint32_t LowSeed; //0x0028
