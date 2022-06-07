@@ -2763,19 +2763,18 @@ struct D2StatStrc
     uint32_t Value;	//0x0004
 };
 
-struct D2DrlgStrc
-{
-    char pad_0000[280];	//0x0000
-    D2DrlgWarpStrc* pWarp;
-    uint32_t StaffTombLevel;	//0x0120
-    char pad_0124[1804];	//0x0124
-    uint16_t Difficulty; //0x0830
-    char pad_0832[38]; //0x0832
-    D2DrlgActStrc* pAct;	//0x0858
-    char pad_0860[8];	//0x0860
-    D2DrlgLevelStrc* pLevelFirst;	//0x0868
-    uint32_t ActNo;	//0x0870
-    char pad_0874[12];	//0x0874
+struct D2DrlgStrc {
+	char pad_0000[280];		//0x0000
+	D2DrlgWarpStrc* pWarp;		//0x0118
+	uint32_t StaffTombLevel;	//0x0120
+	char pad_0124[1804];		//0x0124
+	uint16_t Difficulty;		//0x0830
+	char pad_0832[46];		//0x0832
+	D2DrlgActStrc* pAct;		//0x0860
+	char pad_0868[8];		//0x0868
+	D2DrlgLevelStrc* pLevelFirst;	//0x0870
+	uint32_t ActNo;			//0x0878
+	char pad_087C[12];		//0x087C
 };
 
 struct D2RoomExStrc
@@ -2959,40 +2958,40 @@ struct D2DrlgMapStrc
 
 struct D2DrlgPresetInfoStrc
 {
-    D2DrlgMapStrc* pDrlgMap;	//0x00
-    int32_t nDirection;	//0x04
+	D2DrlgMapStrc* pDrlgMap;	//0x0000
+	int32_t nDirection;		//0x0008
+	char pad_000C[4];		//0x000C
 };
 
-struct D2DrlgLevelStrc
-{
-    uint32_t nDrlgType;
-    char pad_0000[12];	//0x0000
-    D2RoomExStrc* pRoomExFirst;	//0x0010
-    D2DrlgPresetInfoStrc* pPreset;
-    uint32_t PosX;	//0x0024
-    uint32_t PosY;	//0x0028
-    uint32_t SizeX;	//0x002C
-    uint32_t SizeY;	//0x0030
-    char pad_0034[388];	//0x0034
-    D2DrlgLevelStrc* pLevelNext;	//0x01B8
-    char pad_01C0[8];	//0x01C0
-    D2DrlgStrc* pDrlg;	//0x01C8
-    char pad_01D0[20];
-    uint32_t nLevelType;
-    char pad_01D[20];	//0x01D0
-    D2C_AreaIDs LevelNo;	//0x01F8
-    char pad_01FC[8];	//0x01FC
-    union	//0x0208
-    {
-        int32_t RoomCenterX[9];	//0x0000
-        int32_t WarpX[9];	//0x0000
-    };
-    union	//0x022C
-    {
-        int32_t RoomCenterY[9];	//0x0000
-        int32_t WarpY[9];	//0x0000
-    };
-    char pad_0250[56];	//0x0250
+struct D2DrlgLevelStrc {
+	uint32_t nDrlgType;		//0x0000
+	char pad_0004[12];		//0x0004
+	D2RoomExStrc* pRoomExFirst;	//0x0010
+	D2DrlgPresetInfoStrc Preset;	//0x0018
+	uint32_t PosX;			//0x0028
+	uint32_t PosY;			//0x002C
+	uint32_t SizeX;			//0x0030
+	uint32_t SizeY;			//0x0034
+	char pad_0034[384];		//0x0034
+	D2DrlgLevelStrc* pLevelNext;	//0x01B8
+	char pad_01C0[8];		//0x01C0
+	D2DrlgStrc* pDrlg;		//0x01C8
+	char pad_01D0[20];		//0x01D0
+	uint32_t nLevelType;		//0x01E4
+	char pad_01E8[16];		//0x01D0
+	uint32_t nLevelNo;		//0x01F8
+	char pad_01FC[12];		//0x01FC
+	union				//0x0208
+	{
+		int32_t RoomCenterX[9]; //0x0000
+		int32_t WarpX[9];	//0x0000
+	};
+	union				//0x022C
+	{
+		int32_t RoomCenterY[9]; //0x0000
+		int32_t WarpY[9];	//0x0000
+	};
+	char pad_0250[56];		//0x0250
 };
 
 struct D2LvlWarpTxt
