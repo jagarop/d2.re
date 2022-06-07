@@ -108,6 +108,7 @@
 {"ret": "float*", "conv": "__fastcall", "name": "D2GFX_DrawAutomapCell2_Possibly_1", "used": 0, "args": "(float *a1, unsigned int a2, unsigned __int8 a3)", "pattern": "E8 ? ? ? ? 48 8D 4C 24 ? 90", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2GFX_DrawLine", "used": 0, "args": "(int a1, int a2, int a3, int a4, unsigned __int8 a5, char a6)", "pattern": "E8 ? ? ? ? 4C 63 5B 10", "type": "operand", "operand": 0, "summary": "Unconfirmed offset"},
 {"ret": "void", "conv": "__fastcall", "name": "D2GFX_DrawRectangle", "used": 0, "args": "(int a1, int a2, int a3, int a4, unsigned __int8 a5, unsigned __int8 a6, unsigned __int8 a7, int a8, int a9)", "pattern": "E8 ? ? ? ? 8B 4E 6C", "type": "operand", "operand": 0},
+{"ret": "void", "conv": "__fastcall", "name": "D2GS_SendPacket", "used": 1, "args": "(uint8_t* pBuffer, size_t nSize)", "pattern": "E8 ? ? ? ? 0F B6 85 ? ? ? ? 48 03 F0 ", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2R_DEBUG_ERROR", "used": 0, "args": "(D2UnitStrc* pUnit, bool a2)", "pattern": "E8 ? ? ? ? 8D 4D FF", "type": "operand", "operand": 0},
 {"ret": "void", "conv": "__fastcall", "name": "D2R_DEBUG_EXIT", "used": 0, "args": "(int a1)", "pattern": "E8 ?? ?? ?? ?? CC 45 33 DB", "type": "operand", "operand": 0},
 {"ret": "void*", "conv": "__fastcall", "name": "D2R_DEBUG_STACK_RET_ADDRESS", "used": 0, "args": "()", "pattern": "48 8B 04 24 C3", "type": "absolute"},
