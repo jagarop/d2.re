@@ -136,7 +136,7 @@ struct D2ChatStrc;
 typedef int32_t(__fastcall *UNITFINDTEST)(D2UnitStrc *pUnit, D2UnitFindArgStrc *pUnitFindArg);
 #pragma pack(push, 1)
 
-struct D2GamePanelStatesStrc : int8_t
+struct D2GamePanelStatesStrc
 {
     bool InGame;	//0x0000
     bool InventoryVisible;	//0x0001
@@ -2196,16 +2196,6 @@ struct D2LevelsTxt
     char pad_0032[342];	//0x0032
 };
 
-struct D2UnitHashTableStrc
-{
-    D2UnitStrc *Players[128];	//0x0000
-    D2UnitStrc *Monsters[128];	//0x0400
-    D2UnitStrc *Objects[128];	//0x0800
-    D2UnitStrc *Missiles[128];	//0x0C00
-    D2UnitStrc *Items[128];	//0x1000
-    D2UnitStrc *Tiles[128];	//0x1400
-};
-
 struct D2MissileCalcStrc
 {
     D2UnitStrc* pMissile;	//0x00
@@ -2287,7 +2277,7 @@ struct D2QuestInfo
 };
 struct D2Waypoint
 {
-    byte flags;	// 0x00
+    uint8_t flags;	// 0x00
 };
 
 struct D2PlayerDataStrc
@@ -2887,7 +2877,7 @@ struct D2DrlgFileStrc
     void *pShadowLayer;	//0x44
     void *pSubstGroupTags;	//0x48
     int32_t nSubstGroups;	//0x4C named nClusters in original game
-    struct D2DrlgSubstGroupStrc* pSubstGroups;	//0x50
+    void* pSubstGroups;	//0x50 struct D2DrlgSubstGroupStrc?
     D2PresetUnitStrc* pPresetUnit;	//0x54
     D2DrlgFileStrc* pNext;	//0x58
 };

@@ -1,7 +1,4 @@
 #pragma once
-//#include <cstdint>
-
-//custom enums
 
 enum D2C_ClickOnMapState {
 	CLICKMAPSTATE_DOWN = 0x0,
