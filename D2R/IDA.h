@@ -131,12 +131,26 @@ struct ChatMsg;
 struct D2DoublyLinkedListNode;
 struct D2DoublyLinkedList;
 struct D2ChatStrc;
+struct D2NpcTxt;
 
 
 typedef int32_t(__fastcall *UNITFINDTEST)(D2UnitStrc *pUnit, D2UnitFindArgStrc *pUnitFindArg);
 #pragma pack(push, 1)
 
-struct D2GamePanelStatesStrc : int8_t
+struct D2NpcTxt
+{
+	uint32_t dwNpc;							//0x00
+	uint32_t dwSellMult;					//0x04
+	uint32_t dwBuyMult;						//0x08
+	uint32_t dwRepMult;						//0x0C
+	uint32_t dwQuestFlag[3];				//0x10
+	uint32_t dwQuestSellMult[3];			//0x1C
+	uint32_t dwQuestBuyMult[3];				//0x28
+	uint32_t dwQuestRepMult[3];				//0x34
+	int32_t nMaxBuy[3];						//0x40
+};
+
+struct D2GamePanelStatesStrc
 {
     bool InGame;	//0x0000
     bool InventoryVisible;	//0x0001
