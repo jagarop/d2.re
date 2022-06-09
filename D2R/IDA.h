@@ -2265,16 +2265,16 @@ struct D2UnitStrc {
     uint32_t OwnerID; //0x00EC
     char pad_00F0[16]; //0x00F0
     D2SkillListStrc *pSkills; //0x0100
-    char pad_0108[24]; //0x0108
-    D2C_UnitFlags Flags; //0x0120
-    D2C_UnitFlagsEx FlagsEx; //0x0124
-    char pad_0128[32]; //0x0128
-    D2UnitStrc *pChangeNextUnit; //0x0148
-    D2UnitStrc *pListNext; //0x0150
-    D2UnitStrc *pRoomNext; //0x0158
-    uint8_t Unk0x0160[0x18];	//0x0160
-    uint32_t SizeX;	//0x0178
-    uint32_t SizeY;	//0x017C
+    char pad_0108[28]; //0x0108
+    D2C_UnitFlags Flags; //0x0124
+    D2C_UnitFlagsEx FlagsEx; //0x0128
+    char pad_0128[32]; //0x012C
+    D2UnitStrc *pChangeNextUnit; //0x014C
+    D2UnitStrc *pListNext; //0x0154
+    D2UnitStrc *pRoomNext; //0x015C
+    uint8_t Unk0x0160[0x18];	//0x0164
+    uint32_t SizeX;	//0x017C
+    uint32_t SizeY;	//0x0180
 };
 
 struct D2PlayerTradeStrc
