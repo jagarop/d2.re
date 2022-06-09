@@ -597,7 +597,7 @@
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetBlockRate", "used": 0, "args": "(D2UnitStrc* pUnit, bool bExpansion)", "pattern": "E8 ? ? ? ? 8B F8 85 C0 7E 63", "type": "operand", "operand": 0},
 {"ret": "D2UnitStrc*", "conv": "__fastcall", "name": "UNITS_GetClientSideUnit", "used": 1, "args": "(uint32_t nUnitID, D2C_UnitTypes nUnitType)", "pattern": "E8 ? ? ? ? 8B 4F 05", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetCollisionType", "used": 0, "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 41 85 C5 74 0C", "type": "operand", "operand": 0},
-{"ret": "D2Point16", "conv": "__fastcall", "name": "UNITS_GetCoords", "used": 0, "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 8B 75 08", "type": "operand", "operand": 0, "summary": "unsure..."},
+{"ret": "D2Point16", "conv": "__fastcall", "name": "UNITS_GetCoords", "used": 1, "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 8B 75 08", "type": "operand", "operand": 0, "summary": "unsure..."},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetCurrentLifePercentage", "used": 1, "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 3B 47 30", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetDefense", "used": 0, "args": "(D2UnitStrc* pUnit)", "pattern": "E8 ? ? ? ? 33 DB 8B E8", "type": "operand", "operand": 0},
 {"ret": "int", "conv": "__fastcall", "name": "UNITS_GetDirectionToCoords", "used": 0, "args": "(D2UnitStrc *pUnit, int nNewX, int nNewY)", "pattern": "E8 ? ? ? ? 83 3F 05 74 35", "type": "operand", "operand": 0},

@@ -117,12 +117,16 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.h'), "w") as outfile:
     outfile.write("extern uint64_t BaseAddress;\n\n")
     outfile.write("//Variables: \n")
     for item in variables:
+        if not item['used']:
+            continue
         if 'summary' in item:
             outfile.write("/*\n{}\n*/\n".format(item['summary']))
         outfile.write("extern {}* {};\n".format(item['ctype'],item['name']))
     outfile.write("\n")
     outfile.write("//Functions: \n")
     for item in functions:
+        if not item['used']:
+            continue
         outfile.write("typedef {} {} {}_t{};\n".format(item['ret'],item['conv'],item['name'],item['args']))
         if 'summary' in item:
             outfile.write("/// <summary>\n")
@@ -137,12 +141,18 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     outfile.write("uint64_t BaseAddress = (uint64_t)GetModuleHandle(NULL);\n\n")
     outfile.write("//Variables: \n")
     for item in variables:
+        if not item['used']:
+            continue
+        print(f"Generating variable {item}")
         outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],hex(offset(item)).rstrip("L")))
     outfile.write("\n")
     outfile.write("//quick copy pasta method testing:\n")
     outfile.write("// reinterpret_cast<void(__fastcall*)(void*)>(BaseAddress + 0x0)(nullptr);\n")
     outfile.write("//Functions: \n")
     for item in functions:
+        if not item['used']:
+            continue
+        print(f"Generating function {item}")
         outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item)).rstrip("L")))
 
 with open(os.path.join(path, 'gen', 'D2GS.cpp'), "w") as outfile:
