@@ -113,6 +113,7 @@ struct D2QuestInfo;
 struct D2Waypoint;
 struct RosterUnit;
 struct HostileInfo;
+struct HostilePtr;
 struct unkqwordGameStruct;
 struct BnetData;
 struct D2RString;
@@ -374,7 +375,10 @@ struct unkGameStrc
     char pad_005D[3];	//0x005D
     bool bIsLadder;	//0x0060 -- based on offline chars with ladder flag set.
 };
-
+class HostilePtr
+{
+	HostileInfo *hostileInfo;
+}
 class HostileInfo
 {
     int32_t dwUnitId;	//0x0000
@@ -395,7 +399,7 @@ class RosterUnit
     int32_t posY;	//0x0034
     int32_t partyFlags;	//0x0038
     char pad_003C[4];	//0x003C
-    class HostileInfo* pHostileInfo;	//0x0040
+    class HostilePtr* pHostileInfo;	//0x0040
     char pad_0048[192];	//0x0048
     class RosterUnit* pNextRoster;	//0x0108
 };
