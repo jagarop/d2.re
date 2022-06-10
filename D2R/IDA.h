@@ -1,5 +1,12 @@
 #include"data/D2Enums.h"
 
+typedef unsigned __int64 m128i_u64[2];
+typedef m128i_u64 __m128i;
+typedef m128i_u64 __m128;
+typedef unsigned __int64 _QWORD;
+typedef unsigned __int32 _DWORD;
+typedef const char* LPCCH;
+
 struct D2DataTablesStrc;
 struct D2CharStatsTxt;
 struct D2SkillsTxt;
