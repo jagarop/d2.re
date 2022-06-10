@@ -1853,7 +1853,7 @@ struct D2MonStatsTxt
     int8_t Ai;	//0x0039
     int8_t N000085A2;	//0x003A
     int8_t N000085A3;	//0x003B
-    uint32_t Flags;	//0x003C
+    uint32_t dwMonStatsFlags;	//0x003C
     char Code[2];	//0x0040
     bool Enabled;	//0x0042
     bool RangedType;	//0x0043
