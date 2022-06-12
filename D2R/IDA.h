@@ -1,5 +1,9 @@
 #include"data/D2Enums.h"
 
+typedef uint64_t m128i_u64[2];
+typedef m128i_u64 __m128i;
+typedef m128i_u64 __m128;
+
 struct D2DataTablesStrc;
 struct D2CharStatsTxt;
 struct D2SkillsTxt;

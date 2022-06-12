@@ -141,19 +141,21 @@ with open(os.path.join(path, 'gen', 'D2Ptrs.cpp'), "w") as outfile:
     outfile.write("uint64_t BaseAddress = (uint64_t)GetModuleHandle(NULL);\n\n")
     outfile.write("//Variables: \n")
     for item in variables:
+        item['offset'] = hex(offset(item)).rstrip("L")
         if not item['used']:
             continue
         print(f"Generating variable {item}")
-        outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],hex(offset(item)).rstrip("L")))
+        outfile.write("{}* {} = ({}*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['ctype'],item['name'],item['ctype'],item['offset']))
     outfile.write("\n")
     outfile.write("//quick copy pasta method testing:\n")
     outfile.write("// reinterpret_cast<void(__fastcall*)(void*)>(BaseAddress + 0x0)(nullptr);\n")
     outfile.write("//Functions: \n")
     for item in functions:
+        item['offset'] = hex(offset(item)).rstrip("L")
         if not item['used']:
             continue
         print(f"Generating function {item}")
-        outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],hex(offset(item)).rstrip("L")))
+        outfile.write("{}_t* {} = ({}_t*)(BaseAddress + static_cast<uint64_t>({}));\n".format(item['name'],item['name'],item['name'],item['offset']))
 
 with open(os.path.join(path, 'gen', 'D2GS.cpp'), "w") as outfile:
     outfile.write("#include \"D2GS.h\"\n")
@@ -270,6 +272,13 @@ with open(os.path.join(path, 'gen', 'D2GS.h'), "w") as outfile:
             outfile.write("\n")
 
     outfile.write("\n#pragma pack(pop)")
+
+
+with open(os.path.join(path, 'gen', 'offsets_variables.json'), "w") as outfile:
+    json.dump(variables, outfile)
+
+with open(os.path.join(path, 'gen', 'offsets_functions.json'), "w") as outfile:
+    json.dump(functions, outfile)
 
 
 print('Done')
