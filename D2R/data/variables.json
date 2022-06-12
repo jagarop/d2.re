@@ -54,7 +54,7 @@
 {"ctype": "D2Point32", "name": "g_PlayerPos2", "used": 0, "pattern": "8B 0D ? ? ? ? 03 CD", "operand": 1, "type": "operand"},
 {"ctype": "uint32_t", "name": "g_PlayerUnitIndex", "used": 1, "pattern": "8B 0D ? ? ? ? 48 8B 58 18", "operand": 1, "type": "operand"},
 {"ctype": "RosterUnit*", "name": "g_PlayerUnitList", "used": 1, "pattern": "48 8B 3D ?? ?? ?? ?? 45 33 FF 48 85 FF", "operand": 1, "type": "operand"},
-{"ctype": "int64_t*", "name": "g_QuestFlags", "used": 1, "pattern": "48 8B 15 ? ? ? ? 4C 8D 6D 08 ", "operand": 1, "type": "operand"},
+{"ctype": "int64_t", "name": "g_QuestFlags", "used": 1, "pattern": "48 8B 15 ? ? ? ? 4C 8D 6D 08 ", "operand": 1, "type": "operand"},
 {"ctype": "D2UnitHashTableStrc*", "name": "g_ServerSideUnitHashTable", "used": 1, "pattern": "48 8D 0D ?? ?? ?? ?? 48 C1 E0 0A 48 03 C1 C3", "operand": 1, "type": "operand"},
 {"ctype": "bool", "name": "g_SkillSelectionOpen", "used": 0, "pattern": "44 38 35 ?? ?? ?? ?? 75 1A", "operand": 0, "type": "operand"},
 {"ctype": "int64_t", "name": "g_SkillsCltDoFunc", "used": 0, "pattern": "49 83 BC C3 ? ? ? ? ? ", "operand": 0, "type": "other", "summary": "--- https://d2mods.info/forum/viewtopic.php?f=8&t=60933 --- https://d2r-txt-guide.github.io/#_Toc52465984"},

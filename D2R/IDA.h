@@ -379,10 +379,11 @@ struct unkGameStrc
     char pad_005D[3];	//0x005D
     bool bIsLadder;	//0x0060 -- based on offline chars with ladder flag set.
 };
-class HostilePtr
+class HostilePtr        
 {
 	HostileInfo *hostileInfo;
-}
+};
+
 class HostileInfo
 {
     int32_t dwUnitId;	//0x0000
@@ -2991,7 +2992,7 @@ struct D2DrlgLevelStrc {
 	char pad_01D0[20];		//0x01D0
 	uint32_t nLevelType;		//0x01E4
 	char pad_01E8[16];		//0x01D0
-	uint32_t nLevelNo;		//0x01F8
+	D2C_Levels nLevelNo;		//0x01F8
 	char pad_01FC[12];		//0x01FC
 	union				//0x0208
 	{
