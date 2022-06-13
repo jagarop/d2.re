@@ -137,10 +137,55 @@ struct D2DoublyLinkedListNode;
 struct D2DoublyLinkedList;
 struct D2ChatStrc;
 struct D2NpcTxt;
-
+struct D2UnkOutPlaceStrc;
+struct D2LevelDefBin;
+struct D2DrlgOrthStrc;
+struct D2DrlgCoordListStrc;
+struct D2RoomCoordListStrc;
 
 typedef int32_t(__fastcall *UNITFINDTEST)(D2UnitStrc *pUnit, D2UnitFindArgStrc *pUnitFindArg);
 #pragma pack(push, 1)
+
+struct D2LevelDefBin
+{
+	uint32_t dwQuestFlag;				//0x00
+	uint32_t dwQuestFlagEx;				//0x04
+	uint32_t dwLayer;					//0x08
+	uint32_t dwSizeX[3];				//0x0C
+	uint32_t dwSizeY[3];				//0x18
+	uint32_t dwOffsetX;					//0x24
+	uint32_t dwOffsetY;					//0x28
+	uint32_t dwDepend;					//0x2C
+	uint32_t dwDrlgType;				//0x30
+	uint32_t dwLevelType;				//0x34
+	uint32_t dwSubType;					//0x38
+	uint32_t dwSubTheme;				//0x3C
+	uint32_t dwSubWaypoint;				//0x40
+	uint32_t dwSubShrine;				//0x44
+	int32_t dwVis[8];					//0x48
+	uint32_t dwWarp[8];					//0x68
+	uint8_t nIntensity;					//0x88
+	uint8_t nRed;						//0x89
+	uint8_t nGreen;						//0x8A
+	uint8_t nBlue;						//0x8B
+	uint32_t dwPortal;					//0x8C
+	uint32_t dwPosition;				//0x90
+	uint32_t dwSaveMonsters;			//0x94
+	uint32_t dwLOSDraw;					//0x98
+};
+
+struct D2UnkOutPlaceStrc
+{
+	D2DrlgCoordStrc pDrlgCoord;				//0x00
+	int32_t field_10;						//0x10
+	int32_t nBranch;						//0x14
+	D2UnkOutPlaceStrc* field_18;			//0x18
+	D2UnkOutPlaceStrc* field_1C[3];			//0x1C
+	int32_t field_28;						//0x18
+	int32_t field_2C;						//0x2C
+	int32_t* pJungleDefs;					//0x30
+	int32_t nJungleDefs;					//0x34
+};
 
 struct D2NpcTxt
 {
@@ -678,6 +723,23 @@ struct D2UnkDrlgLogicStrc
     int32_t nFlags;	//0x1C
 };
 
+struct D2RoomCoordListStrc
+{
+	D2DrlgCoordStrc pBox[2];				//0x00
+	BOOL bNode;								//0x20
+	BOOL bRoomActive;						//0x24
+	int32_t nIndex;								//0x28
+	D2RoomCoordListStrc* pNext;				//0x2C
+};
+struct D2DrlgCoordListStrc
+{
+	int32_t dwFlags;							//0x00
+	int32_t nLists;								//0x04
+	D2DrlgGridStrc pIndexX;					//0x08
+	D2DrlgGridStrc pIndexY;					//0x1C
+	D2RoomCoordListStrc* pCoordList;		//0x30
+};
+
 struct D2TileLibraryHashStrc
 {
     D2TileLibraryHashNodeStrc *pNodes[128];	//0x00
@@ -752,13 +814,6 @@ struct D2DrlgTileDataStrc
     int32_t unk0x2C;	//0x2C
 };
 
-struct D2DrlgCoordStrc
-{
-    int32_t nPosX;	//0x00
-    int32_t nPosY;	//0x04
-    int32_t nWidth;	//0x08
-    int32_t nHeight;	//0x0C
-};
 
 struct D2DrlgLevelLinkDataStrc
 {
@@ -1358,7 +1413,7 @@ struct D2DataTablesStrc
     uint64_t nLevelsTxtCount;	//0x1390
     uint64_t nLevelsTxtCountEx;	//0x1398
     uint64_t* N0000094C;	//0x13A0
-    uint64_t* N0000094D;	//0x13A8
+    D2LevelDefBin* nLevelDefRecord;	//0x13A8
     uint64_t N0000094E;	//0x13B0
     uint64_t N0000094F;	//0x13B8
     uint64_t* pLvlPrestTxt;	//0x13C0
@@ -2781,8 +2836,8 @@ struct D2DrlgStrc {
 	D2DrlgWarpStrc* pWarp;		//0x0118
 	uint32_t StaffTombLevel;	//0x0120
 	char pad_0124[1804];		//0x0124
-	uint16_t Difficulty;		//0x0830
-	char pad_0832[46];		//0x0832
+	uint8_t Difficulty;		//0x0830
+	char pad_0832[47];		//0x0832
 	D2DrlgActStrc* pAct;		//0x0860
 	char pad_0868[8];		//0x0868
 	D2DrlgLevelStrc* pLevelFirst;	//0x0870
@@ -2793,7 +2848,7 @@ struct D2DrlgStrc {
 struct D2RoomExStrc
 {
     D2RoomExStrc* pFirstRoomEx;	//0x0000
-    char pad_0008[8]; //0x0008
+    D2DrlgCoordListStrc* pCoordList; //0x0008
     D2RoomExStrc **pRoomExNear;	//0x0010
     uint32_t RoomsNear;	//0x0018
     char pad_001C[44];	//0x001C
@@ -2811,6 +2866,21 @@ struct D2RoomExStrc
     char pad_0080[16];	//0x0080
     D2DrlgLevelStrc* pLevel;	//0x0090
     D2PresetUnitStrc* pPreset;	//0x0098
+};
+
+struct D2DrlgOrthStrc
+{
+	union
+	{
+		D2RoomExStrc* pRoomEx;				//0x00
+		D2DrlgLevelStrc* pLevel;			//0x00
+	};
+	uint8_t nDirection;						//0x04
+	uint8_t unk0x05[3];						//0x05
+	BOOL bPreset;							//0x08
+	BOOL bInit;								//0x0C
+	D2DrlgCoordStrc* pBox;					//0x10
+	D2DrlgOrthStrc* pNext;					//0x14
 };
 
 struct D2BoundingBoxStrc
@@ -2948,6 +3018,14 @@ struct D2DrlgAnimTileGridStrc
     int32_t nCurrentFrame;	//0x08
     int32_t nAnimationSpeed;	//0x0C
     D2DrlgAnimTileGridStrc* pNext;	//0x10
+};
+
+struct D2DrlgCoordStrc
+{
+    int32_t nPosX;	//0x00
+    int32_t nPosY;	//0x04
+    int32_t nWidth;	//0x08
+    int32_t nHeight;	//0x0C
 };
 
 struct D2DrlgMapStrc
